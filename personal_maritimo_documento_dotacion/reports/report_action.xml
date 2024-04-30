@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="paperformat_no_header_document" model="report.paperformat">
+            <field name="name">Managment Roll A4 Portrait Document</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">2</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">2</field>
+            <field name="margin_right">2</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">15</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <!-- <record id="paperformat_matricula" model="report.paperformat">
+            <field name="name">A4 Portrait Carnet</field>
+             <field name="default" eval="True" />
+            <field name="format">custom</field>
+            <field name="page_height">60</field>
+            <field name="page_width">95</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">2</field>
+            <field name="margin_bottom">2</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">100</field>
+        </record> -->
+
+        <record id="paperformat_matricula" model="report.paperformat">
+            <field name="name">Formato de Impresión de Matrícula</field>
+             <field name="default" eval="True" />
+            <field name="format">custom</field>
+            <field name="page_height">80</field>
+            <field name="page_width">45</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">2</field>
+            <field name="margin_bottom">2</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">115</field>
+        </record>
+
+        <record id="action_report_refrendo_titulo" model="ir.actions.report">
+            <field name="name">Refrendo Título</field>
+            <field name="model">permar.documento.refrendo.titulo.formacion</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_refrendotitulo</field>
+            <field name="report_file">personal_maritimo_documento.report_refrendotitulo</field>
+            <field name="print_report_name">'Refrendo Título - %s' % (object.numero)</field>
+            <field name="paperformat_id" ref="paperformat_no_header_document"/>
+            <!-- <field name="binding_model_id" ref="model_refrendo_titulo_formacion"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_reconocimiento_titulo" model="ir.actions.report">
+            <field name="name">Reconocimiento Título</field>
+            <field name="model">permar.documento.reconocimiento.titulo</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_reconocimientotitulo</field>
+            <field name="report_file">personal_maritimo_documento.report_reconocimientotitulo</field>
+            <field name="print_report_name">'Reconocimiento Título - %s' % (object.numero)</field>
+            <field name="paperformat_id" ref="paperformat_no_header_document"/>
+            <!-- <field name="binding_model_id" ref="model_reconocimiento_titulo"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_titulocompetencia" model="ir.actions.report">
+            <field name="name">Título de Competenia</field>
+            <field name="model">permar.documento.certificado.competencia</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_titulocompetencia</field>
+            <field name="report_file">personal_maritimo_documento.report_titulocompetencia</field>
+            <field name="print_report_name">'Título de Competencia - %s' % (object.name)</field>
+            <field name="paperformat_id" ref="paperformat_no_header_document"/>
+            <!-- <field name="binding_model_id" ref="model_certificado_competencia"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_certificado_competencia" model="ir.actions.report">
+            <field name="name">Certificado Competenia</field>
+            <field name="model">permar.documento.certificado.competencia</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_certificadocompetencia</field>
+            <field name="report_file">personal_maritimo_documento.report_certificadocompetencia</field>
+            <field name="print_report_name">'Certificado Competencia - %s' % (object.name)</field>
+            <!-- <field name="binding_model_id" ref="model_certificado_competencia"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_titulosuficiencia" model="ir.actions.report">
+            <field name="name">Título de Suficiencia</field>
+            <field name="model">permar.documento.certificado.suficiencia</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_titulosuficiencia</field>
+            <field name="report_file">personal_maritimo_documento.report_titulosuficiencia</field>
+            <field name="print_report_name">'Título de Suficiencia - %s' % (object.name)</field>
+            <field name="paperformat_id" ref="paperformat_no_header_document"/>
+            <!-- <field name="binding_model_id" ref="model_certificado_suficiencia"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_certificado_suficiencia" model="ir.actions.report">
+            <field name="name">Certificado Suficiencia</field>
+            <field name="model">permar.documento.certificado.suficiencia</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_certificadosuficiencia</field>
+            <field name="report_file">personal_maritimo_documento.report_certificadosuficiencia</field>
+            <field name="print_report_name">'Certificado Suficiencia - %s' % (object.name)</field>
+            <!-- <field name="binding_model_id" ref="model_certificado_suficiencia"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_libretin_certificado_suficiencia" model="ir.actions.report">
+            <field name="name">Emitir Libretin Certificado Suficiencia</field>
+            <field name="model">permar.documento.certificado.suficiencia</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_libretincertificadosuficiencia</field>
+            <field name="report_file">personal_maritimo_documento.report_libretincertificadosuficiencia</field>
+            <field name="print_report_name">'Certificado Suficiencia - %s' % (object.name)</field>
+            <!-- <field name="binding_model_id" ref="model_certificado_suficiencia"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_certificado_medico" model="ir.actions.report">
+            <field name="name">Certificado Médico</field>
+            <field name="model">permar.documento.refrendo.certificado.medico</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_certificadomedico</field>
+            <field name="report_file">personal_maritimo_documento.report_certificadomedico</field>
+            <field name="print_report_name">'Certificado Médico - %s' % (object.name)</field>
+            <!-- <field name="binding_model_id" ref="model_refrendo_certificado_medico"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_permiso_provisional_embarque" model="ir.actions.report">
+            <field name="name">Permiso Provisional de Embarque</field>
+            <field name="model">permar.documento.permiso.provisional.embarque</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_permisoprovisionalembarque</field>
+            <field name="report_file">personal_maritimo_documento.report_permisoprovisionalembarque</field>
+            <field name="print_report_name">'Permiso Provisional de Embarque - %s' % (object.name)</field>
+            <!-- <field name="binding_model_id" ref="model_personal_maritimo_documento_permiso_provisional_embarque"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_dispensa" model="ir.actions.report">
+            <field name="name">Dispensa</field>
+            <field name="model">permar.documento.dispensa</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_dispensa</field>
+            <field name="report_file">personal_maritimo_documento.report_dispensa</field>
+            <field name="print_report_name">'Dispensa - %s' % (object.name)</field>
+            <field name="paperformat_id" ref="paperformat_no_header_document"/>
+            <!-- <field name="binding_model_id" ref="model_personal_maritimo_documento_dispensa"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_dotacion" model="ir.actions.report">
+            <field name="name">Dotación</field>
+            <field name="model">permar.documento.dotacion</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_dotacion</field>
+            <field name="report_file">personal_maritimo_documento.report_dotacion</field>
+            <field name="print_report_name">'Dotación - %s' % (object.name)</field>
+            <field name="paperformat_id" ref="paperformat_no_header_document"/>
+            <!-- <field name="binding_model_id" ref="model_personal_maritimo_documento_dotacion"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_evaluacion" model="ir.actions.report">
+            <field name="name">Evaluación de Competencia</field>
+            <field name="model">permar.documento.convalidacion.competencia</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_evaluacioncompetencia</field>
+            <field name="report_file">personal_maritimo_documento.report_evaluacioncompetencia</field>
+            <field name="print_report_name">'Evaluación Competencia - %s' % (object.name)</field>
+            <field name="paperformat_id" ref="paperformat_no_header_document"/>
+            <!-- <field name="binding_model_id" ref="model_evaluacion_competencia"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_convalidacion" model="ir.actions.report">
+            <field name="name">Convalidación de Competencia</field>
+            <field name="model">permar.documento.convalidacion.competencia</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_convalidacioncompetencia</field>
+            <field name="report_file">personal_maritimo_documento.report_convalidacioncompetencia</field>
+            <field name="print_report_name">'Convalidacióm Competencia - %s' % (object.name)</field>
+            <field name="paperformat_id" ref="paperformat_no_header_document"/>
+            <!-- <field name="binding_model_id" ref="model_convalidacion_competencia"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_documento_carnet" model="ir.actions.report">
+            <field name="name">Matrícula Tráfico Nacional (Carnet)</field>
+            <field name="model">permar.documento.carnet</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_documentocarnet</field>
+            <field name="report_file">personal_maritimo_documento.report_documentocarnet</field>
+            <field name="print_report_name">'Matrícula Tráfico Nacional - %s' % (object.name)</field>
+            <field name="paperformat_id" ref="paperformat_matricula"/>
+            <!-- <field name="binding_model_id" ref="model_personal_maritimo_documento_carnet"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_documento_carnet_provisional" model="ir.actions.report">
+            <field name="name">Matrícula Provisional Tráfico Nacional</field>
+            <field name="model">permar.documento.carnet</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_documentocarnetprovisional</field>
+            <field name="report_file">personal_maritimo_documento.report_documentocarnetprovisional</field>
+            <field name="print_report_name">'Matrícula Provisional de Tráfico Nacional - %s' % (object.name)</field>
+            <field name="paperformat_id" ref="paperformat_no_header_document"/>
+            <!-- <field name="binding_model_id" ref="model_personal_maritimo_documento_carnet"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_documento_carnet_adicional" model="ir.actions.report">
+            <field name="name">Matrícula Provisional Tráfico Nacional Adicional</field>
+            <field name="model">permar.documento.carnet</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_carnetadicional</field>
+            <field name="report_file">personal_maritimo_documento.report_carnetadicional</field>
+            <field name="print_report_name">'Matrícula Provisional de Tráfico Nacional Adicional - %s' % (object.name)</field>
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_documento_libretin" model="ir.actions.report">
+            <field name="name">Matrícula Tráfico Internacional (Libretín)</field>
+            <field name="model">permar.documento.libretin</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_documentolibretin</field>
+            <field name="report_file">personal_maritimo_documento.report_documentolibretin</field>
+            <field name="print_report_name">'Matrícula Tráfico Internacional - %s' % (object.name)</field>
+            <field name="paperformat_id" ref="paperformat_matricula"/>
+            <!-- <field name="binding_model_id" ref="model_personal_maritimo_documento_libretin"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_documento_libretin_provisional" model="ir.actions.report">
+            <field name="name">Matrícula Provisional de Tráfico Internacional</field>
+            <field name="model">permar.documento.libretin</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_documentolibretinprovisional</field>
+            <field name="report_file">personal_maritimo_documento.report_documentolibretinprovisional</field>
+            <field name="print_report_name">'Matrícula Provisional de Tráfico Internacional - %s' % (object.name)</field>
+            <field name="paperformat_id" ref="paperformat_no_header_document"/>
+            <!-- <field name="binding_model_id" ref="model_personal_maritimo_documento_libretin"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_documento_libretin_adicional" model="ir.actions.report">
+            <field name="name">Matrícula Provisional de Tráfico Internacional Adicional</field>
+            <field name="model">permar.documento.libretin</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">personal_maritimo_documento.report_libretinadicional</field>
+            <field name="report_file">personal_maritimo_documento.report_libretinadicional</field>
+            <field name="print_report_name">'Matrícula Provisional de Tráfico Internacional Adicional - %s' % (object.name)</field>
+            <!-- <field name="binding_model_id" ref="model_personal_maritimo_documento_libretin"/> -->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

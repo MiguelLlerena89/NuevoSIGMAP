@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_dotacion">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <t t-call="personal_maritimo_documento.custom_report_header"/>
+                        <div class="oe_structure"/>
+
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td height="15" colspan="2" align="right" class="text-center">Certificado No. <span t-field="o.name"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center" class="text-center"><strong>República del Ecuador</strong></td>
+                            </tr>
+                            <tr>
+                                <td height="30" colspan="2" align="center" class="text-center"><strong>DOCUMENTO DE DOTACIÓN MÍNIMA</strong><br/>
+                                    <span align="center" class="text-center">Minimun Safe Manning Document</span>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td colspan="2" class="normal_9" align="justify">
+                                    Certificado que la Dotación Mínima de Seguridad que consta en el presente documento es la requerida para que el Buque indicado pueda navegar en
+                                    condiciones mínimas de seguridad, y ha sido determinada cumpliendo las normas nacionales y reglamentarias vigentes, observando los Principios
+                                    y Directrices de la Resolución OMI A. 1047 (27) de la Organización Marítima Internacional.
+                                    <I>This is to certify that the Minimun Safe Manning stated on this document is the required for the indicated vessel in order to navigate under minimun
+                                    safety conditions, and has been determined in accordance to national rules and regulations in force, observing the Principles and Guidelines of IMO
+                                    Resolution A. 1047 (27) of the International Maritime Organization.</I>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="5%" class="normal" align="left">Por:</td>
+                                <td class="normal"> <span class="text-uppercase" t-field="o.company_id.name"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="letras_chicas" align="left"><i>By:</i></td>
+                                <td align="left" class="normal_9">(Persona u organización autorizada) <i>(Authorized person or organization) </i></td>
+                            </tr>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="titulo_seccion" align="left"><b>1. Datos Generales</b> / <I> General Information:</I></td>
+                        </tr>
+                        </table>
+                        <br/>
+
+                        <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="border:1px solid black;" class="text-center">Nombre del buque<br/><i>Ship's name</i></th>
+                                    <th style="border:1px solid black;" class="text-center">Tipo de buque<br/><i>Ship type</i></th>
+                                    <th style="border:1px solid black;" class="text-center">Puerto de Registro<br/><i>Port of Registry</i></th>
+                                    <th style="border:1px solid black;" class="text-center">Tonelaje de Registro Bruto (TRB)<br/><i>Gross Tonnage</i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.nave"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.tio_buque"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.puerto"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.nave_trb"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th style="border:1px solid black;" class="text-center">Area de Operación<br/><i>Trading Area</i></th>
+                                    <th style="border:1px solid black;" class="text-center">Indicativo de LLamada<br/><i>Call Sign</i></th>
+                                    <th style="border:1px solid black;" class="text-center">Nombre del Armador<br/><i>Owner name</i></th>
+                                    <th style="border:1px solid black;" class="text-center">Potencia Total - Maquinaria Principal (HP)<br/><i>Power - Main Engine</i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.area_operacion"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.indicativo_llamada"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.personal_maritimo_id.name"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.nave_potencia"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="titulo_seccion" align="left"><b>2. Dotación Mínima </b> / <i> Minimun Safe Manning</i></td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="border:1px solid black;" class="text-center">Departamento de Cubierta<br/><i>Deck Deparment</i></th>
+                                    <th colspan="2" style="border:1px solid black;" class="text-center">Departamento de Máquinas<br/><i>Engine Deparment</i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="valor_total" t-value="0"/>
+                                <tr>
+                                    <td colspan="2" style="border: 1px solid black;">
+                                        <table class="table table-condensed" border="0">
+                                            <tr>
+                                                <th class="text-center">Especialidad</th>
+                                                <th class="text-center">Cantidad</th>
+                                            </tr>
+                                            <tbody>
+                                                <tr t-foreach="o.dotacion_pesquero_ids" t-as="p">
+                                                    <t t-set="valor_total" t-value="valor_total + p.propuesta"/>
+                                                    <t t-if="p.jerarquia_id != False">
+                                                        <td>
+                                                            <span t-field="p.jerarquia_id.name" />
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <span t-field="p.propuesta" />
+                                                        </td>
+                                                    </t>
+                                                </tr>
+                                                <tr t-foreach="o.dotacion_fluvial_ids" t-as="f">
+                                                    <t t-set="valor_total" t-value="valor_total + f.propuesta"/>
+                                                    <t t-if="f.jerarquia_id != False">
+                                                        <td>
+                                                            <span t-field="f.jerarquia_id.name" />
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <span t-field="f.propuesta" />
+                                                        </td>
+                                                    </t>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td colspan="2" style="border: 1px solid black;">
+                                        <table class="table table-condensed" border="0">
+                                            <tr>
+                                                <th class="text-center">Especialidad</th>
+                                                <th class="text-center">Cantidad</th>
+                                            </tr>
+                                            <tbody>
+                                                <tr t-foreach="o.dotacion_deportivo_ids" t-as="d">
+                                                    <t t-set="valor_total" t-value="valor_total + d.propuesta"/>
+                                                    <t t-if="d.jerarquia_id != False">
+                                                        <td>
+                                                            <span t-field="d.jerarquia_id.name" />
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <span t-field="d.propuesta" />
+                                                        </td>
+                                                    </t>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-align:center" style="border: 1px solid black;">
+                                        <strong>Número Total</strong><br/><i>Total Number</i>
+                                    </td>
+                                    <td colspan="2" class="text-align:center" style="border: 1px solid black;">
+                                        <span t-esc="valor_total"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-align:center" style="border: 1px solid black;">
+                                        <strong>Observaciones</strong><br/><i>Remarks</i>
+                                    </td>
+                                    <td colspan="2" class="text-align:center" style="border: 1px solid black;">
+                                        <span t-field="o.observacion" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="normal">
+                            <tr>
+                                <td style="text-align:left" width="35%">El presente certificado será válido hasta:<br/><i>This certificate is valid until:</i><br/>
+                                    <span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span>
+                                </td>
+                                <td style="text-align:left" width="35%">
+                                Expedido en: <span t-field="o.company_id.city"></span> el: <span t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span><br/>
+                                Issued at:                                                     on:
+                                </td>
+                            </tr>
+                            <tr><td height="10px"/></tr>
+                        </table>
+                        <br/>
+
+                        <table border="0" style="border-collapse:collapse;color:000000;width:100%" cellpadding="3" cellspacing="3">
+                            <!--<tr>
+                                <td  class="text-center" >________________________________</td>
+                                <td  class="text-center" >________________________________</td>
+                            </tr>-->
+                            <tr>
+                                <td class="text-center">
+                                    <strong t-if="o.user_id" t-field="o.user_id.name"/>
+                                </td>
+                                <td class="text-center">
+                                    <strong t-if="o.company_id" t-field="o.company_id.name"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

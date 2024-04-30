@@ -1,0 +1,44 @@
+id,code,name,categoria_id:id,active
+omi_1_01,1.01,Formación básica en operaciones de carga de petroleros y quimiqueros,,TRUE
+omi_1_02,1.02,Formación avanzada en operaciones de carga de petroleros,personal_maritimo.cat_omi_1,TRUE
+omi_1_03,1.03,Formación avanzada en operaciones de carga de quimiqueros,personal_maritimo.cat_omi_1,TRUE
+omi_1_04,1.04,Formación básica en operaciones de carga de buques tanque para el transporte de gas licuado,personal_maritimo.cat_omi_1,TRUE
+omi_1_05,1.05,Formación avanzada en operaciones de carga de buques tanque para el transporte de gas licuado,personal_maritimo.cat_omi_1,TRUE
+omi_1_06,1.06,Formación especializada en Operaciones de Gaseros,,TRUE
+omi_1_07,1.07,Navegación por radar a nivel operativo,personal_maritimo.cat_omi_2,TRUE
+omi_1_08,1.08,Radar de Navegación a nivel Gerencial,personal_maritimo.cat_omi_2,TRUE
+omi_1_13,1.13,Primeros auxilios – Conocimientos básicos,personal_maritimo.cat_omi_3,TRUE
+omi_1_14,1.14,Primeros auxilios sanitarios,personal_maritimo.cat_omi_4,TRUE
+omi_1_15,1.15,Cuidados médicos,personal_maritimo.cat_omi_4,TRUE
+omi_1_19,1.19,Técnicas de supervivencia personal,personal_maritimo.cat_omi_3,TRUE
+omi_1_20,1.2,Prevención y lucha contra incendios,personal_maritimo.cat_omi_3,TRUE
+omi_1_21,1.21,Seguridad personal y responsabilidades sociales,personal_maritimo.cat_omi_3,TRUE
+omi_1_22,1.22,Simulador de maniobra y trabajo de equipo en el puente,personal_maritimo.cat_omi_2,TRUE
+omi_1_23,1.23,Suficiencia en el manejo de embarcaciones de supervivencia y botes de rescate (que no sean botes de rescate rápidos),personal_maritimo.cat_omi_4,TRUE
+omi_1_24,1.24,Suficiencia en el manejo de botes de rescate rápidos,personal_maritimo.cat_omi_4,TRUE
+omi_1_25,1.25,Título de operador general del sistema mundial de socorro y seguridad marítima (SMSSM),personal_maritimo.cat_omi_5,TRUE
+omi_1_26,1.26,Título de operador restringido del sistema mundial de socorro y seguridad marítima (SMSSM),personal_maritimo.cat_omi_5,TRUE
+omi_1_27,1.27,Uso operacional de los sistemas de información y visualización de cartas electrónicas (SIVCE),personal_maritimo.cat_omi_2,TRUE
+omi_1_28,1.28,"Control de multitudes, seguridad de los pasajeros y formación en seguridad para el personal que facilita directamente servicios a los pasajeros a bordo de buques de pasaje",personal_maritimo.cat_omi_1,TRUE
+omi_1_29,1.29,"Suficiencia en gestión de crisis y comportamiento humano, incluida la seguridad de los pasajeros y la carga y la integridad del casco",personal_maritimo.cat_omi_1,TRUE
+omi_1_34,1.34,Sistema de identificación automática,personal_maritimo.cat_omi_6,TRUE
+omi_1_38,1.38,Sensibilización respecto al medio marino,personal_maritimo.cat_omi_6,TRUE
+omi_1_39,1.39,Liderazgo y trabajo en equipo,personal_maritimo.cat_omi_6,TRUE
+omi_1_41,1.41,Capacitación en control de multitudes en buques de pasaje,,TRUE
+omi_1_42,1.42,Capacitación en gestión de crisis y comportamiento humano en los buques de pasaje,,TRUE
+omi_1_44,1.44,Capacitación en seguridad para el personal en buques de pasaje,,TRUE
+omi_2_03,2.03,Formación avanzada en la lucha contra incendios,personal_maritimo.cat_omi_4,TRUE
+omi_2_07,2.07,Simulador de la cámara de máquinas,,TRUE
+omi_3_09,3.09,Supervisor por el Estado rector del puerto,personal_maritimo.cat_omi_7,TRUE
+omi_3_11,3.11,Investigación de sucesos y accidentes marítimos,personal_maritimo.cat_omi_7,TRUE
+omi_3_17,3.17,Inglés marítimo general,personal_maritimo.cat_omi_6,TRUE
+omi_3_19,3.19,Oficial de protección del buque,personal_maritimo.cat_omi_7,TRUE
+omi_3_20,3.2,Oficial de la compañía para la protección marítima,personal_maritimo.cat_omi_7,TRUE
+omi_3_21,3.21,Oficial de protección de la instalación portuaria,personal_maritimo.cat_omi_7,TRUE
+omi_3_24,3.24,Formación en sensibilización sobre protección para el personal de la instalación portuaria que tenga asignadas tareas de protección,personal_maritimo.cat_omi_7,TRUE
+omi_3_25,3.25,Formación en sensibilización sobre protección para todo el personal de la instalación portuaria,personal_maritimo.cat_omi_7,TRUE
+omi_3_26,3.26,Formación sobre protección para la gente de mar que tenga asignadas tareas de protección,personal_maritimo.cat_omi_7,TRUE
+omi_3_27,3.27,Formación en sensibilización sobre para toda la gente de mar,personal_maritimo.cat_omi_7,TRUE
+omi_6_09,6.09,Curso de formación para instructores,personal_maritimo.cat_omi_8,TRUE
+omi_7_03,7.03,Marino preferente de Guardia de Navegación,,TRUE
+omi_7_04,7.04,Marino preferente de Guardia Máquinas,,TRUE

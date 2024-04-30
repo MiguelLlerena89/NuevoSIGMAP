@@ -1,0 +1,7 @@
+id,name,emite_titulo,codigo,descripcion
+capacitacion,Capacitación,True,capacitacion,Capacitación
+formacion,Formación,True,formacion,Formación
+ascenso,Ascenso,True,ascenso,Ascenso
+perfeccionamiento,Perfeccionamiento,True,perfeccionamiento,Perfeccionamiento
+especialidad,Especialidad,True,especialidad,Especialidad
+entrenamiento,Entrenamiento,True,entrenamiento,Entrenamiento

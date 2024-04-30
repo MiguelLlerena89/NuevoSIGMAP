@@ -1,0 +1,106 @@
+id,name,tipo_curso_id:id,tipo,caducidad,jerarquia_id:id
+omi_desr,DESTREZA EN EMBARCACIONES DE SALVAMENTO Y RESCATE,personal_maritimo.capacitacion,capacitacion,5,
+omi_basico,Capacitación Básica OMI,personal_maritimo.capacitacion,capacitacion,5,
+omi_falc,Formación avanzada en lucha contraincendios,personal_maritimo.capacitacion,capacitacion,5,
+omi_cm,Cuidados médicos,personal_maritimo.capacitacion,capacitacion,5,
+omi_smesbr,Suficiencia en el manejo de embarcaciones de supervivencia y botes de rescate (que no sean botes de rescate rápido),personal_maritimo.capacitacion,capacitacion,5,
+omi_ggmdss,Operador general del sistema mundial de socorro y seguridad marítima (GMDSS),personal_maritimo.capacitacion,capacitacion,5,
+omi_smtep,Simulador de maniobra y trabajo de equipo en el puente,personal_maritimo.capacitacion,capacitacion,5,
+omi_opb,Oficial de protección del buque/ oficial de protección de la compañía,personal_maritimo.capacitacion,capacitacion,5,
+omi_uosiv,Uso operacional de los sistemas de información y visualización de cartas nauticas electrónicas,personal_maritimo.capacitacion,capacitacion,5,
+omi_sia,Sistema de identificación automática SIA,personal_maritimo.capacitacion,capacitacion,5,
+omi_scm,Simulador de la cámara de máquinas,personal_maritimo.capacitacion,capacitacion,5,
+omi_radar_gestion,Navegación con radar ARPA a nivel de gestión,personal_maritimo.capacitacion,capacitacion,5,
+omi_radar_operacional,Navegación con radar ARPA a nivel operacional,personal_maritimo.capacitacion,capacitacion,5,
+omi_rgmdss,Operador restringido del sistema mundial de socorro y seguridad maritima (GMDSS),personal_maritimo.capacitacion,capacitacion,5,
+omi_cmbp,Capacitación en control de multitudes en buques de pasaje,personal_maritimo.capacitacion,capacitacion,5,
+omi_cgcc,Capacitación en gestión de crisis y comportamiento humano en los buques de pasaje,personal_maritimo.capacitacion,capacitacion,5,
+omi_spbp,Capacitación en seguridad para el personal en buques de pasaje,personal_maritimo.capacitacion,capacitacion,5,
+omi_psp,Capacitación para la protección y seguridad de Buques,personal_maritimo.capacitacion,capacitacion,5,
+formacion_1,TÍTULO CAPITÁN DE ALTURA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_1
+formacion_2,TÍTULO PRIMER OFICIAL DE CUBIERTA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_2
+formacion_3,TÍTULO SEGUNDO OFICIAL DE CUBIERTA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_3
+formacion_4,TÍTULO TERCER OFICIAL DE CUBIERTA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_4
+formacion_5,TÍTULO JEFE DE MÁQUINAS,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_5
+formacion_6,TÍTULO PRIMER OFICIAL DE MÁQUINAS,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_6
+formacion_7,TÍTULO SEGUNDO OFICIAL DE MÁQUINAS,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_7
+formacion_8,TÍTULO TERCER OFICIAL DE MÁQUINAS,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_8
+formacion_9,TÍTULO OFICIAL DE RADIOPERACIONES,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_9
+formacion_10,TÍTULO OFICIAL ELECTROTÉCNICO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_10
+formacion_11,TÍTULO PATRÓN DE ALTURA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_11
+formacion_12,TÍTULO PATRÓN COSTANERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_12
+formacion_13,TÍTULO MARINERO DE PRIMERA DE PUENTE,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_13
+formacion_14,TÍTULO MARINERO DE CUBIERTA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_14
+formacion_15,TÍTULO MARINERO DE PRIMERA DE MÁQUINAS,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_15
+formacion_16,TÍTULO MARINERO ELECTROTECNICO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_16
+formacion_17,TÍTULO MARINERO DE MÁQUINAS,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_17
+formacion_18,TÍTULO CAPITAN DE YATE DE ALTURA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_18
+formacion_19,TÍTULO CAPITAN DE YATE,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_19
+formacion_20,TÍTULO MARINERO DE YATE,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_20
+formacion_21,TÍTULO SOLDADOR,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_21
+formacion_22,TÍTULO TORNERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_22
+formacion_23,TÍTULO OPERADOR DE BOMBAS,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_23
+formacion_24,TÍTULO ELECTRICISTA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_24
+formacion_25,TÍTULO ELECTRÓNICO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_25
+formacion_26,TÍTULO INFORMÁTICO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_26
+formacion_27,TÍTULO REFRIGERANTE,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_27
+formacion_28,TÍTULO OPERADOR DE GRUA A BORDO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_28
+formacion_29,TÍTULO COCINERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_29
+formacion_30,TÍTULO DIRECTOR DE CRUCERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_30
+formacion_31,TÍTULO GERENTE HOTELERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_31
+formacion_32,TÍTULO ASISTENTE DE GERENTE HOTELERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_32
+formacion_33,TÍTULO ADMINISTRADOR,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_33
+formacion_34,TÍTULO RELACIONISTA PÚBLICO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_34
+formacion_35,TÍTULO RECEPCIONISTA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_35
+formacion_36,TÍTULO MÉDICO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_36
+formacion_37,TÍTULO TÉCNICO DE MANTENIMIENTO DE EQUIPOS HOTELEROS,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_37
+formacion_38,TÍTULO JEFE DE COCINA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_38
+formacion_39,TÍTULO BARMAN,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_39
+formacion_40,TÍTULO PANADERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_40
+formacion_41,TÍTULO MÚSICO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_41
+formacion_42,TÍTULO FOTOGRAFO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_42
+formacion_43,TÍTULO MASAJISTA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_43
+formacion_44,TÍTULO PROFESOR DE IDIOMAS,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_44
+formacion_45,TÍTULO ENFERMERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_45
+formacion_46,TÍTULO CARPINTERO/EBANISTA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_46
+formacion_47,TÍTULO JEFE DE SALON,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_47
+formacion_48,TÍTULO BODEGUERO/GUARDALMACEN,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_48
+formacion_49,TÍTULO LAVANDERA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_49
+formacion_50,TÍTULO MAYORDOMO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_50
+formacion_51,TÍTULO POSILLERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_51
+formacion_52,TÍTULO ENCARGADO DE BOUTIQUE,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_52
+formacion_53,TÍTULO AMA DE LLAVES,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_53
+formacion_54,TÍTULO GASFITERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_54
+formacion_55,TÍTULO SALONERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_55
+formacion_56,TÍTULO CAMARERO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_56
+formacion_57,TÍTULO GUÍA TURÍSTICO (CONTINENTAL),personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_57
+formacion_58,TÍTULO GUÍA NATURALISTA (INSULAR),personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_58
+formacion_59,TÍTULO MARINERO DE PESCA VIVENCIAL O DEPORTIVA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_59
+formacion_60,TÍTULO PESCADOR ARTESANAL,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_60
+formacion_61,TÍTULO Patrón fluvial,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_61
+formacion_62,TÍTULO MARINERO DE PRIMERA DE PUENTE FLUVIAL,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_62
+formacion_63,TÍTULO MARINERO DE CUBIERTA FLUVIAL,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_63
+formacion_64,TÍTULO PATRÓN DE BAHÍA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_64
+formacion_65,TÍTULO MARINERO DE BAHÍA,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_65
+formacion_66,TÍTULO MARINERO LACUSTRE,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_66
+formacion_67,TÍTULO REPRESENTANTE DE ARMADOR A BORDO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_67
+formacion_68,TÍTULO REPRESENTANTE ARMADOR A BORDO DE B/P,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_68
+formacion_69,TÍTULO BUZO COMERCIAL BUZO PRINCIPIANTE O TENDER,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_69
+formacion_70,TÍTULO BUZO COMERCIAL BUZO CON SUMINISTRO DE AIRE,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_70
+formacion_71,TÍTULO BUZO COMERCIAL BUZO CON SUMINISTRO DE MEZCLA DE GAS,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_71
+formacion_72,TÍTULO BUZO COMERCIAL BUZO DE CAMPANA O SATURACIÓN,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_72
+formacion_73,TÍTULO BUZO COMERCIAL SUPERVISOR DE BUCEO CON SUMINISTRO DE AIRE,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_73
+formacion_74,TÍTULO BUZO COMERCIAL SUPERVISOR DE BUCEO CON SUMINISTRO DE MEZCLA DE GAS,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_74
+formacion_75,TÍTULO BUZO COMERCIAL SUPERVISOR DE BUCEO DE CAMPANA O SATURACIÓN,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_75
+formacion_76,TÍTULO BUZO CIENTÍFICO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_76
+formacion_77,TÍTULO GUÍA DE BUCEO DEPORTIVO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_77
+formacion_78,TÍTULO INSTRUCTOR/GUIA DE BUCEO DEPORTIVO,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_78
+formacion_79,TÍTULO CAPITÁN DE B/P,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_79
+formacion_80,TÍTULO PATRON DE ALTURA DE B/P,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_80
+formacion_81,TÍTULO PATRON COSTANERO DE B/P,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_81
+formacion_82,TÍTULO MARINERO DE PRIMERA DE PUENTE DE B/P,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_82
+formacion_83,TÍTULO MARINERO PESCADOR,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_83
+formacion_84,TÍTULO JEFE DE MAQUINAS DE B/P,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_84
+formacion_85,TÍTULO PRIMER OFICIAL DE MÁQUINAS DE B/P,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_85
+formacion_86,TÍTULO MARINERO DE PRIMERA DE MÁQUINAS DE B/P,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_86
+formacion_87,TÍTULO MARINERO DE MÁQUINAS DE B/P,personal_maritimo.formacion,formacion,,personal_maritimo.jerarquia_87

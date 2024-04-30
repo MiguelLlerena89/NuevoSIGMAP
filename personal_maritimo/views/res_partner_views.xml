@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_partner_personal_maritimo_inherit_form" model="ir.ui.view">
+            <field name="name">res.partner.personal.maritimo.inherit.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base_sigmap.view_sri_res_partner_form_inherit_sigmap"/>
+            <field name="groups_id" eval="[(5,)]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[1]/field[@name='child_ids']/form/sheet/group/group/field[@name='name']" position="before">
+                    <field name="parentesco_id" required="1"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_kanban_details')]/field[@name='name']" position="before">
+                    <div t-if="record.parentesco_id"><field name="parentesco_id"/></div>
+                </xpath>
+                <xpath expr="//field[@name='image_1920']" position="after">
+                    <field name="image_firma" widget="image" class="oe_avatar"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

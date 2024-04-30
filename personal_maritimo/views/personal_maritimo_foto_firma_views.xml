@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_personal_maritimo_foto_firma_tree" model="ir.ui.view">
+        <field name="name">personal.maritimo.foto.firma.tree</field>
+        <field name="model">personal.maritimo.foto</field>
+        <field name="arch" type="xml">
+            <tree string="Actualización fotos">
+                <field name="company_id" invisible="1"/>
+                <field name="name" invisible="1"/>
+                <field name="personal_maritimo_id"/>
+                <field name="fecha_inicio"/>
+                <field name="model_name"/>
+                <field name="model_model_id"/>
+                <field name="user_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_personal_maritimo_foto_firma_form" model="ir.ui.view">
+        <field name="name">personal.maritimo.foto.firma.form</field>
+        <field name="model">personal.maritimo.foto</field>
+        <field name="arch" type="xml">
+            <form string="Actualización fotos">
+                <sheet>
+                    <group col="4">
+                        <field name="company_id" invisible="1"/>
+                        <field name="name" invisible="1"/>
+                        <field name="personal_maritimo_id"/>
+                        <field name="image_foto" widget="image" class="oe_avatar"/>
+                        <field name="image_firma" widget="image" class="oe_avatar"/>
+                        <field name="model_name"/>
+                        <field name="model_model_id"/>
+                        <field name="modelo_partner" invisible="1"/>
+                        <field name="user_id" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_personal_maritimo_foto_firma" model="ir.actions.act_window">
+        <field name="name">Actualización fotos</field>
+        <field name="res_model">personal.maritimo.foto</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_personal_maritimo_foto_firma_tree"/>
+        <field name="help" type="html">
+            <p>
+                Defina nuevo registro de imagenes de foto y/o firma
+            </p>
+        </field>
+    </record>
+
+</odoo>

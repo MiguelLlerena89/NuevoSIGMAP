@@ -1,0 +1,6 @@
+id,name,active
+pm_cp_1,Personal Mercante,True
+pm_cp_2,Inspector,True
+pm_cp_3,Propietario,True
+pm_cp_4,Armador,True
+pm_cp_5,Proveedor Combustible,True

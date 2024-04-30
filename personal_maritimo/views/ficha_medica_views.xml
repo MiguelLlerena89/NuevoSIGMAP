@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <record id="view_personal_ficha_medica_form" model="ir.ui.view">
+        <field name="name">personal.maritimo.personal.maritimo.ficha.medica.form.inherit</field>
+        <field name="model">personal.maritimo</field>
+        <field name="inherit_id" ref="view_personal_maritimo_form"/>
+        <field name="arch" type="xml">
+            <!--button name="imprimir" position="after">
+                <button name="action_check_ficha_medica" type="object" class="btn-primary" string="Revisar ficha médica" data-hotkey="p"/>
+            </button-->
+            <div name="button_box" position="inside">
+                <button name="action_open_medical_certificates" type="object" class="oe_stat_button" icon="fa-id-card-o" attrs="{'invisible': [('certificados_medicos_count', '=', 0)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="certificados_medicos_count"/></span>
+                        <span class="o_stat_text">Ficha Médica</span>
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <record id="view_certificado_medico_search" model="ir.ui.view">
+        <field name="name">personal.maritimo.ficha.medica.search</field>
+        <field name="model">personal.maritimo.ficha.medica</field>
+        <field name="arch" type="xml">
+            <search string="Search Ficha Médica">
+                <field name="personal_maritimo_id" string="Número Cédula" filter_domain="[('personal_maritimo_id.vat', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Hoy" name="certificado_medico_today"
+                    domain="[('fecha_emision', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_persona" string="Persona" domain="[]" context="{'group_by': 'personal_maritimo_id'}"/>
+                    <filter name="group_apto" string="Apto" domain="[]" context="{'group_by': 'apto'}"/>
+                    <filter name="group_centro_medico" string="Centro Médico" domain="[]" context="{'group_by': 'centro_medico_ficha'}"/>
+                    <filter name="group_fecha_emision_ficha" string="Fecha Emisión Ficha" domain="[]" context="{'group_by': 'fecha_emision'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_ficha_medica_persona_form" model="ir.ui.view">
+        <field name="name">personal.maritimo.ficha.medica.form</field>
+        <field name="model">personal.maritimo.ficha.medica</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Ficha Médica">
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <!--<field name="active" invisible="1"/>-->
+                <field name="company_id" invisible="1"/>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('state', '!=', 'cancelado')]}"/>
+                    <group>
+                        <group name="persona_info" >
+                            <field name="name" attrs="{'invisible': [('name', '=', False)]}"/>
+                            <field name="personal_maritimo_id" />
+                            <field name="proposito_examen" />
+                        </group>
+                        <group name="apto_persona_info" >
+                            <field name="tiempo" widget="radio" options="{'horizontal': true}"/>
+                            <field name="caducidad"/>
+                        </group>
+                    </group>
+                    <group name="ficha_medica_persona_info" string="Chequeo VIH">
+                        <group>
+                            <field name="fecha_emision_examen_vih" />
+                            <field name="numero_chequeo_vih" />
+                            <field name="resultado_vih" />
+                        </group>
+                    </group>
+                    <group string="Ficha Médica">
+                        <group>
+                            <field name="numero_ficha_aptitud" />
+                            <field name="fecha_emision" />
+                            <field name="fecha_caducidad" />
+                        </group>
+                        <group>
+                            <field name="country_id" />
+                            <field name="centro_medico_ficha" />
+                            <field name="resultado_ficha" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Registro de Información" name="registro_info">
+                            <div class="row">
+                                <div class="col-11 text-left" >
+                                    <span>Confirmación de que se examinaron los documentos de identidad en el lugar de examen / </span>
+                                    <span>Confirmation that identification documents were checked at the point of examination </span>
+                                </div>
+                                <div class="col-1 text-right" >
+                                    <field name="confirma_documento"/>
+                                </div>
+                            </div>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                            <div class="row">
+                                <div class="col-11 text-left" >
+                                    <span>La audición satisface las normas de la sección A-I/9 / </span>
+                                    <span>Hearing meets the standars in section A-I/9</span>
+                                </div>
+                                <div class="col-1 text-right" >
+                                    <field name="audicion_satisfecha"/>
+                                </div>
+                            </div>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                            <div class="row">
+                                <div class="col-11 text-left" >
+                                    <span>¿Es satisfactoria la audición sin audífonos? / </span>
+                                    <span>Unaided hearing satisfactory?</span>
+                                </div>
+                                <div class="col-1 text-right" >
+                                    <field name="audicion_satisfecha_sin_audifono"/>
+                                </div>
+                            </div>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                            <div class="row">
+                                <div class="col-11 text-left" >
+                                    <span>¿La agudeza visual cumple las normas de la sección A-I/9? / </span>
+                                    <span>Visual acuity meets standars in section A-I/9?</span>
+                                </div>
+                                <div class="col-1 text-right" >
+                                    <field name="agudez_visual"/>
+                                </div>
+                            </div>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                            <div class="row">
+                                <div class="col-11 text-left" >
+                                    <span>¿La visión cromática cumple las normas de las sección A-I/9? / </span>
+                                    <span>Colour vision meets standars in section A-I/9?</span>
+                                </div>
+                                <div class="col-1 text-right" >
+                                    <field name="vision_cromatica"/>
+                                </div>
+                            </div>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                            <div class="row">
+                                <div class="col-11 text-left" >
+                                    <span>¿Apto para cometidos de vigía? / </span>
+                                    <span>Fit for lookout duties?</span>
+                                </div>
+                                <div class="col-1 text-right" >
+                                    <field name="apto_vigia"/>
+                                </div>
+                            </div>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                            <div class="row">
+                                <div class="col-11 text-left" >
+                                    <span>¿Existen limitaciones o restricciones respecto de la aptitud física? / </span>
+                                    <span>No limitations or restrictions on fitness?</span>
+                                </div>
+                                <div class="col-1 text-right" >
+                                    <field name="limitacion_fisica"/>
+                                </div>
+                            </div>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                            <div class="row">
+                                <div class="col-11 text-left" >
+                                    <span>¿Está el marino libre de cualquier afección médica que pueda verse agravada por el servicio en el mar, discapacitarlo para el desempeño de tal servicio o poner en peligro la salud de otras personas a bordo? / </span>
+                                    <span>Is the seafarer free from any medical condition likely to be aggravated by service at sea or to render the seafarer unfit for such service or to endanger the health of other persons on board?</span>
+                                </div>
+                                <div class="col-1 text-right" >
+                                    <field name="apto"/>
+                                </div>
+                            </div>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                            <div class="row">
+                                <div class="col-10 text-left" >
+                                    <span>Fecha última visión cromática </span>
+                                </div>
+                                <div class="col-2 text-right" >
+                                    <field name="fecha_vision_cromatica" placeholder="Ejemplo: 12/12/12"/>
+                                </div>
+                            </div>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                            <div class="row">
+                                <div class="col-8 text-left" >
+                                    <span>Si existen limitaciones o restricciones, favor detalle:  </span>
+                                </div>
+                                <div class="col-4 text-right" >
+                                    <field name="restriccion" placeholder="Escribir restricción"/>
+                                </div>
+                            </div>
+                        </page>
+                    </notebook>
+                    <group name="observaciones" string="Observaciones">
+                        <field name="observacion" nolabel="1" colspan="2" />
+                        <field name="observacion_adicional" nolabel="1" colspan="2" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ficha_medica_persona_tree" model="ir.ui.view">
+        <field name="name">personal.maritimo.ficha.medica.tree</field>
+        <field name="model">personal.maritimo.ficha.medica</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Ficha Médica relacionado a persona" >
+                <field name="personal_maritimo_id"/>
+                <!--field name="tipo_ficha"/-->
+                <field name="apto"/>
+                <field name="centro_medico_examen" />
+                <field name="numero_ficha_aptitud" />
+                <field name="fecha_emision" />
+                <!--<field name="fecha_caducidad_ficha" />-->
+                <field name="centro_medico_ficha" />
+                <!--<field name="resultado_ficha" />-->
+                <field name="state"
+                    decoration-info="state == 'borrador'"
+                    decoration-success="state == 'vigente'"
+                    decoration-warning="state == 'caducado'"
+                    decoration-muted="state == 'cancelado'"
+                    widget="badge" optional="show"/>
+                <!--<field name="active" widget="boolean_toggle"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_ficha_medica_persona" model="ir.actions.act_window">
+        <field name="name">Ficha Médica</field>
+        <field name="res_model">personal.maritimo.ficha.medica</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_ficha_medica_persona_tree"/>
+        <field name="search_view_id" ref="view_certificado_medico_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define una nueva ficha médica
+            </p>
+        </field>
+    </record>
+
+</odoo>

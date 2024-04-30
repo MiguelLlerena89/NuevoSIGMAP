@@ -1,0 +1,7 @@
+id,name,tipo,active
+tipo_trafico_01,INTERNACIONAL,INT,True
+tipo_trafico_02,FLUVIAL,NAC,True
+tipo_trafico_03,DEPORTIVO,NAC,True
+tipo_trafico_04,TIERRA,NAC,True
+tipo_trafico_05,PESQUEROS,NAC,True
+tipo_trafico_06,TURISMO,NAC,True

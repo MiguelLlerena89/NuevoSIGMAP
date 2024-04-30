@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="curso_persona_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia curso</field>
+      <field name="code">curso_persona_code</field>
+      <field name="prefix">DIRNEA-CURSO-PM-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">00001</field>
+    </record>
+  </data>
+</odoo>

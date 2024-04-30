@@ -1,0 +1,26 @@
+<odoo>
+    <record id="sale_order_recaudacion_manual" model="ir.ui.view">
+        <field name="name">sale.order.recaudacion_manual</field>
+        <field name="model">account.payment</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="bank" string="Banco" widget="selection" invisible="1"/>
+                    <field name="suitable_journal_ids" invisible="1"/>
+                    <field name="journal_id" domain = "[('type', '=', 'bank')]" string="Banco" required="1"/>
+                    <field name="payment_date" string="Fecha Deposito" widget="date" required="1"/>
+                    <field name="amount" string="Valor Depositado" required="1"/>
+                    <field name="payment_code" string="Codigo" required="1"/>
+                    <field name="forma_pago_id" string="Forma de pago" invisible="1"/>
+                    <field name="available_payment_method_line_ids" string="Forma de pago disponibles" invisible="1"/>
+                    <field name="payment_method_line_id" string="Forma de pago" required="1"/>
+                    <field name="confirmacion_automatica" />
+                </group>
+                <footer>
+                    <button string="Pago Manual" type="object" name="create_payment" class="btn-primary"/>
+                    <button string="Salir" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

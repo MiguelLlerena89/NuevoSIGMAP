@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="paperformat_no_header" model="report.paperformat">
+        <field name="name">custom paper format</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">23</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">20</field>
+        <field name="dpi">90</field>
+    </record>
+
+
+    <record id="action_report_personal_maritimo" model="ir.actions.report">
+        <field name="name">Personal Marítimo</field>
+        <field name="model">personal.maritimo</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo.report_personalmaritimo</field>
+        <field name="report_file">personal_maritimo.report_personalmaritimo</field>
+        <field name="print_report_name">object.name</field>
+        <field name="paperformat_id" ref="paperformat_no_header"/>
+        <!-- <field name="binding_model_id" ref="model_personal_maritimo"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_personalmaritimo">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <h3>Información de Gente de Mar</h3>
+                        <br/>
+
+                        <div class="row" style="font-size: 14px">
+                            <div class="col-xs-12" style="height: 16cm;">
+                                <h5><b>Datos Personales</b></h5>
+                                <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse" name="table_pm_info_datos_personales">
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Nombre completo</strong></td>
+                                        <td colspan="3" style="border: 1px solid black;"><span t-field="o.partner_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Tipo Identificación</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.l10n_latam_identification_type_id"/></td>
+                                        <td style="border:1px solid black"><strong>No. Identificación</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.partner_id.vat"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Correo electrónico</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.partner_id.email"/></td>
+                                        <td style="border:1px solid black"><strong>Correo institucional</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.institutional_email"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Género</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.genero"/></td>
+                                        <td style="border:1px solid black"><strong>Estado Civíl</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.estado_civil"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Fecha de Nacimiento</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.birthday" t-options="{'widget': 'date', 'format': 'd MMMM y'}"/></td>
+                                        <td style="border:1px solid black"><strong>Edad</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.age"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>País de Nacimiento</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.country_of_birth_id"/></td>
+                                        <td style="border:1px solid black"><strong>Nacionalidad</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.nationality"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Provincia</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.state_of_birth_id"/></td>
+                                        <td style="border:1px solid black"><strong>Cantón de Nacimiento</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.city_of_birth_id"/></td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td style="border:1px solid black"><strong>Dirección particular</strong></td>
+                                        <td colspan="3" style="border: 1px solid black;">
+                                            <div t-if="o.partner_id.street"><span t-field="o.partner_id.street"/></div>
+                                            <div t-if="o.partner_id.phone">Teléfono convencional: <span t-field="o.partner_id.phone"/></div>
+                                            <div t-if="o.partner_id.mobile">Celular: <span t-field="o.partner_id.mobile"/></div>
+                                        </td>
+                                    </tr> -->
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Dirección particular</strong></td>
+                                        <td colspan="3" style="border: 1px solid black;">
+                                            <div t-if="o.partner_id.street"><span t-field="o.partner_id.street"/></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Teléfono fijo</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.partner_id.phone"/></td>
+                                        <td style="border:1px solid black"><strong>Celular</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.partner_id.mobile"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Instrucción</strong></td>
+                                        <td colspan="3" style="border: 1px solid black;"><span t-field="o.instruccion"/></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="border:1px solid black">Foto persona</th>
+                                        <td style="border: 1px solid black;">
+                                            <img t-if="o.image_1920" t-att-src="image_data_uri(o.image_1920)" style="max-height: 100px;"/>
+                                        </td>
+                                        <th scope="row" style="border:1px solid black">Foto Firma</th>
+                                        <td style="border: 1px solid black;">
+                                            <img t-if="o.image_firma" t-att-src="image_data_uri(o.image_firma)" style="max-height: 100px;"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br/>
+
+                                <t t-set="pm_referencia_contactos" t-value="o.partner_id.child_ids"/>
+                                <t t-if="pm_referencia_contactos">
+                                    <h5><b>Referencias</b></h5>
+                                    <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse" name="table_pm_info_rasgos_personales">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center"><strong>Parentesco</strong></th>
+                                                <th class="text-center"><strong>Nombre contacto</strong></th>
+                                                <th class="text-center"><strong>Teléfono fijo</strong></th>
+                                                <th class="text-center"><strong>Correo electrónico</strong></th>
+                                                <th class="text-center"><strong>Celular</strong></th>
+                                                <th class="text-center"><strong>Dirección</strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <t t-foreach="pm_referencia_contactos" t-as="pmr">
+                                                    <td><span t-field="pmr.parentesco_id.name"/></td>
+                                                    <td><span t-field="pmr.name"/></td>
+                                                    <td><span t-field="pmr.phone"/></td>
+                                                    <td><span t-field="pmr.email"/></td>
+                                                    <td><span t-field="pmr.mobile"/></td>
+                                                    <td><span t-field="pmr.street"/></td>
+                                                </t>
+                                            </tr>
+                                        </tbody>
+                                        <!-- <tr t-foreach="o.partner_id.child_ids" t-as="p">
+                                            <td style="border:1px solid black"><strong>Referencias</strong></td>
+                                            <td colspan="3" style="border: 1px solid black;">
+                                                <div t-if="p.parentesco_id">Parentesco: <span t-field="p.parentesco_id.name"/></div>
+                                                <div t-if="p.name">Nombre completo: <span t-field="p.name"/></div>
+                                                <div t-if="p.street">Teléfono fijo: <span t-field="p.phone"/></div>
+                                                <div t-if="p.email">Correo electrónico: <span t-field="p.email"/></div>
+                                                <div t-if="p.mobile">Celular: <span t-field="p.mobile"/></div>
+                                                <div t-if="p.street">Dirección: <span t-field="p.street"/></div>
+                                            </td>
+                                        </tr> -->
+                                    </table>
+                                    <br/>
+                                </t>
+
+                                <h5><b>Rasgos Particulares</b></h5>
+                                <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse">
+                                    <tr t-foreach="o.rasgo_particular_ids" t-as="rp">
+                                        <td style="border:1px solid black" width="30%"><strong><span t-field="rp.particularidad"/></strong></td>
+                                        <td colspan="3" style="border: 1px solid black;"><span t-field="rp.descripcion"/></td>
+                                    </tr>
+                                </table>
+                                <br/>
+
+                                <h5><b>Información Mercante</b></h5>
+                                <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse" name="table_pm_info_mercante">
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Tipo Persona</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.tipo_personal_mercante"/></td>
+                                        <td style="border:1px solid black"><strong>Tipo Tráfico</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.tipo_trafico"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Matrícula</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.matricula"/></td>
+                                        <td style="border:1px solid black"><strong>Tipo Sangre</strong></td>
+                                        <td style="border: 1px solid black;"><span t-field="o.tipo_sangre"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black"><strong>Jerarquía/Especialidad</strong></td>
+                                        <td colspan="3" style="border: 1px solid black;"><span t-field="o.jerarquia_id.name"/></td>
+                                    </tr>
+                                </table>
+                                <br/>
+
+                                <t t-set="pm_cursos" t-value="o.cursos_ids.filtered(lambda c: c.estado == 'vigente')"/>
+                                <t t-if="pm_cursos">
+                                <h5><b>Cursos</b></h5>
+                                <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse" name="table_pm_info_cursos">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center"><strong>Registro</strong></th>
+                                            <th class="text-center"><strong>Nombre del curso</strong></th>
+                                            <th class="text-center"><strong>Tipo de curso</strong></th>
+                                            <th class="text-center"><strong>Fecha Inicio</strong></th>
+                                            <th class="text-center"><strong>Fecha Término</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="pm_cursos" t-as="pmc">
+                                            <td><span t-field="pmc.name"/></td>
+                                            <td><span t-field="pmc.curso_id.name"/></td>
+                                            <td><span t-field="pmc.tipo_curso_id"/></td>
+                                            <td><span t-field="pmc.fecha_inicio"/></td>
+                                            <td><span t-field="pmc.fecha_termino"/></td>
+                                        </tr>
+                                    </tbody>
+                                    <!-- <tr t-foreach="pm_cursos" t-as="pc">
+                                        <td style="border:1px solid black"><strong>Cursos</strong></td>
+                                        <td colspan="3" style="border: 1px solid black;">
+                                            <div t-if="pc.name">Nombre registro: <span t-field="pc.name"/></div>
+                                            <div t-if="pc.curso_id">Nombre del curso: <span t-field="pc.curso_id.name"/></div>
+                                            <div t-if="pc.tipo_curso_id">Tipo de curso: <span t-field="pc.tipo_curso_id"/></div>
+                                            <div t-if="pc.fecha_inicio">Fecha Inicio: <span t-field="pc.fecha_inicio"/></div>
+                                            <div t-if="pc.fecha_termino">Fecha Término: <span t-field="pc.fecha_termino"/></div>
+                                            <div t-if="pc.estado">Estado: <span t-field="pc.estado"/></div>
+                                        </td>
+                                    </tr> -->
+                                </table>
+                                <br/>
+                                </t>
+
+                                <br/>
+                                <br/>
+                                <table border="0" style="border-collapse:collapse;color:000000;width:100%" cellpadding="3" cellspacing="3">
+                                    <tr>
+                                        <td  class="text-center" >________________________________</td>
+                                        <td  class="text-center" >________________________________</td>
+                                    </tr>
+                                    <tr >
+                                        <td class="text-center">
+                                            <b>Personal Mercante</b><br/>
+                                            <strong t-if="o.partner_id" t-field="o.partner_id"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <b>Reparto</b><br/>
+                                            <strong t-if="o.partner_id.company_id" t-field="o.partner_id.company_id.name"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="oe_structure"/>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

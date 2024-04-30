@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_limitacion_form" model="ir.ui.view">
+        <field name="name">limitacion.form</field>
+        <field name="model">personal.maritimo.catalogo.limitacion</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Limitaciones">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group name="limitacion_descripcion">
+                            <field name="name" placeholder="Nombre limitacion" required="True" />
+                            <field name="descripcion_en"/>
+                            <field name="articulo"/>
+                        </group>
+                        <group >
+                            <field name="check_jeraquias_todas" />
+                            <field name="check_jerarquias_oficiales" />
+                            <field name="check_naves_todas" />
+                            <field name="tipo_nave_id" />
+                        </group>
+                    </group>
+                    <notebook attrs="{'invisible': ['|',('check_jerarquias_oficiales', '=', True),('check_jeraquias_todas', '=', True)]}">
+                        <page name="jerarquia" string="Jerarquías que aplica">
+                            <field name="jerarquia_ids" nolabel="1">
+                                <tree string="Jerarquia que aplica" editable="1">
+                                    <field name="limitacion_id" options="{'no_create': True, 'no_open': True}" invisible="1"/>
+                                    <field name="jerarquia_id" options="{'no_create': True, 'no_open': True}"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="limitaciones_materias_omi" string="OMI">
+                            <field name="line_ids" nolabel="1">
+                                <tree string="Materia OMI" editable="1">
+                                    <field name="omi_id" options="{'no_create': True, 'no_open': True}"/>
+                                    <!--field name="curso_id" options="{'no_create': True, 'no_open': True}"/-->
+                                    <field name="limitacion_id" options="{'no_create': True, 'no_open': True}" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <group name="observaciones" string="Observaciones">
+                        <field name="observacion" nolabel="1" colspan="2" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_limitacion_tree" model="ir.ui.view">
+        <field name="name">limitacion.tree</field>
+        <field name="model">personal.maritimo.catalogo.limitacion</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Limitaciones">
+                <field name="name"/>
+                <field name="articulo"/>
+                <field name="check_jeraquias_todas" />
+                <field name="check_jerarquias_oficiales" />
+                <field name="check_naves_todas" />
+                <field name="tipo_nave_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_limitacion_global" model="ir.actions.act_window">
+        <field name="name">Limitaciones</field>
+        <field name="res_model">personal.maritimo.catalogo.limitacion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_limitacion_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo limitacion para persona de mar
+            </p>
+        </field>
+    </record>
+</odoo>

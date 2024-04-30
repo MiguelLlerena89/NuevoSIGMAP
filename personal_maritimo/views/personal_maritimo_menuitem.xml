@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem name="Gente de Mar"
+        id="menu_persona_mar"
+        groups="base.group_user,account.group_account_readonly,account.group_account_invoice"
+        sequence="10">
+        <menuitem id="menu_persona_mar_1" name="Personas" sequence="1">
+            <menuitem id="menu_persona_mar_gente_mar" name="Personas" sequence="1">
+                <!--menuitem id="menu_sanciones"
+                    action="action_personal_maritimo_sancion"
+                    sequence="4"/-->
+                <menuitem id="personal_maritimo_menu"
+                    name="Gente de Mar"
+                    action="action_personal_maritimo"
+                    sequence="1"/>
+                <menuitem id="personal_maritimo_jerarquia_menu"
+                    name="Asignación de Jerarquía a Gente de Mar"
+                    action="action_personal_maritimo_jerarquia"
+                    sequence="2"/>
+                <menuitem id="menu_personal_maritimo_foto_firma"
+                    action="action_personal_maritimo_foto_firma"
+                    sequence="3"/>
+                <menuitem id="menu_action_ficha_medica_persona"
+                    action="action_ficha_medica_persona"
+                    sequence="4"/>
+                <!--menuitem id="simple_gente_mar_menu"
+                    name="Gente de Mar"
+                    action="action_simple_gente_mar"
+                    groups="personal_maritimo.group_ficha_medica_management"
+                    sequence="4"/-->
+                <menuitem id="menu_persona_mar_cursos_todos" name="Cursos" sequence="5">
+                    <menuitem id="menu_action_personal_maritimo_curso_omi"
+                      action="action_personal_maritimo_curso_omi" sequence="1"/>
+                    <menuitem id="menu_action_personal_maritimo_curso_formacion"
+                      action="action_personal_maritimo_curso_formacion" sequence="2"/>
+                    <!--menuitem id="menu_action_personal_maritimo_curso_todo_tree"
+                      action="action_personal_maritimo_curso_todo_tree" sequence="3"/-->
+                    <menuitem id="menu_action_personal_maritimo_reconnocimiento_curso_form"
+                      action="action_personal_maritimo_reconnocimiento_curso_form" sequence="4"/>
+                </menuitem>
+            </menuitem>
+        </menuitem>
+        <menuitem id="menu_persona_mar_3_config" name="Católogos" sequence="3">
+            <menuitem id="menu_action_limitacion_global"
+              action="action_limitacion_global" sequence="1"/>
+            <menuitem id="menu_action_jerarquia"
+              name="Jerarquía"
+              action="action_jerarquia" sequence="2"/>
+            <menuitem id="menu_action_personal_maritimo_clase_persona"
+                name="Clases"
+                action="action_personal_maritimo_clase_persona" sequence="3"/>
+            <menuitem id="menu_action_personal_maritimo_clasificacion"
+                name="Clasificación Gente de Mar"
+                action="action_personal_maritimo_clasificacion" sequence="4"/>
+            <menuitem id="menu_materia_omi"
+                name="Materias OMI"
+                action="action_materia_omi"
+                sequence="4"/>
+            <!-- Centro Formacion Menu -->
+            <menuitem id="menu_centro_medico"
+                action="tipo_centro.action_centro_medico"
+                sequence="5"/>
+            <menuitem id="menu_centro_formacion"
+                action="tipo_centro.action_centro_formacion"
+                sequence="6"/>
+            <menuitem id="menu_cursos_config"
+                      name="Catálogo cursos"
+                      sequence="6">
+                <!-- Cursos de Capacitación Configuracion Menu -->
+                <menuitem id="menu_action_curso_capacitacion"
+                        action="action_curso_capacitacion"
+                        sequence="1"/>
+                <!-- Cursos de Capacitación Configuracion Menu -->
+                <menuitem id="menu_action_curso_formacion"
+                        action="action_curso_formacion"
+                        sequence="2"/>
+                <menuitem id="menu_action_tipo_curso"
+                            action="action_tipo_curso"
+                            sequence="3"/>
+                <menuitem id="menu_action_curso_global"
+                            action="action_curso_global"
+                            sequence="4"/>
+            </menuitem>
+        </menuitem>
+
+    </menuitem>
+</odoo>

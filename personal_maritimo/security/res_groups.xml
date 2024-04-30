@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.module.category" id="security_dirnea_ficha_medica_groups">
+        <field name="name">Fichas médicas</field>
+    </record>
+
+    <record id="group_ficha_medica_management" model="res.groups">
+        <field name="name">Manejo ficha médica</field>
+        <field name="category_id" ref="personal_maritimo.security_dirnea_ficha_medica_groups"/>
+        <!--field name="implied_ids" eval="[(4, ref('base.group_user'))]"/-->
+    </record>
+
+    <record model="ir.module.category" id="security_gente_mar_groups">
+        <field name="name">Gente de mar y pesca</field>
+    </record>
+
+    <record model="ir.module.category" id="security_permar_groups">
+        <field name="name">PERMAR</field>
+    </record>
+
+    <record id="group_gente_mar_edicion" model="res.groups">
+        <field name="name">Edición Gente de Mar</field>
+        <field name="category_id" ref="personal_maritimo.security_gente_mar_groups"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_gente_mar_administracion" model="res.groups">
+        <field name="name">Administración Gente de Mar</field>
+        <field name="category_id" ref="personal_maritimo.security_gente_mar_groups"/>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo.group_gente_mar_edicion'))]"/>
+    </record>
+
+    <record id="group_dirnea_permar_operador" model="res.groups">
+        <field name="name">DIRNEA PERMAR Operador</field>
+        <field name="category_id" ref="personal_maritimo.security_permar_groups"/>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo.group_gente_mar_edicion'))]"/>
+    </record>
+
+    <record id="group_dirnea_permar_supervisor" model="res.groups">
+        <field name="name">DIRNEA PERMAR Supervisor</field>
+        <field name="category_id" ref="personal_maritimo.security_permar_groups"/>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo.group_gente_mar_administracion'))]"/>
+    </record>
+
+    <record id="group_capitania_permar_operador" model="res.groups">
+        <field name="name">Capitanía PERMAR Operador</field>
+        <field name="category_id" ref="personal_maritimo.security_permar_groups"/>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo.group_gente_mar_edicion'))]"/>
+    </record>
+
+    <record id="group_capitania_permar_supervisor" model="res.groups">
+        <field name="name">Capitanía PERMAR Supervisor</field>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo.group_gente_mar_administracion'))]"/>
+        <!--field name="implied_ids" eval="[(4, ref('base.group_user'))]"/-->
+    </record>
+
+</odoo>

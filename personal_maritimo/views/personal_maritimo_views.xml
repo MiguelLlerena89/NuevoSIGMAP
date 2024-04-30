@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="view_personal_maritimo_jerarquia_filter" model="ir.ui.view">
+        <field name="name">Jerarquía Gente de mar</field>
+        <field name="model">personal.maritimo.jerarquia</field>
+        <field name="arch" type="xml">
+            <search string="Search Move">
+                <field name="personal_maritimo_id"/>
+                <field name="active"/>
+                <field name="jerarquia_id"/>
+                <filter string="Inactivos" domain="[('active', '=', False)]" name="permar_jerarquia_inactivos_filter"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Jerarquía" name="jerarquia_id" domain="[]" context="{'group_by': 'jerarquia_id'}"/>
+                    <filter string="Tipo formación" name="tipo_formacion_id" domain="[]" context="{'group_by': 'tipo_formacion_id'}"/>
+                    <filter string="Fecha ascenso" name="fecha_ascenso" domain="[]" context="{'group_by': 'fecha_ascenso'}"/>
+                    <filter string="Fecha ingreso" name="fecha_ingreso" domain="[]" context="{'group_by': 'fecha_ingreso'}"/>
+                    <filter string="Fecha deshabilitado" name="fecha_deshabilitado" domain="[]" context="{'group_by': 'fecha_deshabilitado'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+        <record id="view_personal_maritimo_jerarquia_tree" model="ir.ui.view">
+            <field name="name">Lista jerarquías gente de mar</field>
+            <field name="model">personal.maritimo.jerarquia</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Jerarquía Gente de mar">
+                    <field name="company_id" invisible="1"/>
+                    <field name="personal_maritimo_id"/>
+                    <field name="jerarquia_id"/>
+                    <field name="tipo_formacion_id"/>
+                    <field name="folio_acta"/>
+                    <field name="fecha_ingreso"/>
+                    <field name="fecha_ascenso"/>
+                    <field name="fecha_deshabilitado"/>
+                    <field name="dias_disponibles_provisional"/>
+                    <field name="dias_disponibles_dispensa"/>
+                    <field name="tee"/>
+                    <field name="active" string="Activo"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_personal_maritimo_jerarquia_line_form" model="ir.ui.view">
+            <field name="name">personal.maritimo.jerarquia.form</field>
+            <field name="model">personal.maritimo.jerarquia</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Jerarquía Gente de Mar">
+                    <sheet>
+                        <group>
+                            <field name="company_id" invisible="1"/>
+                            <field name="personal_maritimo_id" invisible="1"/>
+                            <field name="jerarquia_id"/>
+                            <field name="folio_acta"/>
+                            <field name="tipo_formacion_id"/>
+                            <field name="limitacion_id"/>
+                        </group>
+                        <group>
+                            <field name="tee"/>
+                            <field name="fecha_ingreso"/>
+                            <field name="fecha_ascenso"/>
+                            <field name="fecha_deshabilitado"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="dias_disponibles_provisional"/>
+                            </group>
+                            <group>
+                                <field name="dias_disponibles_dispensa"/>
+                            </group>
+                            <field name="active" string="Activo"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_personal_maritimo_form" model="ir.ui.view">
+            <field name="name">personal.maritimo.form</field>
+            <field name="model">personal.maritimo</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Gente de Mar">
+
+                    <header>
+                        <button name="button_imprimir" type="object" class="btn-primary" string="Imprimir" data-hotkey="p"/>
+                    </header>
+                    <div class="alert alert-warning oe_edit_only" role="alert" attrs="{'invisible': [('same_vat_partner_id', '=', False)]}">
+                        Encontramos a persona con la misma <span><span class="o_vat_label"> identificación</span></span> (<field name="same_vat_partner_id"/>)
+                    </div>
+                    <div class="alert alert-danger oe_edit_only" role="alert" attrs="{'invisible': [('fallecido', '=', False)]}">
+                        Falleció en: <span> <field name="fecha_defuncion"/> </span>
+                    </div>
+                    <div class="alert alert-danger oe_edit_only" role="alert" attrs="{'invisible': [('antecedentes_penales', '=', False)]}">
+                        <field name="name"/> Tiene antecedetes penales.
+                    </div>
+                    <!--div class="alert alert-danger oe_edit_only" role="alert" attrs="{'invisible': ['|',('partner_id','=',False),('partner_is_valid','=',True)]}">
+                        La persona elegida ya tiene gente de mar asociada.
+                    </div-->
+
+                    <div class="alert alert-warning" role="alert" attrs="{'invisible': [('l10n_ec_vat_validation', '=', False)]}">
+                        <field name="l10n_ec_vat_validation"/>
+                    </div>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box"/>
+                        <widget name="web_ribbon" title="Archivado" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <div class="oe_title">
+                            <group>
+                                <group>
+                                    <field name="partner_id"
+                                        options="{'no_quick_create':True}"
+                                        context="{'default_company_type':'person'}"/>
+                                </group>
+                            </group>
+                        </div>
+                        <group attrs="{'invisible': [('partner_id','=',False)]}">
+                            <h1 class="mt0">
+                                <field name="name" invisible="1"/>
+                                <field name="last_name" placeholder="Ej. Pérez Pérez" required="1"/>
+                                <field name="first_name" placeholder="Ej. Juan" required="1"/>
+                            </h1>
+                            <group string="Fotos">
+                                <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "avatar_128"}'/>
+                                <field name="image_firma" widget="image" class="oe_avatar"/>
+                            </group>
+                            <group string="Información">
+                                <field name="partner_is_valid" invisible="1" widget="boolean_toggle"/>
+                                <field name="l10n_latam_identification_type_id"/>
+                                <field name="vat"/>
+                                <field name="country_id"/>
+                                <field name="email" widget="email" context="{'gravatar_image': True}"/>
+                                <field name="institutional_email" widget="email" context="{'gravatar_image': True}"/>
+                            </group>
+                            <group string="Información">
+                                <field name="active" widget="boolean_toggle"/>
+                                <field name="jerarquia_id"/>
+                                <field name="tee"/>
+                                <field name="tipo_personal_mercante"/>
+                                <field name="tipo_trafico"/>
+                                <field name="matricula"/>
+                                <field name="tipo_sangre"/>
+                                <field name="antecedentes_penales"/>
+                                <field name="fallecido"/>
+                            </group>
+                        </group>
+                        <notebook attrs="{'invisible': [('partner_id','=',False)]}">
+                            <page name="informacion_personal" string="Información Personal" autofocus="autofocus">
+                                <group>
+                                    <group string="Cuidadanía">
+                                        <field name="birthday"/>
+                                        <field name="age" />
+                                        <field name="country_of_birth_id" options='{"no_open": True, "no_create": True}'/>
+                                        <field name="state_of_birth_id"/>
+                                        <field name="city_of_birth_id"/>
+                                        <field name="nationality"/>
+                                    </group>
+                                    <group string="Otros">
+                                        <field name="genero" />
+                                        <field name="estado_civil"/>
+                                        <field name="instruccion"/>
+                                        <field name="jerarquia_id" invisible="1"/>
+                                        <field name="dias_disponibles_provisional"/>
+                                        <field name="dias_disponibles_dispensa"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Jerarquía">
+                                <field name="jerarquia_ids" nolabel="1">
+                                    <tree string="Jerarquias">
+                                        <field name="company_id" invisible="1"/>
+                                        <field name="jerarquia_id"/>
+                                        <field name="tipo_formacion_id"/>
+                                        <field name="folio_acta"/>
+                                        <field name="fecha_ingreso"/>
+                                        <field name="fecha_ascenso"/>
+                                        <field name="fecha_deshabilitado"/>
+                                        <field name="dias_disponibles_provisional"/>
+                                        <field name="dias_disponibles_dispensa"/>
+                                        <field name="tee"/>
+                                        <field name="active" widget="boolean_toggle"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="rasgo_particular" string="Señas Particulares">
+                                <field name="rasgo_particular_ids" nolabel="1">
+                                    <tree string="Señas Particulares" editable="1">
+                                        <field name="particularidad" />
+                                        <field name="descripcion" />
+                                        <field name="descripcion_en"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="contrato_trabajo" string="Contrato Trabajo" attrs="{'invisible': [('l10n_latam_identification_type_id', 'not in', (%(l10n_latam_base.it_pass)d))]}">
+                                <field name="contrato_trabajo_ids" nolabel="1">
+                                    <tree string="Contrato Trabajo" editable="1">
+                                        <field name="armador"/>
+                                        <field name="numero_contrato"/>
+                                        <field name="fecha_inicio"/>
+                                        <field name="fecha_fin"/>
+                                        <field name="tipo_visa"/>
+                                        <field name="fecha_expiracion_visa"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+    <record id="view_personal_maritimo_tree" model="ir.ui.view">
+        <field name="name">Lista gente de mar</field>
+        <field name="model">personal.maritimo</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Gente de mar">
+                <field name="partner_id"/>
+                <field name="vat"/>
+                <field name="institutional_email"/>
+                <field name="active"/>
+                <field name="tipo_personal_mercante"/>
+                <field name="jerarquia_id"/>
+                <field name="dias_disponibles_provisional"/>
+                <field name="dias_disponibles_dispensa"/>
+                <field name="tee"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_personal_maritimo_filter" model="ir.ui.view">
+        <field name="name">Gente de mar</field>
+        <field name="model">personal.maritimo</field>
+        <field name="arch" type="xml">
+            <search string="Search Move">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="active"/>
+                <field name="vat"/>
+                <field name="jerarquia_id"/>
+                <filter string="Inactivos" domain="[('active', '=', False)]" name="permar_inactivos_filter"/>
+                <filter string="Fallecidos" name="personas_fallecidas" domain="[('fallecido', '=', True)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Jerarquía" name="jerarquia_id" domain="[]" context="{'group_by': 'jerarquia_id'}"/>
+                    <filter string="Tipos personal mercante" name="tipo_personal_mercante" domain="[]" context="{'group_by': 'tipo_personal_mercante'}"/>
+                    <filter string="País" name="country_id" domain="[]" context="{'group_by': 'country_id'}"/>
+                    <filter string="Fallecidos" name="fallecido" domain="[]" context="{'group_by': 'fallecido'}"/>
+                    <filter string="Fecha defuncion" name="fecha_defuncion" domain="[]" context="{'group_by': 'fecha_defuncion'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+        <record id="kanban_view_personal_maritimo" model="ir.ui.view">
+           <field name="name">personal.maritimo.kanban</field>
+           <field name="model">personal.maritimo</field>
+           <field name="priority">10</field>
+           <field name="arch" type="xml">
+               <kanban class="o_personal_maritimo_kanban" js_class="personal_maritimo_kanban" sample="1">
+                   <field name="id"/>
+                   <field name="name"/>
+                   <field name="jerarquia_id"/>
+                   <field name="image_1920"/>
+                   <field name="active"/>
+                   <templates>
+                       <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                <div class="o_kanban_image_fill_left o_kanban_image_full" t-attf-style="background-image: url(#{kanban_image('personal.maritimo', 'avatar_1920', record.id.raw_value)})" role="img"/>
+                                <div class="ribbon ribbon-top-right" attrs="{'invisible': [('active', '=', True)]}">
+                                    <span class="bg-danger">Archivado</span>
+                                </div>
+                                <div class="oe_kanban_details d-flex flex-column justify-content-between">
+                                    <div>
+                                        <field name="name" placeholder="Nombre"/>
+                                        <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                        <ul>
+                                            <li><field name="vat"/></li>
+                                            <li t-if="record.city.raw_value or record.country_id.raw_value">
+                                                <t t-if="record.city.raw_value"><field name="city"/><t t-if="record.country_id.raw_value">, </t></t>
+                                                <t t-if="record.country_id.raw_value"><field name="country_id"/></t>
+                                            </li>
+                                            <li t-if="record.email.raw_value" class="o_text_overflow"><field name="email"/></li>
+                                            <li class="o_kanban_record_subtitle"><field name="jerarquia_id"/></li>
+                                            <li class="o_text_overflow"><field name="age"/> años</li>
+                                        </ul>
+                                    </div>
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="oe_kanban_bottom_left"/>
+                                        <div class="oe_kanban_bottom_right"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+
+                   </templates>
+               </kanban>
+            </field>
+        </record>
+
+        <record id="action_personal_maritimo" model="ir.actions.act_window">
+            <field name="name">Gente de Mar</field>
+            <field name="res_model">personal.maritimo</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="view_personal_maritimo_tree"/>
+            <field name="search_view_id" ref="view_personal_maritimo_filter"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Define un nuevo registro de persona de mar
+                </p>
+            </field>
+        </record>
+
+        <record id="action_personal_maritimo_form_view1" model="ir.actions.act_window.view">
+            <field eval="0" name="sequence"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="kanban_view_personal_maritimo"/>
+            <field name="act_window_id" ref="action_personal_maritimo"/>
+        </record>
+        <record id="action_personal_maritimo_form_view2" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_personal_maritimo_form"/>
+            <field name="act_window_id" ref="action_personal_maritimo"/>
+        </record>
+        <record id="action_personal_maritimo_tree_view1" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_personal_maritimo_tree"/>
+            <field name="act_window_id" ref="action_personal_maritimo"/>
+        </record>
+
+        <record id="action_personal_maritimo_jerarquia" model="ir.actions.act_window">
+            <field name="name">Jerarquías Gente de Mar</field>
+            <field name="res_model">personal.maritimo.jerarquia</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="view_personal_maritimo_jerarquia_tree"/>
+            <field name="search_view_id" ref="view_personal_maritimo_jerarquia_filter"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Define un nuevo registro de jerarquia para gente de mar
+                </p>
+            </field>
+        </record>
+    </data>
+
+</odoo>

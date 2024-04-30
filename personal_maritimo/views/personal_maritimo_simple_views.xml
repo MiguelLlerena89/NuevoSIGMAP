@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_simple_gente_mar_form" model="ir.ui.view">
+            <field name="name">gente.mar.simple.form</field>
+            <field name="model">personal.maritimo</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Gente de mar">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box"/>
+                        <widget name="web_ribbon" title="Archivado" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <div class="oe_title">
+                            <group>
+                                <group>
+                                    <field name="partner_id"
+                                        options="{'no_quick_create':True}"
+                                        context="{'default_company_type':'person'}"/>
+                                </group>
+                            </group>
+                        </div>
+                        <group attrs="{'invisible': [('partner_id','=',False)]}">
+                            <h1 class="mt0">
+                                <field name="name"/>
+                            </h1>
+                            <group string="Fotos">
+                                <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "avatar_128"}'/>
+                                <field name="image_firma" widget="image" class="oe_avatar"/>
+                            </group>
+                            <group string="Información">
+                                <field name="l10n_latam_identification_type_id"/>
+                                <field name="vat"/>
+                                <field name="email" widget="email" context="{'gravatar_image': True}"/>
+                                <field name="institutional_email" widget="email" context="{'gravatar_image': True}"/>
+                            </group>
+                            <group string="Información">
+                                <field name="active" widget="boolean_toggle"/>
+                                <field name="country_id"/>
+                            </group>
+                        </group>
+                        <notebook attrs="{'invisible': [('partner_id','=',False)]}">
+                            <page name="informacion_personal" string="Información Personal" autofocus="autofocus">
+                                <group>
+                                    <group string="Cuidadanía">
+                                        <field name="birthday"/>
+                                        <field name="age" />
+                                        <field name="country_of_birth_id" options='{"no_open": True, "no_create": True}'/>
+                                        <field name="state_of_birth_id"/>
+                                        <field name="city_of_birth_id"/>
+                                        <field name="nationality"/>
+                                    </group>
+                                    <group string="Otros">
+                                        <field name="genero" />
+                                        <field name="estado_civil"/>
+                                        <field name="instruccion"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <record id="view_simple_gente_mar_tree" model="ir.ui.view">
+        <field name="name">Lista simple gente de mar</field>
+        <field name="model">personal.maritimo</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Gente de mar">
+                <field name="partner_id"/>
+                <field name="vat"/>
+                <field name="institutional_email"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_simple_gente_mar_filter" model="ir.ui.view">
+        <field name="name">Simple gente de mar</field>
+        <field name="model">personal.maritimo</field>
+        <field name="arch" type="xml">
+            <search string="Search Move">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="active"/>
+                <field name="vat"/>
+                <group expand="0" string="Group By">
+                    <filter string="País" name="country_id" domain="[]" context="{'group_by': 'country_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+        <record id="kanban_view_simple_gente_mar" model="ir.ui.view">
+           <field name="name">simple.gente.mar.kanban</field>
+           <field name="model">personal.maritimo</field>
+           <field name="priority">10</field>
+           <field name="arch" type="xml">
+               <kanban class="o_personal_maritimo_kanban" js_class="personal_maritimo_kanban" sample="1">
+                   <field name="id"/>
+                   <field name="name"/>
+                   <field name="image_1920"/>
+                   <field name="active"/>
+                   <templates>
+                       <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                <div class="o_kanban_image_fill_left o_kanban_image_full" t-attf-style="background-image: url(#{kanban_image('personal.maritimo', 'avatar_1920', record.id.raw_value)})" role="img"/>
+                                <div class="ribbon ribbon-top-right" attrs="{'invisible': [('active', '=', True)]}">
+                                    <span class="bg-danger">Archivado</span>
+                                </div>
+                                <div class="oe_kanban_details d-flex flex-column justify-content-between">
+                                    <div>
+                                        <field name="name" placeholder="Nombre"/>
+                                        <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                        <ul>
+                                            <li><field name="vat"/></li>
+                                            <li t-if="record.city.raw_value or record.country_id.raw_value">
+                                                <t t-if="record.city.raw_value"><field name="city"/><t t-if="record.country_id.raw_value">, </t></t>
+                                                <t t-if="record.country_id.raw_value"><field name="country_id"/></t>
+                                            </li>
+                                            <li t-if="record.email.raw_value" class="o_text_overflow"><field name="email"/></li>
+                                            <li class="o_text_overflow"><field name="age"/> años</li>
+                                        </ul>
+                                    </div>
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="oe_kanban_bottom_left"/>
+                                        <div class="oe_kanban_bottom_right"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+
+                   </templates>
+               </kanban>
+            </field>
+        </record>
+
+        <record id="action_simple_gente_mar" model="ir.actions.act_window">
+            <field name="name">Vista simple gente de mar</field>
+            <field name="res_model">personal.maritimo</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="view_simple_gente_mar_tree"/>
+            <field name="search_view_id" ref="view_simple_gente_mar_filter"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Gente de mar
+                </p>
+            </field>
+        </record>
+    </data>
+
+</odoo>

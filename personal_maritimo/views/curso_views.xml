@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_tipo_curso_tree" model="ir.ui.view">
+        <field name="name">tipo.curso.tree</field>
+        <field name="model">personal.maritimo.catalogo.tipo.curso</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Tipo de Curso" editable="bottom">
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="descripcion"/>
+                <field name="model_id" />
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_tipo_curso_form" model="ir.ui.view">
+        <field name="name">personal.maritimo.catalogo.tipo.curso.form</field>
+        <field name="model">personal.maritimo.catalogo.tipo.curso</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Tipo Curso">
+                <header>
+                </header>
+                <field name="active" invisible="1"/>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group>
+                        <group name="tipo_curso_info" >
+                            <field name="name" required="True"/>
+                            <field name="codigo" placeholder="ej. FOR" required="True"/>
+                            <field name="descripcion" />
+                            <field name="model_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tipo_curso" model="ir.actions.act_window">
+        <field name="name">Tipo de Curso</field>
+        <field name="res_model">personal.maritimo.catalogo.tipo.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_tipo_curso_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo tipo de curso
+            </p>
+        </field>
+    </record>
+
+    <record id="view_curso_form" model="ir.ui.view">
+        <field name="name">personal.maritimo.catalogo.curso.form</field>
+        <field name="model">personal.maritimo.catalogo.curso</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Cursos">
+                <header>
+                </header>
+                <sheet>
+                    <field name="tipo" widget="radio" options="{'horizontal': true}" invisible="1"/>
+                    <field name="active" invisible="1"/>
+                    <div class="oe_button_box" name="button_box"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <!--<div class="oe_title">
+                        <h1 class="d-flex flex-row">
+                            <field name="name" placeholder="Nombre curso" required="True" />
+                        </h1>
+                        <h2>
+                            <field name="codigo" />
+                        </h2>
+                    </div>-->
+                    <group>
+                        <group name="curso_descripcion">
+                            <field name="name" placeholder="Nombre curso" required="True" />
+                            <field name="codigo" />
+                        </group>
+                    </group>
+                    <group name="curso_info">
+                        <group name="curso_info_left">
+                            <field name="jerarquia_id"/>
+                            <field name="caducidad"/>
+                            <field name="tipo"/>
+                            <field name="tipo_curso_id"/>
+                            <field name="capitulo" attrs="{'invisible': [('tipo', '!=', 'capacitacion')]}"/>
+                            <field name="regla" attrs="{'invisible': [('tipo', '!=', 'capacitacion')]}"/>
+                        </group>
+                    </group>
+                    <notebook attrs="{'invisible': [('tipo', '!=', 'capacitacion')]}">
+                        <page name="materias_omi" string="OMI">
+                            <field name="line_ids" nolabel="1">
+                                <tree string="Materia OMI" editable="1">
+                                    <field name="omi_id" options="{'no_create': True, 'no_open': True}"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <group name="observaciones" string="Observaciones">
+                        <field name="observacion" nolabel="1" colspan="2" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_curso_tree" model="ir.ui.view">
+        <field name="name">personal.maritimo.catalogo.curso.tree</field>
+        <field name="model">personal.maritimo.catalogo.curso</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Cursos">
+                <field name="tipo" invisible="1"/>
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="jerarquia_id"/>
+                <field name="capitulo"/>
+                <field name="regla"/>
+                <field name="caducidad"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_curso_line_tree" model="ir.ui.view">
+        <field name="name">Curso line</field>
+        <field name="model">personal.maritimo.catalogo.curso.line</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Cursos line">
+                <field name="omi_id"/>
+                <field name="curso_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_curso_line" model="ir.actions.act_window">
+        <field name="name">Curso line</field>
+        <field name="res_model">personal.maritimo.catalogo.curso.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_curso_line_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo curso de formación para persona de mar
+            </p>
+        </field>
+    </record>
+
+    <record id="action_curso_formacion" model="ir.actions.act_window">
+        <field name="name">Curso Formación</field>
+        <field name="res_model">personal.maritimo.catalogo.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo', '=', 'formacion')]</field>
+        <field name="context">{'default_tipo': 'formacion',}</field>
+        <field name="view_id" ref="view_curso_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo curso de formación para persona de mar
+            </p>
+        </field>
+    </record>
+
+    <record id="action_curso_capacitacion" model="ir.actions.act_window">
+        <field name="name">Capacitación OMI</field>
+        <field name="res_model">personal.maritimo.catalogo.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo', '=', 'capacitacion')]</field>
+        <field name="context">{'default_tipo': 'capacitacion',}</field>
+        <field name="view_id" ref="view_curso_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo curso de capacitación para persona de mar
+            </p>
+        </field>
+    </record>
+
+    <record id="action_curso_formacion_ext" model="ir.actions.act_window">
+        <field name="name">Reconocimientos cursos formación</field>
+        <field name="res_model">personal.maritimo.catalogo.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo', '=', 'formacion_ext')]</field>
+        <field name="context">{'default_tipo': 'formacion_ext',}</field>
+        <field name="view_id" ref="view_curso_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo curso de formación para persona de mar
+            </p>
+        </field>
+    </record>
+
+    <record id="action_curso_capacitacion_ext" model="ir.actions.act_window">
+        <field name="name">Reconocimientos capacitación OMI</field>
+        <field name="res_model">personal.maritimo.catalogo.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo', '=', 'capacitacion_ext')]</field>
+        <field name="context">{'default_tipo': 'capacitacion_ext',}</field>
+        <field name="view_id" ref="view_curso_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo curso de capacitación para persona de mar
+            </p>
+        </field>
+    </record>
+    <record id="view_curso_inherit_tree" model="ir.ui.view">
+        <field name="name">personal.maritimo.catalogo.curso.inherit</field>
+        <field name="model">personal.maritimo.catalogo.curso</field>
+        <field name="inherit_id" ref="view_curso_tree"/>
+        <field name="arch" type="xml">
+            <field name="tipo" position="after">
+                <field name="tipo_curso_id"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_curso_filter" model="ir.ui.view">
+        <field name="name">personal.maritimo.catalogo.curso</field>
+        <field name="model">personal.maritimo.catalogo.curso</field>
+        <field name="arch" type="xml">
+            <search string="Search Move">
+                <field name="name"/>
+                <filter string="Formacion" name="formacion" domain="[('tipo', '=', 'formacion')]"/>
+                <filter string="Capacitacion" name="capacitacion" domain="[('tipo', '=', 'capacitacion')]"/>
+                <separator/>
+                <filter string="Formacion extranjero" name="formacion_ext" domain="[('tipo', '=', 'formacion_ext')]"/>
+                <filter string="Capacitacion extranjero" name="capacitacion_ext" domain="[('tipo', '=', 'capacitacion_ext')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Tipo" name="tipo" domain="[]" context="{'group_by': 'tipo'}"/>
+                    <filter string="Tipo curso" name="tipo_curso_id" domain="[]" context="{'group_by': 'tipo_curso_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_tipo_curso" model="ir.actions.act_window">
+        <field name="name">Tipos de cursos</field>
+        <field name="res_model">personal.maritimo.catalogo.tipo.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_tipo_curso_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo tipo de curso
+            </p>
+        </field>
+    </record>
+
+    <record id="action_curso_global" model="ir.actions.act_window">
+        <field name="name">Todos los cursos</field>
+        <field name="res_model">personal.maritimo.catalogo.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_curso_tree"/>
+        <field name="search_view_id" ref="view_curso_filter"/>
+        <field name="context">{'search_default_tipo':1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo curso para persona de mar
+            </p>
+        </field>
+    </record>
+</odoo>

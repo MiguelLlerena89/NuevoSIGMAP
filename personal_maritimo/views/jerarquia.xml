@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_jerarquia_tree" model="ir.ui.view">
+        <field name="name">Jerarquía</field>
+        <field name="model">personal.maritimo.catalogo.jerarquia</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Jerarquía">
+                    <field name="company_id" invisible="1"/>
+                    <field name="name"/>
+                    <field name="jerarquia_id"/>
+                    <field name="funcion_es"/>
+                    <field name="clasificacion_id"/>
+                    <field name="tipo_personal"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_jerarquia_form" model="ir.ui.view">
+        <field name="name">Jerarquía formulario</field>
+        <field name="model">personal.maritimo.catalogo.jerarquia</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Jerarquía">
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="company_id" invisible="1"/>
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <group>
+                    <group id="header_left_group">
+                        <field name="jerarquia_id"/>
+                        <field name="abreviatura"/>
+                        <field name="descripcion_en"/>
+                        <field name="tee"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="clasificacion_id"/>
+                        <field name="tipo_personal"/>
+                        <field name="tipo_jerarquia"/>
+                        <field name="limitacion_id"/>
+                    </group>
+                </group>
+                <group>
+                    <group id="header_left_group">
+                        <field name="funcion_es"/>
+                        <field name="funcion_en"/>
+                        <field name="nivel_es"/>
+                        <field name="nivel_en"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="capitulo"/>
+                        <field name="regla"/>
+                        <field name="vigencia"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page name="curso_requerido" string="Cursos requeridos">
+                        <field name="requisito_ids" nolabel="1">
+                            <tree string="Cursos requeridos" editable="bottom">
+                                <field name="jerarquia_id" invisible="1"/>
+                                <field name="curso_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="action_jerarquia" model="ir.actions.act_window">
+        <field name="name">Jerarquía/Especialidad</field>
+        <field name="res_model">personal.maritimo.catalogo.jerarquia</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_jerarquia_tree"/>
+        <field name="help" type="html">
+            <p>
+                No se encontró ninguna jerarquía.
+            </p>
+        </field>
+    </record>
+</odoo>

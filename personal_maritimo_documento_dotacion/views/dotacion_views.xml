@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_personal_maritimo_form_dotacion" model="ir.ui.view">
+        <field name="name">personal.maritimo.form.dotacion</field>
+        <field name="model">personal.maritimo</field>
+        <field name="inherit_id" ref="personal_maritimo.view_personal_maritimo_form"/>
+        <field name="groups_id" eval="[(5,)]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="info_dotacion_pm" string="Dotación">
+                    <separator string="Detalle de navegaciones"/>
+                    <field name="pm_dotacion_ids" nolabel="1">
+                        <tree string="Cubierta" editable="bottom">
+                            <field name="trafico_maritimo_arribo_id"/>
+                            <field name="trafico_maritimo_zarpe_id"/>
+                            <field name="jerarquia_id"/>
+                            <field name="jerarquia_plaza_id"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_pm_dotacion_form" model="ir.ui.view">
+        <field name="name">pm.documento.dotacion.form</field>
+        <field name="model">permar.documento.dotacion</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_dotacion_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="info_dotacion_pm" string="Dotación">
+                    <separator string="Detalle de navegaciones"/>
+                    <field name="pm_dotacion_ids" nolabel="1">
+                        <tree string="Cubierta" editable="bottom">
+                            <field name="trafico_maritimo_arribo_id"/>
+                            <field name="trafico_maritimo_zarpe_id"/>
+                            <field name="jerarquia_id"/>
+                            <field name="jerarquia_plaza_id"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

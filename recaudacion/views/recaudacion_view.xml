@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_order_form_recaudacion" model="ir.ui.view">
+            <field name="name">sale.order.form.recaudacion</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <!-- Nueva pestaña -->
+                    <page string="Recaudación" name="recaudacion_tab" attrs="{'invisible': [('recaudacion_codigo', '=', False)]}">
+                        <!-- Contenido de la nueva pestaña -->
+                        <group>
+                            <field name="recaudacion_codigo" string="Código de Recaudación"/>
+                            <field name="recaudacion_estado" string="Estado de Recaudación" />
+                            <!-- Agrega más campos según tus necesidades -->
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_personal_maritimo_clasificacion_tree" model="ir.ui.view">
+        <field name="name">personal.maritimo.clasificacion.tree</field>
+        <field name="model">personal.maritimo.clasificacion</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Línea especialidad">
+                    <field name="company_id" invisible="1"/>
+                    <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_personal_maritimo_clasificacion_form" model="ir.ui.view">
+        <field name="name">personal.maritimo.clasificacion.form</field>
+        <field name="model">personal.maritimo.clasificacion</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Línea especialidad">
+                <header>
+                    <!--field name="state_in" widget="statusbar" statusbar_visible="CONT,NCONT" attrs="{"invisible": ["|",("is_electronic","!=",True),("type","=","out")]}"/-->
+                </header>
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="company_id" invisible="1"/>
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="action_personal_maritimo_clasificacion" model="ir.actions.act_window">
+        <field name="name">Clasificación personal marítimo</field>
+        <field name="res_model">personal.maritimo.clasificacion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_personal_maritimo_clasificacion_tree"/>
+        <field name="help" type="html">
+            <p>
+                No documento found.
+            </p>
+        </field>
+    </record>
+</odoo>

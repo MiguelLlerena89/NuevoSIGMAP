@@ -1,0 +1,92 @@
+id,name,jerarquia_id:id,clasificacion_id:id,descripcion_en,funcion_es,funcion_en,tipo_personal,abreviatura,capitulo,resolucion,regla,vigencia,tee
+jerarquia_1,CAPITÁN DE ALTURA,,personal_maritimo.pm_clasificacion_1,CAPITAN DE ALTURA,NAVEGACION,NAVIGATION,cubierta,MASTER,II,,2-3,5,5
+jerarquia_2,PRIMER OFICIAL DE CUBIERTA,personal_maritimo.jerarquia_1,personal_maritimo.pm_clasificacion_1,COVER OFFICER,JEFE DE AREA,,cubierta,Oficial de cubierta de 1ERA.,II,,2-3,5,4
+jerarquia_3,SEGUNDO OFICIAL DE CUBIERTA,personal_maritimo.jerarquia_2,personal_maritimo.pm_clasificacion_1,COVER OFFICER,,,cubierta,Oficial de cubierta de 2DA.,II,,2-3,5,3
+jerarquia_4,TERCER OFICIAL DE CUBIERTA,personal_maritimo.jerarquia_3,personal_maritimo.pm_clasificacion_1,COVER OFFICER,,,cubierta,Oficial de cubierta de 3ERA.,II,,2-3,5,
+jerarquia_5,JEFE DE MÁQUINAS,,personal_maritimo.pm_clasificacion_1,,,,maquina,,III,,2-3,5,5
+jerarquia_6,PRIMER OFICIAL DE MÁQUINAS,personal_maritimo.jerarquia_5,personal_maritimo.pm_clasificacion_1,FIRST ENGINEER,MAQUINARIA NAVAL,MARINE ENGINEERING,maquina,1er Oficial de máquinas,III,,2-3,5,4
+jerarquia_7,SEGUNDO OFICIAL DE MÁQUINAS,personal_maritimo.jerarquia_6,personal_maritimo.pm_clasificacion_1,SECOND ENGINEER,MAQUINARIA NAVAL,MARINE ENGINEERING,maquina,2do Oficial de máquinas,III,,2-3,5,3
+jerarquia_8,TERCER OFICIAL DE MÁQUINAS,personal_maritimo.jerarquia_7,personal_maritimo.pm_clasificacion_1,THIRD ENGINEERING,MAQUINARIA NAVAL,MARINE ENGINEERING,maquina,3er Oficial de máquinas,III,,3,5,
+jerarquia_9,OFICIAL DE RADIOPERACIONES,,personal_maritimo.pm_clasificacion_1,,,,cubierta,,IV,,1-2,5,
+jerarquia_10,OFICIAL ELECTROTÉCNICO,,personal_maritimo.pm_clasificacion_1,,,,cubierta,,III,,6,5,
+jerarquia_11,PATRÓN DE ALTURA,,personal_maritimo.pm_clasificacion_1,,,,cubierta,,II,,2,5,4
+jerarquia_12,PATRÓN COSTANERO,personal_maritimo.jerarquia_11,personal_maritimo.pm_clasificacion_1,,,,cubierta,,I,,3,5,4
+jerarquia_13,MARINERO DE PRIMERA DE PUENTE,personal_maritimo.jerarquia_12,personal_maritimo.pm_clasificacion_1,HELMSMAN,,,cubierta,TIMONEL,II,,5,5,3
+jerarquia_14,MARINERO DE CUBIERTA,personal_maritimo.jerarquia_13,personal_maritimo.pm_clasificacion_1,DECK RATING,"NAVEGACION,MANTENIMIENTO, MANEJO Y ESTIBA DE CARGA","NAVIGATION,MAINTENANCE,CARGO, HANDLING AND STOWAGE",cubierta,,II,,4,5,
+jerarquia_15,"MARINERO DE PRIMERA DE MÁQUINAS, MAQUINISTA Y MOTORISTA",,personal_maritimo.pm_clasificacion_1,,,,maquina,,III,,5,5,4
+jerarquia_16,MARINERO ELECTROTECNICO,personal_maritimo.jerarquia_15,personal_maritimo.pm_clasificacion_1,ELECTRO-TECHNICAL RATINGS,"INSTALACIONES ELECTRICAS, ELECTRONICAS Y DE CONTROL, MANTENIMIENTO Y REPARACIONES",ELECTRICAL AND ELECTRONIC MAINTENANCE AND REPAIR,cubierta,,III,,7,5,
+jerarquia_17,MARINERO DE MÁQUINAS,personal_maritimo.jerarquia_16,personal_maritimo.pm_clasificacion_1,,,,maquina, ACEITERO,III,,4,3,
+jerarquia_18,CAPITAN DE YATE DE ALTURA,,personal_maritimo.pm_clasificacion_1,,,,cubierta,,II,,3,5,
+jerarquia_19,CAPITAN DE YATE,personal_maritimo.jerarquia_18,personal_maritimo.pm_clasificacion_1,,,,cubierta,,II,,3,5,
+jerarquia_20,MARINERO DE YATE,personal_maritimo.jerarquia_19,personal_maritimo.pm_clasificacion_1,,,,cubierta,,II,,4,5,
+jerarquia_21,SOLDADOR,,personal_maritimo.pm_clasificacion_3,,,,cubierta,,,,,5,
+jerarquia_22,TORNERO,,personal_maritimo.pm_clasificacion_3,,,,cubierta,,,,,5,
+jerarquia_23,OPERADOR DE BOMBAS,,personal_maritimo.pm_clasificacion_3,,,,cubierta,,,,,5,
+jerarquia_24,ELECTRICISTA,,personal_maritimo.pm_clasificacion_3,,,,cubierta,,,,,5,
+jerarquia_25,ELECTRÓNICO,,personal_maritimo.pm_clasificacion_3,,,,cubierta,,,,,5,
+jerarquia_26,INFORMÁTICO,,personal_maritimo.pm_clasificacion_3,,,,cubierta,,,,,2,
+jerarquia_27,REFRIGERANTE,,personal_maritimo.pm_clasificacion_3,,,,cubierta,,,,,5,
+jerarquia_28,OPERADOR DE GRUA A BORDO,,personal_maritimo.pm_clasificacion_3,,,,cubierta,,,,,5,
+jerarquia_29,COCINERO,,personal_maritimo.pm_clasificacion_3,COOK,PREPARACION DE ALIMENTOS,FOOD COOKING,cubierta,COCINERO,,,,5,
+jerarquia_30,DIRECTOR DE CRUCERO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_31,GERENTE HOTELERO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_32,ASISTENTE DE GERENTE HOTELERO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_33,ADMINISTRADOR,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_34,RELACIONISTA PÚBLICO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_35,RECEPCIONISTA,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_36,MÉDICO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_37,TÉCNICO DE MANTENIMIENTO DE EQUIPOS HOTELEROS,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_38,JEFE DE COCINA,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_39,BARMAN,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_40,PANADERO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_41,MÚSICO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_42,FOTOGRAFO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_43,MASAJISTA,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_44,PROFESOR DE IDIOMAS,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_45,ENFERMERO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_46,CARPINTERO/EBANISTA,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_47,JEFE DE SALON,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_48,BODEGUERO/GUARDALMACEN,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_49,LAVANDERA,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_50,MAYORDOMO,,personal_maritimo.pm_clasificacion_4,CHIEF STEWARD,CONTROL ATENCION AL PERSONAL,CONTROL AND ATTENTION PERSONS ON BOARD,cubierta,MAYORDOMO,,,,5,
+jerarquia_51,POSILLERO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_52,ENCARGADO DE BOUTIQUE,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_53,AMA DE LLAVES,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_54,GASFITERO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_55,SALONERO,,personal_maritimo.pm_clasificacion_4,MESSMAN,ATENCION  PERSONAL A BORDO,PERSON BOARD ATTENTION,cubierta,SALONERO,,,,5,
+jerarquia_56,CAMARERO,,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_57,GUÍA TURÍSTICO (CONTINENTAL),,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_58,GUÍA NATURALISTA (INSULAR),,personal_maritimo.pm_clasificacion_4,,,,cubierta,,,,,5,
+jerarquia_59,MARINERO DE PESCA VIVENCIAL O DEPORTIVA,,personal_maritimo.pm_clasificacion_5,,,,cubierta,,,,,5,
+jerarquia_60,PESCADOR ARTESANAL,,personal_maritimo.pm_clasificacion_5,,,,cubierta,,,,,5,
+jerarquia_61,Patrón fluvial,,personal_maritimo.pm_clasificacion_6,,,,cubierta,,I,,3,5,3
+jerarquia_62,MARINERO DE PRIMERA DE PUENTE FLUVIAL,personal_maritimo.jerarquia_61,personal_maritimo.pm_clasificacion_6,ABLE SEAFARER ENGINE - RIVER,OPERACION MAQUINARIA NAVAL,NAVAL MACHINERY OPERATION,maquina,MARINERO DE PRIMERA DE MÁQUINAS FLUVIAL,II,,5,5,2
+jerarquia_63,MARINERO DE CUBIERTA FLUVIAL,personal_maritimo.jerarquia_62,personal_maritimo.pm_clasificacion_6,,,,cubierta,,II,,4,5,
+jerarquia_64,PATRÓN DE BAHÍA,,personal_maritimo.pm_clasificacion_7,,,,cubierta,,,,,5,3
+jerarquia_65,MARINERO DE BAHÍA,personal_maritimo.jerarquia_64,personal_maritimo.pm_clasificacion_7,,,,cubierta,,,,,5,
+jerarquia_66,MARINERO LACUSTRE,personal_maritimo.jerarquia_65,personal_maritimo.pm_clasificacion_7,,,,cubierta,,,,,5,
+jerarquia_67,REPRESENTANTE DE ARMADOR A BORDO,,personal_maritimo.pm_clasificacion_8,,,,cubierta,,,,,5,
+jerarquia_68,REPRESENTANTE ARMADOR A BORDO DE B/P,,personal_maritimo.pm_clasificacion_8,,,,cubierta,,,,,5,
+jerarquia_69,BUZO COMERCIAL BUZO PRINCIPIANTE O TENDER,,personal_maritimo.pm_clasificacion_9,,,,cubierta,,,,,5,
+jerarquia_70,BUZO COMERCIAL BUZO CON SUMINISTRO DE AIRE,,personal_maritimo.pm_clasificacion_9,,,,cubierta,,,,,5,
+jerarquia_71,BUZO COMERCIAL BUZO CON SUMINISTRO DE MEZCLA DE GAS,,personal_maritimo.pm_clasificacion_9,,,,cubierta,,,,,5,
+jerarquia_72,BUZO COMERCIAL BUZO DE CAMPANA O SATURACIÓN,,personal_maritimo.pm_clasificacion_9,,,,cubierta,,,,,5,
+jerarquia_73,BUZO COMERCIAL SUPERVISOR DE BUCEO CON SUMINISTRO DE AIRE,,personal_maritimo.pm_clasificacion_9,,,,cubierta,,,,,5,
+jerarquia_74,BUZO COMERCIAL SUPERVISOR DE BUCEO CON SUMINISTRO DE MEZCLA DE GAS,,personal_maritimo.pm_clasificacion_9,,,,cubierta,,,,,5,
+jerarquia_75,BUZO COMERCIAL SUPERVISOR DE BUCEO DE CAMPANA O SATURACIÓN,,personal_maritimo.pm_clasificacion_9,,,,cubierta,,,,,5,
+jerarquia_76,BUZO CIENTÍFICO,,personal_maritimo.pm_clasificacion_9,,,,cubierta,,,,,5,
+jerarquia_77,GUÍA DE BUCEO DEPORTIVO,,personal_maritimo.pm_clasificacion_9,,,,cubierta,,,,,5,
+jerarquia_78,INSTRUCTOR/GUIA DE BUCEO DEPORTIVO,,personal_maritimo.pm_clasificacion_9,,,,cubierta,,,,,5,
+jerarquia_79,CAPITÁN DE B/P,,personal_maritimo.pm_clasificacion_2,CAPTAIN OF FISHING VESSEL,"CONTROL, OPERACIÓN DE LA NAVE, PLANIFICACION Y NAVEGACION","CONTROL, OPERATION OF THE SHIP, PLANNING AND NAVIGATION",cubierta,CAPITAN DE B/P,II,, 1 - ,5,3
+jerarquia_80,PATRON DE ALTURA DE B/P,personal_maritimo.jerarquia_79,personal_maritimo.pm_clasificacion_2,,,,cubierta,Primer oficial de Puente B/P sin limitación,II,, 2 - ,5,3
+jerarquia_81,PATRON COSTANERO DE B/P,personal_maritimo.jerarquia_80,personal_maritimo.pm_clasificacion_2,COASTAL FISHING VESSEL PATTERN,NAVEGACION A NIVEL DE APOYO,NAVIGATION LEVEL OFF SUPPORT,cubierta,Primer Oficial de Puente B/P con limitación,II,,3 - S,5,2
+jerarquia_82,MARINERO DE PRIMERA DE PUENTE DE B/P,personal_maritimo.jerarquia_81,personal_maritimo.pm_clasificacion_2,,,,cubierta,Primer Oficial de Puente B/P con limitación,II,,4 - S,5,2
+jerarquia_83,MARINERO PESCADOR,personal_maritimo.jerarquia_82,personal_maritimo.pm_clasificacion_2,,,,cubierta,,III,,1– ST,5,
+jerarquia_84,JEFE DE MAQUINAS DE B/P,,personal_maritimo.pm_clasificacion_2,,,,maquina,,II,,5 - S,5,3
+jerarquia_85,PRIMER OFICIAL DE MÁQUINAS DE B/P,personal_maritimo.jerarquia_84,personal_maritimo.pm_clasificacion_2,,,,cubierta,,II,,5 - S,5,2
+jerarquia_86,MARINERO DE PRIMERA DE MÁQUINAS DE B/P,personal_maritimo.jerarquia_85,personal_maritimo.pm_clasificacion_2,,,,maquina,,II Ap,,5 STC,5,2
+jerarquia_87,MARINERO DE MÁQUINAS DE B/P,personal_maritimo.jerarquia_86,personal_maritimo.pm_clasificacion_2,,,,maquina,Operador de máquina de B/P,II/ A,,5 STC,5,
+jerarquia_88,CAPITÁN DE PESCA,,,,,,,,,,,5,
+jerarquia_89,OBSERVADOR DE PESCA,,,,,,,,,,,5,
+jerarquia_90,PILOTO DE HELICÓPTERO DE B/P,,,,,,,,,,,5,
+jerarquia_91,MECÁNICO DE HELICÓPTERO DE B/P,,,,,,,,,,,5,

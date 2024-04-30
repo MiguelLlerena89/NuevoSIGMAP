@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <record id="view_personal_maritimo_curso_persona_form" model="ir.ui.view">
+        <field name="name">personal.maritimo.cursos.form.inherit</field>
+        <field name="model">personal.maritimo</field>
+        <field name="inherit_id" ref="view_personal_maritimo_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_open_courses" type="object" class="oe_stat_button" icon="fa-id-card-o" attrs="{'invisible': [('cursos_count', '=', 0)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="cursos_count"/></span>
+                        <span class="o_stat_text">Curso(s)</span>
+                    </div>
+                </button>
+            </div>
+            <xpath expr="//field[@name='jerarquia_ids']/tree//field[@name='folio_acta']" position="after">
+                <field name="curso_id"/>
+                <field name="numero_diploma"/>
+                <field name="numero_formulario"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_personal_maritimo_curso_search" model="ir.ui.view">
+        <field name="name">personal.maritimo.curso.search</field>
+        <field name="model">personal.maritimo.curso</field>
+        <field name="arch" type="xml">
+            <search string="Search Curso Persona">
+                <field name="personal_maritimo_id" string="Número Cédula" filter_domain="[('personal_maritimo_id.vat', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Hoy" name="personal_maritimo_curso_today"
+                    domain="[('fecha_inicio', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <field name="es_reconocimiento" string="Reconocimientos" filter_domain="[('es_reconocimiento', '=', True)]"/>
+                <separator/>
+                <field name="centro_formacion_id"/>
+                <field name="lugar_formacion_id"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_tipo" string="Tipo" domain="[]" context="{'group_by': 'tipo_curso'}"/>
+                    <filter name="group_es_reconocimiento" string="Reconocimientos" domain="[]" context="{'group_by': 'es_reconocimiento'}"/>
+                    <filter name="group_tipo_id" string="Tipo curso" domain="[]" context="{'group_by': 'tipo_curso_id'}"/>
+                    <filter name="group_persona" string="Persona" domain="[]" context="{'group_by': 'personal_maritimo_id'}"/>
+                    <filter name="group_jerarquia" string="Jerarquía" domain="[]" context="{'group_by': 'jerarquia_id'}"/>
+                    <filter name="group_curso" string="Curso" domain="[]" context="{'group_by': 'curso_id'}"/>
+                    <filter name="group_pais" string="Pais" domain="[]" context="{'group_by': 'country_id'}"/>
+                    <filter name="group_centro_formacion" string="Centro de Formación" domain="[]" context="{'group_by': 'centro_formacion_id'}"/>
+                    <filter name="group_fecha_inicio" string="Fecha Inicio" domain="[]" context="{'group_by': 'fecha_inicio'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_personal_maritimo_curso_tree" model="ir.ui.view">
+        <field name="name">personal.maritimo.curso.tree</field>
+        <field name="model">personal.maritimo.curso</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Cursos de personal marítimo">
+                <field name="name"/>
+                <field name="personal_maritimo_id"/>
+                <field name="curso_id"/>
+                <field name="tipo_curso" invisible="1"/>
+                <field name="tipo_curso_id"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_termino"/>
+                <field name="numero_diploma"/>
+                <field name="country_id" />
+                <field name="estado" string="Estado"
+                    decoration-info="estado == 'borrador'"
+                    decoration-success="estado == 'vigente'"
+                    decoration-warning="estado == 'caducado'"
+                    decoration-muted="estado == 'cancelado'"
+                    widget="badge" optional="show"/>
+                <!--<field name="active" widget="boolean_toggle"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_personal_maritimo_curso_form" model="ir.ui.view">
+        <field name="name">personal.maritimo.curso.form</field>
+        <field name="model">personal.maritimo.curso</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Cursos">
+                <header>
+                    <field name="estado" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <widget name="web_ribbon" title="Cancelado" bg_color="bg-danger" attrs="{'invisible': [('estado', '!=', 'cancelado')]}"/>
+                    <group name="personal_maritimo_curso_info">
+                        <group name="curso_info_left">
+                            <field name="name"/>
+                            <field name="personal_maritimo_id"/>
+                            <field name="tipo_curso" invisible="1"/>
+                            <field name="tipo_curso_id"/>
+                            <!--field name="curso_id" domain="['|',('tipo', '=', tipo_curso),('tipo_curso_id','=','tipo_curso_id')]"/-->
+                            <field name="curso_id"/>
+                            <field name="es_reconocimiento" readonly="1"/>
+                            <field name="es_evaluacion" readonly="1"/>
+                        </group>
+                        <group name="personal_maritimo_curso_info_right">
+                            <field name="es_omi" invisible="1"/>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_termino"/>
+                            <field name="caducidad" invisible="1"/>
+                            <field name="country_id" domain="[('name', 'like', 'Ecuador')]"/>
+                            <field name="centro_formacion_id"/>
+                            <field name="lugar_formacion_id" />
+                            <field name="numero_diploma"/>
+                            <field name="fecha_emision_diploma"/>
+                            <field name="fecha_caducidad" attrs="{'invisible': [('tipo_curso', 'not in', ['capacitacion','capacitacion_ext'])]}"/>
+                        </group>
+                    </group>
+                    <group name="observaciones" string="Observaciones">
+                        <field name="observacion" nolabel="1" colspan="2" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="action_personal_maritimo_reconnocimiento_curso_form" model="ir.actions.act_window">
+        <field name="name">Reconocimientos de cursos</field>
+        <field name="res_model">personal.maritimo.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('personal_maritimo_id', '!=', False), ('es_reconocimiento', '=', True)]</field>
+        <field name="context">{'default_es_reconocimiento': True, 'create':False,'edit':False}</field>
+        <field name="view_id" ref="view_personal_maritimo_curso_tree"/>
+        <field name="search_view_id" ref="view_personal_maritimo_curso_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo curso
+            </p>
+        </field>
+    </record>
+
+    <record id="action_personal_maritimo_curso_todo_tree" model="ir.actions.act_window">
+        <field name="name">Todos los cursos</field>
+        <field name="res_model">personal.maritimo.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_personal_maritimo_curso_tree"/>
+        <field name="search_view_id" ref="view_personal_maritimo_curso_search"/>
+        <field name="context">{'search_default_group_tipo_id': '1'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo curso
+            </p>
+        </field>
+    </record>
+    <record id="action_personal_maritimo_curso_omi" model="ir.actions.act_window">
+        <field name="name">Cursos de capacitación OMI</field>
+        <field name="res_model">personal.maritimo.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('personal_maritimo_id', '!=', False), ('tipo_curso', 'in', ['capacitacion'])]</field>
+        <field name="context">{'default_tipo_curso': 'capacitacion'}</field>
+        <field name="search_view_id" ref="view_personal_maritimo_curso_search"/>
+        <field name="view_id" ref="view_personal_maritimo_curso_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo curso
+            </p>
+        </field>
+    </record>
+    <record id="action_personal_maritimo_curso_formacion" model="ir.actions.act_window">
+        <field name="name">Cursos de formación</field>
+        <field name="res_model">personal.maritimo.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('personal_maritimo_id', '!=', False), ('tipo_curso', 'in', ['formacion'])]</field>
+        <field name="context">{'default_tipo_curso': 'formacion'}</field>
+        <field name="search_view_id" ref="view_personal_maritimo_curso_search"/>
+        <field name="view_id" ref="view_personal_maritimo_curso_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo curso
+            </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_personal_maritimo_sancion_persona_form" model="ir.ui.view">
+        <field name="name">personal.maritimo.sancion.form.inherit</field>
+        <field name="model">personal.maritimo</field>
+        <field name="inherit_id" ref="view_personal_maritimo_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_open_sanction" type="object" class="oe_stat_button" icon="fa-id-card-o" attrs="{'invisible': [('sanciones_count', '=', 0)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="sanciones_count"/></span>
+                        <span class="o_stat_text">Sanciones</span>
+                    </div>
+                </button>
+            </div>
+            <field name="vat" position="after">
+                <field name="sancion_activa"></field>
+            </field>
+            <xpath expr="//sheet/widget[@name='web_ribbon']" position="after">
+                <widget name="web_ribbon" title="Sancionado" bg_color="bg-danger" attrs="{'invisible': [('sancion_activa', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_personal_maritimo_sancion_form" model="ir.ui.view">
+        <field name="name">personal.maritimo.sancion.form</field>
+        <field name="model">personal.maritimo.sancion</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="estado" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <widget name="web_ribbon" title="Cancelado" bg_color="bg-danger" attrs="{'invisible': [('estado', '!=', 'cancelado')]}"/>
+                    <field name="tipo" widget="radio" options="{'horizontal': true}"/>
+                    <!--<field name="active" invisible="1"/>-->
+                    <group name="sancion_descripcion">
+                        <field name="name" />
+                        <field name="personal_maritimo_id"/>
+                    </group>
+                    <group name="personal_maritimo_sancion_info">
+                        <group name="personal_maritimo_sancion_info_left" string="Detalles de la Sanción">
+                            <field name="tipo_infraccion_id" />
+                            <field name="tipo_sancion_id"/>
+                            <field name="dias"/>
+                            <field name="valor"/>
+                            <field name="fecha_falta"/>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_fin"/>
+                            <field name="motivo_sancion"/>
+                            <field name="referencia_sancion" />
+                            <field name="observacion_sancion"/>
+                        </group>
+                        <group name="personal_maritimo_sancion_info_right" string="Detalles Finalización de la Sanción">
+                            <field name="numero_documento"/>
+                            <field name="pdf_file"/>
+                            <field name="pdf_filename" invisible="1"/>
+                            <field name="motivo_finalizacion"/>
+                            <field name="referencia_finalizacion"/>
+                            <field name="observacion_finalizacion"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_personal_maritimo_sancion_tree" model="ir.ui.view">
+        <field name="name">personal.maritimo.sancion.tree</field>
+        <field name="model">personal.maritimo.sancion</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Sanciones">
+                <field name="personal_maritimo_id"/>
+                <field name="tipo_infraccion_id" />
+                <field name="tipo_sancion_id"/>
+                <field name="dias"/>
+                <field name="valor"/>
+                <field name="fecha_falta"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_fin"/>
+                <field name="numero_documento"/>
+                <field name="estado" string="Estado"
+                    decoration-info="estado == 'borrador'"
+                    decoration-success="estado == 'vigente'"
+                    decoration-warning="estado == 'finalizado'"
+                    widget="badge" optional="show"/>
+                <!--<field name="active" widget="boolean_toggle"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_personal_maritimo_sancion" model="ir.actions.act_window">
+        <field name="name">Sanciones</field>
+        <field name="res_model">personal.maritimo.sancion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('personal_maritimo_id', '!=', False)]</field>
+        <field name="view_id" ref="view_personal_maritimo_sancion_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define una nueva sanción
+            </p>
+        </field>
+    </record>
+
+</odoo>

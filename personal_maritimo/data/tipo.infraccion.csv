@@ -1,0 +1,128 @@
+id,name,active
+TIPO_INFRACCION_01,Matrícula y/o carnet Marítimo Mercante caducado,TRUE
+TIPO_INFRACCION_02,Sin matrícula y/o carnet marítimo mercante,TRUE
+TIPO_INFRACCION_03,Matrícula de nave caducada,TRUE
+TIPO_INFRACCION_04,Sin Zarpe,TRUE
+TIPO_INFRACCION_05,Sin Pabellón,TRUE
+TIPO_INFRACCION_06,Sin matrícula de la nave,TRUE
+TIPO_INFRACCION_07,Sin implementos básicos de la seguridad,TRUE
+TIPO_INFRACCION_08,Por falta de requisitos de zarpe,TRUE
+TIPO_INFRACCION_09,Por no firmar embarque y desembarque,TRUE
+TIPO_INFRACCION_10,Navegación irregular en aguas territoriales,TRUE
+TIPO_INFRACCION_11,Acceso de personas extrañas al buque,TRUE
+TIPO_INFRACCION_12,Varar o desvarar sin autorización,TRUE
+TIPO_INFRACCION_13,"Construcción, carena o reparación de naves sin licencia o aut.",TRUE
+TIPO_INFRACCION_14,No tener bitácoras a bordo o no llegar a tiempo al registro de las mismas por la autoridad marrítima,TRUE
+TIPO_INFRACCION_15,Por falta de comparecencia en la fecha señalada,TRUE
+TIPO_INFRACCION_16,Irrespeto a la autoridad marítima,TRUE
+TIPO_INFRACCION_17,Embarcaciones menores abandonadas por sus patrones,TRUE
+TIPO_INFRACCION_18,Por tener Muelles desaseados,TRUE
+TIPO_INFRACCION_19,Inasistencia injustificada de tripulante,TRUE
+TIPO_INFRACCION_20,Deshonestidad,TRUE
+TIPO_INFRACCION_21,Ocupación ilegal de playa,TRUE
+TIPO_INFRACCION_22,Maltrato o muerte de aves o animales marinos inofensivos,TRUE
+TIPO_INFRACCION_23,Escándalos o pendencias,TRUE
+TIPO_INFRACCION_24,Baño de animales o introducción de vehículos en los balnearios,TRUE
+TIPO_INFRACCION_25,Caza de iguanas y lobos de mar,TRUE
+TIPO_INFRACCION_26,Disparo de armas de fuego,TRUE
+TIPO_INFRACCION_27,Pesca de especies en época de veda,TRUE
+TIPO_INFRACCION_28,Incorrección en el vestido o en el lenguaje,TRUE
+TIPO_INFRACCION_29,Ingreso irregular de comerciantes en embarcaciones,TRUE
+TIPO_INFRACCION_30,Por retención de objetos olvidados,TRUE
+TIPO_INFRACCION_31,Por descuido respecto de ebrios,TRUE
+TIPO_INFRACCION_32,Falta injustificada de oficiales o suboficiales,TRUE
+TIPO_INFRACCION_33,Por recepción indebida de menores a la embarcación,TRUE
+TIPO_INFRACCION_34,Por negativa de servir a pasajeros o tripulantes,TRUE
+TIPO_INFRACCION_35,Por juego en lugares públicos,TRUE
+TIPO_INFRACCION_36,Omisión de pasajeros en las listas,TRUE
+TIPO_INFRACCION_37,Admisión de tripulantes desprovistos de matrícula,TRUE
+TIPO_INFRACCION_38,Ofensa a los agentes de Policía Marítima,TRUE
+TIPO_INFRACCION_39,Infracción del Art. 156,TRUE
+TIPO_INFRACCION_40,Por atracar a naves que no estén declaradas en libre plática,TRUE
+TIPO_INFRACCION_41,Por alteración de tarifas,TRUE
+TIPO_INFRACCION_42,Deserción,TRUE
+TIPO_INFRACCION_43,Por ocupación ilegal de playas por embarcaciones mayores de diez toneladas,TRUE
+TIPO_INFRACCION_44,Por omisión de socorro,TRUE
+TIPO_INFRACCION_45,Omisión de los deberes que corresponden a los capitanes,TRUE
+TIPO_INFRACCION_46,Recepción de pasajeros en exceso,TRUE
+TIPO_INFRACCION_47,Incorrección de los roles en la dotación,TRUE
+TIPO_INFRACCION_48,TRUEgitación a bordo,TRUE
+TIPO_INFRACCION_49,Carencia de título para comandar,TRUE
+TIPO_INFRACCION_50,Contravenciones de reglamento internacional,TRUE
+TIPO_INFRACCION_51,Ofensa a los agentes de Policía Marítima en funciones,TRUE
+TIPO_INFRACCION_52,Imposibilidad de movimiento de embarcación,TRUE
+TIPO_INFRACCION_53,Acoderamiento de embarcación en muelle contra la voluntad de su dueño,TRUE
+TIPO_INFRACCION_54,Por arrojar obstáculos a las corrientes de los ríos,TRUE
+TIPO_INFRACCION_55,Transporte de carga o pasajeros en las toldillas,TRUE
+TIPO_INFRACCION_56,Incumplimiento en el pago de sueldos o salarios a tripulación,TRUE
+TIPO_INFRACCION_57,Maltrato a los subalternos,TRUE
+TIPO_INFRACCION_58,Por muerte por ahogo de pasajero o tripulante,TRUE
+TIPO_INFRACCION_59,Faltamiento al respeto debido a los superiores,TRUE
+TIPO_INFRACCION_60,Falta de pasarelas,TRUE
+TIPO_INFRACCION_61,Conducción de armas,TRUE
+TIPO_INFRACCION_62,Falta de aviso de arribo,TRUE
+TIPO_INFRACCION_63,Echamiento de basura a fondeaderos o ríos o canales navegables,TRUE
+TIPO_INFRACCION_64,Contravención al reglamento dictado para evitar choques en el mar,TRUE
+TIPO_INFRACCION_65,Por falta de material contra incendios y de equipo de salvamento en los muelles,TRUE
+TIPO_INFRACCION_66,Omisión o falsedad de distintivos o señales,TRUE
+TIPO_INFRACCION_67,Infracción del Art. 268,TRUE
+TIPO_INFRACCION_68,Infracción del Art. 281,TRUE
+TIPO_INFRACCION_69,Transporte de animales sumergidos en el agua,TRUE
+TIPO_INFRACCION_70,Embarcaciones fluviales sobrecargadas,TRUE
+TIPO_INFRACCION_71,Injuria inferida de obra a los superiores,TRUE
+TIPO_INFRACCION_72,Abandono de materiales flotantes,TRUE
+TIPO_INFRACCION_73,Promover concursos de natación no autorizados,TRUE
+TIPO_INFRACCION_74,Infracción del Art. 95,TRUE
+TIPO_INFRACCION_75,Omisión de socorro -Embarcaciones menores,TRUE
+TIPO_INFRACCION_76,Incultura respecto de las autoridades portuarias,TRUE
+TIPO_INFRACCION_77,Sondeos en aguas jurisdiccionales,TRUE
+TIPO_INFRACCION_78,Regateo dentro de los límites fluviales,TRUE
+TIPO_INFRACCION_79,Por la acción de empavesar las naves,TRUE
+TIPO_INFRACCION_80,Incumplimiento del anuncio de salida,TRUE
+TIPO_INFRACCION_81,Lanzamiento no autorizado de embarcaciones menores de veinticinco toneladas,TRUE
+TIPO_INFRACCION_82,Contravención del reglamento dictado para evitar choques,TRUE
+TIPO_INFRACCION_83,Fondeo en canal navegable,TRUE
+TIPO_INFRACCION_84,Permitir juegos prohibidos por la Ley,TRUE
+TIPO_INFRACCION_85,Embarcaciones sobrecargadas,TRUE
+TIPO_INFRACCION_86,Zarpe de naves cuyas máquinas o cuyo gobierno se hallen en mal estado,TRUE
+TIPO_INFRACCION_87,Mala estiba o carga en lugares indebidos,TRUE
+TIPO_INFRACCION_88,Falta de requisitos impuestos por el Art. 41.,TRUE
+TIPO_INFRACCION_89,Cobro por ocupación de playas,TRUE
+TIPO_INFRACCION_90,Mala alimentación a los tripulantes,TRUE
+TIPO_INFRACCION_91,Falta al turno de guardia,TRUE
+TIPO_INFRACCION_92,"Uso indebido de estaciones de radio, o de transmisión, o de pitos, sirenas, etc",TRUE
+TIPO_INFRACCION_93,Infracción de los Arts. 211 a 215,TRUE
+TIPO_INFRACCION_94,Falta de listas,TRUE
+TIPO_INFRACCION_95,Descortesía con la autoridad marítima,TRUE
+TIPO_INFRACCION_96,Negativa de auxilio para embarcación en peligro,TRUE
+TIPO_INFRACCION_97,Falta de práctico oficial,TRUE
+TIPO_INFRACCION_98,Abordaje anterior a la libre plática,TRUE
+TIPO_INFRACCION_99,Mal estado de los muelles,TRUE
+TIPO_INFRACCION_100,Falta de aviso de llegada a puerto ecuatoriano,TRUE
+TIPO_INFRACCION_101,Negativa de izar bandera,TRUE
+TIPO_INFRACCION_102,Sobrecarga por la que se cubra la marca de franco bordo,TRUE
+TIPO_INFRACCION_103,Obstrucción del canal navegable con fragmentos de obras destruidas,TRUE
+TIPO_INFRACCION_104,"Acción de arrojar al fondeadero o a canales navegables hierros, cenizas, piedras, etc",TRUE
+TIPO_INFRACCION_105,Levantamientos hidrográficos no autorizados,TRUE
+TIPO_INFRACCION_106,Abandono de ecuatorianos en costas extranjeras,TRUE
+TIPO_INFRACCION_107,"Construcción, carena o reparación de nave, sin licencia",TRUE
+TIPO_INFRACCION_108,Negativa de integrar el Jurado de Capitanes,TRUE
+TIPO_INFRACCION_109,Fondeo no autorizado de nave que conduce explosivos,TRUE
+TIPO_INFRACCION_110,Navegación a velocidad excesiva,TRUE
+TIPO_INFRACCION_111,Infracción del Art. 225,TRUE
+TIPO_INFRACCION_112,Falta del requisito de zarpe,TRUE
+TIPO_INFRACCION_113,Desembarco de enfermos,TRUE
+TIPO_INFRACCION_114,Inobservancia del turno en la zarpa,TRUE
+TIPO_INFRACCION_115,Amarre de embarcaciones o boyas o balizas del servicio de navegación,TRUE
+TIPO_INFRACCION_116,Daños de las boyas o balizas del servicio de navegación,TRUE
+TIPO_INFRACCION_117,Falta de precauciones para impedir acceso a personas extrañas a buques del tráfico internacional,TRUE
+TIPO_INFRACCION_118,Inmigración de tripulantes,TRUE
+TIPO_INFRACCION_119,Construcción o reparación clandestina de embarcaciones de más de veinticinco toneladas,TRUE
+TIPO_INFRACCION_120,Impedimento de zarpe emitido por un juzgado,TRUE
+TIPO_INFRACCION_121,Por negligencia en el Servicio,TRUE
+TIPO_INFRACCION_122,Por Mala Conducta,TRUE
+TIPO_INFRACCION_123,Reincidencia en Mala Conducta,TRUE
+TIPO_INFRACCION_124,Por haber recibido sentencia condenatoria,TRUE
+TIPO_INFRACCION_125,Por padecer de enfermedad incompatible con el ejercicio de laprofesión,TRUE
+TIPO_INFRACCION_126,"Abandono del barco, contravencion conforme a lo prescrito en el  Art 112 del Reglamento a la Autoridad Maritima",TRUE
+TIPO_INFRACCION_127,Documentación sin sustento,TRUE

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_personal_maritimo_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.personal.maritimo</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Gentemar" data-key="gente_mar"
+                    string="Gente de mar">
+                    <h2>Permisos y dispensas por jerarquía</h2>
+                    <div class="row mt16 o_settings_container" id="permisos_dispensas_management" >
+                        <div class="col-12 " id="permisos_dispensas_of_request_setting_container" >
+                            <div>
+                                <div>
+                                    <span >Días permitidos por permisos provisionales: <field name="dias_disponibles_permiso_provisional"/></span>
+                                    <span >Días permitidos por permisos dispensas: <field name="dias_disponibles_dispensa"/></span>
+                                </div>
+                           </div>
+                       </div>
+                   </div>
+                    <h2>DIRSAN</h2>
+                    <div class="row mt16 o_settings_container" id="dirsan_management" >
+                        <div class="col-12 col-lg-12 " id="dirsan_of_request_setting_container" >
+                            <div>
+                                <div>
+                                    <span >DIRSAN URL: <field name="dirsan_url"/></span>
+                                </div>
+                           </div>
+                       </div>
+                   </div>
+                    <h2>Fondo de Matrícula</h2>
+                    <div class="row mt16 o_settings_container" id="imagen_fondo_matricula">
+                        <div class="col-12 " id="imagen_fondo_matricula_of_request_setting_container">
+                            <div>
+                                <div>
+                                    <span>Imagen de fondo de matrícula: <field name="imagen_fondo_matricula" widget="image" options='{"size": [150, 150]}'/></span>
+                                </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </xpath>
+        </field>
+    </record>
+
+    <record id="action_tramite_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_personal_maritimo_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'personal_maritimo'}</field>
+    </record>
+
+</odoo>

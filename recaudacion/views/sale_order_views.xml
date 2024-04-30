@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_recaudacion_tree" model="ir.ui.view">
+        <field name="name">Sale Order</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <field name="activity_ids" position="replace">
+                <field name="recaudacion_estado"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_sale_order_recaudacion_form" model="ir.ui.view">
+        <field name="name">Sale Order</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="date_order" position="after">
+                <field name="recaudacion_estado"/>
+                <field name="total_pagado"/>
+            </field>
+            <xpath expr="//notebook/page[@name='order_lines']" position="after">
+                <page string="Pagos" name="order_pagos">
+                    <field name="payment_ids" nolabel="1">
+                        <tree string="Pagos">
+                            <field name="sale_id"/>
+                            <field name="payment_id"/>
+                            <field name="monto_abonado" sum="Total"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
