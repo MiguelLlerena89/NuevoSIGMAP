@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_base_sigmap_settings_report_background_view_form_1" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.base.report_background.sigmap</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="fondo_documento" data-key="document_background"
+                    string="Fondo Documentos">
+                    <h2>Fondo Documentos</h2>
+                    <div class="row mt16 o_settings_container" id="imagen_fondo_documento">
+                        <div class="col-12 " id="imagen_fondo_documento_of_request_setting_container">
+                            <div>
+                                <div>
+                                    <span>Imagen de fondo documentos (JPEG): <field name="imagen_fondo_documento" widget="image" options='{"size": [150, 150]}'/></span>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div>
+                                <div>
+                                    Informes que NO requieren imagen de fondo
+                                </div>
+                                <field name="report_no_background_ids" widget="many2many_tags" options="{'not_delete': True}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </xpath>
+        </field>
+    </record>
+
+</odoo>

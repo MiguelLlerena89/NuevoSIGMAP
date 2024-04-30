@@ -1,0 +1,11 @@
+id,name,tipo,active
+tipo_trafico_01,Internacional,INT,True
+tipo_trafico_02,Fluvial,NAC,True
+tipo_trafico_03,Deportivo,NAC,True
+tipo_trafico_04,Tierra,NAC,True
+tipo_trafico_05,Pesqueros,NAC,True
+tipo_trafico_06,Turismo,NAC,True
+tipo_trafico_07,Nacional,NAC,True
+tipo_trafico_08,Lacustre,NAC,True
+tipo_trafico_09,Costanero,NAC,True
+tipo_trafico_10,De Bahia,NAC,True

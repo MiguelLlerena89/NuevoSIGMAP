@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+         <record id="config_base_sigmap_dinarp_url" model="ir.config_parameter">
+            <field name="key">base_sigmap.dinarp_url</field>
+            <field name="value">https://interoperabilidad.dinardap.gob.ec/interoperador-v2?wsdl</field>
+        </record>
+    </data>
+</odoo>

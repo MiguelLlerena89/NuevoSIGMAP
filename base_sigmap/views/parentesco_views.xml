@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_res_partner_parentesco_form" model="ir.ui.view">
+        <field name="name">res.partner.parentesco.form</field>
+        <field name="model">res.partner.parentesco</field>
+        <field name="arch" type="xml">
+            <form string="Parentesco con contacto">
+                <sheet>
+                    <group col="4">
+                        <field name="name" placeholder="e.g. &quot;Padre&quot;"/>
+                        <field name="active" widget="boolean_toggle"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_res_partner_parentesco_tree" model="ir.ui.view">
+        <field name="name">res.partner.parentesco.tree</field>
+        <field name="model">res.partner.parentesco</field>
+        <field name="arch" type="xml">
+            <tree string="Parentesco" editable="bottom">
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_res_partner_parentesco" model="ir.actions.act_window">
+        <field name="name">Parentesco de contacto</field>
+        <field name="res_model">res.partner.parentesco</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_res_partner_parentesco_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo parentesco de contacto
+            </p>
+        </field>
+    </record>
+
+    <!-- Partner Parentesco Contact Menu -->
+    <menuitem id="menu_res_partner_parentesco"
+              name="Parentesco de contacto"
+              parent="contacts.res_partner_menu_config"
+              action="action_res_partner_parentesco"
+              sequence="3"/>
+
+</odoo>

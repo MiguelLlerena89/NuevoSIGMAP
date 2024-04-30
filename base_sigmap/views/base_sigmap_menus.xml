@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem name="Sigmap"
+      id="menu_sigmap"
+      groups="account.group_account_readonly,account.group_account_invoice"
+      sequence="10">
+        <menuitem id="menu_sigmap_personas" name="Partners" sequence="1">
+          <menuitem id="menu_sigmap_base_res_partner_action"
+            name="Partners"
+            action="base_res_partner_nave_action_menu"
+            sequence="1"/>
+          <menuitem id="menu_sigmap_personas_ships" name="Ships" sequence="1">
+            <menuitem id="menu_sigmap_personas_agencia_action"
+              name="Shipping Agencies"
+              action="sigmap_agencia_naviera_action_menu"
+              sequence="1"/>
+            <menuitem id="menu_sigmap_personas_propietarios_action"
+              name="Shipping Owners"
+              action="sigmap_propietario_action_menu"
+              sequence="2"/>
+            <menuitem id="menu_sigmap_personas_armadores_action"
+              name="Shipping Charterers"
+              action="sigmap_armador_action_menu"
+              sequence="3"/>
+          </menuitem>
+        </menuitem>
+        <menuitem id="menu_sigmap_settings" name="Settings" sequence="2">
+            <menuitem id="menu_sigmap_settings_mantainers" name="Mantainers" sequence="1">
+              <menuitem id="menu_sigmap_settings_tipo_astillero_action"
+                name="Shipyard Types"
+                action="sigmap_tipo_astillero_action_menu"
+                sequence="1"/>
+              <menuitem id="menu_sigmap_settings_puerto_registro_action"
+                name="Ports"
+                action="sigmap_puerto_action_menu"
+                sequence="2"/>
+              <!--menuitem id="menu_sigmap_settings_tipo_fletamento_action"
+                name="Charter Types"
+                action="sigmap_tipo_fletamento_action_menu"
+                sequence="3"/-->
+            </menuitem>
+            <menuitem id="menu_sigmap_settings_main" name="Main" sequence="2">
+              <!--menuitem id="menu_sigmap_settings_reparto_tipo_action"
+                name="Distribution Types"
+                action="sigmap_reparto_tipo_action_menu"
+                sequence="1"/>
+              <menuitem id="menu_sigmap_settings_reparto_action"
+                name="Distribution"
+                action="sigmap_reparto_action_menu"
+                sequence="2"/-->
+              <menuitem id="menu_sigmap_settings_tipo_documento_action"
+                name="Tipo de Documentos"
+                action="action_sigmap_tipo_documento"
+                sequence="3"/>
+              <menuitem id="menu_sigmap_settings_tipo_secuencia_action"
+                name="Tipo Secuencia para Documentos"
+                action="action_sigmap_tipo_secuencia"
+                sequence="4"/>
+            </menuitem>              
+        </menuitem>
+    </menuitem>
+</odoo>

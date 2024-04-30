@@ -1,0 +1,4 @@
+id,name,codigo,active
+tipo_construccion_constr,Construcción,cons,True
+tipo_construccion_modifi,Modificación,modi,True
+tipo_construccion_desgua,Desguace,desg,True

@@ -1,0 +1,3081 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* base_sigmap
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0-20230925\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-09 00:36+0000\n"
+"PO-Revision-Date: 2023-11-09 00:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__type
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__type
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__type
+msgid ""
+"- Contact: Use this to organize the contact details of employees of a given company (e.g. CEO, CFO, ...).\n"
+"- Invoice Address : Preferred address for all invoices. Selected by default when you invoice an order that belongs to this company.\n"
+"- Delivery Address : Preferred address for all deliveries. Selected by default when you deliver an order that belongs to this company.\n"
+"- Private: Private addresses are only visible by authorized users and contain sensitive data (employee home addresses, ...).\n"
+"- Other: Other address for the company (e.g. subsidiary, ...)"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+msgid "<span class=\"oe_read_only\"> - </span>"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__property_account_payable_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__property_account_payable_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__property_account_payable_id
+msgid "Account Payable"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__property_account_receivable_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__property_account_receivable_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__property_account_receivable_id
+msgid "Account Receivable"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_needaction
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#, python-format
+msgid "Active"
+msgstr "Activo"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__active_lang_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__active_lang_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__active_lang_count
+msgid "Active Lang Count"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: code:addons/base_sigmap/models/armador.py:0
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#: code:addons/base_sigmap/models/owner_matricula.py:0
+#: code:addons/base_sigmap/models/propietario.py:0
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: code:addons/base_sigmap/models/reparto.py:0
+#: code:addons/base_sigmap/models/reparto_tipo.py:0
+#: code:addons/base_sigmap/models/tipo_astillero.py:0
+#: code:addons/base_sigmap/models/tipo_fletamento.py:0
+#: code:addons/base_sigmap/models/tipo_trafico.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__active
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__active
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__active
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__active
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__active
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__active
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__active
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__active
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__active
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__active
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__active
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__active
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__active
+#, python-format
+msgid "Active?"
+msgstr "Activo?"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__activity_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__activity_exception_decoration
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__activity_state
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__activity_type_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_res_partner__es_activo
+#: model:ir.model.fields,field_description:base_sigmap.field_res_users__es_activo
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__es_activo
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__es_activo
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__es_activo
+#, python-format
+msgid "Activo?"
+msgstr "Activo?"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__additional_info
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__additional_info
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__additional_info
+msgid "Additional info"
+msgstr "Información Adicional"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__type
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__type
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__type
+msgid "Address Type"
+msgstr "Tipo de Dirección"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_agencia_naviera_puerto
+#, python-format
+msgid "Agencies and Ports"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__lang
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__lang
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__lang
+msgid ""
+"All the emails and documents sent to this contact will be translated in this"
+" language."
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_attachment_count
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__avatar_1920
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__avatar_1920
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__avatar_1920
+msgid "Avatar"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__avatar_1024
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__avatar_1024
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__avatar_1024
+msgid "Avatar 1024"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__avatar_128
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__avatar_128
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__avatar_128
+msgid "Avatar 128"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__avatar_256
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__avatar_256
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__avatar_256
+msgid "Avatar 256"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__avatar_512
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__avatar_512
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__avatar_512
+msgid "Avatar 512"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__bank_account_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__bank_account_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__bank_account_count
+msgid "Bank"
+msgstr "Banco"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__bank_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__bank_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__bank_ids
+msgid "Banks"
+msgstr "Bancos"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__barcode
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__barcode
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__barcode
+msgid "Barcode"
+msgstr "Código de Barras"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__is_blacklisted
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__is_blacklisted
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__is_blacklisted
+msgid "Blacklist"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__mobile_blacklisted
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__mobile_blacklisted
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__mobile_blacklisted
+msgid "Blacklisted Phone Is Mobile"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__phone_blacklisted
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__phone_blacklisted
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__phone_blacklisted
+msgid "Blacklisted Phone is Phone"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_bounce
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_bounce
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_bounce
+msgid "Bounce"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__channel_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__channel_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__channel_ids
+msgid "Channels"
+msgstr "Canales"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/tipo_fletamento.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_tipo_fletamento
+#, python-format
+msgid "Charter Type"
+msgstr "Tipo Fletamento"
+
+#. module: base_sigmap
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_settings_tipo_fletamento_action
+msgid "Charter Types"
+msgstr "Tipos de Fletamento"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__is_company
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__is_company
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__employee
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__employee
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__employee
+msgid "Check this box if this contact is an Employee."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__country_enforce_cities
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__country_enforce_cities
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__country_enforce_cities
+msgid ""
+"Check this box to ensure every address created in that country has a 'City' "
+"chosen in the list of the country's cities."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__city
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__city_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__city
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__city_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__city
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__city_id
+msgid "City"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: code:addons/base_sigmap/models/reparto.py:0
+#: code:addons/base_sigmap/models/tipo_astillero.py:0
+#: code:addons/base_sigmap/models/tipo_fletamento.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__codigo
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__codigo
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__codigo
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__codigo
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__codigo
+#, python-format
+msgid "Code"
+msgstr "Código"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__color
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__color
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__color
+msgid "Color Index"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__commercial_partner_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__commercial_partner_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__commercial_partner_id
+msgid "Commercial Entity"
+msgstr "Entidad Comercial"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__ref_company_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__ref_company_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__ref_company_ids
+msgid "Companies that refers to partner"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__company_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__company_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__company_type__company
+#, python-format
+msgid "Company"
+msgstr "Jurídica"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__company_registry
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__company_registry
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__company_registry
+msgid "Company ID"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__company_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__company_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__company_name
+msgid "Company Name"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__commercial_company_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__commercial_company_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__commercial_company_name
+msgid "Company Name Entity"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_res_partner__tipo_juridica
+#: model:ir.model.fields,field_description:base_sigmap.field_res_users__tipo_juridica
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__tipo_juridica
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__tipo_juridica
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__tipo_juridica
+#, python-format
+msgid "Company Nature"
+msgstr "Tipo de Sociedad"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_res_partner__company_type
+#: model:ir.model.fields,field_description:base_sigmap.field_res_users__company_type
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__company_type
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__company_type
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__company_type
+msgid "Company Type"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__partner_gid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__partner_gid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__partner_gid
+msgid "Company database ID"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__contact_address
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__contact_address
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__contact_address
+msgid "Complete Address"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model,name:base_sigmap.model_res_partner
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__child_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__child_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__child_ids
+msgid "Contact"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__message_bounce
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__message_bounce
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__message_bounce
+msgid "Counter of the number of bounced emails for this contact"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_res_partner__country_id
+#: model:ir.model.fields,field_description:base_sigmap.field_res_users__country_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__country_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__country_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__country_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__country_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__country_id
+#, python-format
+msgid "Country"
+msgstr "País"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__country_code
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__country_code
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__country_code
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__country_code
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__country_code
+#, python-format
+msgid "Country Code"
+msgstr "Código del País"
+
+#. module: base_sigmap
+#: model_terms:ir.actions.act_window,help:base_sigmap.base_res_partner_nave_action_menu
+msgid "Create a Contact in your address book"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.actions.act_window,help:base_sigmap.sigmap_puerto_action_menu
+msgid "Create a new Port"
+msgstr "Crea un nuevo Puerto"
+
+#. module: base_sigmap
+#: model_terms:ir.actions.act_window,help:base_sigmap.sigmap_armador_action_menu
+msgid "Create a new Ship Charterer"
+msgstr "Crea un nuevo Armador"
+
+#. module: base_sigmap
+#: model_terms:ir.actions.act_window,help:base_sigmap.sigmap_agencia_naviera_action_menu
+msgid "Create a new Shipping Agency"
+msgstr "Crea una nueva Agencia Naviera"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_updated_by__create_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_updated_by__create_date
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__create_date
+msgid "Created on"
+msgstr "Fecha creación"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__credit_limit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__credit_limit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__credit_limit
+msgid "Credit Limit"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__credit_limit
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__credit_limit
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__credit_limit
+msgid "Credit limit specific to this partner."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__currency_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__currency_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__property_payment_term_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__property_payment_term_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__property_payment_term_id
+msgid "Customer Payment Terms"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__customer_rank
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__customer_rank
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__customer_rank
+msgid "Customer Rank"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_res_partner__birthday
+#: model:ir.model.fields,field_description:base_sigmap.field_res_users__birthday
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__birthday
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__birthday
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__birthday
+#, python-format
+msgid "Date of Birth"
+msgstr "Fecha de Nacimiento"
+
+#. module: base_sigmap
+#: model_terms:ir.actions.act_window,help:base_sigmap.sigmap_propietario_action_menu
+msgid "Define un nuevo Propietario"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.actions.act_window,help:base_sigmap.sigmap_reparto_action_menu
+msgid "Define un nuevo Reparto"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.actions.act_window,help:base_sigmap.sigmap_tipo_astillero_action_menu
+msgid "Define un nuevo Tipo de Astillero"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.actions.act_window,help:base_sigmap.sigmap_tipo_fletamento_action_menu
+msgid "Define un nuevo Tipo de Fletamento"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.actions.act_window,help:base_sigmap.sigmap_reparto_tipo_action_menu
+msgid "Define un nuevo Tipo de Reparto"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__trust
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__trust
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__trust
+msgid "Degree of trust you have in this debtor"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/tipo_fletamento.py:0
+#: code:addons/base_sigmap/models/tipo_trafico.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__name
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__name
+#, python-format
+msgid "Description"
+msgstr "Descripción"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_updated_by__display_name
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/reparto.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_reparto
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_settings_reparto_action
+#, python-format
+msgid "Distribution"
+msgstr "Reparto"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/reparto.py:0
+#: code:addons/base_sigmap/models/reparto_tipo.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_reparto_tipo
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__tipo_id
+#, python-format
+msgid "Distribution Type"
+msgstr "Tipo Reparto"
+
+#. module: base_sigmap
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_settings_reparto_tipo_action
+msgid "Distribution Types"
+msgstr "Tipos de Reparto"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__estado_civil__divorciado
+#, python-format
+msgid "Divorced"
+msgstr "Divorciado(a)"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#: code:addons/base_sigmap/models/owner_matricula.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__codigo_documento
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__codigo_documento
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__codigo_documento
+#, python-format
+msgid "Document Code"
+msgstr "Código Documento"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__street_number2
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__street_number2
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__street_number2
+msgid "Door"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__duplicated_bank_account_partners_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__duplicated_bank_account_partners_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__duplicated_bank_account_partners_count
+msgid "Duplicated Bank Account Partners Count"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__domain
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__domain
+#, python-format
+msgid "E.g. https://www.mydomain.com"
+msgstr "p. ej. https://www.midominio.com"
+
+#. module: base_sigmap
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_agencia_naviera__tipo_agencia__est
+msgid "EST"
+msgstr "EST"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__partner_share
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__partner_share
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__partner_share
+msgid ""
+"Either customer (not a user), either shared user. Indicated the current "
+"partner is a customer without access or with a limited access created for "
+"sharing data."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__email
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__email
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__email
+msgid "Email"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__employee
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__employee
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__employee
+msgid "Employee"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__country_enforce_cities
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__country_enforce_cities
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__country_enforce_cities
+msgid "Enforce Cities"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__l10n_ec_vat_validation
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__l10n_ec_vat_validation
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__l10n_ec_vat_validation
+msgid "Error message when validating the Ecuadorian VAT"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#, python-format
+msgid "Expired"
+msgstr "Expirado"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#: code:addons/base_sigmap/models/owner_matricula.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__fecha_caducidad
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__fecha_caducidad
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__fecha_caducidad
+#, python-format
+msgid "Expiry Date"
+msgstr "Fecha Expiración"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__genero__f
+#, python-format
+msgid "Female"
+msgstr "Femenino"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__phone_sanitized
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__phone_sanitized
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__phone_sanitized
+msgid ""
+"Field used to store sanitized phone number. Helps speeding up searches and "
+"comparisons."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__property_account_position_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__property_account_position_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__property_account_position_id
+msgid "Fiscal Position"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__image_url
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__image_url
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__image_url
+msgid "Flag"
+msgstr "Bandera País"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_follower_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_partner_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_agencia__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_armador__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_owner_matricula__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto_tipo__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_astillero__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_fletamento__activity_type_icon
+#: model:ir.model.fields,help:base_sigmap.field_tipo_trafico__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#: code:addons/base_sigmap/models/owner_matricula.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__numero_formato
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__numero_formato
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__numero_formato
+#, python-format
+msgid "Format Number"
+msgstr "Número Formato"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__email_formatted
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__email_formatted
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__email_formatted
+msgid "Format email address \"Name <email@domain>\""
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__email_formatted
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__email_formatted
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__email_formatted
+msgid "Formatted Email"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__estado_civil__union_libre
+#, python-format
+msgid "Free Union"
+msgstr "Unión Libre"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_res_partner__genero
+#: model:ir.model.fields,field_description:base_sigmap.field_res_users__genero
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__genero
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__genero
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__genero
+#, python-format
+msgid "Gender"
+msgstr "Género"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__partner_latitude
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__partner_latitude
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__partner_latitude
+msgid "Geo Latitude"
+msgstr "Latitud"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__partner_longitude
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__partner_longitude
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__partner_longitude
+msgid "Geo Longitude"
+msgstr "Longitud"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__has_message
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__has_unreconciled_entries
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__has_unreconciled_entries
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__has_unreconciled_entries
+msgid "Has Unreconciled Entries"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__street_number
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__street_number
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__street_number
+msgid "House"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_updated_by__id
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__id
+msgid "ID"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__im_status
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__im_status
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__im_status
+msgid "IM Status"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/tipo_trafico.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__tipo_trafico__tipo__int
+#, python-format
+msgid "INTERNATIONAL"
+msgstr "Internacional"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__activity_exception_icon
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_agencia__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_armador__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_owner_matricula__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto_tipo__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_astillero__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_fletamento__activity_exception_icon
+#: model:ir.model.fields,help:base_sigmap.field_tipo_trafico__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__vat
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__vat
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__vat
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+msgid "Identification Number"
+msgstr "Número Identificación"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__vat
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__vat
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__vat
+msgid "Identification Number for selected type"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__l10n_latam_identification_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__l10n_latam_identification_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__l10n_latam_identification_type_id
+msgid "Identification Type"
+msgstr "Tipo Identificación"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_agencia__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_armador__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_owner_matricula__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto_tipo__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_astillero__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_fletamento__message_needaction
+#: model:ir.model.fields,help:base_sigmap.field_tipo_trafico__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera_puerto__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera_puerto__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_departamento__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_departamento__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_documento_tipo__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_documento_tipo__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_agencia__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_agencia__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_armador__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_armador__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_owner_matricula__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_owner_matricula__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto_tipo__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto_tipo__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_astillero__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_astillero__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_fletamento__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_fletamento__message_has_sms_error
+#: model:ir.model.fields,help:base_sigmap.field_tipo_trafico__message_has_error
+#: model:ir.model.fields,help:base_sigmap.field_tipo_trafico__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__team_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__team_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__team_id
+msgid ""
+"If set, this Sales Team will be used for sales and assignments related to "
+"this partner"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__is_blacklisted
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__is_blacklisted
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__is_blacklisted
+msgid ""
+"If the email address is on the blacklist, the contact won't receive mass "
+"mailing anymore, from any list"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__phone_sanitized_blacklisted
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__phone_sanitized_blacklisted
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__phone_sanitized_blacklisted
+msgid ""
+"If the sanitized phone number is on the blacklist, the contact won't receive"
+" mass mailing sms anymore, from any list"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__image_1920
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__image_1920
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__image_1920
+msgid "Image"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__image_1024
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__image_1024
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__image_1024
+msgid "Image 1024"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__image_128
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__image_128
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__image_128
+msgid "Image 128"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__image_256
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__image_256
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__image_256
+msgid "Image 256"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__image_512
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__image_512
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__image_512
+msgid "Image 512"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_res_partner__image_firma
+#: model:ir.model.fields,field_description:base_sigmap.field_res_users__image_firma
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__image_firma
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__image_firma
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__image_firma
+msgid "Imagen de firma"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__mobile_blacklisted
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__mobile_blacklisted
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__mobile_blacklisted
+msgid ""
+"Indicates if a blacklisted sanitized phone number is a mobile number. Helps "
+"distinguish which number is blacklisted             when there is both a "
+"mobile and phone field in a model."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__phone_blacklisted
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__phone_blacklisted
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__phone_blacklisted
+msgid ""
+"Indicates if a blacklisted sanitized phone number is a phone number. Helps "
+"distinguish which number is blacklisted             when there is both a "
+"mobile and phone field in a model."
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__company_type__person
+#, python-format
+msgid "Individual"
+msgstr "Natural"
+
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__industry_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__industry_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__industry_id
+msgid "Industry"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/propietario.py:0
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__partner_id
+#, python-format
+msgid "Information of the partner related to the Ship Owner"
+msgstr "Información personal del Propietario"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/armador.py:0
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__partner_id
+#, python-format
+msgid "Information of the partner related to the Ship Sharterer"
+msgstr "Información personal del Armador"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__partner_id
+#, python-format
+msgid "Information of the partner related to the Shipping Agency"
+msgstr "Información personal de la Agencia Naviera"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: code:addons/base_sigmap/models/tipo_trafico.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_puerto__tipo_trafico__int
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_puerto_registro__tipo_trafico__int
+#: model:ir.model.fields.selection,name:base_sigmap.selection__tipo_trafico__tipo__int
+#, python-format
+msgid "International"
+msgstr "Internacional"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__invoice_warn
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__invoice_warn
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__invoice_warn
+msgid "Invoice"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__invoice_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__invoice_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__invoice_ids
+msgid "Invoices"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_is_follower
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__is_public
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__is_public
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__is_public
+msgid "Is Public"
+msgstr "es Pública"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__is_company
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__is_company
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__is_company
+msgid "Is a Company"
+msgstr "es Compañía"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#: code:addons/base_sigmap/models/owner_matricula.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__fecha_emision
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__fecha_emision
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__fecha_emision
+#, python-format
+msgid "Issue Date"
+msgstr "Emisión"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__function
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__function
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__function
+msgid "Job Position"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__journal_item_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__journal_item_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__journal_item_count
+msgid "Journal Items"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/reparto.py:0
+#: model:ir.model.constraint,message:base_sigmap.constraint_sigmap_reparto_siglas_uniq
+#, python-format
+msgid "La sigla debe ser única"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__lang
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__lang
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__lang
+msgid "Language"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera_puerto____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_cargo____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_departamento____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_documento_tipo____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_updated_by____last_update
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico____last_update
+msgid "Last Modified on"
+msgstr "Fecha Modificación"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera_puerto__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_cargo__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_departamento__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_documento_tipo__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_updated_by__write_uid
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__write_uid
+msgid "Last Updated by"
+msgstr "Mddificado por"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera_puerto__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_cargo__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_departamento__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_documento_tipo__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_updated_by__write_date
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__write_date
+msgid "Last Updated on"
+msgstr "Fecha Modificación"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/owner_matricula.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__fecha_ultima_impresion
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__fecha_ultima_impresion
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__fecha_ultima_impresion
+#, python-format
+msgid "Last printed Date"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__last_time_entries_checked
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__last_time_entries_checked
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__last_time_entries_checked
+msgid ""
+"Last time the invoices & payments matching was performed for this partner. "
+"It is set either if there's not at least an unreconciled debit and an "
+"unreconciled credit or if you click the \"Done\" button."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__last_time_entries_checked
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__last_time_entries_checked
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__last_time_entries_checked
+msgid "Latest Invoices & Payments Matching Date"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__latitude
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__latitude
+#, python-format
+msgid "Latitude"
+msgstr "Latitud"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__representante_legal_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__representante_legal_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__representante_legal_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__representante_legal_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__representante_legal_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__representante_legal_name
+msgid "Legal Representative"
+msgstr "Representante Legal"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__longitude
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__longitude
+#, python-format
+msgid "Longitude"
+msgstr "Longitud"
+
+#. module: base_sigmap
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_agencia_naviera__tipo_agencia__mue
+msgid "MUE"
+msgstr "MUE"
+
+#. module: base_sigmap
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_settings_main
+msgid "Main"
+msgstr "Principal"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_main_attachment_id
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_settings_mantainers
+msgid "Mantainers"
+msgstr "Mantenedores"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__genero__m
+#, python-format
+msgid "Male"
+msgstr "Masculino"
+
+#. module: base_sigmap
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_settings_mantainers
+msgid "Mantainers"
+msgstr "Mantenedores"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_res_partner__estado_civil
+#: model:ir.model.fields,field_description:base_sigmap.field_res_users__estado_civil
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__estado_civil
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__estado_civil
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__estado_civil
+#, python-format
+msgid "Marital Status"
+msgstr "Estado Civil"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__estado_civil__casado
+#, python-format
+msgid "Married"
+msgstr "Casado(a)"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera_puerto__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_departamento__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_documento_tipo__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_has_error
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__invoice_warn_msg
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__invoice_warn_msg
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__invoice_warn_msg
+msgid "Message for Invoice"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__sale_warn_msg
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__sale_warn_msg
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__sale_warn_msg
+msgid "Message for Sales Order"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera_puerto__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_departamento__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_documento_tipo__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__mobile
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__mobile
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__mobile
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__my_activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/tipo_trafico.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__tipo_trafico__tipo__nac
+#, python-format
+msgid "NATIONAL"
+msgstr "Nacional"
+
+#. module: base_sigmap
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_agencia_naviera__tipo_agencia__nav
+msgid "NAV"
+msgstr "NAV"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: code:addons/base_sigmap/models/reparto.py:0
+#: code:addons/base_sigmap/models/reparto_tipo.py:0
+#: code:addons/base_sigmap/models/tipo_astillero.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__name
+#, python-format
+msgid "Name"
+msgstr "Nombre"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__representante_legal_name
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__representante_legal_name
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__representante_legal_name
+msgid "Name of the legal representative"
+msgstr "Nombre del representante legal"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: code:addons/base_sigmap/models/tipo_trafico.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_puerto__tipo_trafico__nac
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_puerto_registro__tipo_trafico__nac
+#: model:ir.model.fields.selection,name:base_sigmap.selection__tipo_trafico__tipo__nac
+#, python-format
+msgid "National"
+msgstr "Nacional"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_puerto__tipo_trafico__amb
+#, python-format
+msgid "National - International"
+msgstr "Nacional - Internacional"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#, python-format
+msgid "New"
+msgstr "Nuevo"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#, python-format
+msgid "New registration number:"
+msgstr "Nueva matrícula:"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__activity_date_deadline
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__activity_summary
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__activity_type_id
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__email_normalized
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__email_normalized
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__email_normalized
+msgid "Normalized Email"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__comment
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__comment
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__comment
+msgid "Notes"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+msgid "Number"
+msgstr "Número"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_needaction_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_has_error_counter
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_agencia__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_armador__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_owner_matricula__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto_tipo__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_astillero__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_fletamento__message_needaction_counter
+#: model:ir.model.fields,help:base_sigmap.field_tipo_trafico__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_agencia__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_armador__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_owner_matricula__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto_tipo__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_astillero__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_fletamento__message_has_error_counter
+#: model:ir.model.fields,help:base_sigmap.field_tipo_trafico__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/propietario.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__omi_number
+#, python-format
+msgid "OMI number"
+msgstr "Número OMI"
+
+#. module: base_sigmap
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__genero__0
+msgid "OTROS"
+msgstr "Otros"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__parent_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__parent_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__parent_name
+msgid "Parent name"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_res_partner__parentesco_id
+#: model:ir.model.fields,field_description:base_sigmap.field_res_users__parentesco_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__parentesco_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__parentesco_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__parentesco_id
+msgid "Parentesco"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__l10n_ec_parish_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__l10n_ec_parish_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__l10n_ec_parish_id
+msgid "Parish"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__contract_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__contract_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__contract_ids
+msgid "Partner Contracts"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__use_partner_credit_limit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__use_partner_credit_limit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__use_partner_credit_limit
+msgid "Partner Limit"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__partner_is_valid
+#, python-format
+msgid "Partner is valid?"
+msgstr "Persona es válida?"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__same_company_registry_partner_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__same_company_registry_partner_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__same_company_registry_partner_id
+msgid "Partner with same Company Registry"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__same_vat_partner_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__same_vat_partner_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__same_vat_partner_id
+msgid "Partner with same Tax ID"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.actions.act_window,name:base_sigmap.base_res_partner_nave_action_menu
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_base_res_partner_action
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_personas
+msgid "Partners"
+msgstr "Personas"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__debit_limit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__debit_limit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__debit_limit
+msgid "Payable Limit"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__payment_token_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__payment_token_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__payment_token_count
+msgid "Payment Token Count"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__payment_token_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__payment_token_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__payment_token_ids
+msgid "Payment Tokens"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__phone
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__phone
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__phone
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__phone_sanitized_blacklisted
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__phone_sanitized_blacklisted
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__phone_sanitized_blacklisted
+msgid "Phone Blacklisted"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__phone_mobile_search
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__phone_mobile_search
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__phone_mobile_search
+msgid "Phone/Mobile"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_res_partner__pkey_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_res_users__pkey_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__pkey_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__pkey_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__pkey_sigmap
+msgid "Pkey del sigmap anterior"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_puerto
+#: model:ir.model,name:base_sigmap.model_sigmap_puerto_registro
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera_puerto__puerto_id
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_puerto_form
+#, python-format
+msgid "Port"
+msgstr "Puerto"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera_puerto__puerto_id
+#, python-format
+msgid "Puerto habilitado"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#: model:ir.actions.act_window,name:base_sigmap.sigmap_puerto_action_menu
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__agencia_puerto_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__puertos_activos
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_settings_puerto_registro_action
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_puerto_tree
+#, python-format
+msgid "Ports"
+msgstr "Puertos"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__property_product_pricelist
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__property_product_pricelist
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__property_product_pricelist
+msgid "Pricelist"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/owner_matricula.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__num_impresiones
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__num_impresiones
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__num_impresiones
+#, python-format
+msgid "Printed times number"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__tipo_juridica__privada
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_puerto__tipo__pri
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_puerto_registro__tipo__pri
+#, python-format
+msgid "Private"
+msgstr "Privada"
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_propietario_form
+msgid "Propietario"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.actions.act_window,name:base_sigmap.sigmap_propietario_action_menu
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_propietario_tree
+msgid "Propietarios"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__tipo_juridica__publica
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_puerto__tipo__pub
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_puerto_registro__tipo__pub
+#, python-format
+msgid "Public"
+msgstr "Pública"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__ref
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__ref
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__ref
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__matricula
+#, python-format
+msgid "Registration Number Code"
+msgstr "Matrícula"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__matricula_caducidad
+#, python-format
+msgid "Registration Number Expiry"
+msgstr "Matrícula caduca"
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_armador_form
+msgid "Registration Number History"
+msgstr "Histórico Matrículas"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/owner_matricula.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_owner_matricula
+#, python-format
+msgid "Registration Number Owner"
+msgstr "Propietario Matrícula"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__matricula_active
+#, python-format
+msgid "Registration Number Status"
+msgstr "Estado Matrícula"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#, python-format
+msgid "Registration number deleted:"
+msgstr "Matrícula borrada:"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#, python-format
+msgid "Registration number updated:"
+msgstr "Matrícula actualizada:"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: code:addons/base_sigmap/models/armador.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__matricula_agencia_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__matricula_armador_ids
+#, python-format
+msgid "Registration numbers"
+msgstr "Matrículas"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__parent_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__parent_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__parent_id
+msgid "Related Company"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/owner_matricula.py:0
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__reparto_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__reparto_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__reparto_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__reparto_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__reparto_id
+#, python-format
+msgid "Related Distribution"
+msgstr "Reparto"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#: code:addons/base_sigmap/models/matricula_armador.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__owner_matricula_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__owner_matricula_id
+#, python-format
+msgid "Related Registration Number Registry"
+msgstr "Registro de matrícula"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: code:addons/base_sigmap/models/armador.py:0
+#: code:addons/base_sigmap/models/propietario.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__partner_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__partner_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__partner_id
+#, python-format
+msgid "Related partner"
+msgstr "Persona"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_armador.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_matricula_armador
+#, python-format
+msgid "Relation between the registration number and the Ship Charterer"
+msgstr "Relación entre matrícula y Armador"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_matricula_agencia
+#, python-format
+msgid "Relation between the registration number and the Shipping Agency"
+msgstr "Relación entre matrícula y Agencias Navieras"
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_reparto_form
+msgid "Reparto"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.actions.act_window,name:base_sigmap.sigmap_reparto_action_menu
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_reparto_tree
+msgid "Repartos"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__activity_user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__message_has_sms_error
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__sale_order_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__sale_order_count
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__sale_order_count
+msgid "Sale Order Count"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__sale_order_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__sale_order_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__sale_order_ids
+msgid "Sales Order"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__team_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__team_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__team_id
+msgid "Sales Team"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__sale_warn
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__sale_warn
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__sale_warn
+msgid "Sales Warnings"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__user_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__user_id
+msgid "Salesperson"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__phone_sanitized
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__phone_sanitized
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__phone_sanitized
+msgid "Sanitized Number"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+msgid ""
+"Select or register a legal entity. You can search by name or identification "
+"number."
+msgstr ""
+"Seleccione o cree una persona jurídica. Puede buscar por nombre o número de "
+"identificación."
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_armador_form
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_propietario_form
+msgid ""
+"Select or register a partner. You can search by name or identification "
+"number."
+msgstr ""
+"Seleccione o cree una persona. Puede buscar por nombre o número de "
+"identificación."
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__invoice_warn
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__sale_warn
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__invoice_warn
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__sale_warn
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__invoice_warn
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__sale_warn
+msgid ""
+"Selecting the \"Warning\" option will notify user with the message, "
+"Selecting \"Blocking Message\" will throw an exception with the message and "
+"block the flow. The Message has to be written in the next field."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__self
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__self
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__self
+msgid "Self"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_settings
+msgid "Settings"
+msgstr "Configuración"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__partner_share
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__partner_share
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__partner_share
+msgid "Share Partner"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_armador.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__armador_id
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_armador_form
+#, python-format
+msgid "Ship Charterer"
+msgstr "Armador"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_armador.py:0
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_armador__armador_id
+#, python-format
+msgid "Ship Charterer to whom the registration number belongs"
+msgstr "Armador a quien le pertenece la matrícula"
+
+#. module: base_sigmap
+#: model:ir.actions.act_window,name:base_sigmap.sigmap_armador_action_menu
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_armador_tree
+msgid "Ship Charterers"
+msgstr "Armadores"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/propietario.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_propietario
+#, python-format
+msgid "Ship Owner"
+msgstr "Propietario"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/armador.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_armador
+#, python-format
+msgid "Ship Sharterer"
+msgstr "Armador"
+
+#. module: base_sigmap
+#: model:ir.actions.act_window,name:base_sigmap.sigmap_agencia_naviera_action_menu
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_personas_agencia_action
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_tree
+msgid "Shipping Agencies"
+msgstr "Agencias Navieras"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_agencia_naviera
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__agencia_id
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+#, python-format
+msgid "Shipping Agency"
+msgstr "Agencia Naviera"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__tipo_agencia
+#, python-format
+msgid "Shipping Agency Type"
+msgstr "Tipo"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/matricula_agencia.py:0
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_agencia__agencia_id
+#, python-format
+msgid "Shipping Agency to whom the registration number belongs"
+msgstr "Agencia Naviera a quien le pertenece la matrícula"
+
+#. module: base_sigmap
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_personas_armadores_action
+msgid "Shipping Charterers"
+msgstr "Armadores"
+
+#. module: base_sigmap
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_personas_propietarios_action
+msgid "Shipping Owners"
+msgstr "Propietarios"
+
+#. module: base_sigmap
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_personas_ships
+msgid "Ships"
+msgstr "Naves"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/tipo_astillero.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_tipo_astillero
+#, python-format
+msgid "Shipyard Type"
+msgstr "Tipo Astillero"
+
+#. module: base_sigmap
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap_settings_tipo_astillero_action
+msgid "Shipyard Types"
+msgstr "Tipos Astillero"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__show_credit_limit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__show_credit_limit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__show_credit_limit
+msgid "Show Credit Limit"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.ui.menu,name:base_sigmap.menu_sigmap
+msgid "Sigmap"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.actions.act_window,help:base_sigmap.base_res_partner_nave_action_menu
+msgid "Sigmap helps you track all activities related to your contacts."
+msgstr "Sigmap te ayuda a seguir las actividades de todos tus contactos"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__signup_expiration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__signup_expiration
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__signup_expiration
+msgid "Signup Expiration"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__signup_token
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__signup_token
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__signup_token
+msgid "Signup Token"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__signup_type
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__signup_type
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__signup_type
+msgid "Signup Token Type"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__signup_valid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__signup_valid
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__signup_valid
+msgid "Signup Token is Valid"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__signup_url
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__signup_url
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__signup_url
+msgid "Signup URL"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__estado_civil__soltero
+#, python-format
+msgid "Single"
+msgstr "Soltero(a)"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_puerto__tipo__esp
+#: model:ir.model.fields.selection,name:base_sigmap.selection__sigmap_puerto_registro__tipo__esp
+#, python-format
+msgid "Special Port"
+msgstr "Especial"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__state_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__state_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__state_id
+msgid "State"
+msgstr "Estado"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_agencia__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_armador__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_owner_matricula__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto_tipo__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_astillero__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_fletamento__activity_state
+#: model:ir.model.fields,help:base_sigmap.field_tipo_trafico__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__street
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__street
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__street
+msgid "Street"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__street_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__street_name
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__street_name
+msgid "Street Name"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__street2
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__street2
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__street2
+msgid "Street2"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__supplier_rank
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__supplier_rank
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__supplier_rank
+msgid "Supplier Rank"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__category_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__category_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__category_id
+msgid "Tags"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__vies_failed_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__vies_failed_message
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__vies_failed_message
+msgid "Technical field display a message to the user if the VIES check fails."
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_armador_form
+msgid ""
+"The Charterer does not have an active registration number! If it has, check "
+"only one is active."
+msgstr ""
+"No hay matrícula vigente o existe más de una. "
+"Agregue una matrícula o verifique que sólo una esté activa."
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__country_code
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__country_code
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__country_code
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__country_code
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__country_code
+msgid ""
+"The ISO country code in two chars. \n"
+"You can use this field for quick search."
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+msgid ""
+"The Shipping Agency does not have an active registration number! If it has, "
+"check only one is active."
+msgstr ""
+"No hay matrícula vigente o existe más de una. "
+"Agregue una matrícula o verifique que sólo una esté activa."
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: code:addons/base_sigmap/models/tipo_astillero.py:0
+#: code:addons/base_sigmap/models/tipo_fletamento.py:0
+#: model:ir.model.constraint,message:base_sigmap.constraint_sigmap_puerto_code_uniq
+#: model:ir.model.constraint,message:base_sigmap.constraint_sigmap_puerto_registro_code_uniq
+#: model:ir.model.constraint,message:base_sigmap.constraint_sigmap_tipo_astillero_code_uniq
+#: model:ir.model.constraint,message:base_sigmap.constraint_sigmap_tipo_fletamento_code_uniq
+#, python-format
+msgid "The code must be unique"
+msgstr "El códigp debe ser único"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__property_account_position_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__property_account_position_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__property_account_position_id
+msgid ""
+"The fiscal position determines the taxes/accounts used for this contact."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__user_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__user_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__user_id
+msgid "The internal user in charge of this contact."
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__representante_legal
+#, python-format
+msgid "The legal representative of the Shipping Agency"
+msgstr "El representante legal de la Agencia Naviera"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: code:addons/base_sigmap/models/reparto.py:0
+#: code:addons/base_sigmap/models/reparto_tipo.py:0
+#: code:addons/base_sigmap/models/tipo_astillero.py:0
+#: code:addons/base_sigmap/models/tipo_fletamento.py:0
+#: code:addons/base_sigmap/models/tipo_trafico.py:0
+#: model:ir.model.constraint,message:base_sigmap.constraint_sigmap_puerto_name_uniq
+#: model:ir.model.constraint,message:base_sigmap.constraint_sigmap_puerto_registro_name_uniq
+#: model:ir.model.constraint,message:base_sigmap.constraint_sigmap_reparto_name_uniq
+#: model:ir.model.constraint,message:base_sigmap.constraint_sigmap_reparto_tipo_name_uniq
+#: model:ir.model.constraint,message:base_sigmap.constraint_sigmap_tipo_astillero_name_uniq
+#: model:ir.model.constraint,message:base_sigmap.constraint_sigmap_tipo_fletamento_name_uniq
+#: model:ir.model.constraint,message:base_sigmap.constraint_tipo_trafico_name_uniq
+#, python-format
+msgid "The name must be unique"
+msgstr "El nombre debe ser único"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__has_unreconciled_entries
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__has_unreconciled_entries
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__has_unreconciled_entries
+msgid ""
+"The partner has at least one unreconciled debit and credit since last time "
+"the invoices & payments matching was performed."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__company_registry
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__company_registry
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__company_registry
+msgid ""
+"The registry number of the company. Use it if it is different from the Tax "
+"ID. It must be unique across all partners of a same country"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_armador_form
+msgid "The selected partner already has an associated Charterer."
+msgstr "La persona escogida ya tiene un Armador asociado."
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_propietario_form
+msgid "The selected partner already has an associated Owner."
+msgstr "La persona escogida ya tiene un Propietario asociado."
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+msgid "The selected partner already has an associated Shipping Agency."
+msgstr "La persona escogida ya tiene una Agencia Naviera asociada."
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__l10n_latam_identification_type_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__l10n_latam_identification_type_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__l10n_latam_identification_type_id
+msgid "The type of identification"
+msgstr "Tipo de identificación"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__property_account_payable_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__property_account_payable_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__property_account_payable_id
+msgid ""
+"This account will be used instead of the default one as the payable account "
+"for the current partner"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__property_account_receivable_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__property_account_receivable_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__property_account_receivable_id
+msgid ""
+"This account will be used instead of the default one as the receivable "
+"account for the current partner"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__email_normalized
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__email_normalized
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__email_normalized
+msgid ""
+"This field is used to search on email address as the primary email field can"
+" contain more than strictly an email address."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__property_supplier_payment_term_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__property_supplier_payment_term_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__property_supplier_payment_term_id
+msgid ""
+"This payment term will be used instead of the default one for purchase "
+"orders and vendor bills"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__property_payment_term_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__property_payment_term_id
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__property_payment_term_id
+msgid ""
+"This payment term will be used instead of the default one for sales orders "
+"and customer invoices"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__property_product_pricelist
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__property_product_pricelist
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__property_product_pricelist
+msgid ""
+"This pricelist will be used, instead of the default one, for sales to the "
+"current partner"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__tz
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__tz
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__tz
+msgid "Timezone"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__tz_offset
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__tz_offset
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__tz_offset
+msgid "Timezone offset"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__tipo
+msgid "Tipo"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_res_partner__tipo_juridica
+#: model:ir.model.fields,field_description:base_sigmap.field_res_users__tipo_juridica
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__tipo_juridica
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__tipo_juridica
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__tipo_juridica
+msgid "Tipo Sociedad"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model,name:base_sigmap.model_tipo_trafico
+msgid "Tipo Tráfico"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_tipo_astillero_form
+msgid "Tipo de Astillero"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_tipo_fletamento_form
+msgid "Tipo de Fletamento"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_reparto_tipo_form
+msgid "Tipo de Reparto"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.actions.act_window,name:base_sigmap.sigmap_tipo_astillero_action_menu
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_tipo_astillero_tree
+msgid "Tipos de Astillero"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.actions.act_window,name:base_sigmap.sigmap_tipo_fletamento_action_menu
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_tipo_fletamento_tree
+msgid "Tipos de Fletamento"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.actions.act_window,name:base_sigmap.sigmap_reparto_tipo_action_menu
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_reparto_tipo_tree
+msgid "Tipos de Reparto"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__title
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__title
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__title
+msgid "Title"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__total_invoiced
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__total_invoiced
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__total_invoiced
+msgid "Total Invoiced"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__debit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__debit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__debit
+msgid "Total Payable"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__credit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__credit
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__credit
+msgid "Total Receivable"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__credit
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__credit
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__credit
+msgid "Total amount this customer owes you."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__debit
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__debit
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__debit
+msgid "Total amount you have to pay to this vendor."
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__tipo_trafico
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__tipo_trafico
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_tipo_trafico_form
+#, python-format
+msgid "Traffic Type"
+msgstr "Tipo de Tráfico"
+
+#. module: base_sigmap
+#: model:ir.actions.act_window,name:base_sigmap.sigmap_tipo_trafico_action_menu
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_tipo_trafico_tree
+msgid "Traffic Types"
+msgstr "Tipos de Tráfico"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__tipo
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__tipo
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__tipo
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_armador_form
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_propietario_form
+#, python-format
+msgid "Type"
+msgstr "Tipo"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_agencia__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_armador__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_owner_matricula__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto_tipo__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_astillero__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_fletamento__activity_exception_decoration
+#: model:ir.model.fields,help:base_sigmap.field_tipo_trafico__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/sigmap_updated_by.py:0
+#: model:ir.model,name:base_sigmap.model_sigmap_updated_by
+#, python-format
+msgid "Update By"
+msgstr "Actualizado por"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/sigmap_updated_by.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_updated_by__updated_by
+#, python-format
+msgid "Updated by"
+msgstr "Actualizado por"
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__barcode
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__barcode
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__barcode
+msgid "Use a barcode to identify this contact."
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__user_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__user_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__user_ids
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__l10n_ec_vat_validation
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__l10n_ec_vat_validation
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__l10n_ec_vat_validation
+msgid "VAT Error message validation"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__property_supplier_payment_term_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__property_supplier_payment_term_id
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__property_supplier_payment_term_id
+msgid "Vendor Payment Terms"
+msgstr ""
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+msgid "Website"
+msgstr "Sitio Web"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/puerto.py:0
+#: code:addons/base_sigmap/models/puerto_registro.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__domain
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__domain
+#, python-format
+msgid "Website Domain"
+msgstr "Sitio Web"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__website
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__website
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__website
+msgid "Website Link"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_agencia__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_matricula_armador__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_owner_matricula__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_puerto_registro__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_reparto_tipo__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_astillero__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_tipo_fletamento__website_message_ids
+#: model:ir.model.fields,field_description:base_sigmap.field_tipo_trafico__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_agencia__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_matricula_armador__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_owner_matricula__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_puerto_registro__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_reparto_tipo__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_astillero__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_tipo_fletamento__website_message_ids
+#: model:ir.model.fields,help:base_sigmap.field_tipo_trafico__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: base_sigmap
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_agencia_naviera__tz
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_armador__tz
+#: model:ir.model.fields,help:base_sigmap.field_sigmap_propietario__tz
+msgid ""
+"When printing documents and exporting/importing data, time values are computed according to this timezone.\n"
+"If the timezone is not set, UTC (Coordinated Universal Time) is used.\n"
+"Anywhere else, time values are computed according to the time offset of your web client."
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/res_partner.py:0
+#: model:ir.model.fields.selection,name:base_sigmap.selection__res_partner__estado_civil__viudo
+#, python-format
+msgid "Widower"
+msgstr "Viudo(a)"
+
+#. module: base_sigmap
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__zip
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_armador__zip
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_propietario__zip
+msgid "Zip"
+msgstr ""
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_puerto.py:0
+#, python-format
+msgid "deleted"
+msgstr "borrado"
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+msgid "e.g. Agency Name"
+msgstr "p.ej. Nombre de Agencia"
+
+#. module: base_sigmap
+#: model_terms:ir.ui.view,arch_db:base_sigmap.view_sigmap_agencia_naviera_form
+msgid "e.g. https://www.odoo.com"
+msgstr "p. ej. https://www.midominio.com"
+
+#. module: base_sigmap
+#. odoo-python
+#: code:addons/base_sigmap/models/agencia_naviera.py:0
+#: model:ir.model.fields,field_description:base_sigmap.field_sigmap_agencia_naviera__representante_legal
+#, python-format
+msgid "legal representative"
+msgstr "Representante Legal"

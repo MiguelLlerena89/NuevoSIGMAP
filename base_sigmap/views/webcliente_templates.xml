@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="assign_title_login" inherit_id="web.login_layout">
+            <xpath expr="(//div)[1]" position="before" >
+                <div style="height: 2%;">
+                </div>
+                <div class="title-login" align="center" style="font-size: 30px;">
+                    <label for="title" class="form-label"><b>SISTEMA DE GESTIÓN MARÍTIMA Y PORTUARIA 2.0</b></label>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sri_res_partner_form_inherit_sigmap" model="ir.ui.view">
+            <field name="name">res.partner.sri.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="groups_id" eval="[(5,)]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div" position="after">
+                    <div class="alert alert-danger oe_edit_only" role="alert" attrs="{'invisible': [('fallecido', '=', False)]}">
+                        Falleció en: <span> <field name="fecha_defuncion"/> </span>
+                    </div>
+                    <div class="alert alert-danger oe_edit_only" role="alert" attrs="{'invisible': [('antecedentes_penales', '=', False)]}">
+                        Tiene antecedetes penales
+                    </div>
+                </xpath>
+                <field name="name" position="after">
+                    <field name="last_name" placeholder="Apellido(s), Ej. Pérez Pérez"
+                        attrs="{'required' : [('type', '=', 'contact'),('company_type','=', 'person')],
+                                'invisible': [('is_company','=', True)]}"/>
+                    <field name="first_name" placeholder="Nombre(s), Ej. Juan"
+                        attrs="{'required' : [('type', '=', 'contact'),('company_type','=', 'person')],
+                                'invisible': [('is_company','=', True)]}"/>
+                </field>
+                <xpath expr="//field[@id='individual']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <field name="city" position="attributes">
+                    <attribute name="attrs">{'invisible':1}</attribute>
+                </field>
+                <field name="city_id" position="attributes">
+                    <attribute name="placeholder">Ciudad</attribute>
+                </field>
+                <field name="function" position="before">
+                    <field name="birthday" attrs="{'invisible': [('company_type','=', 'company')]}" />
+                    <field name="genero" attrs="{'invisible': [('company_type','=', 'company')]}" />
+                    <field name="estado_civil" attrs="{'invisible': [('company_type','=', 'company')]}" />
+                </field>
+                <field name="l10n_ec_business_name" position="attributes">
+                    <attribute name="attrs">
+                        {'invisible': [('company_type','=', 'person')], 'required': [('company_type','=', 'company')]}
+                    </attribute>
+                </field>
+                <xpath expr="//field[@name='vat']" position="attributes">
+                    <attribute name="attrs">
+                        {'readonly': [('parent_id','!=',False)], 'required': [('country_id','=', '%(base.ec)d')]}
+                    </attribute>
+                </xpath>
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="tipo_juridica"
+                        widget="radio"
+                        options="{'horizontal': true}"
+                        attrs="{'invisible': [('company_type','!=', 'company')], 'readonly': 1}" />
+                    <field name="fallecido"/>
+                    <field name="fecha_defuncion" attrs="{'invisible': [('fallecido','!=', True)]}"/>
+                    <field name="discapacidad"/>
+                    <field name="antecedentes_penales"/>
+                    <field name="tipo_discapacidad" attrs="{'invisible': [('discapacidad','!=', True)]}"/>
+                    <field name="porcentaje_discapacidad" attrs="{'invisible': [('discapacidad','!=', True)]}"/>
+                    <field name="aplica_descuento" widget="boolean_toggle"/>
+                </xpath>
+                <xpath expr="//field[@name='website']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@name='contact_addresses']" position="attributes">
+                    <attribute name="string">Referencias</attribute>
+                    <attribute name="autofocus">False</attribute>
+                </xpath>
+                <xpath expr="//page[@name='internal_notes']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//notebook" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="res_partner_data_kanban_view" model="ir.ui.view">
+            <field name="name">res.partner.data.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+           <field name="arch" type="xml">
+                <field name="email" position="after">
+                    <field name="fecha_defuncion"/>
+                </field>
+                <xpath expr="//div[hasclass('oe_kanban_details')]" position="inside">
+                    <span t-if="record.fecha_defuncion.value" class="badge badge-pill" >
+                        <i class="fa fa-fw" role="img" aria-label="Fallecido" title="Fallecido"/>
+                        Fallecido en <t t-esc="record.fecha_defuncion.value"/>
+                    </span>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="base_res_partner_nave_action_menu" model="ir.actions.act_window">
+            <field name="name">Partners</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create a Contact in your address book
+                </p><p>
+                Sigmap helps you track all activities related to your contacts.
+                </p>
+            </field>
+        </record>
+
+        <record id="view_res_partner_sigmap_filter" model="ir.ui.view">
+            <field name="name">view.res.partner.sigmap.filter.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <field name="category_id" position="after">
+                    <field name="vat"/>
+                </field>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

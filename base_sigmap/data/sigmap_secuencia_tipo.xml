@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id='matricula_nave' model='sigmap.secuencia.tipo'>
+            <field name='name'>Matricula de Nave</field>
+            <field name='active' eval="True"/>
+        </record>
+        <record id='matricula_troquelado_motor_nave' model='sigmap.secuencia.tipo'>
+            <field name='name'>Matricula de Troquelado de Motor de Nave</field>
+            <field name='active' eval="True"/>
+        </record>
+        <record id='certificado' model='sigmap.secuencia.tipo'>
+            <field name='name'>Certificados</field>
+            <field name='active' eval="True"/>
+        </record>
+    </data>
+</odoo>

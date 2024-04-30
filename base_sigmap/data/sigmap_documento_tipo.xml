@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id='gente_mar' model='sigmap.documento.tipo'>
+            <field name='name'>Gente de Mar</field>
+            <field name='active' eval="True"/>
+        </record>
+        <record id='nave' model='sigmap.documento.tipo'>
+            <field name='name'>Naves</field>
+            <field name='active' eval="True"/>
+        </record>
+        <record id='trafico_maritimo' model='sigmap.documento.tipo'>
+            <field name='name'>Tráfico Marítimo</field>
+            <field name='active' eval="True"/>
+        </record>
+        <record id='citacion' model='sigmap.documento.tipo'>
+            <field name='name'>Multas y citaciones</field>
+            <field name='active' eval="True"/>
+        </record>
+    </data>
+</odoo>

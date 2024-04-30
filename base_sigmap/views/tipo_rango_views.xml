@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_tipo_rango_form" model="ir.ui.view">
+        <field name="name">tipo.rango.form</field>
+        <field name="model">tipo.rango</field>
+        <field name="arch" type="xml">
+            <form string="Rango">
+                <sheet>
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                        <field name="abreviatura"/>
+                        <field name="fuerza"/>
+                        <field name="active" invisible="1"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tipo_rango_tree" model="ir.ui.view">
+        <field name="name">tipo.rango.tree</field>
+        <field name="model">tipo.rango</field>
+        <field name="arch" type="xml">
+            <tree string="Rango" editable="bottom">
+                <field name="name"/>
+                <field name="descripcion"/>
+                <field name="abreviatura"/>
+                <field name="fuerza"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_tipo_rango" model="ir.actions.act_window">
+        <field name="name">Tipo Rango</field>
+        <field name="res_model">tipo.rango</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_tipo_rango_tree"/>
+        <field name="help" type="html">
+            <p>
+                Defina nuevo tipo de rango
+            </p>
+        </field>
+    </record>
+
+</odoo>

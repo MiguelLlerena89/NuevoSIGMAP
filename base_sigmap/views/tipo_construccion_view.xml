@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sigmap_tipo_construccion_tree" model="ir.ui.view">
+        <field name="name">sigmap.tipo.construccion.tree</field>
+        <field name="model">sigmap.tipo.construccion</field>
+        <field name="arch" type="xml">
+            <tree string="Building Types" editable="bottom">
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="active" widget="boolean_toggle" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sigmap_tipo_construccion_action_menu" model="ir.actions.act_window">
+        <field name="name">Tipos de construccion</field>
+        <field name="res_model">sigmap.tipo.construccion</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_sigmap_tipo_construccion_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Building Type
+            </p>
+        </field>
+    </record>
+
+</odoo>

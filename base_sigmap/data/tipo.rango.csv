@@ -1,0 +1,56 @@
+id,name,descripcion,abreviatura,fuerza,active
+rango_01,ALFEREZ DE FRAGATA,,ALFG.,N,True
+rango_02,TENIENTE DE FRAGATA,,TNFG.,N,True
+rango_03,TENIENTE DE NAVÍO,,TNNV.,N,True
+rango_04,CAPITÁN DE CORBETA,,CPCB.,N,True
+rango_05,CAPITÁN DE FRAGATA,,CPFG.,N,True
+rango_06,CAPITÁN DE NAVÍO - ESTADO MAYOR,,CPNV-EM,N,True
+rango_07,CAPITÁN DE NAVÍO - ESTADO MAYOR CONJUNTO,,CPNV-EMC.,N,True
+rango_08,CONTRALMIRANTE,,CALM.,N,True
+rango_09,VICEALMIRANTE,,VALM.,N,True
+rango_10,ALMIRANTE,,ALM.,N,True
+rango_11,ALFEREZ DE FRAGATA(RT),Retirado,ALFG.(RT),N,True
+rango_12,TENIENTE DE FRAGATA(RT),Retirado,TNFG.(RT),N,True
+rango_13,TENIENTE DE NAVÍO(RT),Retirado,TNNV.(RT),N,True
+rango_14,CAPITÁN DE CORBETA(SP),Servicio Pasivo,CPCB.(SP),N,True
+rango_15,CAPITÁN DE FRAGATA(SP),Servicio Pasivo,CPFG.(SP),N,True
+rango_16,CAPITÁN DE NAVÍO - ESTADO MAYOR(SP),Servicio Pasivo,CPNV-EM(SP),N,True
+rango_17,CAPITÁN DE NAVÍO - ESTADO MAYOR CONJUNTO(SP),Servicio Pasivo,CPNV-EMC(SP),N,True
+rango_18,CONTRALMIRANTE(SP),Servicio Pasivo,CALM.(SP),N,True
+rango_19,Vicealmirante(SP),Servicio Pasivo,VALM.(SP),N,True
+rango_20,Almirante(SP),Servicio Pasivo,ALM.(SP),N,True
+rango_21,Subteniente,,SBTE.,A,True
+rango_22,Teniente,,TNT.,A,True
+rango_23,Capitán,,CPTN.,A,True
+rango_24,Mayor,,MYR.,A,True
+rango_25,Teniente Coronel,,TN.CRNL.,A,True
+rango_26,Coronel,,CRNL.,A,True
+rango_27,General,,GNRL.,A,True
+rango_28,Subteniente(RT),Retirado,SBTE.(RT),A,True
+rango_29,Teniente(RT),Retirado,TNT.(RT),A,True
+rango_30,Capitán(RT),Retirado,CPTN.(RT),A,True
+rango_31,Mayor(SP),Servicio Pasivo,MYR.(SP),A,True
+rango_32,Teniente Coronel(SP),Servicio Pasivo,TN.CRNL.(SP),A,True
+rango_33,Coronel(SP),Servicio Pasivo,CRNL.(SP),A,True
+rango_34,Subteniente,,SBTE.,T,True
+rango_35,Teniente,,TNT.,T,True
+rango_36,Capitán,,CPTN.,T,True
+rango_37,Mayor,,MYR.,T,True
+rango_38,Teniente Coronel,,TN.CRNL.,T,True
+rango_39,Coronel,,CRNL.,T,True
+rango_40,General,,GNRL.,T,True
+rango_41,Subteniente(RT),Retirado,SBTE.(RT),T,True
+rango_42,Teniente(RT),Retirado,TNT.(RT),T,True
+rango_43,Capitán(RT),Retirado,CPTN.(RT),T,True
+rango_44,Mayor(SP),Servicio Pasivo,MYR.(SP),T,True
+rango_45,Teniente Coronel(SP),Servicio Pasivo,TN.CRNL.(SP),T,True
+rango_46,Coronel(SP),Servicio Pasivo,CRNL.(SP),T,True
+rango_47,General(SP),Servicio Pasivo,GNRL.(SP),T,True
+rango_48,SUBOFICIAL MAYOR,,SUBM.,N,True
+rango_49,SUBOFICIAL PRIMERO,,SUBP.,N,True
+rango_50,SUBOFICIAL SEGUNDO,,SUBS.,N,True
+rango_51,SARGENTO PRIMERO,,SGOP.,N,True
+rango_52,SARGENTO SEGUNDO,,SGOS.,N,True
+rango_53,CABO PRIMERO,,CBOP.,N,True
+rango_54,CABO SEGUNDO,,CBOS.,N,True
+rango_55,MARINERO,,MARO.,N,True

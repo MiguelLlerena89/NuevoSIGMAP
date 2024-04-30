@@ -1,0 +1,7 @@
+id,name,codigo,active
+sigmap_tipo_astillero_01,Varadero,,True
+sigmap_tipo_astillero_02,Parrilla,,True
+sigmap_tipo_astillero_03,Dique Seco,,True
+sigmap_tipo_astillero_04,Dique Flotante,,True
+sigmap_tipo_astillero_05,Patio de Transferencia,,True
+sigmap_tipo_astillero_06,Otros,,True

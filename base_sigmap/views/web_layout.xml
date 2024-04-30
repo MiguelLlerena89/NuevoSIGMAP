@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id='my_navbar_web_layout' inherit_id='web.layout'>
+    <xpath expr="//body" position="inside">
+      <style>.o_main_navbar {background: linear-gradient(45deg, #000030, #000030);
+                                         background-color: #000030!important;border-bottom: 0px;}</style>
+      <style>#oe_main_menu_navbar {background: linear-gradient(45deg, #000030, #000030);
+                                         background-color: #000030!important;border-bottom: 0px;}</style>
+      <style>
+        .btn-primary {border-color: #000074;background-color: #000074!important;border-bottom: 0px;}
+        .btn-secondary {
+            color: #5a5a5a;
+            background-color: #ffffff;
+            border: none;
+        }
+
+        .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle {
+            color: #212529;
+            background-color: #e6e5e5;
+            border: none
+        }
+
+      </style>
+
+     </xpath>
+  </template>
+  <!--template id="_assets_primary_variables_custom" name="_assets_primary_variables_custom" inherit_id="web._assets_primary_variables" >
+    <xpath expr="." position="inside">
+      <link rel="stylesheet" type="text/scss" href="base_sigmap/static/src/scss/primary_variables_custom.scss"/>
+    </xpath>
+  </template>
+
+  <template id="assets_backend_custom" name="assets_backend_custom" inherit_id="web.assets_backend" >
+    <xpath expr="." position="inside">
+      <link rel="stylesheet" type="text/scss" href="base_sigmap/static/src/css/theme.css"/>
+    </xpath>
+  </template>
+
+  <template id="namaa_common_assets" inherit_id="web.assets_common" name="website_scholarship_assets">
+    <xpath expr="//link[last()]" position="after">
+        <link rel="stylesheet" href="base_sigmap/static/src/css/theme.css"/>
+        <link rel="stylesheet" type="text/scss" href="base_sigmap/static/src/scss/ui.scss"/>
+    </xpath>
+  </template-->
+
+</odoo>
