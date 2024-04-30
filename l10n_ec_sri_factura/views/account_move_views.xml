@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_invoice_tree_numero" model="ir.ui.view">
+            <field name="name">account.invoice.tree.numero</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_invoice_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="numero"/>
+                </field>
+                <field name="state" position="before">
+                    <field name="comprobante_state"/>
+                </field>
+            </field>
+        </record>
+        <record id="account_move_factura_form_inherit" model="ir.ui.view">
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <!-- Invoice NO authotizated -->
+                <xpath expr="//form/sheet" position="before">
+                    <t t-if="comprobante_state == 'NUL'">
+                        <div
+                            class="alert alert-warning" role="alert" style="margin-bottom:0px;"
+                            attrs="{'invisible': ['|','|',('state', '=', 'draft'),('move_type','=','entry'),('comprobante_state','!=','NUL')]}">
+                                Comprobante anulado.
+                        </div>
+                    </t>
+                    <t t-else="comprobante_state in ('NEW','PPR','NAT')">
+                        <div
+                            class="alert alert-danger" role="alert" style="margin-bottom:0px;"
+                            attrs="{'invisible': ['|','|',('state', '=', 'draft'),('move_type','=','entry'),('comprobante_state','not in',('NEW','PPR','NAT'))]}">
+                                Ocurrio un inconveniente en su <bold><field name="comprobante_document_type" nolabel="1"/></bold>. Contacte con el equipo técnico.
+                        </div>
+                    </t>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="attrs">{'required': [('move_type', 'in', ('out_invoice', 'out_refund', 'out_receipt', 'in_invoice', 'in_refund','in_receipt'))], 'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'out_receipt', 'in_invoice', 'in_refund','in_receipt'))]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_date']" position="attributes">
+                    <attribute name="attrs">{'required': [('move_type', 'in', ('out_invoice', 'out_refund', 'out_receipt', 'in_invoice', 'in_refund','in_receipt'))], 'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'out_receipt', 'in_invoice', 'in_refund','in_receipt'))]}</attribute>
+                </xpath>
+                <field name="name" position="after">
+                    <t attrs="{'invisible': [('numero', '=', False)]}"> - </t>
+                    <field name="numero" readonly="1"/>
+                </field>
+                <field name="partner_id" position="after">
+                    <field name="secuencial" attrs="{'readonly': ['|',('state', '!=', 'draft'),('is_electronic', '=', True)], 'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'out_receipt', 'in_invoice', 'in_refund','in_receipt'))], 'required': [('move_type', 'in', ('in_invoice', 'in_refund','in_receipt')),('is_electronic', '=', False)]}"/>
+                    <field name="is_electronic" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'out_receipt', 'in_invoice', 'in_refund','in_receipt'))]}"/>
+                    <field name="sri_establecimiento_id" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'out_receipt'))], 'required': [('is_electronic','=', True),('move_type', 'in', ('out_invoice', 'out_refund', 'out_receipt'))]}"/>
+                    <field name="sri_punto_emision_id" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'out_receipt'))], 'required': [('is_electronic','=', True),('move_type', 'in', ('out_invoice', 'out_refund', 'out_receipt'))]}"/>
+                    <field name="sri_establecimiento" attrs="{'readonly': ['|',('state', '!=', 'draft'),('is_electronic','=',False)], 'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund','in_receipt'))], 'required': [('is_electronic','=', True),('move_type', 'in', ('in_invoice', 'in_refund'))]}"/>
+                    <field name="sri_punto_emision" attrs="{'readonly': ['|',('state', '!=', 'draft'),('is_electronic','=',False)], 'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund','in_receipt'))], 'required': [('is_electronic','=', True),('move_type', 'in', ('in_invoice', 'in_refund'))]}"/>
+                </field>
+                <field name="invoice_date" position="after">
+                    <!--field name="sri_autorizacion_id" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': ['|',('is_electronic', '=', True),('move_type', '=', 'entry')], 'required': [('is_electronic','=', False),('move_type', 'in', ('in_invoice', 'in_refund'))]}"/-->
+                    <field name="sri_autorizacion_id" />
+                    <field name="sri_numero_autorizacion" readonly="1" attrs="{'invisible': [('is_electronic','!=',True)]}"/>
+                    <field name="comprobante_state" widget="badge" decoration-success="comprobante_state == 'AUT'" decoration-warning="comprobante_state == 'NUL'" decoration-danger="comprobante_state in ('NEW','PPR','NAT')" attrs="{'invisible': ['|',('state', '=', 'draft'),('move_type', '=', 'entry')]}"/>
+                    <field name="comprobante_id" invisible="1" /><!--readonly="1" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'out_receipt', 'in_invoice', 'in_refund','in_receipt'))]}"-->
+                </field>
+                <field name="tax_totals" position="before">
+                    <field name="subtotal_iva"/>
+                    <field name="subtotal_iva_0"/>
+                    <field name="subtotal_no_iva"/>
+                    <field name="subtotal_exento_iva"/>
+                    <field name="subtotal"/>
+                    <field name="total_descuento"/>
+                    <field name="valor_ice" attrs="{'invisible': [('valor_ice','=',0)]}"/>
+                    <field name="valor_iva"/>
+                    <field name="valor_total"/>
+                    <field name="total_ret_ir" attrs="{'invisible': [('total_ret_ir','=',0)]}"/>
+                    <field name="total_ret_iva" attrs="{'invisible': [('total_ret_iva','=',0)]}"/>
+                </field>
+                <xpath expr="//notebook/page/field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="attributes">
+                    <attribute name="attrs">{'required': [('parent.move_type', 'in', ('out_invoice', 'out_refund'))]}</attribute>
+                </xpath>
+                <xpath expr="//notebook//page[1]" position="after">
+                    <page string="Información Adicional" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'out_receipt', 'in_invoice', 'in_refund','in_receipt'))]}">
+                            <field name="aditional_info_ids" nolabel="1">
+                                <tree string="Información Adicional" editable="bottom">
+                                    <field name="adicional_nombre"/>
+                                    <field name="adicional_valor"/>
+                                </tree>
+                            </field>
+                    </page>
+                    <page string="Forma de Pago"  attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'out_receipt', 'in_invoice', 'in_refund','in_receipt'))]}">
+                            <field name="plan_pago_ids" nolabel="1" context="{'default_forma_pago_id': %(l10n_ec.P20)d, 'default_unidad_tiempo_id': %(uom.product_uom_day)d}">
+                                <tree string="Plan de pago" editable="bottom">
+                                    <field name="move_id" invisible="1"/>
+                                    <field name="forma_pago_id"/>
+                                    <field name="type_id"/>
+                                    <field name="plazo"/>
+                                    <field name="banco"/>
+                                    <field name="codigo_documento"/>
+                                    <field name="unidad_tiempo_id"/>
+                                    <field name="total"/>
+                                </tree>
+                            </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

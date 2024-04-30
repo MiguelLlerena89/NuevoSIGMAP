@@ -1,0 +1,5 @@
+id,name,description,l10n_ec_ats_code,is_vat,country_id:id,sequence,l10n_ec_sri_code
+ruc,RUC,Registro Único de Contribuyentes,R,TRUE,base.ec,1,04
+cedula,Cédula,Cédula de identidad,C,TRUE,base.ec,2,05
+consumidor_final,Consumidor final,Consumidor final,F,TRUE,base.ec,3,07
+l10n_latam_base.it_pass,Passport,,P,TRUE,,90,06

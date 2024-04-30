@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<factura id="comprobante" version="1.1.0">
+  <infoTributaria>
+    <ambiente>{{ ambiente }}</ambiente>
+    <tipoEmision>{{ tipoEmision }}</tipoEmision>
+    <razonSocial>{{ razonSocial }}</razonSocial>
+    {% if nombreComercial %}<nombreComercial>{{ nombreComercial }}</nombreComercial>{% endif %}
+    <ruc>{{ ruc }}</ruc>
+    <claveAcceso>{{ claveAcceso }}</claveAcceso>
+    <codDoc>{{ codDoc }}</codDoc>
+    <estab>{{ estab }}</estab>
+    <ptoEmi>{{ ptoEmi }}</ptoEmi>
+    <secuencial>{{ secuencial }}</secuencial>
+    <dirMatriz>{{ dirMatriz }}</dirMatriz>
+    {% if agenteRetencion %}<agenteRetencion>{{ agenteRetencion }}</agenteRetencion>{% endif %}
+  </infoTributaria>
+  <infoFactura>
+    <fechaEmision>{{ fechaEmision }}</fechaEmision> {# dd/mm/aaaa #}
+    {% if contribuyenteEspecial %}<contribuyenteEspecial>{{ contribuyenteEspecial }}</contribuyenteEspecial>{% endif %}
+    <obligadoContabilidad>{{ obligadoContabilidad }}</obligadoContabilidad>
+    <tipoIdentificacionComprador>{{ tipoIdentificacionComprador }}</tipoIdentificacionComprador>
+    {% if guiaRemision  %}<guiaRemision>{{ guiaRemision }}</guiaRemision>{% endif %}
+    <razonSocialComprador>{{ razonSocialComprador }}</razonSocialComprador>
+    <identificacionComprador>{{ identificacionComprador }}</identificacionComprador>
+    <totalSinImpuestos>{{ totalSinImpuestos }}</totalSinImpuestos>
+    <totalDescuento>{{ totalDescuento }}</totalDescuento>
+    {% if es_reemb  %}
+    <codDocReembolso>{{ codDocReemb }}</codDocReembolso>
+    <totalComprobantesReembolso>{{ totalComprobantesReembolso }}</totalComprobantesReembolso>
+    <totalBaseImponibleReembolso>{{ totalBaseImponibleReembolso }}</totalBaseImponibleReembolso>
+    <totalImpuestoReembolso>{{ totalImpuestoReembolso }}</totalImpuestoReembolso>
+    {% endif %}
+    <totalConImpuestos>
+      {% for item in totalConImpuestos %}
+      <totalImpuesto>
+        <codigo>{{ item['codigo'] }}</codigo>
+        <codigoPorcentaje>{{ item['codigoPorcentaje'] }}</codigoPorcentaje>
+        <baseImponible>{{ item['baseImponible'] }}</baseImponible>
+        <tarifa>{{ item['tarifa'] }}</tarifa>
+        <valor>{{ item['valor'] }}</valor>
+      </totalImpuesto>
+      {% endfor %}
+    </totalConImpuestos>
+    {% if compensaciones %}
+    <compensaciones>
+        {% for c in comp %}
+        <compensacion>
+            <codigo>{{ c['codigo'] }}</codigo>
+            <tarifa>{{ c['tarifa'] }}</tarifa>
+            <valor>{{ c['valor'] }}</valor>
+        </compensacion>
+        {% endfor %}
+    </compensaciones>
+    {% endif %}
+    <propina>0.00</propina>
+    <importeTotal>{{ importeTotal }}</importeTotal>
+    <moneda>DOLAR</moneda>
+    <pagos>
+      {% for item in planPagos %}
+        <pago>
+            <formaPago>{{ item['formaPago'] }}</formaPago>
+            <total>{{ item['importeTotal'] }}</total>
+            <plazo>{{ item['plazo'] }}</plazo>
+            <unidadTiempo>{{ item['unidadTiempo'] }}</unidadTiempo>
+        </pago>
+      {% endfor %}
+    </pagos>
+    <valorRetIva>{{ valorRetIva }}</valorRetIva>
+    <valorRetRenta>{{ valorRetRenta }}</valorRetRenta>
+  </infoFactura>
+  <detalles>
+    {% for item in detalles %}
+    <detalle>
+      <codigoPrincipal>{{ item['codigoPrincipal'] }}</codigoPrincipal>
+      <descripcion>{{ item['descripcion'] }}</descripcion>
+      <cantidad>{{ item['cantidad'] }}</cantidad>
+      <precioUnitario>{{ item['precioUnitario'] }}</precioUnitario>
+      <descuento>{{ item['descuento'] }}</descuento>
+      <precioTotalSinImpuesto>{{ item['precioTotalSinImpuesto'] }}</precioTotalSinImpuesto>
+      <impuestos>
+        {% for tax in item['impuestos'] %}
+        <impuesto>
+          <codigo>{{ tax['codigo'] }}</codigo>
+          <codigoPorcentaje>{{ tax['codigoPorcentaje'] }}</codigoPorcentaje>
+          <tarifa>{{ tax['tarifa'] }}</tarifa>
+          <baseImponible>{{ tax['baseImponible'] }}</baseImponible>
+          <valor>{{ tax['valor'] }}</valor>
+        </impuesto>
+        {% endfor %}
+      </impuestos>
+    </detalle>
+    {% endfor %}
+  </detalles>
+  {% if es_reemb  %}
+    <reembolsos>
+        {% for r in _reembolsos %}
+        <reembolsoDetalle>
+            <tipoIdentificacionProveedorReembolso>{{ r['tipoIdentificacionProveedorReembolso'] }}</tipoIdentificacionProveedorReembolso>
+            <identificacionProveedorReembolso>{{ r['identificacionProveedorReembolso'] }}</identificacionProveedorReembolso>
+            <codPaisPagoProveedorReembolso>{{ r['codPaisPagoProveedorReembolso'] }}</codPaisPagoProveedorReembolso>
+            <tipoProveedorReembolso>{{ r['tipoProveedorReembolso'] }}</tipoProveedorReembolso>
+            <codDocReembolso>{{ r['codDocReembolso'] }}</codDocReembolso>
+            <estabDocReembolso>{{ r['estabDocReembolso'] }}</estabDocReembolso>
+            <ptoEmiDocReembolso>{{ r['ptoEmiDocReembolso'] }}</ptoEmiDocReembolso>
+            <secuencialDocReembolso>{{ r['secuencialDocReembolso'] }}</secuencialDocReembolso>
+            <fechaEmisionDocReembolso>{{ r['fechaEmisionDocReembolso'] }}</fechaEmisionDocReembolso>
+            <numeroautorizacionDocReemb>{{ r['numeroautorizacionDocReemb'] }}</numeroautorizacionDocReemb>
+            <detalleImpuestos>
+              {% for tax in r['detalleImpuestos'] %}
+              <detalleImpuesto>
+                <codigo>{{ tax['codigo'] }}</codigo>
+                <codigoPorcentaje>{{ tax['codigoPorcentaje'] }}</codigoPorcentaje>
+                <tarifa>{{ tax['tarifa'] }}</tarifa>
+                <baseImponibleReembolso>{{ tax['baseImponibleReembolso'] }}</baseImponibleReembolso>
+                <impuestoReembolso>{{ tax['impuestoReembolso'] }}</impuestoReembolso>
+              </detalleImpuesto>
+              {% endfor %}
+            </detalleImpuestos>
+        </reembolsoDetalle>
+        {% endfor %}
+    </reembolsos>
+  {% endif  %}
+  <infoAdicional>
+    {% for item in _infoAdicional %}
+      <campoAdicional nombre='{{item["key"]}}'>{{item['value']}}</campoAdicional>
+    {% endfor %}
+  </infoAdicional>
+</factura>

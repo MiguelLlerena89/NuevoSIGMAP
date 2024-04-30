@@ -1,0 +1,222 @@
+id,country_id:id,state_id:id,code,name
+city_ec_0101,base.ec,base.state_ec_01,0101,CUENCA
+city_ec_0102,base.ec,base.state_ec_01,0102,GIRON
+city_ec_0103,base.ec,base.state_ec_01,0103,GUALACEO
+city_ec_0104,base.ec,base.state_ec_01,0104,NABON
+city_ec_0105,base.ec,base.state_ec_01,0105,PAUTE
+city_ec_0106,base.ec,base.state_ec_01,0106,PUCARA
+city_ec_0107,base.ec,base.state_ec_01,0107,SAN FERNANDO
+city_ec_0108,base.ec,base.state_ec_01,0108,SANTA ISABEL
+city_ec_0109,base.ec,base.state_ec_01,0109,SIGSIG
+city_ec_0110,base.ec,base.state_ec_01,0110,OÑA
+city_ec_0111,base.ec,base.state_ec_01,0111,CHORDELEG
+city_ec_0112,base.ec,base.state_ec_01,0112,EL PAN
+city_ec_0113,base.ec,base.state_ec_01,0113,SEVILLA DE ORO
+city_ec_0114,base.ec,base.state_ec_01,0114,GUACHAPALA
+city_ec_0115,base.ec,base.state_ec_01,0115,CAMILO PONCE ENRIQUEZ
+city_ec_0201,base.ec,base.state_ec_02,0201,GUARANDA
+city_ec_0202,base.ec,base.state_ec_02,0202,CHILLANES
+city_ec_0203,base.ec,base.state_ec_02,0203,CHIMBO
+city_ec_0204,base.ec,base.state_ec_02,0204,ECHEANDIA
+city_ec_0205,base.ec,base.state_ec_02,0205,SAN MIGUEL
+city_ec_0206,base.ec,base.state_ec_02,0206,CALUMA
+city_ec_0207,base.ec,base.state_ec_02,0207,LAS NAVES
+city_ec_0301,base.ec,base.state_ec_03,0301,AZOGUES
+city_ec_0302,base.ec,base.state_ec_03,0302,BIBLIAN
+city_ec_0303,base.ec,base.state_ec_03,0303,CAÑAR
+city_ec_0304,base.ec,base.state_ec_03,0304,LA TRONCAL
+city_ec_0305,base.ec,base.state_ec_03,0305,EL TAMBO
+city_ec_0306,base.ec,base.state_ec_03,0306,DELEG
+city_ec_0307,base.ec,base.state_ec_03,0307,SUSCAL
+city_ec_0401,base.ec,base.state_ec_04,0401,TULCAN
+city_ec_0402,base.ec,base.state_ec_04,0402,BOLIVAR
+city_ec_0403,base.ec,base.state_ec_04,0403,ESPEJO
+city_ec_0404,base.ec,base.state_ec_04,0404,MIRA
+city_ec_0405,base.ec,base.state_ec_04,0405,MONTUFAR
+city_ec_0406,base.ec,base.state_ec_04,0406,SAN PEDRO DE HUACA
+city_ec_0501,base.ec,base.state_ec_05,0501,LATACUNGA
+city_ec_0502,base.ec,base.state_ec_05,0502,LA MANA
+city_ec_0503,base.ec,base.state_ec_05,0503,PANGUA
+city_ec_0504,base.ec,base.state_ec_05,0504,PUJILI
+city_ec_0505,base.ec,base.state_ec_05,0505,SALCEDO
+city_ec_0506,base.ec,base.state_ec_05,0506,SAQUISILI
+city_ec_0507,base.ec,base.state_ec_05,0507,SIGCHOS
+city_ec_0601,base.ec,base.state_ec_06,0601,RIOBAMBA
+city_ec_0602,base.ec,base.state_ec_06,0602,ALAUSI
+city_ec_0603,base.ec,base.state_ec_06,0603,COLTA
+city_ec_0604,base.ec,base.state_ec_06,0604,CHAMBO
+city_ec_0605,base.ec,base.state_ec_06,0605,CHUNCHI
+city_ec_0606,base.ec,base.state_ec_06,0606,GUAMOTE
+city_ec_0607,base.ec,base.state_ec_06,0607,GUANO
+city_ec_0608,base.ec,base.state_ec_06,0608,PALLATANGA
+city_ec_0609,base.ec,base.state_ec_06,0609,PENIPE
+city_ec_0610,base.ec,base.state_ec_06,0610,CUMANDA
+city_ec_0701,base.ec,base.state_ec_07,0701,MACHALA
+city_ec_0702,base.ec,base.state_ec_07,0702,ARENILLAS
+city_ec_0703,base.ec,base.state_ec_07,0703,ATAHUALPA
+city_ec_0704,base.ec,base.state_ec_07,0704,BALSAS
+city_ec_0705,base.ec,base.state_ec_07,0705,CHILLA
+city_ec_0706,base.ec,base.state_ec_07,0706,EL GUABO
+city_ec_0707,base.ec,base.state_ec_07,0707,HUAQUILLAS
+city_ec_0708,base.ec,base.state_ec_07,0708,MARCABELI
+city_ec_0709,base.ec,base.state_ec_07,0709,PASAJE
+city_ec_0710,base.ec,base.state_ec_07,0710,PIÑAS
+city_ec_0711,base.ec,base.state_ec_07,0711,PORTOVELO
+city_ec_0712,base.ec,base.state_ec_07,0712,SANTA ROSA
+city_ec_0713,base.ec,base.state_ec_07,0713,ZARUMA
+city_ec_0714,base.ec,base.state_ec_07,0714,LAS LAJAS
+city_ec_0801,base.ec,base.state_ec_08,0801,ESMERALDAS
+city_ec_0802,base.ec,base.state_ec_08,0802,ELOY ALFARO
+city_ec_0803,base.ec,base.state_ec_08,0803,MUISNE
+city_ec_0804,base.ec,base.state_ec_08,0804,QUININDE
+city_ec_0805,base.ec,base.state_ec_08,0805,SAN LORENZO
+city_ec_0806,base.ec,base.state_ec_08,0806,ATACAMES
+city_ec_0807,base.ec,base.state_ec_08,0807,RIOVERDE
+city_ec_0808,base.ec,base.state_ec_08,0808,LA CONCORDIA
+city_ec_0901,base.ec,base.state_ec_09,0901,GUAYAQUIL
+city_ec_0902,base.ec,base.state_ec_09,0902,ALFREDO BAQUERIZO MORENO
+city_ec_0903,base.ec,base.state_ec_09,0903,BALAO
+city_ec_0904,base.ec,base.state_ec_09,0904,BALZAR
+city_ec_0905,base.ec,base.state_ec_09,0905,COLIMES
+city_ec_0906,base.ec,base.state_ec_09,0906,DAULE
+city_ec_0907,base.ec,base.state_ec_09,0907,DURAN
+city_ec_0908,base.ec,base.state_ec_09,0908,EMPALME
+city_ec_0909,base.ec,base.state_ec_09,0909,EL TRIUNFO
+city_ec_0910,base.ec,base.state_ec_09,0910,MILAGRO
+city_ec_0911,base.ec,base.state_ec_09,0911,NARANJAL
+city_ec_0912,base.ec,base.state_ec_09,0912,NARANJITO
+city_ec_0913,base.ec,base.state_ec_09,0913,PALESTINA
+city_ec_0914,base.ec,base.state_ec_09,0914,PEDRO CARBO
+city_ec_0916,base.ec,base.state_ec_09,0916,SAMBORONDON
+city_ec_0918,base.ec,base.state_ec_09,0918,SANTA LUCIA
+city_ec_0919,base.ec,base.state_ec_09,0919,SALITRE
+city_ec_0920,base.ec,base.state_ec_09,0920,SAN JACINTO DE YAGUACHI
+city_ec_0921,base.ec,base.state_ec_09,0921,PLAYAS
+city_ec_0922,base.ec,base.state_ec_09,0922,SIMON BOLIVAR
+city_ec_0923,base.ec,base.state_ec_09,0923,CRNEL. MARCELINO MARIDUEÑA
+city_ec_0924,base.ec,base.state_ec_09,0924,LOMAS DE SARGENTILLO
+city_ec_0925,base.ec,base.state_ec_09,0925,NOBOL
+city_ec_0927,base.ec,base.state_ec_09,0927,GNRAL. ANTONIO ELIZALDE
+city_ec_0928,base.ec,base.state_ec_09,0928,ISIDRO AYORA
+city_ec_1001,base.ec,base.state_ec_10,1001,IBARRA
+city_ec_1002,base.ec,base.state_ec_10,1002,ANTONIO ANTE
+city_ec_1003,base.ec,base.state_ec_10,1003,COTACACHI
+city_ec_1004,base.ec,base.state_ec_10,1004,OTAVALO
+city_ec_1005,base.ec,base.state_ec_10,1005,PIMAMPIRO
+city_ec_1006,base.ec,base.state_ec_10,1006,SAN MIGUEL DE URCUQUI
+city_ec_1101,base.ec,base.state_ec_11,1101,LOJA
+city_ec_1102,base.ec,base.state_ec_11,1102,CALVAS
+city_ec_1103,base.ec,base.state_ec_11,1103,CATAMAYO
+city_ec_1104,base.ec,base.state_ec_11,1104,CELICA
+city_ec_1105,base.ec,base.state_ec_11,1105,CHAGUARPAMBA
+city_ec_1106,base.ec,base.state_ec_11,1106,ESPINDOLA
+city_ec_1107,base.ec,base.state_ec_11,1107,GONZANAMA
+city_ec_1108,base.ec,base.state_ec_11,1108,MACARA
+city_ec_1109,base.ec,base.state_ec_11,1109,PALTAS
+city_ec_1110,base.ec,base.state_ec_11,1110,PUYANGO
+city_ec_1111,base.ec,base.state_ec_11,1111,SARAGURO
+city_ec_1112,base.ec,base.state_ec_11,1112,SOZORANGA
+city_ec_1113,base.ec,base.state_ec_11,1113,ZAPOTILLO
+city_ec_1114,base.ec,base.state_ec_11,1114,PINDAL
+city_ec_1115,base.ec,base.state_ec_11,1115,QUILANGA
+city_ec_1116,base.ec,base.state_ec_11,1116,OLMEDO
+city_ec_1201,base.ec,base.state_ec_12,1201,BABAHOYO
+city_ec_1202,base.ec,base.state_ec_12,1202,BABA
+city_ec_1203,base.ec,base.state_ec_12,1203,MONTALVO
+city_ec_1204,base.ec,base.state_ec_12,1204,PUEBLOVIEJO
+city_ec_1205,base.ec,base.state_ec_12,1205,QUEVEDO
+city_ec_1206,base.ec,base.state_ec_12,1206,URDANETA
+city_ec_1207,base.ec,base.state_ec_12,1207,VENTANAS
+city_ec_1208,base.ec,base.state_ec_12,1208,VINCES
+city_ec_1209,base.ec,base.state_ec_12,1209,PALENQUE
+city_ec_1210,base.ec,base.state_ec_12,1210,BUENA FE
+city_ec_1211,base.ec,base.state_ec_12,1211,VALENCIA
+city_ec_1212,base.ec,base.state_ec_12,1212,MOCACHE
+city_ec_1213,base.ec,base.state_ec_12,1213,QUINSALOMA
+city_ec_1301,base.ec,base.state_ec_13,1301,PORTOVIEJO
+city_ec_1302,base.ec,base.state_ec_13,1302,BOLIVAR
+city_ec_1303,base.ec,base.state_ec_13,1303,CHONE
+city_ec_1304,base.ec,base.state_ec_13,1304,EL CARMEN
+city_ec_1305,base.ec,base.state_ec_13,1305,FLAVIO ALFARO
+city_ec_1306,base.ec,base.state_ec_13,1306,JIPIJAPA
+city_ec_1307,base.ec,base.state_ec_13,1307,JUNIN
+city_ec_1308,base.ec,base.state_ec_13,1308,MANTA
+city_ec_1309,base.ec,base.state_ec_13,1309,MONTECRISTI
+city_ec_1310,base.ec,base.state_ec_13,1310,PAJAN
+city_ec_1311,base.ec,base.state_ec_13,1311,PICHINCHA
+city_ec_1312,base.ec,base.state_ec_13,1312,ROCAFUERTE
+city_ec_1313,base.ec,base.state_ec_13,1313,SANTA ANA
+city_ec_1314,base.ec,base.state_ec_13,1314,SUCRE
+city_ec_1315,base.ec,base.state_ec_13,1315,TOSAGUA
+city_ec_1316,base.ec,base.state_ec_13,1316,24 DE MAYO
+city_ec_1317,base.ec,base.state_ec_13,1317,PEDERNALES
+city_ec_1318,base.ec,base.state_ec_13,1318,OLMEDO
+city_ec_1319,base.ec,base.state_ec_13,1319,PUERTO LOPEZ
+city_ec_1320,base.ec,base.state_ec_13,1320,JAMA
+city_ec_1321,base.ec,base.state_ec_13,1321,JARAMIJO
+city_ec_1322,base.ec,base.state_ec_13,1322,SAN VICENTE
+city_ec_1401,base.ec,base.state_ec_14,1401,MORONA
+city_ec_1402,base.ec,base.state_ec_14,1402,GUALAQUIZA
+city_ec_1403,base.ec,base.state_ec_14,1403,LIMON INDANZA
+city_ec_1404,base.ec,base.state_ec_14,1404,PALORA
+city_ec_1405,base.ec,base.state_ec_14,1405,SANTIAGO
+city_ec_1406,base.ec,base.state_ec_14,1406,SUCUA
+city_ec_1407,base.ec,base.state_ec_14,1407,HUAMBOYA
+city_ec_1408,base.ec,base.state_ec_14,1408,SAN JUAN BOSCO
+city_ec_1409,base.ec,base.state_ec_14,1409,TAISHA
+city_ec_1410,base.ec,base.state_ec_14,1410,LOGROÐO
+city_ec_1411,base.ec,base.state_ec_14,1411,PABLO SEXTO
+city_ec_1412,base.ec,base.state_ec_14,1412,TIWINTZA
+city_ec_1501,base.ec,base.state_ec_15,1501,TENA
+city_ec_1503,base.ec,base.state_ec_15,1503,ARCHIDONA
+city_ec_1504,base.ec,base.state_ec_15,1504,EL CHACO
+city_ec_1507,base.ec,base.state_ec_15,1507,QUIJOS
+city_ec_1509,base.ec,base.state_ec_15,1509,CARLOS JULIO AROSEMENA TOLA
+city_ec_1601,base.ec,base.state_ec_16,1601,PASTAZA
+city_ec_1602,base.ec,base.state_ec_16,1602,MERA
+city_ec_1603,base.ec,base.state_ec_16,1603,SANTA CLARA
+city_ec_1604,base.ec,base.state_ec_16,1604,ARAJUNO
+city_ec_1701,base.ec,base.state_ec_17,1701,QUITO
+city_ec_1702,base.ec,base.state_ec_17,1702,CAYAMBE
+city_ec_1703,base.ec,base.state_ec_17,1703,MEJIA
+city_ec_1704,base.ec,base.state_ec_17,1704,PEDRO MONCAYO
+city_ec_1705,base.ec,base.state_ec_17,1705,RUMIÑAHUI
+city_ec_1707,base.ec,base.state_ec_17,1707,SAN MIGUEL DE LOS BANCOS
+city_ec_1708,base.ec,base.state_ec_17,1708,PEDRO VICENTE MALDONADO
+city_ec_1709,base.ec,base.state_ec_17,1709,PUERTO QUITO
+city_ec_1801,base.ec,base.state_ec_18,1801,AMBATO
+city_ec_1802,base.ec,base.state_ec_18,1802,BAÑOS DE AGUA SANTA
+city_ec_1803,base.ec,base.state_ec_18,1803,CEVALLOS
+city_ec_1804,base.ec,base.state_ec_18,1804,MOCHA
+city_ec_1805,base.ec,base.state_ec_18,1805,PATATE
+city_ec_1806,base.ec,base.state_ec_18,1806,QUERO
+city_ec_1807,base.ec,base.state_ec_18,1807,SAN PEDRO DE PELILEO
+city_ec_1808,base.ec,base.state_ec_18,1808,SANTIAGO DE PILLARO
+city_ec_1809,base.ec,base.state_ec_18,1809,TISALEO
+city_ec_1901,base.ec,base.state_ec_19,1901,ZAMORA
+city_ec_1902,base.ec,base.state_ec_19,1902,CHINCHIPE
+city_ec_1903,base.ec,base.state_ec_19,1903,NANGARITZA
+city_ec_1904,base.ec,base.state_ec_19,1904,YACUAMBI
+city_ec_1905,base.ec,base.state_ec_19,1905,YANTZAZA
+city_ec_1906,base.ec,base.state_ec_19,1906,EL PANGUI
+city_ec_1907,base.ec,base.state_ec_19,1907,CENTINELA DEL CONDOR
+city_ec_1908,base.ec,base.state_ec_19,1908,PALANDA
+city_ec_1909,base.ec,base.state_ec_19,1909,PAQUISHA
+city_ec_2001,base.ec,base.state_ec_20,2001,SAN CRISTOBAL
+city_ec_2002,base.ec,base.state_ec_20,2002,ISABELA
+city_ec_2003,base.ec,base.state_ec_20,2003,SANTA CRUZ
+city_ec_2101,base.ec,base.state_ec_21,2101,LAGO AGRIO
+city_ec_2102,base.ec,base.state_ec_21,2102,GONZALO PIZARRO
+city_ec_2103,base.ec,base.state_ec_21,2103,PUTUMAYO
+city_ec_2104,base.ec,base.state_ec_21,2104,SHUSHUFINDI
+city_ec_2105,base.ec,base.state_ec_21,2105,SUCUMBIOS
+city_ec_2106,base.ec,base.state_ec_21,2106,CASCALES
+city_ec_2107,base.ec,base.state_ec_21,2107,CUYABENO
+city_ec_2201,base.ec,base.state_ec_22,2201,ORELLANA
+city_ec_2202,base.ec,base.state_ec_22,2202,AGUARICO
+city_ec_2203,base.ec,base.state_ec_22,2203,LA JOYA DE LOS SACHAS
+city_ec_2204,base.ec,base.state_ec_22,2204,LORETO
+city_ec_2301,base.ec,base.state_ec_23,2301,SANTO DOMINGO
+city_ec_2401,base.ec,base.state_ec_24,2401,SANTA ELENA
+city_ec_2402,base.ec,base.state_ec_24,2402,LA LIBERTAD
+city_ec_2403,base.ec,base.state_ec_24,2403,SALINAS

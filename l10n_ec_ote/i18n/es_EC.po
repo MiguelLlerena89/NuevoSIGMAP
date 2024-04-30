@@ -1,0 +1,149 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_ec_ote
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0-20230317\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-17 13:30+0000\n"
+"PO-Revision-Date: 2023-08-17 13:30+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_ec_ote
+#: model:ir.actions.act_window,name:l10n_ec_ote.action_country_city
+#: model:ir.ui.menu,name:l10n_ec_ote.menu_country_city_partner
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ote.view_res_country_city_tree
+msgid "Cities"
+msgstr "Ciudades"
+
+#. module: l10n_ec_ote
+#. odoo-python
+#: code:addons/l10n_ec_ote/models/res_partner_city.py:0
+#: model:ir.model,name:l10n_ec_ote.model_res_country_city
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_partner__city_id
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_users__city_id
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ote.view_partner_country_city_form
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ote.view_res_country_city_form
+#, python-format
+msgid "City"
+msgstr "Ciudad"
+
+#. module: l10n_ec_ote
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ote.view_res_country_city_form
+msgid "City name..."
+msgstr "Nombre ciudad"
+
+#. module: l10n_ec_ote
+#. odoo-python
+#: code:addons/l10n_ec_ote/models/res_country_city.py:0
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country_city__code
+#, python-format
+msgid "Code"
+msgstr "Código"
+
+#. module: l10n_ec_ote
+#: model:ir.model,name:l10n_ec_ote.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: l10n_ec_ote
+#. odoo-python
+#: code:addons/l10n_ec_ote/models/res_country_city.py:0
+#: model:ir.model,name:l10n_ec_ote.model_res_country
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country_city__country_id
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ote.view_res_country_city_search
+#, python-format
+msgid "Country"
+msgstr "País"
+
+#. module: l10n_ec_ote
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country_city__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_ec_ote
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country_city__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_ec_ote
+#: model_terms:ir.actions.act_window,help:l10n_ec_ote.action_country_city
+msgid "Define a new city"
+msgstr "Define una nueva ciudad"
+
+#. module: l10n_ec_ote
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country_city__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_ec_ote
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ote.view_res_country_city_search
+msgid "Group By"
+msgstr ""
+
+#. module: l10n_ec_ote
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country_city__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_ec_ote
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country_city____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: l10n_ec_ote
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country_city__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_ec_ote
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country_city__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_ec_ote
+#. odoo-python
+#: code:addons/l10n_ec_ote/models/res_country_city.py:0
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country_city__name
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ote.view_res_country_city_form
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ote.view_res_country_city_search
+#, python-format
+msgid "Name"
+msgstr "Nombre"
+
+#. module: l10n_ec_ote
+#. odoo-python
+#: code:addons/l10n_ec_ote/models/res_country.py:0
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country__nationality
+#, python-format
+msgid "Nationality (Country)"
+msgstr "Nacionalidad"
+
+#. module: l10n_ec_ote
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ote.view_res_country_city_search
+msgid "Search City"
+msgstr ""
+
+#. module: l10n_ec_ote
+#. odoo-python
+#: code:addons/l10n_ec_ote/models/res_country_city.py:0
+#: model:ir.model.fields,field_description:l10n_ec_ote.field_res_country_city__state_id
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ote.view_partner_country_city_form
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ote.view_res_country_city_search
+#, python-format
+msgid "State"
+msgstr "Provincia"
+
+#. module: l10n_ec_ote
+#. odoo-python
+#: code:addons/l10n_ec_ote/models/res_country_city.py:0
+#: model:ir.model.constraint,message:l10n_ec_ote.constraint_res_country_city_city_uniq
+#, python-format
+msgid "The name of city must be unique."
+msgstr "El nombre de la ciudad debe ser única"

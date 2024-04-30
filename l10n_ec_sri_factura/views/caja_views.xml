@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_caja_tree" model="ir.ui.view">
+            <field name="name">caja.tree</field>
+            <field name="model">caja</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Cajas">
+                    <field name="user_id"/>
+                    <field name="active"/>
+                    <field name="abierta"/>
+                    <field name="sri_establecimiento_id"/>
+                    <field name="sri_punto_emision_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_caja_form" model="ir.ui.view">
+            <field name="name">caja.form</field>
+            <field name="model">caja</field>
+            <field name="arch" type="xml">
+                <form string="Caja">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="user_id"/>
+                                <field name="active"/>
+                                <field name="abierta"/>
+                            </group>
+                            <group>
+                                <field name="sri_establecimiento_id"/>
+                                <field name="sri_punto_emision_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_caja" model="ir.actions.act_window">
+            <field name="name">Cajas</field>
+            <field name="res_model">caja</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_caja_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Define cajas.
+                </p>
+            </field>
+        </record>
+        <record id="view_apertura_cierre_caja_tree" model="ir.ui.view">
+            <field name="name">apertura.cierre.caja.tree</field>
+            <field name="model">apertura.cierre.caja</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Cajas" create="false">
+                    <field name="caja_id"/>
+                    <field name="fecha_apertura"/>
+                    <field name="fecha_cierre"/>
+                    <field name="valor_apertura"/>
+                    <field name="valor_cierre"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_apertura_cierre_caja_form" model="ir.ui.view">
+            <field name="name">apertura.cierre.caja.form</field>
+            <field name="model">apertura.cierre.caja</field>
+            <field name="arch" type="xml">
+                <form string="Caja" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="caja_id"/>
+                                <field name="fecha_apertura"/>
+                                <field name="fecha_cierre"/>
+                            </group>
+                            <group>
+                                <field name="valor_apertura"/>
+                                <field name="valor_cierre"/>
+                                <field name="total_facturado"/>
+                                <field name="total_nc"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <!--page name="recaudaciones" string="Recaudaciones">
+                                <field name="payment_ids" nolabel="1">
+                                    <tree string="Pago">
+                                        <field name="caja_id" invisible="1"/>
+                                        <field name="move_id"/>
+                                        <field name="partner_id"/>
+                                        <field name="journal_id"/>
+                                        <field name="ref"/>
+                                        <field name="amount" widget="monetary" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </page-->
+                            <page name="invoices" string="Resumen">
+                                <field name="invoice_ids" nolabel="1">
+                                    <tree string="Resumen" decoration-danger="move_type == 'out_refund'" decoration-success="move_type == 'entry'" decoration-info="move_type == 'out_invoice'">
+                                        <field name="caja_id" invisible="1"/>
+                                        <field name="partner_id"/>
+                                        <field name="journal_id"/>
+                                        <field name="ref"/>
+                                        <field name="move_type" invisible="1"/>
+                                        <field name="amount_total_signed" widget="monetary"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="action_apertura_cierre_caja" model="ir.actions.act_window">
+            <field name="name">Apertura Cierre de Cajas</field>
+            <field name="res_model">apertura.cierre.caja</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_apertura_cierre_caja_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Define cajas.
+                </p>
+            </field>
+        </record>
+        <menuitem
+            action="action_caja"
+            name="Cajas"
+            id="menu_action_caja"
+            parent="account.menu_finance_receivables"
+            sequence="112"/>
+        <menuitem
+            action="action_apertura_cierre_caja"
+            name="Apertura Cierre de Caja"
+            id="menu_action_apertura_cierre_caja"
+            parent="account.menu_finance_receivables"
+            sequence="113"/>
+    </data>
+</odoo>

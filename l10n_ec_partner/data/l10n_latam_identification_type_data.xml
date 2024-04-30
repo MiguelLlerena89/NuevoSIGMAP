@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id='l10n_ec.ec_ruc' model='l10n_latam.identification.type'>
+        <field name="l10n_ec_sri_code">04</field>
+    </record>
+    <record id='l10n_ec.ec_dni' model='l10n_latam.identification.type'>
+        <field name="l10n_ec_sri_code">05</field>
+    </record>
+    <record id='l10n_ec.ec_passport' model='l10n_latam.identification.type'>
+        <field name="l10n_ec_sri_code">06</field>
+    </record>
+</odoo>
