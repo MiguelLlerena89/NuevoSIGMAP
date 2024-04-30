@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inspecciones -->
+    <record id="view_nave_inspeccion_search" model="ir.ui.view">
+        <field name="name">nave.inspeccion.search</field>
+        <field name="model">nave.inspeccion</field>
+        <field name="arch" type="xml">
+            <search string="Search Inspecciones">
+                <field name="name"/>
+                <field name="nave_id"/>
+                <field name="inspector_id"/>
+                <separator/>
+                <filter string="Por asignar inspector" name="state_por_asignar_inspector" domain="[('state', '=', 'por_asignar_inspector')]"/>
+                <separator/>
+                <filter string="Por asignar lista de chequeo" name="state_por_asignar_lista" domain="[('state', '=', 'por_asignar_lista')]"/>
+                <separator/>
+                <filter string="Programadas" name="estado_programada" domain="[('state', '=', 'programada')]"/>
+                <separator/>
+                <!--filter string="Hoy" name="nave_inspeccion_today"
+                    domain="[('fecha_inspeccion', '=', context_today().strftime('%Y-%m-%d'))]"/-->
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_nave" string="Nave" domain="[]" context="{'group_by': 'nave_id'}"/>
+                    <filter name="group_inspector" string="Inspector" domain="[]" context="{'group_by': 'inspector_id'}"/>
+                    <filter name="group_estado" string="Estado" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter name="group_fecha_inspeccion" string="Fecha inspección" domain="[]" context="{'group_by': 'fecha_inspeccion'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="view_nave_inspeccion_form" model="ir.ui.view">
+        <field name="name">nave.inspeccion.form</field>
+        <field name="model">nave.inspeccion</field>
+        <field name="arch" type="xml">
+            <form string="Inspección">
+                <header>
+                    <button name="action_coordinar" type="object" string="Pasar a Por coordinar" class="oe_highlight"
+                        attrs="{'invisible': ['|',('state','not in', ['por_asignar_inspector']),('inspector_id','=', False)]}"/>
+                    <button name="action_programar" type="object" string="Pasar a Programada" class="oe_highlight"
+                        attrs="{'invisible': ['|',('state','not in', ['por_coordinar']),('fecha_inspeccion','=', False)]}"/>
+                    <button name="action_pedir_supervision" type="object" string="Pedir Supervisión" class="oe_highlight"
+                        attrs="{'invisible': ['|',('tipo_inspector_id','=','usuarios.sigmap_inspector_rector'),'|',('state','not in', ['programada']),'|',('lista_llenada','=',False),('calificacion_sugerida','=',False)]}"/>
+                    <button name="action_cancel" type="object" string="Cancelar" class="oe_highlight"
+                        attrs="{'invisible': [('state','in', ['realizada','cancel'])]}"/>
+                    <button name="action_aprobado_satisfactorio" type="object" string="Aprueba Satisfactorio" class="oe_highlight"
+                        attrs="{'invisible': ['|',('tipo_inspector_id','!=','usuarios.sigmap_inspector_rector'),'|',('lista_llenada','=',False),('state','not in', ['programada'])]}"/>
+                    <button name="action_aprobado_condicional" type="object" string="Aprueba como Condicional" class="oe_highlight"
+                        attrs="{'invisible': ['|',('tipo_inspector_id','!=','usuarios.sigmap_inspector_rector'),'|',('tiene_condicional','=',False),'|',('lista_llenada','=',False),('state','not in', ['programada'])]}"/>
+                    <button name="action_aprobado_no_satisfactorio" type="object" string="No satisfactorio" class="oe_highlight"
+                        attrs="{'invisible': ['|',('tipo_inspector_id','!=','usuarios.sigmap_inspector_rector'),'|',('lista_llenada','=',False),('state','not in', ['programada'])]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <!--sheet-->
+                    <group>
+                        <group string="Información">
+                            <field name="lista_para_llenar" invisible="0"/>
+                            <field name="pregunta_ids_domain" invisible="0"/>
+                            <field name="lista_llenada" invisible="0"/>
+                            <field name="name" readonly="1" force_save="1"/>
+                            <field name="tramite_id" readonly="1"/>
+                            <field name="reparto_id"/>
+                            <field name="servicio_id"/>
+                            <field name="tiene_condicional" invisible="1"/>
+                            <field name="tipo_inspeccion"/>
+                            <field name="nave_id"/>
+                        </group>
+                        <group string="Detalle de inspección">
+                            <field name="lista_chequeo_id"
+                                options="{'no_open':True,'no_create':True,'no_create_edit':True}"
+                                domain="[('servicio_id','=',servicio_id)]"
+                                attrs="{'readonly':[('state','!=','por_asignar_lista')]}"/>
+                            <field name="estado_lista_chequeo" readonly="1" force_save="1"/>
+                            <field name="tipo_inspector_id"/>
+                            <field name="inspector_id"
+                                options="{'no_open':True,'no_create':True,'no_create_edit':True}"
+                                domain="[('tipo_id','=',tipo_inspector_id)]"
+                                attrs="{'readonly':[('state','!=','por_asignar_inspector')]}"/>
+                            <field name="fecha_inspeccion" attrs="{'readonly':[('state','!=','por_coordinar')]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Contactos">
+                            <field name="puerto_id" attrs="{'readonly':[('state','!=','por_coordinar')]}"/>
+                            <field name="lugar_inspeccion" attrs="{'readonly':[('state','!=','por_coordinar')]}"/>
+                            <field name="lugar_embarque" attrs="{'readonly':[('state','!=','por_coordinar')]}"/>
+                            <field name="contacto" attrs="{'readonly':[('state','!=','por_coordinar')]}"/>
+                            <field name="telefono" attrs="{'readonly':[('state','!=','por_coordinar')]}"/>
+                        </group>
+                        <group string="Calificación">
+                            <field name="lista_chequeo_puntaje_max" readonly="1"/>
+                            <field name="puntaje_sistema"
+                                attrs="{'invisible': [('state','not in',('programada','realizada'))]}"/>
+                            <field name="calificacion_sistema"
+                                attrs="{'invisible': [('state','not in',('programada','realizada'))]}"/>
+                            <field name="calificacion_sugerida"
+                                attrs="{'invisible': ['|',('tipo_inspector_id','=','usuarios.sigmap_inspector_rector'),('lista_llenada','=',False)]}"/>
+                            <field name="calificacion_final"
+                                attrs="{'invisible': ['|',('estado_lista_chequeo','!=',('llenada','por_llenar','por_asignar')),('state','!=','realizada')]}"
+                                readonly="1" force_save="1"/>
+                        </group>
+                    </group>
+                    <notebook attrs="{'invisible':['|',('lista_chequeo_id','=',False),('lista_chequeo_pregunta_ids','=',False)]}">
+                        <page name="lista_chequeo" string="Lista Chequeo">
+                            <field name="lista_chequeo_pregunta_ids" widget="section_and_note_one2many" options="{'no_create': True, 'no_delete': True}"
+                                attrs="{'readonly': ['|',('lista_para_llenar','=',False),('estado_lista_chequeo','!=', 'llenando')]}"
+                                domain="pregunta_ids_domain">
+                                <tree create="0" delete="0" limit="300"
+                                    decoration-muted="not display_type and has_child_ids"
+                                    decoration-info="not display_type and not has_child_ids and not respuesta"
+                                    decoration-danger="not display_type and respuesta == 'nos'"
+                                    decoration-warning="not display_type and respuesta == 'obs'"
+                                    decoration-success="not display_type and (respuesta == 'exe' or respuesta == 'sat')">
+                                    <field name="inspeccion_id" invisible="1"/>
+                                    <field name="display_type" invisible="1"/>
+                                    <field name="sequence_for_o2m_parent" string="Nº" readonly="1"/>
+                                    <field name="sequence_for_o2m_child" string="-" readonly="1"/>
+                                    <field name="name" readonly="1"/>
+                                    <field name="has_child_ids" invisible="1"/>
+                                    <field name="respuesta" widget="selection" attrs="{'invisible':[('has_child_ids','=',True)], 'readonly':[('has_child_ids','=',True)]}" />
+                                    <field name="evidencia_1920" widget="image" options="{'zoom': true}" attrs="{'invisible':[('has_child_ids','=',True)], 'readonly':[('has_child_ids','=',True)]}"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                <!--/sheet-->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+<record id="view_nave_inspeccion_asignar_inspector_form" model="ir.ui.view">
+        <field name="name">nave.inspeccion.form</field>
+        <field name="model">nave.inspeccion</field>
+        <field name="arch" type="xml">
+            <form string="Inspección">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <!--sheet-->
+                    <group>
+                        <group string="Información">
+                            <field name="name" readonly="1" force_save="1"/>
+                            <field name="tramite_id" readonly="1"/>
+                            <field name="reparto_id"/>
+                            <field name="servicio_id"/>
+                            <field name="tipo_inspeccion"/>
+                            <field name="nave_id"/>
+                        </group>
+                        <group string="Detalle de inspección">
+                            <field name="lista_chequeo_id"
+                                options="{'no_open':True,'no_create':True,'no_create_edit':True}"
+                                domain="[('servicio_id','=',servicio_id)]"
+                                attrs="{'readonly':[('state','!=','por_asignar_lista')]}"/>
+                            <field name="estado_lista_chequeo" readonly="1" force_save="1"/>
+                            <field name="tipo_inspector_id"/>
+                            <field name="inspector_id"
+                                options="{'no_open':True,'no_create':True,'no_create_edit':True}"
+                                domain="[('tipo_id','=',tipo_inspector_id)]"
+                                attrs="{'readonly':[('lista_chequeo_id','=',False)]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Contactos">
+                            <field name="puerto_id" attrs="{'readonly':[('state','!=','por_coordinar')]}"/>
+                            <field name="lugar_inspeccion" attrs="{'readonly':[('state','!=','por_coordinar')]}"/>
+                            <field name="lugar_embarque" attrs="{'readonly':[('state','!=','por_coordinar')]}"/>
+                            <field name="contacto" attrs="{'readonly':[('state','!=','por_coordinar')]}"/>
+                            <field name="telefono" attrs="{'readonly':[('state','!=','por_coordinar')]}"/>
+                        </group>
+                    </group>
+                <!--/sheet-->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_inspeccion_tree" model="ir.ui.view">
+        <field name="name">nave.inspeccion.tree</field>
+        <field name="model">nave.inspeccion</field>
+        <field name="arch" type="xml">
+            <tree string="Inspección">
+                <field name="name"/>
+                <field name="reparto_id" />
+                <field name="tramite_id" />
+                <field name="servicio_id"/>
+                <field name="tipo_inspeccion"/>
+                <field name="nave_id"/>
+                <field name="tipo_inspector_id"/>
+                <field name="inspector_id"/>
+                <field name="state"/>
+                <field name="estado_lista_chequeo"/>
+                <field name="calificacion_final" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_nave_inspeccion_asignar_inspector_tree" model="ir.ui.view">
+        <field name="name">nave.inspeccion.tree</field>
+        <field name="model">nave.inspeccion</field>
+        <field name="arch" type="xml">
+            <tree string="Inspección">
+                <field name="name"/>
+                <field name="reparto_id" />
+                <field name="tramite_id" />
+                <field name="servicio_id"/>
+                <field name="tipo_inspeccion"/>
+                <field name="nave_id"/>
+                <field name="tipo_inspector_id"/>
+                <field name="inspector_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_inspeccion_action_menu" model="ir.actions.act_window">
+        <field name="name">Inspección</field>
+        <field name="res_model">nave.inspeccion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="search_view_id" ref="view_nave_inspeccion_search"/>
+        <field name="view_id" ref="view_nave_inspeccion_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new authorised list
+            </p>
+        </field>
+    </record>
+
+    <record id="nave_inspeccion_asignar_inspector_action_menu" model="ir.actions.act_window">
+        <field name="name">Asignar Inspector</field>
+        <field name="res_model">nave.inspeccion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" eval="[('inspector_id','=',False)]"/>
+        <field name="context">{'create': False, 'delete': False, 'form_view_ref': 'nave_documento.view_nave_inspeccion_asignar_inspector_form'}</field>
+        <field name="search_view_id" ref="view_nave_inspeccion_search"/>
+        <field name="view_id" ref="view_nave_inspeccion_asignar_inspector_tree"/>
+    </record>
+
+    <record id="nave_inspeccion_abanderamiento_action_menu" model="ir.actions.act_window">
+        <field name="name">Inspección - Estado de Abanderamiento</field>
+        <field name="res_model">nave.inspeccion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" eval="[('tipo_inspector_id','!=', ref('usuarios.sigmap_inspector_rector'))]"/>
+        <field name="context">{'create': False, 'delete': False}</field>
+        <field name="search_view_id" ref="view_nave_inspeccion_search"/>
+        <field name="view_id" ref="view_nave_inspeccion_tree"/>
+    </record>
+
+    <record id="nave_inspeccion_rector_action_menu" model="ir.actions.act_window">
+        <field name="name">Inspección - Estado Rector del Puerto</field>
+        <field name="res_model">nave.inspeccion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" eval="[('tipo_inspector_id', '=', ref('usuarios.sigmap_inspector_rector'))]" />
+        <field name="context">{'create': False, 'delete': False}</field>
+        <field name="search_view_id" ref="view_nave_inspeccion_search"/>
+        <field name="view_id" ref="view_nave_inspeccion_tree"/>
+    </record>
+
+    <!-- Inspecciones Preguntas -->
+
+    <record id="nave_inspeccion_pregunta_view_form" model="ir.ui.view">
+        <field name="name">nave.inspeccion.pregunta.view.form</field>
+        <field name="model">nave.inspeccion.pregunta</field>
+        <field name="arch" type="xml">
+            <form string="Inspección - Pregunta y Respuesta">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="inspeccion_id" readonly="1" force_save="1"/>
+                            <field name="display_type" invisible="1"/>
+                            <field name="has_child_ids" invisible="1"/>
+                            <!--field name="grupo_id" /-->
+                            <!--field name="parent_id" /-->
+                        </group>
+                        <group>
+                            <!--field name="is_parent" /-->
+                            <!--field name="puntaje_no_satisfactorio" attrs="{'invisible':[('is_parent', '=', True)]}"/-->
+                            <!--field name="porcentaje_si_hijo" attrs="{'invisible':[('is_parent', '=', False)]}" widget="percentage"/-->
+                        </group>
+                    </group>
+                    <group>
+                        <!--field name="sequence" string="Orden"/-->
+                        <field name="name" readonly="1" force_save="1"/>
+                        <!--field name="texto" /-->
+                        <field name="respuesta" attrs="{'invisible':['|',('display_type','!=',False),('has_child_ids','!=',False)]}"/>
+                    </group>
+                    <group name="Justificación" string="string" attrs="{'invisible':['|',('display_type','!=',False),('has_child_ids','!=',False)]}">
+                        <field name="comentario" />
+                        <field name="deficiencia_id" attrs="{'invisible':[('respuesta','not in',('obs','nos'))]}"/>
+                        <field name="comentario_deficiencia" attrs="{'invisible':[('deficiencia_id','=',False)], 'required':[('deficiencia_id','!=',False)]}"/>
+                        <field name="evidencia_1920" widget="image" options="{'zoom': true}"/>
+                    </group>
+                    <!--notebook attrs="{'invisible':[('is_parent', '=', True)]}">
+                        <page name="sub_preguntas" string="Sub - Preguntas">
+                            <field name="child_ids"
+                                context="{
+                                    'default_lista_chequeo_id': lista_chequeo_id
+                                }">
+                                <tree string="Preguntas" default_order="sequence_for_o2m_order asc">
+                                    <field name="sequence_for_o2m_order" invisible="1"/>
+                                    <field name="sequence"/>
+                                    <field name="name"/>
+                                    <field name="porcentaje_si_hijo" widget="percentage"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

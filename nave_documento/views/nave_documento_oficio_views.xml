@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_nave_documento_oficio_tree" model="ir.ui.view">
+        <field name="name">nave.documento.oficio.tree</field>
+        <field name="model">nave.documento.oficio</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Seguridad de Nave">
+                <field name="name"/>
+                <!-- <field name="nave_id"/>
+                <field name="reparto_id"/> -->
+                <field name="fecha_emision"/>
+                <!-- <field name="fecha_inicio"/>
+                <field name="fecha_caducidad"/> -->
+                <field name="active" widget="boolean_toggle"/>
+                <field name="state" string="Estado"
+                    decoration-info="state == 'en_tramite'"
+                    decoration-success="state == 'vigente'"
+                    decoration-primary="state == 'por_firmar'"
+                    decoration-muted="state == 'suspendido'"
+                    decoration-warning="state == 'caducado'"
+                    decoration-danger="state == 'anulado'"
+                    widget="badge" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_nave_documento_oficio_form" model="ir.ui.view">
+        <field name="name">nave.documento.oficio.form</field>
+        <field name="model">nave.documento.oficio</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Seguridad de Nave">
+                <header>
+                    <button name="action_generar_documento" type="object" class="btn-primary" states="en_tramite" string="Enviar a supervisión" data-hotkey="k"/>
+                    <field name="state" widget="statusbar" statusbar_visible="pendiente,vigente,caducado"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="header_left_group">
+                            <field name="tipo_oficio" invisible="1"/>
+                            <field name="attachments_required" attrs="{'invisible': [('attachments_required', '=', False)]}"/>
+                            <field name="attachment_ids" widget="many2many_binary"
+                                attrs="{
+                                    'invisible': [('attachments_required', '=', False)],
+                                    'required': [('attachments_required', '=', True)]
+                                }"/>
+                            <!--field name="data"
+                                attrs="{
+                                    'invisible': [('attachments_required', '=', False)],
+                                    'required': [('attachments_required', '=', True)]
+                                }"/>
+                            <field name="filename"
+                                attrs="{
+                                    'invisible': [('attachments_required', '=', False)],
+                                    'required': [('attachments_required', '=', True)]
+                                }"/-->
+                        </group>
+                        <group name="header_right_group">
+                            <field name="fecha_emision"/>
+                            <!-- <field name="fecha_inicio"/>
+                            <field name="fecha_caducidad"/> -->
+                            <field name="numero_formato"
+                                attrs="{
+                                    'invisible': [('numero_formato', '=', 0)],
+                                    'readonly': True}"
+                                />
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <group name="registro_oficio_info" string="Texto del Oficio">
+                        <field name="asunto" string="Asunto:"/>
+                        <field name="partner_id" string="Dedicado:"/>
+                        <field name="descripcion" string="Descripción:" widget="html" options="{'style': 'height: 300px;'}"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_aprobacion_cuadro_zafarrancho" model="ir.actions.act_window">
+        <field name="name">Aprobación de Cuadro de Zafarrancho</field>
+        <field name="res_model">nave.documento.oficio</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_oficio', '=', 'cuadro_zafarrancho')]</field>
+        <field name="context">{'tipo_oficio':'cuadro_zafarrancho'}</field>
+        <field name="view_id" ref="view_nave_documento_oficio_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra oficios para zafarancho
+            </p>
+        </field>
+    </record>
+
+</odoo>

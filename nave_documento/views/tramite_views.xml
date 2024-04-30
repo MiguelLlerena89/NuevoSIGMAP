@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tramite_nave_inspeccion_form" model="ir.ui.view">
+        <field name="name">Tramite formulario</field>
+        <field name="model">tramite</field>
+        <field name="inherit_id" ref="tramite.view_tramite_form"/>
+        <field name="arch" type="xml">
+            <field name="tipo_inspeccion" position="after">
+                <field name="nave_inspeccion_id" readonly="1" attrs="{'invisible':['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),'|',('es_inspeccion','=',False),('nave_inspeccion_id','=',False)]}"/>
+                <field name="nave_inspeccion_resultado" attrs="{'invisible':['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),'|',('es_inspeccion','=',False),('nave_inspeccion_id','=',False)]}"/>
+                <field name="nave_inspeccion_state" attrs="{'invisible':['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),'|',('es_inspeccion','=',False),('nave_inspeccion_id','=',False)]}"/>
+            </field>
+
+            <xpath expr="//notebook/page[@name='tramite_requisitos']" position="after">
+                <page name="servicios_nave" string="Servicios Nave"  attrs="{'invisible':[('tipo_documento_id','!=',%(base_sigmap.nave)d)]}">
+                    <group name="vare_desvare" string="Permiso Vare/Desvare">
+                        <group>
+                            <field name="varadero_id" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="varadero_matricula_estado" />
+                            <field name="varadero_matricula_caducidad" />
+                        </group>
+                        <group>
+                            <field name="fecha_vare" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="fecha_desvare" attrs="{'readonly': [('state','!=','draft')]}"/>
+                        </group>
+                    </group>
+                    <group name="inspecciones" string="Inspecciones" attrs="{'invisible':[('es_inspeccion','=',False)]}">
+                        <group>
+                            <field name="lista_chequeo_id" readonly="1" force_save="1" attrs="{'invisible':[('lista_chequeo_error_msg','!=',False)]}"/>
+                            <field name="lista_chequeo_error_msg" readonly="1" force_save="1" attrs="{'invisible':[('lista_chequeo_id','!=',False)]}"/>
+                            <field name="nave_trb" />
+                            <field name="nave_origen_id" />
+                            <field name="tipo_inspector_id" attrs="{'readonly': [('state','!=','draft')]}"/>
+                        </group>
+                        <group>
+                            <field name="puerto_id" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="lugar_inspeccion" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="lugar_embarque" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="contacto" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="telefono" attrs="{'readonly': [('state','!=','draft')]}"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

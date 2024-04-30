@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_nave_lista_chequeo" model="ir.actions.report">
+        <field name="name">Lista de Chequeo</field>
+        <field name="model">lista.chequeo</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_listachequeo</field>
+        <field name="report_file">nave_documento.report_listachequeo</field>
+        <field name="print_report_name">'Lista de Chequeo - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_lista_chequeo"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_listachequeo">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <div align="center" style="font-family:Arial;font-size:14px;font-weight: bold;text-decoration:none;">
+                            <span t-field="o.name"/>
+                        </div>
+                        <div class="col-xs-12" style="font-size: 14px">
+                            <!-- <table width="100%" border="0" cellpadding="0" cellspacing="0"> -->
+                            <!-- <table class="table table-bordered"> -->
+                            <table style="border-collapse: collapse; width: 100%;" id="cabecera_info">
+                                <tr>
+                                    <td rowspan="2">
+                                        <div class="o_utm_no_data_img">
+                                            <img src="/base_sigmap/static/src/img/otroEscudo.gif" alt="otroescudo" style="max-height: 4cm; max-width: 8cm;" class="utm_chart_image image-responsive mt8"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="text-center"><b>Dirección Nacional de los Espacios Acuáticos <br/> Sistema de Gestión de Seguridad y Protección</b></td><br/>
+                                    <br/>
+                                    <td class="text-right"><b>Reporte No. <br/> Fecha</b></td><br/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="20px"/>
+                                </tr>
+                            </table>
+
+                            <!-- <table class="table table-bordered mt32;padding:5px;" width="100%"> -->
+                            <!-- <table class="table table-sm table-striped" style="border-bottom: 0px solid white !important;">
+                                <tr>
+                                    <th colspan="4" align="justify" style="border:1px;">
+                                        <span class="text-uppercase" t-field="o.name"></span>
+                                    </th>
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-left">Nombre del buque</th>
+                                        <th style="border:1px solid black;" class="text-left">Número OMI</th>
+                                        <th style="border:1px solid black;" class="text-left">Puerto de Registro</th>
+                                        <th style="border:1px solid black;" class="text-left">Número de Matrícula</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-left">Tipo Buque</th>
+                                        <th style="border:1px solid black;" class="text-left">Señal Llamada</th>
+                                        <th style="border:1px solid black;" class="text-left">Propietario</th>
+                                        <th style="border:1px solid black;" class="text-left">Armador</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-left">Lugar y Año de Construcción</th>
+                                        <th style="border:1px solid black;" class="text-left">Eslora</th>
+                                        <th style="border:1px solid black;" class="text-left">TRB</th>
+                                        <th style="border:1px solid black;" class="text-left">No. de Pasajeros</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-left">Servicio Autorizado</th>
+                                        <th style="border:1px solid black;" class="text-left">Manga      Puntal</th>
+                                        <th style="border:1px solid black;" class="text-left">TRN</th>
+                                        <th style="border:1px solid black;" class="text-left">Dotación Mínima Oficiales/Tripulantes</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-left">Tipo de Inspección</th>
+                                        <th style="border:1px solid black;" class="text-left">Lugar de la Inspección</th>
+                                        <th style="border:1px solid black;" class="text-left">Fecha de la Inspección</th>
+                                        <th style="border:1px solid black;" class="text-left">Nombre del Inspector</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">SAT: Satisfactorio</th>
+                                        <th class="text-center">OBS: Con Observación</th>
+                                        <th class="text-center">NOS: No Satisfactorio</th>
+                                        <th class="text-center">EXE: Exención</th>
+                                    </tr>
+                                </tr>
+                            </table> -->
+
+                            <table class="table table-sm table-striped" style="border-bottom: 0px solid white !important;">
+                                <tr>
+                                    <th colspan="4" align="justify" style="border:1px;">
+                                        <span class="text-uppercase" t-field="o.name"></span>
+                                    </th>
+                                    <tr>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Nombre del buque</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Número OMI</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Puerto de Registro</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Número de Matrícula</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Tipo Buque</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Señal Llamada</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Propietario</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Armador</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Lugar y Año de Construcción</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Eslora</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>TRB</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>No. de Pasajeros</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Servicio Autorizado</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Manga</b>
+                                            </div>
+                                            <div class="text-left">
+
+                                            </div>
+                                            <div class="text-right">
+                                                <b>Puntal</b>
+                                            </div>
+                                            <div class="text-right">
+
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>TRN</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Dotación Mínima Oficiales/Tripulantes</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Tipo de Inspección</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Lugar de la Inspección</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Fecha de la Inspección</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                        <td height="30" style="border:1px solid black;">
+                                            <div class="text-left">
+                                                <b>Nombre del Inspector</b>
+                                            </div>
+                                            <div class="text-center">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">SAT: Satisfactorio</th>
+                                        <th class="text-center">OBS: Con Observación</th>
+                                        <th class="text-center">NOS: No Satisfactorio</th>
+                                        <th class="text-center">EXE: Exención</th>
+                                    </tr>
+                                </tr>
+                            </table>
+
+                            <table t-foreach="o.grupo_pregunta_ids" t-as="obj" class="table table-sm mt16 mb32">
+                                <tr>
+                                    <td colspan="2" align="left">
+                                        <span t-esc="obj.sequence"/>. <span t-esc="obj.name"/>
+                                    </td>
+                                    <!-- <table class="table table-sm o_main_table table-borderless mt-4"> -->
+                                    <table class="table table-bordered mt32">
+                                        <thead style="display: table-row-group">
+                                            <tr>
+                                                <th class="text-center"><b>Orden</b></th>
+                                                <th colspan="2" class="text-center"><b>Pregunta</b></th>
+                                                <th class="text-center"><b>Calificación</b></th>
+                                                <th class="text-center"><b>Evidencia</b></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="obj.pregunta_ids" t-as="line">
+                                                <tr>
+                                                    <t t-if="not line.parent_id">
+                                                        <td class="text-left">
+                                                            <span t-field="line.sequence"/>
+                                                        </td>
+                                                        <td colspan="2" class="text-left">
+                                                            <span t-field="line.name"/>
+                                                        </td>
+                                                        <t t-if="not line.has_child_ids">
+                                                            <td>
+                                                                <input type="checkbox" id="sat" /><!--checked="checked"-->
+                                                                <label for="checkbox1">SAT</label><br/>
+                                                                <input type="checkbox" id="obs" /><!--checked="checked"-->
+                                                                <label for="checkbox2">OBS</label><br/>
+                                                                <input type="checkbox" id="nos" /><!--checked="checked"-->
+                                                                <label for="checkbox3">NOS</label><br/>
+                                                                <input type="checkbox" id="exe" /><!--checked="checked"-->
+                                                                <label for="checkbox4">EXE</label><br/>
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <span t-field="line.texto"/>
+                                                            </td>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <td></td>
+                                                            <td></td>
+                                                        </t>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <td class="text-left">
+                                                            <span></span>
+                                                        </td>
+                                                        <!-- <td colspan="2">
+                                                            <td>
+                                                                <span t-field="line.porcentaje_si_hijo"/>
+                                                            </td>
+                                                            <td>
+                                                                <t t-if="not line.texto">
+                                                                    <span t-field="line.name"/>
+                                                                </t>
+                                                                <t t-else="">
+                                                                <span t-field="line.texto"/>
+                                                                </t>
+                                                            </td>
+                                                        </td> -->
+                                                        <!-- <td>
+                                                            <t t-if="not line.texto">
+                                                                <span t-field="line.name"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                            <span t-field="line.texto"/>
+                                                            </t>
+                                                        </td> -->
+                                                        <!-- <td><span t-field="line.sequence"/></td> -->
+                                                        <td colspan="2">
+                                                            <span t-field="line.sequence"/>
+                                                            <t t-if="not line.texto">
+                                                                <span t-field="line.name"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                            <span t-field="line.texto"/>
+                                                            </t>
+                                                        </td>
+                                                        <!-- <td>
+                                                            <t t-if="not line.texto">
+                                                                <span t-field="line.name"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                            <span t-field="line.texto"/>
+                                                            </t>
+                                                        </td> -->
+                                                        <td>
+                                                            <input type="checkbox" id="sat" /><!--checked="checked"-->
+                                                            <label for="checkbox1">SAT</label><br/>
+                                                            <input type="checkbox" id="obs" /><!--checked="checked"-->
+                                                            <label for="checkbox2">OBS</label><br/>
+                                                            <input type="checkbox" id="nos" /><!--checked="checked"-->
+                                                            <label for="checkbox3">NOS</label><br/>
+                                                            <input type="checkbox" id="exe" /><!--checked="checked"-->
+                                                            <label for="checkbox4">EXE</label><br/>
+                                                        </td>
+                                                        <td class="text-left">
+                                                            <span/>
+                                                        </td>
+                                                    </t>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                    <!-- <tr t-foreach="obj.pregunta_ids" t-as="field" class="table table-sm mt16 mb32">
+                                        <td class="col-3"><t t-esc="field.name"/></td>
+                                    </tr> -->
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+
+    </template>
+</odoo>

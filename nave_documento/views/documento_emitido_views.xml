@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--  Documento Persona -->
+    <record id="view_tramite_documento_emitido_form_nave_inherited" model="ir.ui.view">
+        <field name="name">tramite.documento.emitido.form.nave.inherit</field>
+        <field name="model">tramite.documento.emitido</field>
+        <field name="inherit_id" ref="tramite.view_tramite_documento_emitido_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tipo_documento_id']" position="after">
+                <!-- <field name="beneficiario_nave_id"
+                    attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.nave)d))]}"/> -->
+                <field name="nave_id"
+                    attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.nave)d, %(base_sigmap.trafico_maritimo)d))]}"/>
+                <field name="nave_inspeccion_id" readonly="1"
+                    attrs="{'invisible':['|',('tipo_documento_id','not in',(%(base_sigmap.nave)d, %(base_sigmap.trafico_maritimo)d)),('nave_inspeccion_id','=',False)]}"/>
+                <field name="calificacion_final" readonly="1"
+                    attrs="{'invisible':['|',('tipo_documento_id','not in',(%(base_sigmap.nave)d, %(base_sigmap.trafico_maritimo)d)),'|',('nave_inspeccion_id','=',False),('calificacion_final','=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_tramite_documento_emitido_tree_inherit_nave_doc_01" model="ir.ui.view">
+        <field name="name">Lista de documentos emitidos</field>
+        <field name="model">tramite.documento.emitido</field>
+        <field name="inherit_id" ref="tramite.view_tramite_documento_emitido_tree"/>
+        <field name="arch" type="xml">
+            <field name="personal_maritimo_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="personal_maritimo_id" position="after">
+                <field name="nave_persona" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_tramite_documento_emitido_search_inherit_nave_doc_01" model="ir.ui.view">
+        <field name="name">tramite.documento.emitido.search</field>
+        <field name="model">tramite.documento.emitido</field>
+        <field name="inherit_id" ref="tramite.view_tramite_documento_emitido_search"/>
+        <field name="arch" type="xml">
+            <filter name="group_persona" position="after">
+                <filter name="group_nave" string="Nave" domain="[('nave_id','!=',False)]" context="{'group_by': 'nave_id'}" />
+            </filter>
+            <field name="personal_maritimo_id" position="after">
+                <field name="nave_id" string="Matrícula u OMI" filter_domain="['|',('nave_id.matricula', 'ilike', self),('nave_id.omi_number', 'ilike', self)]"/>
+            </field>
+        </field>
+    </record>
+</odoo>

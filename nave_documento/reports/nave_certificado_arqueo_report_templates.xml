@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Certificado Internacional de Arqueo -->
+    <record id="action_report_certificado_internacional_arqueo_nave" model="ir.actions.report">
+        <field name="name">Certificado Internacional de Arqueo</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_arqueonave</field>
+        <field name="report_file">nave_documento.report_arqueonave</field>
+        <field name="print_report_name">'Certificado Internacional de Arqueo - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navedocumentobase" id="report_arqueonave" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'CERTIFICADO INTERNACIONAL DE ARQUEO'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'International Tonnage Certificate'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de lo disposiciones del Convenio Internacional de Arqueo de buques, 1969, con la autoridad conferida por el Gobierno de Ecuador.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>Issued under the provision of the International Convention on Tonnage Measurement of ships, 1969, under the authority of the Govemment of Ecuador.</i>
+                    </td>
+                    <br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td width="5%" class="normal" align="left">Por:</td>
+                    <td class="normal" align="justify"><span class="datos_certificado" t-field="o.company_id.name"></span></td>
+                </tr>
+                <!-- <tr>
+                    <td colspan="4" height="10px"/>
+                </tr> -->
+                <tr>
+                    <td class="letras_chicas" align="left"><i>By:</i></td>
+                    <td class="normal_9" align="justify">(Persona u organización autorizada) <i>(Authorized person or organization) </i></td>
+                </tr>
+            </table>
+            <br/>
+
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Nombre del Buque<br/><i>Name of Ship</i></th>
+                        <th style="border:1px solid black;" class="text-center">Número o letras distintivos<br/><i>Distinctive number of letters</i></th>
+                        <th style="border:1px solid black;" class="text-center">Puerto de Registro<br/><i>Port of Register</i></th>
+                        <th style="border:1px solid black;" class="text-center">Número OMI<br/><i>IMO numer</i></th>
+                        <th style="border:1px solid black;" class="text-center">Fecha<br/><i>Date</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.nave_id.name"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.nave_id.matricula"/>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.nave_id.reparto_id.name"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.nave_id.omi_number"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span>      </span><!--(Falta Fecha)-->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="4" class="normal_9" align="justify">
+                        *Fecha en la cual fue puesta la quilla o el buque estuvo en condición similar de construcción Artículo 2 (6) o fecha en la cual el buque llevó a cabo
+                        una alteración o modificación mayor Artículo 3 (2) (b).<br/>
+                        *<i>Date on which the keel was laid or the ship was at a similar stage of construction Article 2 (6) or date on which the underwent alterations or 
+                        modifications of major character Article 3 (2) (b) as appropiate.</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px"><b>DIMENSIONES PRINCIPALES</b><br/>
+                        <i>MAIN DIMENTIONS</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th height="40px" style="border:1px solid black;" class="text-center">Eslora Artículo 2 (8)<br/><i>Length * Article 2 (8)</i></th>
+                        <th height="40px" style="border:1px solid black;" class="text-center">Manga Regla 2 (3)<br/><i>Beadth Regulation 2 (3)</i></th>
+                        <th height="40px" style="border:1px solid black;" align="justify">Puntal moldeado a la cuadra de la cubierta principal Regla 2 (2)<br/><i>Moulded Depth amidships to Upper Deck Reguation 2 (2)</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado">(Falta Eslora Length)</span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.nave_id.manga"></span><span class="datos_certificado"> mts </span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.nave_id.puntal"></span><span class="datos_certificado"> mts </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td height="40" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                        <b>LOS TONELAJES DEL BUQUE SON: </b><br/>
+                        <i>TONNAGE OF THE SHIP ARE: </i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left" width="5%">
+                        <tr>
+                            <td>TONELAJE BRUTO (Gross Tonnage): </td>
+                            <td><span class="datos_certificado" t-field="o.nave_id.trb"/></td>
+                        </tr>
+                        <tr>
+                            <td>TONELAJE NETO (Net Tonnage): </td>
+                            <td><span class="datos_certificado" t-field="o.nave_id.trn"/></td>
+                        </tr>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="30px"/>
+                </tr>
+            </table>
+
+            <table width="85%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Se certifica que los arqueos de este buque han sido determinados de acuerdo con las disposiciones del Convenio Internacional
+                        sobre Arqueo de Buques, 1969.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>This is to certify that the tonnage of this ship have been determined in accordance with the provisions of the International
+                        Convention on Tonnage Measurement of Ships, 1969.</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        *Eslora como es definido en el artículo 2 8)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>*Length (L) as defined in article 2 8)</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+            <t t-call="nave_documento.custom_report_expendido_vertical"/>
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td colspan="4" class="text-center" style="font-size: 18px"><b>ESPACIOS INCLUIDOS EN EL ARQUEO</b><br/><b><i>SPACES INCLUDED IN TONNAGE</i></b></td>
+                </tr>
+                <tr >
+                    <td colspan="4" height="5px"/>
+                </tr>
+            </table>
+            <br/>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th colspan="2" style="border:1px solid black;" class="text-center">ARQUEO BRUTO<br/><i>GROSS TONNAGE</i></th>
+                        <th style="border:1px solid black;" class="text-center"></th>
+                        <th colspan="2" style="border:1px solid black;" class="text-center">ARQUEO NETO<br/><i>NET TONNAGE</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="border: 1px solid black;">
+                            <table class="table table-condensed" border="0">
+                                <!-- <tbody>
+                                    <tr t-foreach="o.ids" t-as="e">
+                                    </tr>
+                                </tbody>                       -->
+                                <tr>
+                                    <th style="border:1px solid black;" class="text-center">Nombre del espacio<br/><i>Name of Space</i></th>
+                                    <th style="border:1px solid black;" class="text-center">Posición<br/><i>Location</i></th>
+                                    <th style="border:1px solid black;" class="text-center">Longitud-(Volumen)<br/><i>Lenght-(Volume)</i></th>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid black;"></td>
+                                    <td style="border:1px solid black;"></td>
+                                    <td style="border:1px solid black;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="border:1px solid black;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="border:1px solid black;" align="left">
+                                        <b>ESPACIOS EXCLUIDOS REGLA 2(4S)</b><br/>
+                                        <b><i>EXCLUDED SPACES RULE 2(4)</i></b><br/>
+                                        Márquese con un asterisco (*) los espacios arriba consignados<br/>
+                                        que comprenden simultáneamente espacios cerrados y <br/>
+                                        excluidos.<br/>
+                                        <i>An asterisk (*) should be added to those spaces listed above</i><br/>
+                                        <i>which comprise both enclosed and excluded spaces.</i><br/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td style="border: 1px solid black;">
+                        </td>
+                        <td style="border: 1px solid black;">
+                            <table class="table table-condensed" border="0">
+                                <!-- <tbody>
+                                    <tr t-foreach="o.ids" t-as="e">
+                                    </tr>
+                                </tbody>                       -->
+                                <tr>
+                                    <th style="border:1px solid black;" class="text-center">Nombre del espacio<br/><i>Name of Space</i></th>
+                                    <th style="border:1px solid black;" class="text-center">Posición<br/><i>Location</i></th>
+                                    <th style="border:1px solid black;" class="text-center">Longitud-(Volumen)<br/><i>Lenght-(Volume)</i></th>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid black;"></td>
+                                    <td style="border:1px solid black;"></td>
+                                    <td style="border:1px solid black;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="border:1px solid black;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="border:1px solid black;" align="left">
+                                        <b>NUMERO DE PASAJEROS REGLA 4 (1)</b><br/>
+                                        <b><i>NUMBER OF PASSENGERS (Regulation 4(1))</i></b><br/>
+                                        Número de pasajeros en camarotes que no tengan más de 8<br/>
+                                        literas: 0<br/>
+                                        <i>Number of passengers in cabins with not more than 8 berths.</i><br/>
+                                        Número de los demás pasajeros: 0<br/>
+                                        literas: 0<br/>
+                                        <i>Number of others passengers.</i><br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="border:1px solid black;">
+                                        CALADO DE TRAZADO (Regla 4(2))<br/>
+                                        <i>MOULDED DRAUGHT (Regulation 4(2)) 3</i><br/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="border:1px solid black;" align="left">
+                            Fecha y Lugar de arqueo inicial: <br/>
+                            <i>Date and place of original measurement</i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="border:1px solid black;" align="left" height="50px">
+                            Observaciones:
+                            <i>REMARKS:</i><br/>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="text-center" t-field="o.nave_id.name"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="text-center" t-field="o.nave_id.matricula"/>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="text-center" t-field="o.nave_id.reparto_id.name"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="text-center" t-field="o.nave_id.omi_number"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span>      </span>
+                        </td>
+                    </tr>                                                                   -->
+                </tbody>
+            </table>
+        </xpath>
+    </template>
+
+</odoo>

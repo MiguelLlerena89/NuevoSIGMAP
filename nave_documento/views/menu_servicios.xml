@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Services Top menu item -->
+    <menuitem id="menu_servicios_generados_nave"
+            name="Servicios Emitidos"
+            parent="nave.menu_sigmap_naves"
+            sequence="4">
+        <!-- Servicios Medio Ambiente -->
+        <menuitem id="menu_servicios_medio_ambiente" name="Medio Ambiente" sequence="1">
+            <menuitem id="menu_action_nave_documento_documento_cumplimiento"
+                action="action_nave_documento_documento_cumplimiento" sequence="1"/>
+            <menuitem id="menu_action_nave_documento_registro_sinoptico_continuo"
+                action="action_nave_documento_registro_sinoptico_continuo" sequence="2"/>
+            <menuitem id="menu_action_nave_documento_seguridad_prevencion_contaminacion"
+                action="action_nave_documento_seguridad_prevencion_contaminacion" sequence="3"/>
+            <menuitem id="menu_action_nave_documento_prevencion_contaminacion_aguas_sucias"
+                action="action_nave_documento_prevencion_contaminacion_aguas_sucias" sequence="4"/>
+            <menuitem id="menu_action_nave_documento_prevencion_contaminacion_hidrocarburos"
+                action="action_nave_documento_prevencion_contaminacion_hidrocarburos" sequence="5"/>
+            <menuitem id="menu_action_nave_documento_declaracion_cumplimiento"
+                action="action_nave_documento_declaracion_cumplimiento" sequence="6"/>
+        </menuitem>
+        <!-- Servicios Jurídicos -->
+        <menuitem id="menu_servicios_juridicos" name="Jurídicos" sequence="2">
+            <menuitem id="menu_action_nave_documento_autorizacion_cambio_nombre"
+                action="action_nave_documento_autorizacion_cambio_nombre" sequence="1"/>
+            <menuitem id="menu_action_nave_documento_cambio_propietario"
+                action="action_nave_documento_cambio_propietario" sequence="2"/>
+            <menuitem id="menu_action_nave_documento_cambio_puerto_registro"
+                action="action_nave_documento_cambio_puerto_registro" sequence="3"/>
+            <menuitem id="menu_action_nave_documento_cancelacion_gravamen_hipoteca"
+                action="action_nave_documento_cancelacion_gravamen_hipoteca" sequence="4"/>
+            <menuitem id="menu_action_nave_documento_cancelacion_matricula"
+                action="action_nave_documento_cancelacion_matricula" sequence="5"/>
+            <menuitem id="menu_action_nave_documento_cancelacion_registro_interdiccion"
+                action="action_nave_documento_cancelacion_registro_interdiccion" sequence="6"/>
+            <menuitem id="menu_action_nave_documento_cambio_caracteristicas_tecnica"
+                action="action_nave_documento_cambio_caracteristicas_tecnica" sequence="7"/>
+            <!-- <menuitem id="menu_action_nave_documento_registro_nave_otra_capitania"
+                action="action_nave_documento_registro_nave_otra_capitania" sequence="7"/>                 -->
+            <menuitem id="menu_action_nave_documento_registro_propiedad"
+                action="action_nave_documento_registro_propiedad" sequence="8"/>
+            <menuitem id="menu_action_nave_documento_historia_dominio"
+                action="action_nave_documento_historia_dominio" sequence="9"/>
+            <menuitem id="menu_action_nave_documento_registro_gravamen_hipoteca"
+                action="action_nave_documento_registro_gravamen_hipoteca" sequence="11"/>
+            <menuitem id="menu_action_nave_documento_registro_interdiccion"
+                action="action_nave_documento_registro_interdiccion" sequence="12"/>
+            <menuitem id="menu_action_nave_documento_registro_inscripcion"
+                action="action_nave_documento_registro_inscripcion" sequence="13"/>
+        </menuitem>
+        <!-- Servicios de Naves -->
+        <menuitem id="menu_servicios_naves" name="Naves" sequence="3">
+            <menuitem id="menu_action_nave_documento_matricula"
+                action="action_nave_documento_matricula" sequence="1"/>
+            <menuitem id="menu_action_nave_documento_arqueo"
+                action="action_nave_documento_arqueo" sequence="2"/>
+            <menuitem id="menu_action_nave_documento_seguridad_buque_carga"
+                action="action_nave_documento_seguridad_buque_carga" sequence="3"/>
+            <menuitem id="menu_action_nave_documento_seguridad_buque_pasaje"
+                action="action_nave_documento_seguridad_buque_pasaje" sequence="4"/>
+            <menuitem id="menu_action_nave_documento_lineas_carga"
+                action="action_nave_documento_lineas_carga" sequence="5"/>
+            <menuitem id="menu_action_nave_documento_seguridad_radioelectrica_buque"
+                action="action_nave_documento_seguridad_radioelectrica_buque" sequence="6"/>
+            <menuitem id="menu_action_nave_documento_gestion_seguridad"
+                action="action_nave_documento_gestion_seguridad" sequence="7"/>
+            <menuitem id="menu_action_nave_documento_internacional_proteccion_buque"
+                action="action_nave_documento_internacional_proteccion_buque" sequence="8"/>
+            <menuitem id="menu_action_nave_documento_vare_desvare"
+                action="action_nave_documento_vare_desvare" sequence="9"/>
+            <menuitem id="menu_action_nave_documento_dotacion_minima_seguridad"
+                action="action_nave_documento_dotacion_minima_seguridad" sequence="10"/>
+            <menuitem id="menu_action_nave_documento_exencion"
+                action="action_nave_documento_exencion" sequence="11"/>
+            <menuitem id="menu_action_nave_documento_pasavante_navegacion"
+                action="action_nave_documento_pasavante_navegacion" sequence="12"/>
+            <menuitem id="menu_action_nave_documento_patente_navegacion"
+                action="action_nave_documento_patente_navegacion" sequence="14"/>
+            <menuitem id="menu_action_nave_documento_aprobacion_cuadro_zafarrancho"
+                action="action_nave_documento_aprobacion_cuadro_zafarrancho" sequence="15"/>
+            <menuitem id="menu_action_aprobacion_manual_gestion_seguridad"
+                action="action_aprobacion_manual_gestion_seguridad" sequence="16"/>
+            <menuitem id="menu_action_aprobacion_plan_proteccion_buque_instalacion_portuaria"
+                action="action_aprobacion_plan_proteccion_buque_instalacion_portuaria" sequence="17"/>
+        </menuitem>
+    </menuitem>
+
+</odoo>

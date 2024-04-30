@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template inherit_id="nave_documento.report_navedocumentobase" id="report_documentotitulodescripcion" primary="True">
+        <xpath expr="//table[1]" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="titulo_html_info">
+                <tr>
+                    <td colspan="4" align="center" style="font-size: 20px">
+                        <b><span t-field="o.titulo"></span></b>
+                    </td>
+                    <br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td colspan="4" align="justify">
+                        <span t-field="o.descripcion"></span>
+                    </td>
+                    <br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="40px"/>
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="caracteristicas_principales_nave_info">
+                <tr>
+                    <td colspan="4" class="normal_9" align="left">
+                        <b>Características Principales de Registro Actual:</b><br/>
+                    </td>
+                    <br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td width="10%" align="left">Eslora:</td>
+                    <td colspan="2" class="datos_certificado" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.eslora"/></td>
+                </tr>
+                <tr>
+                    <td width="10%" align="left">Manga:</td>
+                    <td colspan="2" class="datos_certificado" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.manga"/></td>
+                </tr>
+                <tr>
+                    <td width="10%" align="left">Puntal:</td>
+                    <td colspan="2" class="datos_certificado" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.puntal"/></td>
+                </tr>
+                <tr>
+                    <td width="10%" align="left">TRB:</td>
+                    <td colspan="2" class="datos_certificado" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.trb"/></td>
+                </tr>
+                <tr id="avaluo_info">
+                    <td width="10%" align="left">Avalúo:</td>
+                    <td colspan="2" class="datos_certificado" style="vertical-align:top;text-align:left;">$ <span t-field="o.nave_id.avaluo"/> USD</td>
+                </tr>
+            </table>
+
+            <t t-call="nave_documento.custom_report_authorized_signature_nave"/>
+
+            <t t-call="nave_documento.custom_report_footer_sumilla_nave"/>
+        </xpath>
+    </template>
+
+    <!-- Autorización cambio de Nombre de Nave -->
+    <record id="action_report_certificado_autorizacion_cambio_nombre" model="ir.actions.report">
+        <field name="name">Autorización cambio de Nombre de Nave</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentoautorizacioncambionombre</field><!--report_documentotitulodescripcion-->
+        <field name="report_file">nave_documento.report_documentoautorizacioncambionombre</field>
+        <field name="print_report_name">'Autorización cambio de Nombre de Nave - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentoautorizacioncambionombre" primary="True">
+        <xpath expr="//table[@id='caracteristicas_principales_nave_info']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+    </template>
+
+    <!-- Cambio Propietario de Nave -->
+    <record id="action_report_certificado_cambio_propietario" model="ir.actions.report">
+        <field name="name">Cambio Propietario de Nave</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentocambiopropietario</field><!--report_documentotitulodescripcion-->
+        <field name="report_file">nave_documento.report_documentocambiopropietario</field>
+        <field name="print_report_name">'Cambio Propietario de Nave - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentocambiopropietario" primary="True">
+        <!-- <xpath expr="//table[@id='caracteristicas_principales_nave_info']" position="attributes">
+            <attribute name="t-if">hide_table</attribute>
+        </xpath> -->
+    </template>
+
+    <!-- Cambio de Puerto de Registro -->
+    <record id="action_report_certificado_cambio_puerto_registro" model="ir.actions.report">
+        <field name="name">Cambio de Puerto de Registro</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentocambiopuertoregistro</field><!--report_documentotitulodescripcion-->
+        <field name="report_file">nave_documento.report_documentocambiopuertoregistro</field>
+        <field name="print_report_name">'Cambio de Puerto de Registro - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentocambiopuertoregistro" primary="True">
+        <xpath expr="//table[@id='caracteristicas_principales_nave_info']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+    </template>
+
+    <!-- Cambio de características técnicas -->
+    <record id="action_report_certificado_cambio_caracteristicas_tecnica" model="ir.actions.report">
+        <field name="name">Cambio de Puerto de Registro</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentocambiocaracteristicastecnicas</field><!--report_documentotitulodescripcion-->
+        <field name="report_file">nave_documento.report_documentocambiocaracteristicastecnicas</field>
+        <field name="print_report_name">'Cambio características técnicas - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentocambiocaracteristicastecnicas" primary="True">   
+    </template>
+
+    <!-- Cancelación de Gravamen e Hipotecas -->
+    <record id="action_report_certificado_cancelacion_gravamen_hipoteca" model="ir.actions.report">
+        <field name="name">Cancelación de Gravamen e Hipotecas</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentocancelaciongravamenhipoteca</field><!--report_documentotitulodescripcion-->
+        <field name="report_file">nave_documento.report_documentocancelaciongravamenhipoteca</field>
+        <field name="print_report_name">'Cancelación de Gravamen e Hipotecas - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentocancelaciongravamenhipoteca" primary="True">
+        <xpath expr="//table[@id='caracteristicas_principales_nave_info']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+    </template>
+
+    <!-- Cancelación de Matrícula (Baja de Nave) -->
+    <record id="action_report_certificado_cancelacion_matricula" model="ir.actions.report">
+        <field name="name">Cancelación de Matrícula (Baja de Nave)</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentocancelacionmatricula</field><!--report_documentotitulodescripcion-->
+        <field name="report_file">nave_documento.report_documentocancelacionmatricula</field>
+        <field name="print_report_name">'Cancelación de Matrícula (Baja de Nave) - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentocancelacionmatricula" primary="True">
+        <xpath expr="//table[@id='caracteristicas_principales_nave_info']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+    </template>
+
+    <!-- Cancelación de Registro de Interdicción -->
+    <record id="action_report_certificado_cancelacion_interdiccion" model="ir.actions.report">
+        <field name="name">Cancelación de Registro de Interdicción</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentocancelacionregistrointerdiccion</field><!--report_documentotitulodescripcion-->
+        <field name="report_file">nave_documento.report_documentocancelacionregistrointerdiccion</field>
+        <field name="print_report_name">'Cancelación de Registro de Interdicción - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentocancelacionregistrointerdiccion" primary="True">
+        <xpath expr="//table[@id='caracteristicas_principales_nave_info']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+    </template>
+
+    <!-- Certificado de Registro de Nave en otra Capitanía -->
+    <!-- <record id="action_report_certificado_registro_nave_otra_capitania" model="ir.actions.report">
+        <field name="name">Certificado de Registro de Nave en otra Capitanía</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentoregistronaveotracapitania</field>
+        <field name="report_file">nave_documento.report_documentoregistronaveotracapitania</field>
+        <field name="print_report_name">'Certificado de Registro de Nave en otra Capitanía - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentoregistronaveotracapitania" primary="True">
+    </template> -->
+
+    <!-- Certificado de Registro de Propiedad -->
+    <record id="action_report_certificado_registro_propiedad" model="ir.actions.report">
+        <field name="name">Certificado de Registro de Propiedad</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentoregistropropiedad</field><!--report_documentotitulodescripcion-->
+        <field name="report_file">nave_documento.report_documentoregistropropiedad</field>
+        <field name="print_report_name">'Certificado de Registro de Propiedad - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentoregistropropiedad" primary="True">
+        <xpath expr="//table[@id='caracteristicas_principales_nave_info']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+    </template>
+
+    <!-- Certificado de Historia Dominio, Gravamen, etc. -->
+    <record id="action_report_certificado_historia_dominio" model="ir.actions.report">
+        <field name="name">Certificado de Historia Dominio</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentohistoriadominio</field><!--report_documentotitulodescripcion-->
+        <field name="report_file">nave_documento.report_documentohistoriadominio</field>
+        <field name="print_report_name">'Certificado de Historia Dominio - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentohistoriadominio" primary="True">
+        <xpath expr="//table[@id='caracteristicas_principales_nave_info']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+    </template>
+
+    <!-- Registro de Gravamen e hipoteca -->
+    <record id="action_report_certificado_registro_gravamen_hipoteca" model="ir.actions.report">
+        <field name="name">Registro de Gravamen e hipoteca</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentoregistrogravamenhipoteca</field><!--report_documentotitulodescripcion-->
+        <field name="report_file">nave_documento.report_documentoregistrogravamenhipoteca</field>
+        <field name="print_report_name">'Registro de Gravamen e Hipoteca - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentoregistrogravamenhipoteca" primary="True">
+        <xpath expr="//table[@id='caracteristicas_principales_nave_info']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+    </template>
+
+    <!-- Registro de Interdicción -->
+    <record id="action_report_certificado_registro_interdiccion" model="ir.actions.report">
+        <field name="name">Registro de Interdicción</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentoregistrointerdiccion</field><!--report_documentotitulodescripcion-->
+        <field name="report_file">nave_documento.report_documentoregistrointerdiccion</field>
+        <field name="print_report_name">'Registro de Gravamen e Hipoteca - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentoregistrointerdiccion" primary="True">
+        <xpath expr="//table[@id='caracteristicas_principales_nave_info']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+    </template>
+
+    <!-- Registro de Inscripción de embarcación por primera vez -->
+    <!-- <record id="action_report_certificado_registro_inscripcion" model="ir.actions.report">
+        <field name="name">Registro de Inscripción de embarcación por primera vez</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentoregistroinscripcion</field>
+        <field name="report_file">nave_documento.report_documentoregistroinscripcion</field>
+        <field name="print_report_name">'Registro de Inscripción de embarcación por primera vez - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template inherit_id="nave_documento.report_documentotitulodescripcion" id="report_documentoregistroinscripcion" primary="True">
+    </template> -->
+
+</odoo>

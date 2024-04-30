@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_nave_lista_autorizada_action_menu"
+        parent="nave.menu_sigmap_naves_settings_rules"
+        action="nave_lista_autorizada_action_menu"
+        sequence="1"/>
+    <menuitem id="menu_nave_dotacion_minima_action_menu"
+        parent="nave.menu_sigmap_naves_settings_rules"
+        action="nave_dotacion_minima_action_menu"
+        sequence="2"/>
+
+    <menuitem id="menu_sigmap_convenio_view_tree_action_menu_naves"
+        parent="nave.menu_sigmap_naves_settings_inspecciones"
+        action="sigmap_convenio_view_tree_action_menu_naves"
+        sequence="1"/>
+    <menuitem id="menu_lista_chequeo_deficiencia_view_tree_action_menu_naves"
+        parent="nave.menu_sigmap_naves_settings_inspecciones"
+        action="lista_chequeo_deficiencia_view_tree_action_menu"
+        sequence="2"/>
+
+    <menuitem id="menu_sigmap_naves_inspecciones"
+        parent="nave.menu_sigmap_naves"
+        name="Inspecciones"
+        sequence="3">
+        <menuitem id="menu_sigmap_naves_inspecciones_administracion"
+            name="Dirección Regional"
+            sequence="1">
+            <menuitem id="menu_sigmap_naves_inspecciones_administracion_asignar_inspector_action_menu"
+                action="nave_inspeccion_asignar_inspector_action_menu"
+                name="Asignar Inspector"
+                sequence="2"/>
+        </menuitem>
+        <menuitem id="menu_sigmap_naves_inspecciones_abanderamiento"
+            name="Estado de abanderamiento"
+            sequence="2">
+            <menuitem id="menu_sigmap_naves_inspecciones_abanderamiento_listas_action_menu"
+                action="lista_chequeo_abanderamiento_action_menu"
+                name="Listas de Chequeo"
+                sequence="1"/>
+            <menuitem id="menu_sigmap_naves_inspecciones_abanderamiento_inspecciones_action_menu"
+                action="nave_inspeccion_abanderamiento_action_menu"
+                name="Inspecciones"
+                sequence="2"/>
+        </menuitem>
+        <menuitem id="menu_sigmap_naves_inspecciones_rector"
+            name="Estado Rector del Puerto"
+            sequence="3">
+            <menuitem id="menu_sigmap_naves_inspecciones_rector_listas_action_menu"
+                action="lista_chequeo_rector_action_menu"
+                name="Listas de Chequeo"
+                sequence="1"/>
+            <menuitem id="menu_sigmap_naves_inspecciones_rector_inspecciones_action_menu"
+                action="nave_inspeccion_rector_action_menu"
+                name="Inspecciones"
+                sequence="2"/>
+        </menuitem>
+    </menuitem>
+
+    <menuitem id="menu_empresas_mantenimiento_action_menu"
+        parent="nave.menu_naves_secondary"
+        name="Empresas de Mantenimiento"
+        sequence="4">
+        <menuitem id="menu_nave_empresa_mantenimiento_action_menu"
+            action="nave_empresa_mantenimiento_action_menu"
+            sequence="1"/>
+        <menuitem id="menu_nave_empresa_mantenimiento_clasificacion_action_menu"
+            action="nave_empresa_mantenimiento_clasificacion_action_menu"
+            name="Clasificación"
+            sequence="2"/>
+        <menuitem id="menu_nave_empresa_mantenimiento_tipo_action_menu"
+            action="nave_empresa_mantenimiento_tipo_action_menu"
+            name="Tipos"
+            sequence="3"/>
+        <menuitem id="menu_nave_empresa_mantenimiento_uso_action_menu"
+            action="nave_empresa_mantenimiento_uso_action_menu"
+            name="Usos"
+            sequence="4"/>
+    </menuitem>
+    <!-- Estado de abanderamiento-->
+</odoo>

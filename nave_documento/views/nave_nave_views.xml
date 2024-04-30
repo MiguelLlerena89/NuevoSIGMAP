@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Nave inherit : Reglas Lista Autorizada y Dotación Minima -->
+    <record id="view_nave_nave_form_inherit_lista_autorizada_dotacion" model="ir.ui.view">
+        <field name="name">nave.nave.form.inherit.lista.dotacion</field>
+        <field name="model">nave.nave</field>
+        <field name="inherit_id" ref="nave.view_nave_nave_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook//page[1]" position="before">
+                <page string="Certificados">
+                    <field name="documento_ids" nolabel="1">
+                        <tree string="Certificados"
+                            decoration-danger="estado in ['caducado', 'no_tiene']"
+                            decoration-warning="estado in ['cerca_endoso', 'por_caducar']"
+                            decoration-muted="estado in ['anulado', False]"
+                            decoration-success="estado == 'vigente'"
+                            create="0" delete="0">
+                            <field name="servicio_id" readonly="1" force_save="1"/>
+                            <field name="documento_ref" />
+                            <field name="fecha_inicio" />
+                            <field name="fecha_endoso_caducidad" />
+                            <field name="estado" invisible="1"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Dotación Mínima">
+                    <field name="dotacion_minima_jerarquia_ids" nolabel="1" readonly="1">
+                        <tree string="Dotación Mínima" create="0" edit="0" delete="0">
+                            <field name="jerarquia_id" />
+                            <field name="number" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <field name="active" position="after">
+                <field name="lista_autorizada_id" attrs="{'invisible': [('lista_autorizada_error_msg', '!=', False)]}"/>
+                <field name="lista_autorizada_error_msg" attrs="{'invisible': [('lista_autorizada_error_msg', '=', False)]}"/>
+                <field name="dotacion_minima_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="nave_nave_autorizada_documento_view_form" model="ir.ui.view">
+        <field name="name">nave.nave.autorizada.documento.form</field>
+        <field name="model">nave.nave.autorizada.documento</field>
+        <field name="arch" type="xml">
+            <form string="Certificado/Documentos (Lista Autorizada)">
+                <sheet>
+                    <group>
+                        <field name="nave_id" />
+                        <field name="servicio_id" />
+                        <field name="documento_ref" />
+                        <field name="estado" />
+                        <field name="fecha_inicio" />
+                        <field name="fecha_caducidad" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,21 @@
+id,servicio_id:id,tipo_inspeccion,name,tarifario_id:id,valor,articulo,literal,numeral,rubro_maestro_id:id,porcentaje_maestro,porcentaje_recargo_nave_int,monto_max_nave_int,incremento_anual,orden
+tarifario_rubro_inf_tec_fav,nave_documento.tramite_documento_inf_tec_fav,,Informe Técnico Favorable Importación/Nacionalización de Nave,tramite.tarifario_1,,47,,,,,,,True,1
+tarifario_rubro_inf_tec_fav_contr,nave_documento.tramite_documento_inf_tec_fav_contr,,"Informe Técnico Favorable para Naves con contrato de fletamento, asociación o arrendamiento",tramite.tarifario_1,,47,,,,,,,True,1
+tarifario_rubro_contr_fleta,nave_documento.tramite_documento_contr_fleta,,"Registro o resciliación de contrato de fletamento, asociación o arrendamiento - Fletamento",tramite.tarifario_1,,29,,,,,,,True,1
+tarifario_rubro_contr_fleta_casco,nave_documento.tramite_documento_contr_fleta_casco,,"Registro o resciliación de contrato de fletamento, asociación o arrendamiento - Fletamento Casco Desnudo",tramite.tarifario_1,,29,,,,,,,True,1
+tarifario_rubro_contr_fleta_explo,nave_documento.tramite_documento_contr_fleta_explo,,"Registro o resciliación de contrato de fletamento, asociación o arrendamiento - Fletamento por Exploración",tramite.tarifario_1,,29,,,,,,,True,1
+tarifario_rubro_contr_asoci,nave_documento.tramite_documento_contr_asoci,,"Registro o resciliación de contrato de fletamento, asociación o arrendamiento - Asociación",tramite.tarifario_1,,29,,,,,,,True,1
+tarifario_rubro_contr_int_temp,nave_documento.tramite_documento_contr_int_temp,,"Registro o resciliación de contrato de fletamento, asociación o arrendamiento",tramite.tarifario_1,,29,,,,,,,True,1
+tarifario_rubro_rector_puerto,nave_documento.tramite_documento_nave_rector_puerto,,Inspección detallada por Estado Rector de Puerto,tramite.tarifario_1,,48,a,,,,,,True,1
+tarifario_rubro_reg_prop,nave_documento.tramite_documento_reg_prop,,Certificado de Registro de Propiedad,tramite.tarifario_1,,26,e,,,,,,True,1
+tarifario_rubro_matri,nave_documento.tramite_documento_nave_matri,,Matrícula de la Nave,tramite.tarifario_1,,20,d,,,,,,True,1
+tarifario_rubro_matri_baja,nave_documento.tramite_documento_nave_matri_baja,,Cancelación de matrícula por baja de la nave,tramite.tarifario_1,,20,h,,,,,,True,1
+tarifario_rubro_vare_desv,nave_documento.tramite_documento_nave_vare,,Certificado de Permiso de vare y desvare,tramite.tarifario_1,,20,f,,,,,,True,1
+tarifario_rubro_desguace,nave_documento.tramite_documento_nave_desg,,Aprobación del desguace de una nave de bandera Nacional o Extranjera,tramite.tarifario_1,,59,,,,,,,True,1
+tarifario_rubro_segu_prev_cont,nave_documento.tramite_documento_nave_segu_prev,ini,Inspecciones de Seguridad y Prevención de la Contaminación,tramite.tarifario_1,,33,,,,,,,True,1
+tarifario_rubro_segu_prev_cont_pesca,nave_documento.tramite_documento_nave_segu_prev,ini,Inspecciones de Seguridad y Prevención de la Contaminación Pesca,tramite.tarifario_1,,34,,,,,,,True,1
+tarifario_rubro_segu_radio_ini,nave_documento.tramite_documento_nave_segu_radio,ini,Certificado de Seguridad Radioeléctrica (Inicial),tramite.tarifario_1,,35,,,,,100,400.0,True,1
+tarifario_rubro_segu_radio_end,nave_documento.tramite_documento_nave_segu_radio,end,Certificado de Seguridad Radioeléctrica (Endoso),tramite.tarifario_1,,35,,,nave_documento.tarifario_rubro_segu_radio_ini,50,,,False,1
+tarifario_rubro_segu_pasaje_ini,nave_documento.tramite_documento_nave_segu_pasaje,ini,Inspección de Seguridad para buques de pasaje (Inicial),tramite.tarifario_1,,43,,1,,,100,,True,1
+tarifario_rubro_segu_pasaje_ext,nave_documento.tramite_documento_nave_segu_pasaje,ext,Inspección de Seguridad para buques de pasaje (Prórroga),tramite.tarifario_1,,43,,1,nave_documento.tarifario_rubro_segu_pasaje_ini,25,,,False,1
+tarifario_rubro_segu_pasaje_rei,nave_documento.tramite_documento_nave_segu_pasaje,rei,Inspección de Seguridad para buques de pasaje (Reinspección),tramite.tarifario_1,,43,,1,nave_documento.tarifario_rubro_segu_pasaje_ini,25,,,False,1

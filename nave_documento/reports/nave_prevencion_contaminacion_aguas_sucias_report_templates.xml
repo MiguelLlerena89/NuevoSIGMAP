@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_prevencion_contaminacion_aguas_sucias" model="ir.actions.report">
+        <field name="name">Certificado Internacional de Prevención de la Contaminación por Aguas Sucias</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_prevencioncontaminacionaguassucias</field>
+        <field name="report_file">nave_documento.report_prevencioncontaminacionaguassucias</field>
+        <field name="print_report_name">'Certificado Internacional de Prevención de la Contaminación por Aguas Sucias - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_prevencioncontaminacionaguassucias" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'CERTIFICADO INTERNACIONAL DE PREVENCION DE LA CONTAMINACION POR AGUAS SUCIAS'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'International Sewage Pollution Prevention Certificate'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de lo disposiciones del Convenio Internacional de prevenir la contaminación por los buques, 1973, modificado por el Protocolo de 1978 y
+                        enmendado por resolución MEPC.111(50), MEPC.115(51), MEPC.116(51), MEPC.117(52), MEPC.118(52), MEPC.132(53), MEPC.200(62), MEPC.227(64),(en
+                        adelante denominado "el Convenio"), con la autoridad conferida por el Gobierno de Ecuador.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>Issued under the provision of the International Convention for Pollution from Ships, 1973, as modified by the Protocol of 1978 relating thereto, and as amended by resolution
+                        MEPC.111(50), MEPC.115(51), MEPC.116(51), MEPC.117(52), MEPC.118(52), MEPC.132(53), MEPC.200(62), MEPC.227(64), (hereinafter referred to as "the Convention") under the authority of the 
+                        Govemment of Ecuador.</i>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_bajo_autoridad']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='peso_muerto_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='zona_maritima_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='eslora_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='tipo_buque_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='fecha_entrega_construccion_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='fecha_construccion_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="titulo_seccion" align="left">SE CERTIFICA:<br/><i>This is to certify:</i></td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        <section class="toc-decimal">
+                            <ol>
+                                <li>
+                                    Que buque está equipado con una instalación de tratamiento de aguas sucias/ un desmenuzador / un tanque de retención/ y un coducto de 
+                                    descarga, conforme a las reglas 9 y 10 del Anexo IV del Convenio, segùn se indica a continuación:<br/>
+                                    <i>That the ship is equipped with a sewage treatment plant/a comminute/a holding tank and a discharge pipeline in compliance with regulations 9 and 10 of Annex IV of the Convention as follows:</i><br/>
+                                    <ol>
+                                        <li>
+                                            <s>Descripción de la instalación de tratamiento de aguas sucias:<br/>
+                                            <i>Description of the sewage treatment plant</i><br/>
+                                            Tipo de instalación<br/>
+                                            <i>Type of the sewage treatment plant:</i><br/>
+                                            Nombre del fabricante<br/>
+                                            <i>Name of manufacturer</i><br/></s>
+                                            La instalación está certificada por la Administración y cumple las normas sobre efluentes estipuladas en la resolución MEPC.2(VI)<br/>
+                                            <i>The sewage treatment plant is certified by the Administration to meet the effluent standards as provided for in resolution MEPC.2(VI)</i><br/>
+                                        </li>
+                                        <li>
+                                            <s>Descripción del desmenuzador:<br/>
+                                            <i>Description of the comminutef</i><br/>
+                                            Tipo de desmenuzador<br/>
+                                            <i>Type of the comminutef</i><br/>
+                                            Nombre del fabricante<br/>
+                                            <i>Name of manufacturer</i><br/>
+                                            Calidad de las aguas sucias después de la desinfección<br/>
+                                            <i>Standard of sewage after disinfection</i><br/></s>
+                                        </li>
+                                        <li>
+                                            <s>Descripción de los equipos del tanque de retención:<br/>
+                                            <i>Description of holding tank</i><br/>
+                                            Capacidad total del tanque de retención<br/>
+                                            <i>Total capacity of the holding tank</i><br/>
+                                            Emplazamiento<br/>
+                                            <i>Location</i><br/></s>
+                                        </li>
+                                        <li>
+                                            Un conducto para la descarga de aguas sucias en una instalación de recepción, provisto de conexión universal a tierra.<br/>
+                                            <i>A pipeline fot the discharge of sewage to a reception facility, fitted with a standard shore connection</i><br/>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    Que el buque ha sido inspeccionado de conformidad con lo dispuesto en el reglamento 4 del Anexo IV del Convenio.<br/>
+                                    <i>That the ship has been surveyed in accordance with regulation 4 of Annex IV of the Convention</i><br/>
+                                </li>
+                                <li>
+                                    Que la inspección ha puesto de manifiesto que la estructura, equipos, sistemas, accesorios, medios y materiales del buque y estado de los mismos 
+                                    son satifactorios en todos los sentidos y que el buque cumple con las prescripciones aplicables del Anexo IV del Convenio<br/>
+                                    <i>That the survery shows that the structure, equipment, systems, fittings, arrangements and material of the condition thereof are in all respects satisfactory and that the ship
+                                    complies with the applicable requirements of Annex IV of the Convention.</i><br/>
+                                </li>
+                            </ol>
+                        </section>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td>1</td>
+                    <td align="justify">
+                        Que buque está equipado con una instalación de tratamiento de aguas sucias/ un desmenuzador / un tanque de retención/ y un coducto de 
+                        descarga, conforme a las reglas 9 y 10 del Anexo IV del Convenio, segùn se indica a continuación:<br/>
+                        <i>That the ship is equipped with a sewage treatment plant/a comminute/a holding tank and a discharge pipeline in compliance with regulations 9 and 10 of Annex IV of the Convention as follows:</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1.1</td>
+                    <td align="justify">
+                        Descripción de la instalación de tratamiento de aguas sucias:<br/>
+                        <i>Description of the sewage treatment plant</i><br/>
+                        Tipo de instalación<br/>
+                        <i>Type of the sewage treatment plant:</i><br/>
+                        Nombre del fabricante<br/>
+                        <i>Name of manufacturer</i><br/>
+                        La instalación está certificada por la Administración y cumple las normas sobre efluentes estipuladas en la resolución MEPC.2(VI)<br/>
+                        <i>The sewage treatment plant is certified by the Administration to meet the effluent standards as provided for in resolution MEPC.2(VI)</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1.2</td>
+                    <td align="justify">
+                        Descripción del desmenuzador:<br/>
+                        <i>Description of the comminutef</i><br/>
+                        Tipo de desmenuzador<br/>
+                        <i>Type of the comminutef</i><br/>
+                        Nombre del fabricante<br/>
+                        <i>Name of manufacturer</i><br/>
+                        Calidad de las aguas sucias después de la desinfección<br/>
+                        <i>Standard of sewage after disinfection</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1.3</td>
+                    <td align="justify">
+                        Descripción de los equipos del tanque de retención:<br/>
+                        <i>Description of holding tank</i><br/>
+                        Capacidad total del tanque de retención<br/>
+                        <i>Total capacity of the holding tank</i><br/>
+                        Emplazamiento<br/>
+                        <i>Location</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1.4</td>
+                    <td align="justify">
+                        Un conducto para la descarga de aguas sucias en una instalación de recepción, provisto de conexión universal a tierra.<br/>
+                        <i>A pipeline fot the discharge of sewage to a reception facility, fitted with a standard shore connection</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td align="justify">
+                        Que el buque ha sido inspeccionado de conformidad con lo dispuesto en el reglamento 4 del Anexo IV del Convenio.<br/>
+                        <i>That the ship has been surveyed in accordance with regulation 4 of Annex IV of the Convention</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td align="justify">
+                        Que la inspección ha puesto de manifiesto que la estructura, equipos, sistemas, accesorios, medios y materiales del buque y estado de los mismos 
+                        son satifactorios en todos los sentidos y que el buque cumple con las prescripciones aplicables del Anexo IV del Convenio<br/>
+                        <i>That the survery shows that the structure, equipment, systems, fittings, arrangements and material of the condition thereof are in all respects satisfactory and that the ship
+                        complies with the applicable requirements of Annex IV of the Convention.</i><br/>
+                    </td>
+                </tr> -->
+            </table>
+           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td width="30%" align="left">Éste certificado es válido en:<br/><i>This Certificate is valid until:</i></td>
+                    <td style="vertical-align:top;text-align:left;"><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span></td>
+                    <td colspan="2" align="justify">sujeto a inspecciones según el reglamento 4 del Anexo IV del Convenio.<br/><i class="letras_chicas">subject to surverys in accordance with regulation 4 of Annex IV of the Convention.</i></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left" width="50%">Fecha de finalización de la inspección en la que se basa éste certificado:<br/><i class="letras_chicas">Completion date of survery on which this Certificate is based</i></td>
+                    <td colspan="2" class="letras_chicas" style="vertical-align:top;text-align:center;"><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span></td>
+                </tr>
+            </table>
+
+            <t t-call="nave_documento.custom_report_expendido_vertical"/>
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo para prorrogar el certificado, si es válido durante un perpiodo inferior a cinco años, cuando se aplica la regla 8.3</b><br/>
+                        <b><i>Endorsement to extend the Certificate if valid for less than 5 years where regulation 8.3 applies</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        El buque cumple las dispocsiciones pertinentes del Convenio, y se aceptará el presente certificado como válido, de conformidad
+                        con lo prescrito en la regla 8.3 del Anexo IV del Convenio hasta el <br/>
+                        <i>The ship complies with the relevant provisions of the Convention, and this Certificate shall, in accordance with regulation 8.3 of Annex IV of the Convention, be
+                        accepted as valid until</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Lugar/<i>Place</i>: ........................................................<br/>
+                        <br/><br/>
+                        Fecha/<i>Date</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo requerido cuando se ha efectuado el reconocimiento de renovación y se aplica la regla 8.4</b><br/>
+                        <b><i>Endorsement where the renewal survey has been completed and regulation 8.4 applies</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        El buque cumple las dispocsiciones pertinentes del Convenio, y se aceptará el presente certificado como válido, de conformidad
+                        con lo prescrito en la regla 8.4 del Anexo IV del Convenio hasta el <br/>
+                        <i>The ship complies with the relevant provisions of the Convention, and this Certificate shall, in accordance with regulation 8.4 of Annex IV of the Convention, be
+                        accepted as valid until</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Lugar/<i>Place</i>: ........................................................<br/>
+                        <br/><br/>
+                        Fecha/<i>Date</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo para prorrogar la validez de certificado hasta la llegada al puerto de reconocimiento o durante un periodo de gracia, cuando se aplican las<br/>
+                        reglas 8.5 y 8.6</b><br/>
+                        <b><i>Endorsement to extend the validity of the Certificate until reaching the port of survery of the a period grace where regulation 8.5 o 8.6 applies</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        El buque cumple las dispocsiciones pertinentes del Convenio, y se aceptará el presente certificado como válido, de conformidad
+                        con lo prescrito en la regla 8.4 del Anexo IV del Convenio hasta el <br/>
+                        <i>The ship complies with the relevant provisions of the Convention, and this Certificate shall, in accordance with regulation 8.4 of Annex IV of the Convention, be accepted as valid until</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Lugar/<i>Place</i>: ........................................................<br/>
+                        <br/><br/>
+                        Fecha/<i>Date</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
+    <!-- <template inherit_id="nave_documento.report_navedocumentobase" id="report_prevencioncontaminacionaguassucias" primary="True">
+        <xpath expr="//table[1]" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de lo disposiciones del Convenio Internacional de prevenir la contaminación por los buques, 1973, modificado por el Protocolo de 1978 y
+                        enmendado por resolución MEPC.111(50), MEPC.115(51), MEPC.116(51), MEPC.117(52), MEPC.118(52), MEPC.132(53), MEPC.200(62), MEPC.227(64),(en
+                        adelante denominado "el Convenio"), con la autoridad conferida por el Gobierno de Ecuador.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>Issued under the provision of the International Convention for Pollution from Ships, 1973, as modified by the Protocol of 1978 relating thereto, and as amended by resolution
+                        MEPC.111(50), MEPC.115(51), MEPC.116(51), MEPC.117(52), MEPC.118(52), MEPC.132(53), MEPC.200(62), MEPC.227(64), (hereinafter referred to as "the Convention") under the authority of the 
+                        Govemment of Ecuador.</i>
+                    </td>
+                    <br/>
+                </tr>
+                <tr>
+                    <td width="5%" class="normal" align="left">Por:</td>
+                    <td class="normal" align="justify"><span class="text-uppercase" t-field="o.company_id.name"></span></td><br/>
+                </tr>
+                <tr>
+                    <td class="letras_chicas" align="left"><i>By:</i></td>
+                    <td class="normal_9" align="justify">(Persona u organización autorizada) <i>(Authorized person or organization) </i></td>
+                </tr>
+            </table>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left">Datos relativos al buque:<br/><i>Particulars of Ship</i></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="letras_chicas" align="right">Nombre del buque<br/><i class="letras_chicas">Name of Ship</i></td>
+                    <td class="letras_chicas" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.name"/></td>
+                </tr>
+                <tr>
+                    <td class="letras_chicas" align="right">Número o letra distintivos<br/><i class="letras_chicas">Distinctive number of letters</i></td>
+                    <td class="letras_chicas" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.senial_llamada"/></td>
+                </tr>
+                <tr>
+                    <td class="letras_chicas" align="right">Puerto de matrícula<br/><i class="letras_chicas">Port of Registry</i></td>
+                    <td class="letras_chicas" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.reparto_id.name"/></td>
+                </tr>
+                <tr>
+                    <td class="letras_chicas" align="right">Arqueo bruto:<br/><i class="letras_chicas">Gross Tonnage</i></td>
+                    <td class="letras_chicas" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.trb"/></td>
+                </tr>
+                <tr>
+                    <td class="letras_chicas" align="right">Número de personas que el buque está autorizado a transportar:<br/><i class="letras_chicas">Number of persons which the ship is certified to carry</i></td>
+                    <td class="letras_chicas" width="50%" style="vertical-align:top;text-align:left;"><span>0</span></td>
+                </tr>
+                <tr>
+                    <td class="letras_chicas" align="right">Número IMO:<br/><i class="letras_chicas">IMO number</i></td>
+                    <td class="letras_chicas" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.omi_number"/></td>
+                </tr>
+                <tr>
+                    <td class="letras_chicas" align="right">Fecha en la que se colocó la quilla<br/><i class="letras_chicas">Date on which keel was laid</i></td>
+                    <td class="letras_chicas" width="50%" style="vertical-align:top;text-align:left;"><span></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="titulo_seccion" align="left">SE CERTIFICA:<br/><i>This is to certify:</i></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td align="justify">
+                        Que buque está equipado con una instalación de tratamiento de aguas sucias/ un desmenuzador / un tanque de retención/ y un coducto de 
+                        descarga, conforme a las reglas 9 y 10 del Anexo IV del Convenio, segùn se indica a continuación:<br/>
+                        <i>That the ship is equipped with a sewage treatment plant/a comminute/a holding tank and a discharge pipeline in compliance with regulations 9 and 10 of Annex IV of the Convention as follows:</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1.1</td>
+                    <td align="justify">
+                        Descripción de la instalación de tratamiento de aguas sucias:<br/>
+                        <i>Description of the sewage treatment plant</i><br/>
+                        Tipo de instalación<br/>
+                        <i>Type of the sewage treatment plant:</i><br/>
+                        Nombre del fabricante<br/>
+                        <i>Name of manufacturer</i><br/>
+                        La instalación está certificada por la Administración y cumple las normas sobre efluentes estipuladas en la resolución MEPC.2(VI)<br/>
+                        <i>The sewage treatment plant is certified by the Administration to meet the effluent standards as provided for in resolution MEPC.2(VI)</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1.2</td>
+                    <td align="justify">
+                        Descripción del desmenuzador:<br/>
+                        <i>Description of the comminutef</i><br/>
+                        Tipo de desmenuzador<br/>
+                        <i>Type of the comminutef</i><br/>
+                        Nombre del fabricante<br/>
+                        <i>Name of manufacturer</i><br/>
+                        Calidad de las aguas sucias después de la desinfección<br/>
+                        <i>Standard of sewage after disinfection</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1.3</td>
+                    <td align="justify">
+                        Descripción de los equipos del tanque de retención:<br/>
+                        <i>Description of holding tank</i><br/>
+                        Capacidad total del tanque de retención<br/>
+                        <i>Total capacity of the holding tank</i><br/>
+                        Emplazamiento<br/>
+                        <i>Location</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1.4</td>
+                    <td align="justify">
+                        Un conducto para la descarga de aguas sucias en una instalación de recepción, provisto de conexión universal a tierra.<br/>
+                        <i>A pipeline fot the discharge of sewage to a reception facility, fitted with a standard shore connection</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td align="justify">
+                        Que el buque ha sido inspeccionado de conformidad con lo dispuesto en el reglamento 4 del Anexo IV del Convenio.<br/>
+                        <i>That the ship has been surveyed in accordance with regulation 4 of Annex IV of the Convention</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td align="justify">
+                        Que la inspección ha puesto de manifiesto que la estructura, equipos, sistemas, accesorios, medios y materiales del buque y estado de los mismos 
+                        son satifactorios en todos los sentidos y que el buque cumple con las prescripciones aplicables del Anexo IV del Convenio<br/>
+                        <i>That the survery shows that the structure, equipment, systems, fittings, arrangements and material of the condition thereof are in all respects satisfactory and that the ship
+                        complies with the applicable requirements of Annex IV of the Convention.</i><br/>
+                    </td>
+                </tr>
+            </table>
+
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td width="30%" align="left">Éste certificado es válido en:<br/><i>This Certificate is valid until:</i></td>
+                    <td style="vertical-align:top;text-align:left;"><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span></td>
+                    <td colspan="2" align="justify">sujeto a inspecciones según el reglamento 4 del Anexo IV del Convenio.<br/><i class="letras_chicas">subject to surverys in accordance with regulation 4 of Annex IV of the Convention.</i></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left" width="50%">Fecha de finalización de la inspección en la que se basa éste certificado:<br/><i class="letras_chicas">Completion date of survery on which this Certificate is based</i></td>
+                    <td colspan="2" class="letras_chicas" style="vertical-align:top;text-align:center;"><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span></td>
+                </tr>
+            </table>
+
+            <t t-call="nave_documento.custom_report_expendido_vertical"/>
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo para prorrogar el certificado, si es válido durante un perpiodo inferior a cinco años, cuando se aplica la regla 8.3</b><br/>
+                        <b><i>Endorsement to extend the Certificate if valid for less than 5 years where regulation 8.3 applies</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        El buque cumple las dispocsiciones pertinentes del Convenio, y se aceptará el presente certificado como válido, de conformidad<br/>
+                        con lo prescrito en la regla 8.3 del Anexo IV del Convenio hasta el <br/>
+                        <i>The ship complies with the relevant provisions of the Convention, and this Certificate shall, in accordance with regulation 8.3 of Annex IV of the Convention, be
+                        accepted as valid until</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="60px"></td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo requerido cuando se ha efectuado el reconocimiento de renovación y se aplica la regla 8.4</b><br/>
+                        <b><i>Endorsement where the renewal survey has been completed and regulation 8.4 applies</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        El buque cumple las dispocsiciones pertinentes del Convenio, y se aceptará el presente certificado como válido, de conformidad<br/>
+                        con lo prescrito en la regla 8.4 del Anexo IV del Convenio hasta el <br/>
+                        <i>The ship complies with the relevant provisions of the Convention, and this Certificate shall, in accordance with regulation 8.4 of Annex IV of the Convention, be
+                        accepted as valid until</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="60px"></td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo para prorrogar la validez de certificado hasta la llegada al puerto de reconocimiento o durante un periodo de gracia, cuando se aplican las<br/>
+                        reglas 8.5 y 8.6</b><br/>
+                        <b><i>Endorsement to extend the validity of the Certificate until reaching the port of survery of the a period grace where regulation 8.5 o 8.6 applies</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        El buque cumple las dispocsiciones pertinentes del Convenio, y se aceptará el presente certificado como válido, de conformidad<br/>
+                        con lo prescrito en la regla 8.4 del Anexo IV del Convenio hasta el <br/>
+                        <i>The ship complies with the relevant provisions of the Convention, and this Certificate shall, in accordance with regulation 8.4 of Annex IV of the Convention, be
+                        accepted as valid until</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="60px"></td>
+                </tr>
+            </table>
+        </xpath>
+    </template> -->
+
+</odoo>

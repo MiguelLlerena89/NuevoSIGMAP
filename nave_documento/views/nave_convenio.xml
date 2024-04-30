@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sigmap_periodo_view_form" model="ir.ui.view">
+        <field name="name">sigmap.periodo.view.form</field>
+        <field name="model">sigmap.periodo</field>
+        <field name="arch" type="xml">
+            <form string="Período">
+                <sheet>
+                    <group string="">
+                        <field name="name" />
+                        <field name="active" widget="boolean_toggle"/>
+                    </group>
+                    <group>
+                        <group string="Años">
+                            <field name="anio_ini" />
+                            <field name="anio_fin" />
+                        </group>
+                        <group string="Fechas">
+                            <field name="fecha_ini" />
+                            <field name="fecha_fin" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sigmap_convenio_capitulo_view_form" model="ir.ui.view">
+        <field name="name">sigmap.convenio.capitulo.view.form</field>
+        <field name="model">sigmap.convenio.capitulo</field>
+        <field name="arch" type="xml">
+            <form string="Convenio - Capítulo">
+                <group string="">
+                    <field name="convenio_id" readonly="1" force_save="1"/>
+                    <field name="name" />
+                    <field name="description" string="Descripción"/>
+                </group>
+                <notebook>
+                    <page name="reglas" string="Reglas">
+                        <field name="regla_ids">
+                            <tree string="Reglas" editable="bottom">
+                                <field name="name" />
+                                <field name="description" string="Descripción" widget="html"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <record id="sigmap_convenio_view_form" model="ir.ui.view">
+        <field name="name">sigmap.convenio.view.form</field>
+        <field name="model">sigmap.convenio</field>
+        <field name="arch" type="xml">
+            <form string="Convenio">
+                <sheet>
+                    <group string="">
+                        <field name="active" widget="boolean_toggle"/>
+                        <field name="name" />
+                        <field name="descripcion" string="Descripción"/>
+                        <field name="periodo_id"
+                            options="{'no_quick_create':True}"/>
+                    </group>
+                    <notebook>
+                        <page name="Capítulos" string="Reglas">
+                            <field name="capitulo_ids">
+                                <tree string="Capítulos">
+                                    <field name="name" />
+                                    <field name="description" string="Descripción"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sigmap_convenio_view_tree" model="ir.ui.view">
+        <field name="name">sigmap.convenio.view.form</field>
+        <field name="model">sigmap.convenio</field>
+        <field name="arch" type="xml">
+            <tree string="Convenios">
+                <field name="name" />
+                <field name="descripcion" string="Descripción"/>
+                <field name="periodo_id"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sigmap_convenio_view_tree_action_menu_naves" model="ir.actions.act_window">
+        <field name="name">Convenios</field>
+        <field name="res_model">sigmap.convenio</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="sigmap_convenio_view_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registra un nuevo Convenio
+            </p>
+        </field>
+    </record>
+
+</odoo>

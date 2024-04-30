@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_vare_desvare" model="ir.actions.report">
+        <field name="name">Certificado de Vare/Desvare</field>
+        <field name="model">nave.documento.vare.desvare</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentovaredesvare</field>
+        <field name="report_file">nave_documento.report_documentovaredesvare</field>
+        <field name="print_report_name">'Certificado de Vare/Desvare - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_vare_desvare"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Vare/Desvare de Nave -->
+    <template inherit_id="nave_documento.report_navedocumentobase" id="report_documentovaredesvare" primary="True">
+        <!-- <xpath expr="//tr[@id='titulos_cabecera_info']" position="before">
+            <tr>
+                <td colspan="4" class="text-center" style="font-size: 15px">
+                    <b><span><t t-esc="o.nave_id.reparto_id.name.upper()"/> </span></b>
+                </td><br/>
+            </tr>
+        </xpath> -->
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr>
+                <td colspan="4" class="text-center" style="font-size: 15px">
+                    <b><span><t t-esc="o.nave_id.reparto_id.name.upper()"/> </span></b>
+                </td><br/>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'PERMISO DE VARE Y DESVARE'"/></b><br/>
+                    <span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or ''"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <br/>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Analizada la solicitud y en base a lo prescrito en el Art.9 inciso 2 y Art.15 inciso 13 d ela ley Órganica de Navegación, Gestión de la Seguridad
+                        y Protección Marítima y Fluvial en los Espacios Acuáticos AUTORIZA el Vare y Desvare de la nave abajo mencionada
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>Datos de la Nave</b></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="5px"/>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Nombre</th>
+                    <th style="border:1px solid black;" class="text-center">Puerto de Registro</th>
+                    <th style="border:1px solid black;" class="text-center">Matrícula</th>
+                    <th style="border:1px solid black;" class="text-center">Fecha de Registro</th>
+                    <th style="border:1px solid black;" class="text-center">Tipo de Registro</th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.name"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.reparto_id.city_id.name"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.matricula"/>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado">(Falta Fecha Registro)</span>
+                        <!-- <span t-field="o.fecha_creacion" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/> -->
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <t t-if="o.nave_id.tipo_trafico_id.tipo == 'NAC'">
+                            <span class="datos_certificado">NACIONALIZACION</span>
+                        </t>
+                        <t t-else="">
+                            <span class="datos_certificado">INTERNACIONALIZACION</span>
+                        </t>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Señal de Llamada</th>
+                    <th style="border:1px solid black;" class="text-center">Número ISMM</th>
+                    <th style="border:1px solid black;" class="text-center">Número OMI</th>
+                    <th style="border:1px solid black;" class="text-center">Capacidad de Pasajeros</th>
+                    <th style="border:1px solid black;" class="text-center">Dotación Mínima</th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.senial_llamada"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.mmsi"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.omi_number"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado">0</span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado">0</span>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Eslora Total</th>
+                    <th style="border:1px solid black;" class="text-center">Manga</th>
+                    <th style="border:1px solid black;" class="text-center">Puntal</th>
+                    <th style="border:1px solid black;" class="text-center">Francobordo</th>
+                    <th style="border:1px solid black;" class="text-center">TRB</th>
+                    <th style="border:1px solid black;" class="text-center">TRN</th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.eslora"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.manga"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.puntal"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado">(Falta Francobrodo)</span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.trb"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.trn"></span>
+                    </td>
+                    <br/>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>Información de la Actividad</b></td>
+                    <br/>
+                </tr>
+            </table>
+
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Varadero</th>
+                    <th style="border:1px solid black;" class="text-center">Fecha de VARE</th>
+                    <th style="border:1px solid black;" class="text-center">Fecha de DESVARE</th>
+                    <th style="border:1px solid black;" class="text-center">Nombre y Apellidos Completos</th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.varadero_id"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.fecha_vare" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.fecha_desvare" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.varadero_id"></span>
+                    </td>
+                    <br/>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>A fin de realizar los trabajos que a continuación de detallan:</b></td>
+                    <br/>
+                </tr>
+            </table>
+
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th colspan="4" style="border:1px solid black;" class="text-center">Descripción</th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.observacion"></span>
+                    </td><br/>
+                </tr>
+            </table>
+            <br/>
+        </xpath>
+    </template>
+
+</odoo>

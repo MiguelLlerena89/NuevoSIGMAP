@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_inf_tec_fav" model="ir.actions.report">
+        <field name="name">Informe Técnico Favorable por Importación/Nacionalización</field>
+        <field name="model">nave.documento.oficio</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="report_file">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="print_report_name">'Informe Técnico Favorable importación/nacionalización - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_oficio"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_oficio_contrato_fletamento" model="ir.actions.report">
+        <field name="name">Contrato de Fletamento</field>
+        <field name="model">nave.documento.oficio</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="report_file">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="print_report_name">'Contrato de Fletamento - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_oficio"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_oficio_contrato_fletamento_casco_desnudo" model="ir.actions.report">
+        <field name="name">Contrato de Fletamento a Casco Desnudo</field>
+        <field name="model">nave.documento.oficio</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="report_file">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="print_report_name">'Contrato de Fletamento a Casco Desnudo - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_oficio"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_oficio_contrato_fletamento_exploracion" model="ir.actions.report">
+        <field name="name">Contrato de Fletamento por Exploración</field>
+        <field name="model">nave.documento.oficio</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="report_file">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="print_report_name">'Contrato de Fletamento por Exploración - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_oficio"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_oficio_contrato_asociacion" model="ir.actions.report">
+        <field name="name">Contrato de Asociación</field>
+        <field name="model">nave.documento.oficio</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="report_file">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="print_report_name">'Contrato de Asociación - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_oficio"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_oficio_contrato_internación_temp" model="ir.actions.report">
+        <field name="name">Contrato de Internación Temporal</field>
+        <field name="model">nave.documento.oficio</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="report_file">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="print_report_name">'Contrato de Internación Temporal - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_oficio"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_inf_tec_fav_contr" model="ir.actions.report">
+        <field name="name">Informe Técnico Favorable por contrato de fletamento, asociación o arrendamiento</field>
+        <field name="model">nave.documento.oficio</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="report_file">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="print_report_name">'Informe Técnico Favorable por contratos - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_oficio"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_oficio_rector_del_puerto" model="ir.actions.report">
+        <field name="name">Supervisión Detallada Rector del Puerto</field>
+        <field name="model">nave.documento.oficio</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="report_file">nave_documento.report_navedocumentobaseoficio</field>
+        <field name="print_report_name">'Sepervisión Rector del Puerto - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_oficio"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+   <template id="report_navedocumentobaseoficio">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <link rel="stylesheet" href="/nave_documento/static/src/css/styles.css"></link>
+                        <div class="col-xs-12" style="font-size: 13px">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="cabecera_info">
+                                <tr>
+                                    <td colspan="2" align="right" style="font-size: 14px" class="text-right"><b>Oficio Nro. <span t-field="o.name"/></b></td><br/>
+                                </tr>
+                                <!-- <tr>
+                                    <td colspan="2" align="right" style="font-size: 14px" class="text-right"><b><span t-field="o.reparto_id.city_id.name"/> , <span t-esc="datetime.datetime.now().strftime('%d de %B de %Y')"/></b></td><br/>
+                                </tr> -->
+                                <tr>
+                                    <td colspan="4" height="10px"/>
+                                </tr>
+                                <!-- <tr id="lugar_fecha_emision_info">
+                                    <td colspan="2" align="right" style="font-size: 14px" class="text-right"><b><span t-field="o.reparto_id.city_id.name"/> , <span t-esc="datetime.datetime.now()" t-options="{'widget': 'date', 'format': 'd MMMM y'}"/></b></td><br/>
+                                </tr> -->
+                                <tr>
+                                    <td height="30" colspan="4" align="center">
+                                        <div class="o_utm_no_data_img">
+                                            <img src="/base_sigmap/static/src/img/escudoEcuador.jpg" alt="Escudo Ecuador" style="max-height: 5cm; max-width: 8cm;" class="utm_chart_image image-responsive mt8"/>
+                                        </div>
+                                        <br/>
+                                    </td>
+                                </tr>
+                                <tr id="pais_cabecera_info">
+                                    <td colspan="4" class="text-center" style="font-size: 15px"><b>República del Ecuador</b></td><br/>
+                                </tr>
+                                <tr >
+                                    <td colspan="4" height="5px"/>
+                                </tr>
+                                <!-- <tr id="titulos_cabecera_info">
+                                    <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                                        <b><span t-if="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte" t-field="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte"/></b><br/>
+                                        <span t-if="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en" t-field="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="5px"/>
+                                </tr> -->
+                            </table>
+
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="10%" align="left">
+                                        <b>Asunto: </b>
+                                    </td>
+                                    <td align="justify"><!--style="vertical-align:top;text-align:left;"-->
+                                        <span t-field="o.asunto"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="10px"></td>
+                                </tr>
+                            </table>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left">
+                                        <span t-if="o.partner_id.genero == 'M'"><b>Señor </b></span>
+                                        <span t-elif="o.partner_id.genero == 'F'"><b>Señora </b></span>
+                                        <span t-else="">Compañía </span><br/>
+                                        <b><span t-field="o.partner_id.name"></span></b>
+                                    </td>
+                                    <br/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="20px"/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" align="justify">
+                                        De mi consideración:
+                                    </td>
+                                    <br/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="20px"/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" align="justify">
+                                        <span t-field="o.descripcion"></span>
+                                    </td>
+                                    <br/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="20px"/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" align="justify">
+                                        Con sentimiento de distinguida consideración.
+                                    </td>
+                                    <br/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="40px"/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" align="justify">
+                                        Atentamente,<br/>
+                                        <b>DIOS, PATRIA Y LIBERTAD </b><br/>
+                                    </td>
+                                    <br/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="60px"/>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <t t-call="nave_documento.custom_report_authorized_signature_nave"/>
+
+                    <t t-call="nave_documento.custom_report_footer_sumilla_nave"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

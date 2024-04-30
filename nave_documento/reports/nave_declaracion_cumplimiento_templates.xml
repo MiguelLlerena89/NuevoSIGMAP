@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_declaracion_cumplimiento_provisional" model="ir.actions.report">
+        <field name="name">Declaración de Cumplimiento Provisional</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_declaracioncumplimientoprovisional</field>
+        <field name="report_file">nave_documento.report_declaracioncumplimientoprovisional</field>
+        <field name="print_report_name">'Declaración de Cumplimiento Provisional - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_certificado_declaracion_cumplimiento" model="ir.actions.report">
+        <field name="name">Declaración de Cumplimiento</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_declaracioncumplimiento</field>
+        <field name="report_file">nave_documento.report_declaracioncumplimiento</field>
+        <field name="print_report_name">'Declaración de Cumplimiento - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_seguridad"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_declaracioncumplimiento" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'Declaración de Cumplimiento'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Interim Statement of Compliance'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Emitido bajo las prescripciones del Programa de Evaluación (CAP) adoptado por la Administración por resolución DIGMER
+                        346/05, bajo la autoridad del Gobierno del Ecuador.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>Issued under the provision of the Condition Assessment Program (CAP) adopted by the Administration by resolution DIRGMER 346/05,
+                        under the authority the Government of Ecuador.</i>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_bajo_autoridad']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='peso_muerto_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='eslora_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='numero_personas_buque_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='tipo_buque_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='fecha_entrega_construccion_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='fecha_coloco_quilla_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="titulo_seccion" align="left">SE CERTIFICA:<br/><i>This is to certify:</i></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        <ol>
+                            <li>
+                                Que el buque ha sido inspeccionado preliminarmente de acuerdo con los requerimientos del CAP<br/>
+                                <i>That the ship has been surveyed preliminarly in accordance with the requirement of CAP</i><br/>                            
+                            </li>
+                            <br/>
+                            <li>
+                                Que la inspección mostró que la condición estructural, su maquinaria y sistema de carga del buque cumple con el requerimiento del 
+                                artículo 7 de la resolución DIGMER 346/05<br/>
+                                <i>That this survery shoowed that structural condition of the ship, machinery and cargo system if the ship complied requirements of the articule 7<br/>
+                                of resolution DIGMER 346/05</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Que el buque se encuentra en proceso de renovar su certificación CAP y puede continuar su operación dentro de aguas nacionales<br/>
+                                <i>That the ship is in process of renewing it CAP certification and may continue its operation withim national waters</i><br/>                            
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0"> 
+                 <tr>
+                    <td width="30%" align="left">Fecha que se completó la inspección CAP:<br/><i>Date of completion of the CAP survery</i></td>
+                    <td style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                 <tr>
+                    <td width="45%" align="left">Esta declaración de cumplimiento <t t-if="o.es_provisional">provisional</t><t t-else=""></t> es válido hasta:</td>
+                    <td style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td colspan="4" align="justify">
+                        Sujeto a que la condición de buque sea mantenida en las mismas condiciones encontradas durante la inspección del CAP y que pase
+                        satisfactoriamente las inspecciones estatutarias anuales.<br/>
+                        <i>Subject to that the condition of ship will be maintained at the same conditions found during the CAP Survery and that statutory annual<br/>
+                        inspection will be passed satisfactorily.</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+
+            <t t-call="nave_documento.custom_report_expendido_vertical"/>
+
+        </xpath>
+    </template>
+
+</odoo>

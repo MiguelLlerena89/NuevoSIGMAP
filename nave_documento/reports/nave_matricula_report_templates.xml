@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Matrícula Nave -->
+    <record id="action_report_matricula_nave" model="ir.actions.report">
+        <field name="name">Matrícula Nave</field>
+        <field name="model">nave.documento.matricula</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_matriculanave</field>
+        <field name="report_file">nave_documento.report_matriculanave</field>
+        <field name="print_report_name">'Matrícula de Nave - %s' % (object.matricula)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_matricula"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navedocumentobase" id="report_matriculanave" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'MATRÍCULA DE NAVE'"/></b><br/>
+                    <span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Port Registry Certificate'"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de lo disposiciones del Código de Policía Marítima, Sección III, Título IV, Art. 123 con la Autoridad conferida por el Gobierno de Ecuador<br/>
+                        <i>Issued under the provision of the Maritime Police Code, Section III, Art. 123 under the Authority of the Govemment of Ecuador</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_10">
+                        El presente Certificado, deberá renovarse ANUALMENTE o solicitar su renovación cuando la nave sea modificada en cualquiera de sus datos de registros o
+                        características y solicitar la cancelación en caso de BAJA de la nave.<br/>
+                        <I>This Certificate, shall be renewed ANNUALLY when the ship is modified in any of its record data or characteristics and it shall be cancelled when ship recoerd
+                        terminates.</I>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td width="5%" class="normal" align="left">Por:</td>
+                    <td class="datos_certificado" align="justify"><span class="text-uppercase" t-field="o.reparto_id.name"></span></td>
+                </tr>
+                <tr>
+                    <td class="letras_chicas" align="left"><i>By:</i></td>
+                    <td class="normal_9" align="justify">(Persona u organización autorizada) <i>(Authorized person or organization) </i></td>
+                </tr>
+                <!-- <tr>
+                    <td colspan="4" height="5px"/>
+                </tr> -->
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>1. Datos de la Nave</b> / <I> Particulary of Ship</I></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th colspan="3" style="border:1px solid black;" class="text-center">Nombre<br/><i>Name</i></th>
+                    <th style="border:1px solid black;" class="text-center">Matrícula No.<br/><i>Port Registry Number</i></th>
+                    <th style="border:1px solid black;" class="text-center">OMI<br/><i>IMO</i></th>
+                    <th style="border:1px solid black;" class="text-center">Puerto de Registro<br/><i>Port of Register</i></th>
+                </tr>
+                <tr>
+                    <td colspan="3" style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.name"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.matricula"/>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.omi_number"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.reparto_id.name"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Eslora Total<br/><i>Loa</i><br/>(mts)</th>
+                    <th style="border:1px solid black;" class="text-center">Eslora Convenio<br/><i>Lenght</i><br/>(mts)</th>
+                    <th style="border:1px solid black;" class="text-center">Manga<br/><i>Beadth</i><br/>(mts)</th>
+                    <th style="border:1px solid black;" class="text-center">Puntal<br/><i>Depth</i><br/>(mts)</th>
+                    <th style="border:1px solid black;" class="text-center">Calado<br/><i>Draugth</i><br/>(mts)</th>
+                    <th style="border:1px solid black;" class="text-center">Tonelaje Bruto<br/><i>GT</i></th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.eslora"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span>(Falta Eslora Convenio)</span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.manga"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.puntal"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span>(Falta Calado)</span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.trb"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2" style="border:1px solid black;" class="text-center">Fecha Construcción<br/><i>Date Built</i><br/></th>
+                    <th colspan="2" style="border:1px solid black;" class="text-center">Fecha de Registro<br/><i>Date of Register</i><br/></th>
+                    <th style="border:1px solid black;" class="text-center">Tipo de Casco<br/><i>Hull type</i><br/></th>
+                    <th style="border:1px solid black;" class="text-center">Propulsión</th>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border:1px solid black;" align="center">
+                        <span>(Falta Fecha Construccion)</span>
+                        <!-- <span t-field="o.fecha_construccion" t-options="{'widget': 'date', 'format': 'd-MM-y'}"/> -->
+                    </td>
+                    <td colspan="2" style="border:1px solid black;" align="center">
+                        <span>(Falta Fecha Registro)</span>
+                        <!-- <span t-field="o.fecha_creacion" t-options="{'widget': 'date', 'format': 'd-MM-y'}"/> -->
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.material_casco_id.name"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.nave_tipo_propulsion_id.name"></span>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>2. Datos relativos al Propietario </b> / <I> Particulary of Ship Owner</I></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Razón Social<br/><i>Trade Name</i></th>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.beneficiario_nave_id.name"></span>
+                    </td>
+                    <th style="border:1px solid black;" class="text-center">Identificación<br/><i>Identification</i></th>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.beneficiario_nave_id.vat"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Dirección<br/><i>Address</i></th>
+                    <td style="border:1px solid black;" align="center">
+                        <div t-field="o.beneficiario_nave_id"
+                                        t-options='{"widget": "contact", "fields": ["address"], "no_marker": False}'/>
+                    </td>
+                    <th style="border:1px solid black;" class="text-center">Teléfono<br/><i>Phone Number</i></th>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.beneficiario_nave_id.phone"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Email<br/><i>Email</i></th>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.beneficiario_nave_id.email"></span>
+                    </td>
+                    <th style="border:1px solid black;" class="text-center">Celular<br/><i>Mobile Number</i></th>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.beneficiario_nave_id.mobile"></span>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>3. Avalúo y Clasificación</b> / <I> Value and Clasification</I></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Avalúo / <i>Value</i></th>
+                    <th colspan="2" style="border:1px solid black;" class="text-center">Fecha Avalúo / <i>Value Date</i></th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.avaluo"></span>
+                    </td>
+                    <td colspan="2" style="border:1px solid black;" align="center">
+                        <span>(Falta Fecha Avalúo)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Servicio</th>
+                    <th style="border:1px solid black;" class="text-center">Tipo Nave</th>
+                    <th style="border:1px solid black;" class="text-center">Uso</th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.nave_servicio_id.name"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.nave_tipo_id.name"></span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span t-field="o.nave_id.uso"></span>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>4. Capacidad de Combustible</b> / <I> Fuel Capacity</I></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Tipo de Combustible</th>
+                    <th style="border:1px solid black;" class="text-center">Capacidad Almacenamiento para Consumo</th>
+                    <th style="border:1px solid black;" class="text-center">Capacidad Almacenamiento para Transporte</th>
+                    <th style="border:1px solid black;" class="text-center">Razón de Consumo diario</th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid black;" align="center">
+                        <span>---</span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span>---</span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span>---</span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span>---</span>
+                    </td>
+                </tr>
+            </table>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td width="30%" align="left">El presente certificado es válido hasta:<br/><i>This Certificate is valid until:</i></td>
+                    <td style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span></td>
+                </tr>
+            </table>
+            <t t-call="nave_documento.custom_report_expendido_vertical"/>
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>5. Máquinas Principales y Auxiliares</b> / <I> Main and Auxiliar Engines</I></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Tipo / <i>Type</i></th>
+                    <th style="border:1px solid black;" class="text-center">Marca / <i>Trade Mark</i></th>
+                    <th style="border:1px solid black;" class="text-center">Modelo - Serie / <i>Model - Serie</i></th>
+                    <th style="border:1px solid black;" class="text-center">Potencia / <i>Power</i></th>
+                    <th style="border:1px solid black;" class="text-center">Troquelado / <i>Punching</i></th>
+                </tr>
+                <tr>
+                    <td style="border:1px solid black;" align="center">
+                        <span>---</span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span>---</span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span>---</span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span>---</span>
+                    </td>
+                    <td style="border:1px solid black;" align="center">
+                        <span>---</span>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>6. Propietarios Adicionales </b> / <I> Additional Ship Owners</I></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <td style="border:1px solid black;" align="left">No tiene mas propietarios</td>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>7. Historia de la Nave </b> / <I> History of Ship</I></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Año<br/><i>Year</i></th>
+                    <th style="border:1px solid black;" class="text-center">Nombre<br/><i>Name</i></th>
+                    <th style="border:1px solid black;" class="text-center">Propietario<br/><i>Ship Owner</i></th>
+                    <th style="border:1px solid black;" class="text-center">Puerto de Registro<br/><i>Port of Registry</i></th>
+                    <th style="border:1px solid black;" class="text-center">Pabellón<br/><i>Flag State</i></th>
+                </tr>
+                <tr>
+                    <td colspan="5" style="border:1px solid black;" align="left">Información no disponible</td>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>8. Nombres Anteriores de la Nave </b> / <I> Previous Names of Ship</I></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th style="border:1px solid black;" class="text-center">Nombre Anterior<br/><i>Last Name</i></th>
+                    <th style="border:1px solid black;" class="text-center">Fecha Inicio<br/><i>Start Date</i></th>
+                    <th style="border:1px solid black;" class="text-center">Fecha Fin<br/><i>End Date</i></th>
+                    <th style="border:1px solid black;" class="text-center">Nombre Actualizado<br/><i>Updated Name</i></th>
+                </tr>
+                <tr>
+                    <td colspan="4" style="border:1px solid black;" align="left">No tiene nombres anteriores</td>
+                </tr>
+            </table>
+            <!-- <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <ol>
+                            <li>
+                                <b>Datos de la Nave</b> / <i> Particulary of Ship</i>
+                                <br/><br/>
+                                <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                                    <tr>
+                                        <th colspan="3" style="border:1px solid black;" class="text-center">Nombre<br/><i>Name</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Matrícula No.<br/><i>Port Registry Number</i></th>
+                                        <th style="border:1px solid black;" class="text-center">OMI<br/><i>IMO</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Puerto de Registro<br/><i>Port of Register</i></th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.name"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.matricula"/>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.omi_number"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.reparto_id.name"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Eslora Total<br/><i>Loa</i><br/>(mts)</th>
+                                        <th style="border:1px solid black;" class="text-center">Eslora Convenio<br/><i>Lenght</i><br/>(mts)</th>
+                                        <th style="border:1px solid black;" class="text-center">Manga<br/><i>Beadth</i><br/>(mts)</th>
+                                        <th style="border:1px solid black;" class="text-center">Puntal<br/><i>Depth</i><br/>(mts)</th>
+                                        <th style="border:1px solid black;" class="text-center">Calado<br/><i>Draugth</i><br/>(mts)</th>
+                                        <th style="border:1px solid black;" class="text-center">Tonelaje Bruto<br/><i>GT</i></th>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.eslora"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span>(Falta Eslora Convenio)</span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.manga"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.puntal"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span>(Falta Calado)</span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.trb"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="2" style="border:1px solid black;" class="text-center">Fecha Construcción<br/><i>Date Built</i><br/></th>
+                                        <th colspan="2" style="border:1px solid black;" class="text-center">Fecha de Registro<br/><i>Date of Register</i><br/></th>
+                                        <th style="border:1px solid black;" class="text-center">Tipo de Casco<br/><i>Hull type</i><br/></th>
+                                        <th style="border:1px solid black;" class="text-center">Propulsión</th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="border:1px solid black;" align="center">
+                                            <span>(Falta Fecha Construccion)</span>
+                                        </td>
+                                        <td colspan="2" style="border:1px solid black;" align="center">
+                                            <span>(Falta Fecha Registro)</span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.material_casco_id.name"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.nave_tipo_propulsion_id.name"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>
+                                <b>Datos relativos al Propietario </b> / <i> Particulary of Ship Owner</i>
+                                <br/><br/>
+                                <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Razón Social<br/><i>Trade Name</i></th>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.beneficiario_nave_id.name"></span>
+                                        </td>
+                                        <th style="border:1px solid black;" class="text-center">Identificación<br/><i>Identification</i></th>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.beneficiario_nave_id.vat"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Dirección<br/><i>Address</i></th>
+                                        <td style="border:1px solid black;" align="center">
+                                            <div t-field="o.beneficiario_nave_id"
+                                                            t-options='{"widget": "contact", "fields": ["address"], "no_marker": False}'/>
+                                        </td>
+                                        <th style="border:1px solid black;" class="text-center">Teléfono<br/><i>Phone Number</i></th>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.beneficiario_nave_id.phone"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Email<br/><i>Email</i></th>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.beneficiario_nave_id.email"></span>
+                                        </td>
+                                        <th style="border:1px solid black;" class="text-center">Celular<br/><i>Mobile Number</i></th>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.beneficiario_nave_id.mobile"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>
+                                <b>Avalúo y Clasificación</b> / <i> Value and Clasification</i>
+                                <br/><br/>
+                                <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Avalúo / <i>Value</i></th>
+                                        <th colspan="2" style="border:1px solid black;" class="text-center">Fecha Avalúo / <i>Value Date</i></th>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.avaluo"></span>
+                                        </td>
+                                        <td colspan="2" style="border:1px solid black;" align="center">
+                                            <span>(Falta Fecha Avalúo)</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Servicio</th>
+                                        <th style="border:1px solid black;" class="text-center">Tipo Nave</th>
+                                        <th style="border:1px solid black;" class="text-center">Uso</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.nave_servicio_id.name"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.nave_tipo_id.name"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span t-field="o.nave_id.uso"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>
+                                <b>Capacidad de Combustible</b> / <i> Fuel Capacity</i>
+                                <br/><br/>
+                                <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Tipo de Combustible</th>
+                                        <th style="border:1px solid black;" class="text-center">Capacidad Almacenamiento para Consumo</th>
+                                        <th style="border:1px solid black;" class="text-center">Capacidad Almacenamiento para Transporte</th>
+                                        <th style="border:1px solid black;" class="text-center">Razón de Consumo diario</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <br/>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table> -->
+
+            <!--<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td width="30%" align="left">El presente certificado es válido hasta:<br/><i>This Certificate is valid until:</i></td>
+                    <td style="vertical-align:top;text-align:left;"><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMM y'}"></span></td>
+                </tr>
+            </table>
+            <t t-call="nave_documento.custom_report_expendido_vertical"/>
+            <p style="page-break-before:always;"></p>
+
+             <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <ol start="5">
+                            <li>
+                                <b>Máquinas Principales y Auxiliares</b> / <i> Main and Auxiliar Engines</i>
+                                <br/><br/>
+                                <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Tipo / <i>Type</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Marca / <i>Trade Mark</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Modelo - Serie / <i>Model - Serie</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Potencia / <i>Power</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Troquelado / <i>Punching</i></th>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <br/>
+                            <li>
+                                <b>Propietarios Adicionales </b> / <i> Additional Ship Owners</i>
+                                <br/><br/>
+                                <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                                    <tr>
+                                        <td style="border:1px solid black;" align="left">No tiene mas propietarios</td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <br/>
+                            <li>
+                                <b>Historia de la Nave </b> / <i> History of Ship</i>
+                                <br/><br/>
+                                <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Año<br/><i>Year</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Nombre<br/><i>Name</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Propietario<br/><i>Ship Owner</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Puerto de Registro<br/><i>Port of Registry</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Pabellón<br/><i>Flag State</i></th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="border:1px solid black;" align="left">Información no disponible</td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <br/>
+                            <li>
+                                <b>Nombres Anteriores de la Nave </b> / <i> Previous Names of Ship</i>
+                                <br/><br/>
+                                <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Nombre Anterior<br/><i>Last Name</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Fecha Inicio<br/><i>Start Date</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Fecha Fin<br/><i>End Date</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Nombre Actualizado<br/><i>Updated Name</i></th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="border:1px solid black;" align="left">No tiene nombres anteriores</td>
+                                    </tr>
+                                </table>
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="60px"/>
+                </tr>
+            </table> -->
+        </xpath>
+    </template>
+
+</odoo>

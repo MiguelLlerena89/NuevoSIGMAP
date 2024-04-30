@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_internacional_proteccion_buque" model="ir.actions.report">
+        <field name="name">Certificado Internacional de Protección del Buque (PBIP) (Pasaje > 35 pax)</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentoproteccionbuque</field>
+        <field name="report_file">nave_documento.report_documentoproteccionbuque</field>
+        <field name="print_report_name">'Certificado de Vare/Desvare - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Vare/Desvare de Nave -->
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_documentoproteccionbuque" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'Certificado Internacional de Protección de Buque'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'International Ship Security Certificate'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de las disposiciones del Código Internacional para la Protección de los Buques y las Instalaciones Portuarias <br/>
+                        <i>Issued under the provisions of the International Code for the Security of Ships and of Port Facilities (ISPS Code)</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_por_autoridad_es']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_por_autoridad_en']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+        <xpath expr="//table[@id='nave_info_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_horizontal']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="titulo_seccion" align="left">Se certifica / <i> This is to certify:</i></td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        <ol>
+                            <li>
+                                Que el sistema de Protección del buque y todo equipo de protección conexo han sido objeto de verificación de conformidad con la sección 19.1 de la parte A del Código PBIP /<br/>
+                                / <i>That the Security System and any associated security equipment of this ship has been verified in accordance with the Section 19.1, Part  A of the ISPS Code;</i>
+                            </li>
+                            <br/>
+                            <li>
+                                Que la verificación ha demostrado que el sistema de protección del buque y todo el equipo de protección conexo son
+                                satisfactorios en todos los sentidos y que el buque cumple las prescripciones aplicables del capítulo XI-2 del Convenio y de la parte A del Código PBIP / <br/>
+                                <i>That the verification showed that the Security System and any associated 
+                                security equipment of the ship is in all aspect satisfactorily and the ship complies with the applicable requirements of the Chapter XI-2 of the Convention and the part A of the ISPS Code;</i>
+                            </li>
+                            <br/>
+                            <li>
+                                Que el buque cuenta con un plan de protección del buque aprobado / <i>that the ship is provided with an Approved Security Plan</i><br/>
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <!-- <tr>
+                    <td width="30%" align="left">Fecha de la verificación inicial / de <s>renovación</s> en que se basa el presente certificado:<br/><i>Date of the initial <s>survey</s> / of renewal in which the present document is based</i></td>
+                    <td style="vertical-align:top;text-align:left;"><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>                 -->
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td align="left">Fecha de la verificación inicial / de <s>renovación</s> en que se basa el presente certificado:<br/><i>Date of the initial <s>survey</s> / of renewal in which the present document is based</i></td>
+                    <td style="vertical-align:top;text-align:left;"><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td align="left">El presente certificado es válido hasta el/<i>This Certificate is valid until</i> <span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span>
+                        a reserva de las verificaciones prescritas en la sección 19.1.1 de la parte A del Código PBIP / <i>subject to verification with section 1911 of the Part A in the ISPS Code</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <t t-call="nave_documento.custom_report_expendido_horizontal"/> 
+
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo de la verificación intermedia</b><br/>
+                        <b><i>Endorsement of the intermediate verification.</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        SE CERTIFICA que en una verificación intermedia efectuada de conformidad con lo prescrito en la 
+                        sección 19.1.1 de la parte A del Código PBIP se ha comprobado que el buque cumple las 
+                        prescripciones pertinentes del capítulo XI-2 del Convenio y de la parte A del Código PBIP.<br/><br/>
+                        <i>THIS IS TO CERTIFY that an intermediate verification has been carried out accordance with the 
+                        section 19.1.1 of the Part A of the ISPS Code, and the verification showed that the Security System and
+                        any associated security equipment of the ship is in all aspect satisfactorily and the ship complies with the applicable requirements of the Chapter XI-2 of the Convention and the part A of the ISPS Code.</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación Intermedia<br/>
+                        <i>Endorsement of the intermediate verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <!-- <line x1="10" y1="20" x2="200" y2="20" style="line-style: solid;"/>          -->
+            <div style="left: 10px; right: 10px; border-top: 2px solid black;"></div><!--position: fixed; top: 50px;-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo de verificaciones adicionales</b><br/>
+                        <b><i>Endorsement of additional Verification</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación adicional<br/>
+                        <i>Additional Verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación adicional<br/>
+                        <i>Additional Verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación adicional<br/>
+                        <i>Additional Verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+
+        <!-- <t t-call="nave_documento.custom_ship_protection_report_footer"/> -->
+
+    </template>
+
+</odoo>

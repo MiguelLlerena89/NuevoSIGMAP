@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_registro_sinoptico_continuo" model="ir.actions.report">
+        <field name="name">Certificado de Registro Sinóptico Continuo del Buque</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_registrosinopticocontinuo</field>
+        <field name="report_file">nave_documento.report_registrosinopticocontinuo</field>
+        <field name="print_report_name">'Certificado de Registro Sinóptico Continuo del Buque - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navedocumentobase" id="report_registrosinopticocontinuo" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'Registro Sinóptico Continuo'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Continuous Synopsis Record'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de las disposiciones del Convenio Internacional para la Seguridad de la Vida Humana en el mar 1974 y sus
+                        enmiendas, CAP XI-I/5.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>Issued under the provisions of the International Convention for the safety of Life at Sea 1974, as amended, CHAP XI-I/5.</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="4" class="normal_9" align="center">
+                        <b>FORMULARIO 1<br/>
+                        <i>FORM 1</i><br/></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td colspan="4" class="normal_9" align="justify">
+                        <b>DOCUMENTO NUMERO <span t-field="o.numero"/> DEL REGISTRO SINOPTICO CONTINUO (RSC) DEL BUQUE CON NUMERO OMI 9578749<br/>
+                        <i>CONTINUOUS SYNOPSIS RECORD (CSR) DOCUMENT NUMBER <span t-field="o.numero"/> FOR THE SHIP WITH IMO NUMBER 9578749</i><br/></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td colspan="4" class="normal_9" align="center">
+                        Las fechas deben consignarse según el formato aaaa/mm/dd. Dates should be in the format yyyy/mm/dd.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td colspan="4" class="normal_9" align="center">
+                        <b>Información<br/>
+                        <i>Information</i><br/></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="5px"/>
+                </tr>
+                <tr>
+                    <td align="justify"><!--width="41%"-->
+                        <ol>
+                            <li>
+                                El presente documento tiene vigencia desde (fecha):<br/>
+                                / <i>This document applies from (date):</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Estado de abanderamiento:<br/>
+                                <i>Flag State:</i>
+                            </li>
+                            <br/>
+                            <li>
+                                Fecha de matriculación en el Estado indicado en la casilla Nº 2:<br/>
+                                <i>Date of registration with the State indicated in 2:</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Nombre del Buque:<br/>
+                                <i>Name of ship:</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Puerto de Matrícula:<br/>
+                                <i>Port of Registration:</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Nombre(s) actual(es) del propietario(s) inscrito(s):<br/>
+                                <i>Name of current registered Owner(s):</i><br/>
+                                Dirección(s) registrada(s):<br/>
+                                <i>Registered Address(es):</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Número de identificación OMI del propietario inscrito:<br/>
+                                <i>Registered Owner IMO Unique Number:</i><br/>
+                            </li>
+                            <li>
+                                Si procede, nombre(s) actual(es) del fletador(s) a casco desnudo:<br/>
+                                <i>If applicable, name of current registered Bareboat Charterer(s)</i><br/>
+                                Dirección(s) registrada(s):<br/>
+                                <i>Registered Address(es):</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Nombre de la Compañía (Código IGS):<br/>
+                                <i>Name of Company (ISM Code):</i><br/>
+                                Dirección(s) registrada(s):<br/>
+                                <i>Registered Address(es):</i><br/>
+
+                                Dirección(s) de sus actividades de Gestión de Seguridad:<br/>
+                                Address(es) of it’s Safety Management activities:<br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Número de identificación OMI de la compañía:<br/>
+                                <i>Company IMO Unique Number:</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Nombre de todas las Sociedades de Clasificación con las que el buque es clasificado:<br/>
+                                <i>Name of all Classification Societies with which the ship is classed:</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Administración/Gobierno/Organización reconocida que ha expedido el Documento de Cumplimiento:<br/>
+                                Entidad que ha realizado la auditoría (si es distinta):<br/>
+                                <i>Administration/Government/Recognized Organization which issued Document of Compliance:</i><br/>
+                                <i>Body which carried out audit (if different):</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Administración/Gobierno/Organización reconocida que ha expedido el Certificado de gestión de la seguridad (CGS):<br/>
+                                Entidad que ha realizado la auditoría (si es distinta):<br/>
+                                <i>Administration/Government/Recognized Organization which issued Safety Management Certificate:</i><br/>
+                                <i>Body which carried out audit (if different):</i><br/>
+                            </li>
+                            <li>
+                                Administración/Gobierno/Organización de protección reconocida que ha expedido el Certificado internacional de protección del buque:<br/>
+                                Entidad que ha realizado la verificación (si es distinta):<br/>
+                                <i>Administration/Government/Recognized Security Organization which issued International Ship Security Certificate:</i><br/>
+                                <i>Body which carried out verification (if different):</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Fecha en la que el buque dejó de estar matriculado en el Estado indicado en la casilla Nº 2:<br/>
+                                <i>Date on which the ship ceased to be registered with the State indicated in 2:</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Observaciones (insértese la información que proceda):<br/>
+                                <i>Remarks (insert relevant information as appropriate):</i><br/>
+                            </li>
+                            <br/>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="titulo_seccion" align="left"><b>SE CERTIFICA QUE estos datos son correctos en todos los sentidos.</b><br/>
+                    <i>THIS IS TO CERTIFY THAT this record is correct in all respects.</i></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td width="30%" align="left">Expedido por la Administración de:<br/><i>Issued by the Administration of:</i></td>
+                    <td style="vertical-align:top;text-align:left;"><b><span>La República del Ecuador</span></b></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td width="30%" align="left">Lugar y fecha de expedición:<br/><i>Place and date of issue:</i></td>
+                    <td style="vertical-align:top;text-align:left;"><b><span t-field="o.company_id.partner_id.city_id.name"/> - <span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'YYYY/MMMM/d'}"></span></b></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="60px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td colspan="4" align="justify">
+                            Firma de la persona autorizada:<br/>
+                            <i>Signature of authorized person:</i><br/>
+                            Nombre de la persona autorizada:<br/>
+                            <i>Name of authorized person:</i><br/>
+                        </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="60px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                    <td colspan="2" align="justify">El presente documento se recibió en el buque y se adjuntó al archivo del Registro Sinóptico Continuo del buque en la siguiente fecha (rellénese): .................................<br/>
+                    <i>This document was received on the vessel and was attached to the file of the Continuous Synoptic Record of the vessel on the following date (fill in): ..............................</i></td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="60px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                    <td colspan="2" align="justify">Firma: ...............................................<br/>
+                    <i>Signature:</i></td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="60px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                    <td colspan="2" align="justify">
+                        <i>Nota: Este Registro tendrá validez hasta que ocurra un cambio en el Nombre del Buque, el nombre de la Administración,
+                        del Gobierno Contratante o la Organización de Protección Reconocida que haya expedido el presente Registro Sinóptico Continuo,
+                        en cuyo caso caducará a los tres meses de haber ocurrido alguno de los cambios mencionados</i><br/>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
+</odoo>

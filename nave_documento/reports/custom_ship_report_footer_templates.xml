@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_ship_protection_report_footer" inherit_id="web.basic_layout">
+        <xpath expr="//div[@class='footer']" position="inside">
+            <div style="text-align: center; font-size: 10px;">
+                * Conforme a lo dispuesto en la sección 19.1.1.4 de la parte A del Código PBIP.<br/>
+                <i>Accordance with section 19.1.1.4 of part A of the ISPS Code.</i>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

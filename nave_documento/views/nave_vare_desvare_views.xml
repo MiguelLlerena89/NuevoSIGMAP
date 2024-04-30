@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_nave_documento_vare_desvare_tree" model="ir.ui.view">
+        <field name="name">nave.documento.vare.desvare.tree</field>
+        <field name="model">nave.documento.vare.desvare</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Matrícula de Nave">
+                <field name="name"/>
+                <field name="partner_id" string="Solicitante"/>
+                <field name="nave_id"/>
+                <field name="varadero_id"/>
+                <field name="fecha_vare"/>
+                <field name="fecha_desvare"/>
+                <field name="fecha_emision"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_caducidad"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="state" string="Estado"
+                    decoration-info="state == 'en_tramite'"
+                    decoration-success="state == 'vigente'"
+                    decoration-primary="state == 'por_firmar'"
+                    decoration-muted="state == 'suspendido'"
+                    decoration-warning="state == 'caducado'"
+                    decoration-danger="state == 'anulado'"
+                    widget="badge" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_nave_documento_vare_desvare_form" model="ir.ui.view">
+        <field name="name">nave.documento.vare.desvare.form</field>
+        <field name="model">nave.documento.vare.desvare</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Matrícula de Nave">
+                <header>
+                    <button name="action_generar_documento" type="object" class="btn-primary" states="en_tramite" string="Enviar a supervisión" data-hotkey="k"/>
+                    <field name="state" widget="statusbar" statusbar_visible="pendiente,vigente,caducado"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="header_left_group">
+                            <field name="documento_emitido_id" readonly="1"/>
+                            <field name="partner_id" string="Solicitante"/>
+                            <field name="nave_id"/>
+                            <field name="varadero_id"/>
+                            <field name="fecha_vare"/>
+                            <field name="fecha_desvare"/>
+                            <field name="attachments_required" attrs="{'invisible': [('attachments_required', '=', False)]}"/>
+                            <field name="attachment_ids" widget="many2many_binary"
+                                attrs="{
+                                    'invisible': [('attachments_required', '=', False)],
+                                    'required': [('attachments_required', '=', True)]
+                                }"/>
+                            <!--field name="data"
+                                attrs="{
+                                    'invisible': [('attachments_required', '=', False)],
+                                    'required': [('attachments_required', '=', True)]
+                                }"/>
+                            <field name="filename"
+                                attrs="{
+                                    'invisible': [('attachments_required', '=', False)],
+                                    'required': [('attachments_required', '=', True)]
+                                }"/-->
+                        </group>
+                        <group name="header_right_group">
+                            <field name="fecha_emision"/>
+                            <field name="fecha_inicio" readonly="1"/>
+                            <field name="fecha_caducidad"/>
+                            <field name="numero_formato"
+                                attrs="{
+                                    'invisible': [('numero_formato', '=', 0)],
+                                    'readonly': True}"
+                                />
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <group name="observaciones" string="Trabajos a realizarse">
+                        <field name="observacion" nolabel="1" colspan="2" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_vare_desvare" model="ir.actions.act_window">
+        <field name="name">Certificado de Vare/Desvare de Nave</field>
+        <field name="res_model">nave.documento.vare.desvare</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_documento_vare_desvare_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra vare/desvare de nave
+            </p>
+        </field>
+    </record>
+</odoo>

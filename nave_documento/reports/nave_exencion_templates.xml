@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_exencion" model="ir.actions.report">
+        <field name="name">Certificado de Exención</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_exencion</field>
+        <field name="report_file">nave_documento.report_exencion</field>
+        <field name="print_report_name">'Certificado de Exención - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_exencion" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'Certificado de Exención'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Exemption Certificate'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de las disposiciones del Convenio Internacional para la Seguridad de la Vida Humana en el Mar, 1974 (SOLAS)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>Issued under the provisions of the International Convention for the Safety of life at Sea, 1974 (SOLAS)</i>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_por_autoridad_es']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_por_autoridad_en']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='smm_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='zona_maritima_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='fecha_coloco_quilla_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_horizontal']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="titulo_seccion" align="left"><b>Se certifica :/ <i>This is to certify:</i></b><br/></td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="justify">
+                        <ol>
+                            <li>
+                                De acuerdo a la aplicación prescrito en convenio SOLAS Capítulo V de la Regla 19-1 y la resolución ARE-DIRNEA-SNA-005-2023 de la Dirección Nacional de los Espacios Acuáticos 
+                                en su art. 3.1 donde indica que aplicará en los siguientes buques dedicados a viajes internacionales “Buques de pasaje, buques de carga, arqueo bruto igual o superior a 300 y 
+                                unidades móviles de perforación mar adentro”, por lo cual el buque queda exento de las prescripciones relativas a: No contar con el equipo del Sistema de seguimiento Marítimo Internacional 
+                                de Largo Alcance de los Buques (LRIT) por no tener el arqueo bruto como lo establece el artículo antes mencionado.<br/>
+                                <i>According to the application prescribed in SOLAS convention Chapter V of Rule 19-1 and the resolution ARE-DIRNEA-SNA-005-2023 of the National Directorate of Aquatic Spaces in its art. 3.1 
+                                where it indicates that it will apply in the following vessels engaged in international voyages "Passenger ships, cargo ships, gross tonnage equal or greater than 300 and mobile offshore drilling units", 
+                                for which the vessel is exempted from the requirements relating to: Not having the equipment of the Long Range International Maritime Tracking System for Vessel (LRIT) for not having the gross tonnage 
+                                as established  in the aforementioned article.</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Por lo que se otorga el Certificado de Exención; del equipo de Sistema de Identificación y Seguimiento de Largo Alcance de los Buques (LRIT).<br/>
+                                <i>For which the exemption Certificate is granted: from the Long Range Vessel Identification and Tracking System team (LRIT).</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Viajes para los cuales se otorga el Certificado de Exención: Tráfico Internacional.<br/>
+                                <i>Trips for which the certificate of Exemption is granted: International Traffic.</i><br/>
+                            </li>
+                            <br/>
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td align="justify">
+                        El presente certificado es válido hasta <span class="datos_certificado" t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span>;
+                        sujeto a que el certificado de <b>SEGURIDAD Y PREVENCIÓN DE LA CONTAMINACIÓN</b> al cual este certificado es anexo, permanezca válido.<br/>
+                        <i>This certificate shall be valid until <span t-esc="o.fecha_caducidad.strftime('%B %d, %Y')"/>; subject to the CONTAMINATION SAFETY AND PREVENTION 
+                        certificate to which this certificate is attached, remaining valid.</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+
+            <t t-call="nave_documento.custom_report_expendido_horizontal"/>
+
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td align="left">
+                        * Conforme lo dispuesto en el Convenio, regla I/12 y circulares SLS.14/Circ.115 y SLS.14/Circ.115/Add1, Add2 y Add3.<br/>
+                        <i>Accordance with Convention, rule I12 and Circ. SLS.14/Circ.115 y SLS.14/Circ.115/Add1, Add2 y Add3.</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="5px"/>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        <b>Refrendo para prorrogar la validez del certificado, si ésta es inferior a cinco años, cuando sea aplicable la regla I/14 c).</b><br/>
+                        <i>Endorsement to extend the certificate if valid for less than 5 years where regulation I/14(c) applies.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="justify">
+                        El presente certificado se aceptará como válido, de conformidad con lo prescrito en la regla I/14 c) del 
+                        Convenio hasta……………………………………… a condición de que siga siendo válido el Certificado de 
+                        ………………………………al que se adjunta el presente Certificado.<br/><br/>
+                        <i>This certificate shall, in accordance with regulation I/14(c) of the Convention, be accepted as valid until 
+                        ......................................................................subject to the ............................................................Certificate, to which
+                        this certificate is attached, remaining valid.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <!-- <td colspan="2" width="50%" align="left">
+                        <b>Refrendo para prorrogar la validez del certificado, si ésta es inferior a cinco años, cuando sea aplicable la regla I/14 c).</b><br/>
+                        <i>Endorsement to extend the certificate if valid for less than 5 years where regulation I/14(c) applies.</i><br/>
+                    </td><br/> -->
+                    <!-- <td colspan="2" align="justify">
+                        El presente certificado se aceptará como válido, de conformidad con lo prescrito en la regla I/14 c) del 
+                        Convenio hasta……………………………………… a condición de que siga siendo válido el Certificado de 
+                        ………………………………al que se adjunta el presente Certificado.<br/>
+                        <i>This certificate shall, in accordance with regulation I/14(c) of the Convention, be accepted as valid until 
+                        ......................................................................subject to the ............................................................Certificate, to which
+                        this certificate is attached, remaining valid.</i><br/>
+                    </td><br/>-->
+                    <td colspan="2" width="50%" align="left">
+                    </td><br/>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        <b>Refrendo cuando, habiéndose finalizado el reconocimiento de renovación, sea aplicable la regla I/14 d).</b><br/>
+                        <i>Endorsement where the renewal survey has been completed and regulation regulation I/14(d) applies.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="justify">
+                        El presente certificado se aceptará como válido, de conformidad con lo prescrito en la regla I/14 d) del 
+                        Convenio hasta……………………………………… a condición de que siga siendo válido el Certificado de
+                        ………………………………al que se adjunta el presente Certificado.<br/><br/>
+                        <i>This certificate shall, in accordance with regulation I/14(d) of the Convention, be accepted as valid until
+                        ......................................................................subject to the ............................................................
+                        Certificate, to which this certificate is attached, remaining valid.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td><br/>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        <b>Refrendo para prorrogar la validez del certificado hasta la llegada al puerto en que ha de 
+                        hacerse el reconocimiento, o por un periodo de gracia, cuando sea aplicable la regla I/14 e) o I/14 f).</b><br/>
+                        <i>Endorsement to extend the validity of the certificate until reaching the port of survey or for a period of grace where
+                        regulation I/14(e) or I/14(f) applies.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="justify">
+                        El presente certificado se aceptará como válido, de conformidad con lo prescrito en la regla I/14 e) / I/14 f) 
+                        del Convenio hasta……………………………………… a condición de que siga siendo válido el Certificado de ………………………………
+                        al que se adjunta el presente Certificado.<br/><br/>
+                        <i>This certificate shall, in accordance with regulation I/14(e) /14(f) of the Convention, be accepted as valid until ......................................................................
+                        subject to the ............................................................Certificate, to which this certificate is attached, remaining valid.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td><br/>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
+</odoo>

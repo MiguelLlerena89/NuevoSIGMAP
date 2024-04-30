@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Certificado de Pasavante de Navegación -->
+    <record id="action_report_certificado_pasavante_navegacion" model="ir.actions.report">
+        <field name="name">Certificado de Pasavante de Navegación</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentopasavantenavegacion</field>
+        <field name="report_file">nave_documento.report_documentopasavantenavegacion</field>
+        <field name="print_report_name">'Certificado de Pasavante de Navegación - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navedocumentobase" id="report_documentopasavantenavegacion" primary="True">
+        <xpath expr="//table[1]" position="after">
+            <div style="left: 10px; right: 10px; border-top: 2px solid black;"></div><!--position: fixed; top: 50px;-->
+            <br/>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="4" class="normal_9" align="justify">
+                        En uso de la facultad que le confiere el Art. No. 15 numeral 2), y el Art. 39 de Ley Orgánica de Navegación, Gestión de la Seguridad y
+                        Protección Marítima y Fluvial en los Espacios Acuáticos, la Autorizadad Marítima concede la PASAVANTE DE NAVEGACION a la nave:<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="normal_9" align="center">
+                        <b><span t-field="o.nave_id.name"></span></b><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td colspan="4" class="normal_9" align="justify">
+                        La PASAVANTE DE NAVEGACIÓN tiene una duración de 90 DÍAS a partir de la presente fecha, hasta
+                        que obtenga la Patente de Navegación.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td colspan="4" class="normal_9" align="justify">
+                        La PASAVANTE DE NAVEGACIÓN le confiere a la indicada nave el derecho a enarbolar el Pabellón Ecuatoriano
+                        y al libre tráfico en todas las aguas en las que está autorizada navegar; respetando las Leyes y Reglamentos
+                        del país y de los países amigos cuando navegue en sus aguas.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="caracteristicas_nave_info">
+                <tr>
+                    <td colspan="4" class="normal_9" align="left">
+                        <b>CARACTERISTICAS Y ESPECIFICACIONES DE LA NAVE:</b><br/>
+                    </td>
+                    <br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">ARMADOR:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span></span></td>
+                </tr>
+                <tr>
+                <td colspan="2" width="50%" align="left">FECHA DE CONSTRUCCIÓN:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta fecha construccion)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">NOMBRE DE LOS CONSTRUCTORES:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta constructor)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">No. CUBIERTAS COMPLETAS:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>0</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">ESLORA TOTAL</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.eslora"/> m.</td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">MANGA MÁXIMA</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.manga"/> m.</td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">CALADO:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.calado"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">PUNTAL TOTAL:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.puntal"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">FRANCO BORDO:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta Francobordo)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">TONELAJE BRUTO:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.trb"/> TM</td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">TONELAJE NETO:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.trn"/> TM</td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">USO/SERVICIO:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.uso"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">PROPULSIÓN:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta Propulsion)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">MAQUINARIA PRINCIPAL: MARCA, MODELO,<br/></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta Maquinaria)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">SERIE, POTENCIA:</td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta Serial)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <!-- <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="4" class="normal_9" align="justify">
+                        Dado en la <span t-field="o.company_id.name"/>, en <span t-field="o.company_id.partner_id.city_id.name"/>
+                        <br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="60px"/>
+                </tr>
+            </table> -->
+        </xpath>
+    </template>
+
+</odoo>

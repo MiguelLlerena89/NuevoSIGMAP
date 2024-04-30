@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tramite_documento_search_inherit_naves_documento" model="ir.ui.view">
+        <field name="name">tramite.search.inherit.naves</field>
+        <field name="model">tramite.documento</field>
+        <field name="inherit_id" ref="tramite.view_tramite_documento_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='emitido_por_dirnea']" position="after">
+                <separator/>
+                <filter name="tipo_documento_id" string="Naves" domain="[('tipo_documento_id','=',%(base_sigmap.nave)d)]"/>
+                <filter name="es_inspeccion" string="Inspecciones de Naves" domain="[('tipo_documento_id','=',%(base_sigmap.nave)d),('es_inspeccion','=',True)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_tramite_documento_form_titulo_html_inherited" model="ir.ui.view">
+        <field name="name">tramite.documento.form.titulo_html.inherit</field>
+        <field name="model">tramite.documento</field>
+        <field name="inherit_id" ref="tramite.view_tramite_documento_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='action_report_id']" position="after">
+                <field name="es_texto_html" />
+                <field name="plantilla_texto" widget="html" type="html" attrs="{'invisible':[('es_texto_html','=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

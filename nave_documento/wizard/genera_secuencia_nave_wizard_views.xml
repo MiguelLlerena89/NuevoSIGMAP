@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_genera_secuencia_nave_wizard" model="ir.actions.act_window">
+        <field name="name">Generar Secuencia en Nave</field>
+        <field name="res_model">genera.secuencia.nave.wizard</field>
+        <field name="view_mode">form</field>
+        <!-- <field name="view_id" ref="view_genera_secuencia_nave_wizard_form"/> -->
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_genera_secuencia_wizard_form" model="ir.ui.view">
+        <field name="name">genera.secuencia.nave.wizard.form</field>
+        <field name="model">genera.secuencia.nave.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="nave_matricula_id" invisible="1"/>
+                        <field name="nave_id"/>
+                        <group>
+                            <field name="nave_clase_matricula_id"/>
+                            <field name="codigo" />
+                        </group>
+                        <group>
+                            <field name="reparto_id" /><!--domain="[('tipo_id', '=', (%(base_sigmap.sigmap_reparto_tipo_capitania)d)),('codigo_matricula','not in', False)]"-->
+                            <field name="codigo_matricula" />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name='action_genera_secuencia_nave' string='Generar' type='object' class='btn-primary'/>
+                    <button string='Cancelar' class='btn-default' special='cancel' />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!--  Documento Matricula Nave -->
+    <record id="view_nave_documento_matricula_form_nave_inherited" model="ir.ui.view">
+        <field name="name">nave.documento.matricula.form.nave.inherit</field>
+        <field name="model">nave.documento.matricula</field>
+        <field name="inherit_id" ref="nave_documento.view_nave_documento_matricula_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_generar_matricula_nave_wizard" type="object" class="btn-primary"
+                    string="Generar matrícula de nave" id="button_generar_matricula_nave_wizard" data-hotkey="p"
+                    attrs="{'invisible': ['|',('pendiente_generar_matricula', '!=', True),('state', 'in', ['vigente','caducado','anulado','cancelado'])]}"
+                    /><!--confirm="¿Está seguro de que desea generar la matrícula de la nave?" groups="nave.group_ship_registration_manager"-->
+                    <!-- attrs="{
+                        'invisible': [('pendiente_generar_matricula','=', False)]}"                     -->
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

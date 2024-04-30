@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_seguridad_buque_carga" model="ir.actions.report">
+        <field name="name">Certificado de Seguridad para Buques de Carga</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_seguridadbuquecarga</field>
+        <field name="report_file">nave_documento.report_seguridadbuquecarga</field>
+        <field name="print_report_name">'Certificado de Seguridad para Buques de Carga - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_seguridadbuquecarga" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'CERTIFICADO DE SEGURIDAD PARA BUQUES DE CARGA'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Cargo Ship Safety Certificate'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Este certificado llevará como suplemento un Inventario del Equipo (Modelo C)<br/>
+                        <i>This Certificate shall be supplemented by a Record of Equipment (Form C)</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de lo disposiciones del CONVENIO INTERNACIONAL PARA LA SEGURIDAD DE LA VIDA HUMANA EN EL MAR, 1974 en su forma
+                        modificada por el correspondiente Protocolo de 1988, con la autoridad conferida por el Gobierno de Ecuador.<br/>
+                        <i>Issued under the provisions of the INTERNATIONAL CONVENTION FOR THE SAFERY OF LIFE AT THE SEA, 1974 as modified by protocol of 1988, under the 
+                        authority of the Govemment of Ecuador.</i>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_bajo_autoridad']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='numero_personas_buque_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+         <xpath expr="//tr[@id='fecha_entrega_construccion_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="titulo_seccion" align="left">SE CERTIFICA:<br/><i>This is to certify:</i></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        <section class="toc-decimal">
+                            <ol>
+                                <li>
+                                    Que el buque ha sido objeto de reconocimiento, de conformidad con lo prescrito en las reglas I/8, I/9 y I/10 del Convenio.<br/>
+                                    <i>That the ship has been surveyed in accordance with the requirements of regulation I/8, I/9 and I/10 of the Convention.</i><br/>
+                                </li>
+                                <br/>
+                                <li>
+                                    Que el reconocimiento ha puesto de manifiesto lo siguiente:<br/>
+                                    <i>That the survery showed that:</i><br/>
+                                    <br/>
+                                    <ol>
+                                        <li>
+                                        Que el estado de la estructura, las máquinas y el equipo, según lo definido en la regla I/10, es safisfactorio, y que el buque cumple con las
+                                        prescripciones pertinentes de los capítulos II-1 y II-2 del Convenio. (Excluyéndose aquí las relativas a sistemas y dispositivos de seguridad contra
+                                        incendios y planos de lucha contra los incendios o Planos de Seguridad).<br/>
+                                        <i>The condition of structure, machinery and equipmentas defined in regulation I/10 was satisfactory and the ship complied with the relevant
+                                        requirements of chapter II-1 and chapter II-2 of the Convention (Other than those relating to fire safety systems and appliances and fire control or safety plans)</i><br/>
+                                        </li>
+                                        <br/>
+                                        <li>
+                                            Que las dos últimas inspecciones de la obra viva del buque se realizaron el:<br/>
+                                            <i>That last two inspections of outside of ship's bottom took place on:</i><br/>
+                                        </li>
+                                        <!-- <td style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd-MM-y'}"/></td>
+                                        <td>y el:<br/><i>and <br/>on:</i></td>
+                                        <td style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MM-y'}"/></td> -->
+                                        <br/>
+                                    </ol>
+                                </li>
+                                <br/>
+                            </ol>
+                        </section>
+                    </td>
+                </tr>
+            </table>
+
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <section class="toc-decimal">
+                            <ol start="2">
+                                <li>
+                                    <ol>
+                                        <li>
+                                            Que el buque cumple con las prescripciones del Convenio en lo que respecta a los sistemas y dispositivos de seguridad contra incendios y el
+                                            plano de Seguridad.<br/>
+                                            <i>The ship complied with the requirement of Convention as regards fire safety Systems and appliance and Safety Plans.</i><br/>
+                                        </li>
+                                        <br/>
+                                        <li>
+                                            Que se han provisto los dispositivos de Salvamento y el equipo de los botes salvavidas, las balsas salvavidas y los botes de rescate de
+                                            conformidad con la prescripciones del Convenio.<br/>
+                                            <i>The life-saving appliances and the equipment of the lifeboats, lifeafts and rescue boats were provided in accordance with the requirements of the<br/>
+                                            Convention</i><br/>
+                                        </li>
+                                        <br/>
+                                        <li>
+                                            Que el buque va provisto de aparato lanzacabos y de las instalaciones radioeléctricas utilizadas en los dispositivos de salvamento de conformidad
+                                            con las prescripciones del Convenio.<br/>
+                                            <i>The ship was provided with line-throwing appliance and radio installations used in life-saving appliances in accordance with the requirements of<br/>
+                                            the Convention.</i><br/>
+                                        </li>
+                                        <br/>
+                                        <li>
+                                            Que el buque cumpla con las prescripciones del Convenio en lo que respecta a las instalaciones radioeléctricas
+                                            con las prescripciones del Convenio.<br/>
+                                            <i>The ship complied with the requirements of the Convention as regards radio installations.</i><br/>
+                                        </li>
+                                        <br/>
+                                        <li>
+                                            Que el funcionamiento de las instalaciones radioeléctricas utilizadas en los dispositivos de salvamento cumple con las prescripciones del
+                                            Convenio.<br/>
+                                            <i>The functioning of the radio installations used in life-saving appliances complied with requirements of the Convention.</i><br/>
+                                        </li>
+                                        <br/>
+                                        <li>
+                                            Que el buque cumple con las prescripciones del Convenio en lo que respecto a los aparatos naúticos de abordo, medios del embarco para
+                                            prácticos y publicaciones naúticas.<br/>
+                                            <i>The ship complied with the requirements of the Convention as regard shipborne navigational equipment, means of embarkation for pilots and<br/>
+                                            nautical publications.</i><br/>
+                                        </li>
+                                        <br/>
+                                        <li>
+                                            Que el buque está provisto de luces, marcas, medios emisores de señales acústicas y de señales de socorro de conformidad con las
+                                            prescripciones del Convenio y del Reglamento Internacional para prevenir los abordajes en vigor.<br/>
+                                            <i>The ship was provided with Lights, Shapes, means of making sound signals and distress signals, in accordance with the requirements of the
+                                            Convention and International Regulations for Preventing Collisions at Sea in force.</i><br/>
+                                        </li>
+                                        <br/>
+                                        <li>
+                                            Que en todos los demás aspectos el buque cumple con las prescripciones pertinentes del Convenio.<br/>
+                                            <i>In all other respects the ship complied with relevant requirements of the Convention.</i><br/>
+                                        </li>
+                                        <br/>
+                                    </ol>
+                                </li>
+                                <li>
+                                    Que se ha / no se ha expedido un certificado de exención.<br/>
+                                    <i>That an Exemption Certificate has / has not been issued.</i><br/>
+                                </li>
+                            </ol>
+                        </section>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td>2.3</td>
+                    <td align="justify">
+                        Que el buque cumple con las prescripciones del Convenio en lo que respecta a los sistemas y dispositivos de seguridad contra incendios y el
+                        plano de Seguridad.<br/>
+                        <i>The ship complied with the requirement of Convention as regards fire safety Systems and appliance and Safety Plans.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td>2.4</td>
+                    <td align="justify">
+                        Que se han provisto los dispositivos de Salvamento y el equipo de los botes salvavidas, las balsas salvavidas y los botes de rescate de
+                        conformidad con la prescripciones del Convenio.<br/>
+                        <i>The life-saving appliances and the equipment of the lifeboats, lifeafts and rescue boats were provided in accordance with the requirements of the<br/>
+                        Convention</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td>2.5</td>
+                    <td align="justify">
+                        Que el buque va provisto de aparato lanzacabos y de las instalaciones radioeléctricas utilizadas en los dispositivos de salvamento de conformidad
+                        con las prescripciones del Convenio.<br/>
+                        <i>The ship was provided with line-throwing appliance and radio installations used in life-saving appliances in accordance with the requirements of<br/>
+                        the Convention.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td>2.6</td>
+                    <td align="justify">
+                        Que el buque cumpla con las prescripciones del Convenio en lo que respecta a las instalaciones radioeléctricas
+                        con las prescripciones del Convenio.<br/>
+                        <i>The ship complied with the requirements of the Convention as regards radio installations.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td>2.7</td>
+                    <td align="justify">
+                        Que el funcionamiento de las instalaciones radioeléctricas utilizadas en los dispositivos de salvamento cumple con las prescripciones del
+                        Convenio.<br/>
+                        <i>The functioning of the radio installations used in life-saving appliances complied with requirements of the Convention.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td>2.8</td>
+                    <td align="justify">
+                        Que el buque cumple con las prescripciones del Convenio en lo que respecto a los aparatos naúticos de abordo, medios del embarco para
+                        prácticos y publicaciones naúticas.<br/>
+                        <i>The ship complied with the requirements of the Convention as regard shipborne navigational equipment, means of embarkation for pilots and<br/>
+                        nautical publications.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td>2.9</td>
+                    <td align="justify">
+                        Que el buque está provisto de luces, marcas, medios emisores de señales acústicas y de señales de socorro de conformidad con las
+                        prescripciones del Convenio y del Reglamento Internacional para prevenir los abordajes en vigor.<br/>
+                        <i>The ship was provided with Lights, Shapes, means of making sound signals and distress signals, in accordance with the requirements of the
+                        Convention and International Regulations for Preventing Collisions at Sea in force.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td>2.10</td>
+                    <td align="justify">
+                        Que en todos los demás aspectos el buque cumple con las prescripciones pertinentes del Convenio.<br/>
+                        <i>In all other respects the ship complied with relevant requirements of the Convention.</i><br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td align="justify">
+                        Que se ha / no se ha expedido un certificado de exención.<br/>
+                        <i>That an Exemption Certificate has / has not been issued.</i><br/>
+                    </td><br/>
+                </tr> -->
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td width="30%" align="left">El presente certificado es válido hasta:<br/><i>This Certificate is valid until:</i></td>
+                    <td style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td colspan="2">A condición de que se realicen los reconocimientos anuales, intermedios y periódicos y las inspecciones de la obra viva del buque de conformidad con los
+                    prescrito en la regla I/8, I/9 y I/10 del Convenio.<br/>
+                    <i>Subject to the anual, intermediate and periodical surverys and inspections of the outside of the ship's bottom in accordance with regulations I/8, I/9 and I/10 of<br/>
+                    the Convention.</i></td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+            <t t-call="nave_documento.custom_report_expendido_vertical"/>
+        </xpath>
+    </template>
+
+</odoo>

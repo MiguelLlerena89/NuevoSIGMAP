@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_gestion_seguridad" model="ir.actions.report">
+        <field name="name">Certificado de Gestión de Seguridad</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentogestion_seguridad</field>
+        <field name="report_file">nave_documento.report_documentogestion_seguridad</field>
+        <field name="print_report_name">'Certificado de Gestión de Seguridad - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Certificado de Gestión de Seguridad (ISM) (Pasaje navegable > 12 pax) -->
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_documentogestion_seguridad" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'Certificado de Gestión de Seguridad'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Safety Manage Certificate'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de las disposiciones del Convenio Internacional para la Seguridad de la Vida Humana en el mar 1974 y sus enmiendas. <br/>
+                        <i>Issued under the provisions of the Convention for the safety of life at Sea 1974, as amended</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_por_autoridad_es']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='zona_maritima_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='fecha_coloco_quilla_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_por_autoridad_en']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_horizontal']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        Se certifica que el sistema de Gestión de Seguridad del Buque, ha sido auditado y que cumple con los
+                        requerimientos del Código Internacional de Gestión de Seguridad y Prevención de la Contaminación (Código IGS),
+                        después de haber verificado que el documento de cumplimiento de la compañía es aplicable a este tipo de buque.<br/>
+                        <i>This is to certify that the Safety Management System of the Ship has been audited and that it complies with the
+                        provisions of Safety Management Code and for Pollution Prevention (ISM Code), after has been verified that the
+                        Document of Compliance of the Company is applied to this type of ship.</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td align="left">El Certificado de Gestión de Seguridad es válido hasta el: <br/>
+                    / <i>This Safety Management Certificate is valid until <br/>
+                    </i> a reserva de las oportunas verificaciones periódicas y de que el Documento de Cumplimiento siga siendo válido.<br/><i> / subject to periodical verification and the Document of Compliance remaining valid</i></td>
+                    <td class="datos_certificado" width="30%" style="vertical-align:top;text-align:left;"><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td align="left">Fecha de la Auditoria en que se basa el presente certificado:<br/>
+                    <i>Date of the Audit in which the present document is based</i> <span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <t t-call="nave_documento.custom_report_expendido_horizontal"/>
+
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo de la verificación Intermedia</b><br/>
+                        <b><i>Endorsement of the intermediate verification.</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        SE CERTIFICA que en una verificación Intermedia de conformidad con los prescrito en la
+                        Regla IX / 6.1 del Convenio y el párrafo 13.8 del Código IGS, el sistema de Gestión fue
+                        encontrado conforme con los requerimientos del Código IGS.<br/><br/>
+                        <i>THIS IS TO CERTIFY that in a Intermediate verification in accordance with Regulation IX / 6.1 of the Convention
+                        and paragraph 13.8 of the ISM Code, the safety management system was found to comply with the 
+                        requirements of the ISM Code.</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación Intermedia<br/>
+                        <i>Intermediate Verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <!-- <line x1="10" y1="20" x2="200" y2="20" style="line-style: solid;"/>          -->
+            <div style="left: 10px; right: 10px; border-top: 2px solid black;"></div><!--position: fixed; top: 50px;-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación adicional<br/>
+                        <i>Additional Verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación adicional<br/>
+                        <i>Additional Verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación adicional<br/>
+                        <i>Additional Verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+
+        <!-- <t t-call="nave_documento.custom_ship_protection_report_footer"/> -->
+
+    </template>
+
+</odoo>

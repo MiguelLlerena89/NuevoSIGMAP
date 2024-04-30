@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_seguridad_prevencion_contaminacion" model="ir.actions.report">
+        <field name="name">Certificado de Seguridad y Prevención de la Contaminación</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_seguridadprevencioncontaminacion</field>
+        <field name="report_file">nave_documento.report_seguridadprevencioncontaminacion</field>
+        <field name="print_report_name">'Certificado de Seguridad y Prevención de la Contaminación - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_seguridadprevencioncontaminacion" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'CERTIFICADO DE SEGURIDAD Y PREVENCIÓN DE LA CONTAMINACIÓN'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Ship Safety Pollution Prevention Certificate'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de lo disposiciones de la Resolución 301-04 de la Dirección General de la Marina Mercante y del Litoral con la autoridad conferida
+                        por el Gobierno de Ecuador.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>Issued under the provision of Resolution 301-04 of the General Direction of the Merchant Marine and Litoral under the authority of the Govemment of 
+                        Ecuador.</i>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_bajo_autoridad']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='numero_personas_buque_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='peso_muerto_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='eslora_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='tipo_buque_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+         <xpath expr="//tr[@id='fecha_entrega_construccion_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+         <xpath expr="//tr[@id='fecha_coloco_quilla_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="titulo_seccion" align="left">SE CERTIFICA:<br/><i>This is to certify:</i></td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        <ol>
+                            <li>
+                                Que el buque ha sido objeto de reconocimiento, de conformidad con lo prescrito en artículo II del Convenio y que el reconocimiento ha puesto de
+                                manifiesto que el estado de la estructura, las máquinas y el equipo, es satisfactorio, y que el buque cumple con las prescripciones pertinentes de
+                                los capítulos II-1, II-2, III, IV, y V del SOLAS y de los Anexos I, IV y VI del MARPOL, en vigor<br/>
+                                <i>That the above mentioned has been duly surveyed in accordance with the provisions of article II of the Convention referred to above, and that the
+                                survery showed that the condition of hull, machinery and equipment, was in all respect satifactory and that the ship complited with the relevant
+                                requirement of chapter II, III, IV, and V of the SOLAS and Annex I, IV, V and VI of the MARPOL, in force</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Que las dos últimas inspecciones de la obra viva del buque se realizaron <span class="datos_certificado" t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd-MM-y'}"/>  y el:  <br/>
+                                <i>That the last two-docking survery of the ship were carried out on:      and on:</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Que se ha / no se ha expedido un certificado de exención.<br/>
+                                <i>That has been / not has been issue an excension Certificate</i><br/>
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td>1.</td>
+                    <td align="justify">
+                        Que el buque ha sido objeto de reconocimiento, de conformidad con lo prescrito en artículo II del Convenio y que el reconocimiento ha puesto de
+                        manifiesto que el estado de la estructura, las máquinas y el equipo, es satisfactorio, y que el buque cumple con las prescripciones pertinentes de
+                        los capítulos II-1, II-2, III, IV, y V del SOLAS y de los Anexos I, IV y VI del MARPOL, en vigor<br/>
+                        <i>That the above mentioned has been duly surveyed in accordance with the provisions of article II of the Convention referred to above, and that the
+                        survery showed that the condition of hull, machinery and equipment, was in all respect satifactory and that the ship complited with the relevant
+                        requirement of chapter II, III, IV, and V of the SOLAS and Annex I, IV, V and VI of the MARPOL, in force</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td align="justify">
+                        Que las dos últimas inspecciones de la obra viva del buque se realizaron <span class="datos_certificado" t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd-MM-y'}"/>  y el:  <br/>
+                        <i>That the last two-docking survery of the ship were carried out on:      and on:</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td align="justify">
+                        Que se ha / no se ha expedido un certificado de exención.<br/>
+                        <i>That has been / not has been issue an excension Certificate</i><br/>
+                    </td>
+                </tr> -->
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td width="30%" align="left">El presente certificado es válido hasta:<br/><i>This Certificate is valid until:</i></td>
+                    <td style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td colspan="2">A condición de que se realicen los reconocimientos de la obra viva de la nave de conformidad con lo prescrito en la regla I/10 del Convenio.<br/><i class="letras_chicas">If carried out annual and intermediate survery and dry dock survery according with the regulation 10 of chapter 1 of the Coonvention</i></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <t t-call="nave_documento.custom_report_expendido_vertical"/>
+        </xpath>
+    </template>
+
+</odoo>

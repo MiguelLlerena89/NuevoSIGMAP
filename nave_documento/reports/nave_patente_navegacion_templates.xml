@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Certificado de Patente de Navegación -->
+    <record id="action_report_certificado_patente_navegacion" model="ir.actions.report">
+        <field name="name">Certificado de Patente de Navegación</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_documentopatentenavegacion</field>
+        <field name="report_file">nave_documento.report_documentopatentenavegacion</field>
+        <field name="print_report_name">'Certificado de Patente de Navegación - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navedocumentobase" id="report_documentopatentenavegacion" primary="True">
+        <xpath expr="//table[1]" position="after">
+            <div style="left: 10px; right: 10px; border-top: 2px solid black;"></div><!--position: fixed; top: 50px;-->
+            <br/>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="4" class="normal_9" align="justify">
+                        En uso de la facultad que le confiere el Art. No. 15 numeral 2, y el Art. 41, de Ley Orgánica de Navegación, Gestión de la Seguridad y
+                        Protección Marítima y Fluvial en los Espacios Acuáticos, la Autorizadad Marítima concede la PATENTE DE NAVEGACION a la nave de nombre:<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="normal_9" align="justify">
+                        <i>In compliance with the requirements by the article No. 15 number 2 of the Navegation Act of Govemance, Safety Managenment and Maritime and River Protection in 
+                        Aquatic Spaces, the Maritime Authority, grants this Statutory Certificate of Register to the vessel whose name is:</i>
+                        <br/>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td colspan="4" height="px"/>
+                </tr> -->
+                <tr>
+                    <td colspan="4" class="normal_9" align="center">
+                        <b><span t-field="o.nave_id.name"></span></b><br/>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>  -->
+                <tr>
+                    <td colspan="4" class="normal_9" align="justify">
+                        La PATENTE DE NAVEGACIÓN le confiere a la indicada nave el derecho a enarbolar el pabellón ecuatoriano y al libre tráfico en todas las 
+                        aguas para las que está capacitada para navegar, respetando las leyes y reglamentos del país y de los países amigos cuando navegue en sus aguas<br/>
+                        <i>The Statutory Certificate of Register gives the ship indicated the right to fly the flag of Ecuador and the free movement in all waters for which is qualified to navegate,
+                        respecting the laws of the country and friendly countries.</i><br/>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="caracteristicas_nave_info">
+                <tr>
+                    <td colspan="4" class="normal_9" align="left">
+                        <b>CARACTERISTICAS Y ESPECIFICACIONES DE LA NAVE:</b><br/>
+                        <i>Features and Specifications of the ship:</i><br/>
+                    </td>
+                    <br/>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">USO/SERVICIO <i class="letras_chicas">(Use/Service):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.uso"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">NUMERO IMO <i class="letras_chicas">(IMO number):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.omi_number"/></td>
+                </tr>
+                <tr>
+                <td colspan="2" width="50%" align="left">FECHA DE CONSTRUCCIÓN <i class="letras_chicas">(Date of Build):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta fecha construccion)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">CONSTRUCTOR <i class="letras_chicas">(Builder):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta constructor)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">No. CUBIERTAS COMPLETAS <i class="letras_chicas">(Number of Decks):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>0</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">ESLORA TOTAL <i class="letras_chicas">(Length over all):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.eslora"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">MANGA MÁXIMA <i class="letras_chicas">(Maximum Beam):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.manga"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">PUNTAL TOTAL <i class="letras_chicas">(Depth):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.puntal"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">FRANCO BORDO <i class="letras_chicas">(Free Board):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta Francobordo)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">TONELAJE BRUTO <i class="letras_chicas">(Gross Tonnage):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.trb"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">TONELAJE NETO <i class="letras_chicas">(Net Tonnage):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.trn"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">TRÁFICO <i class="letras_chicas">(Traffic):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.tipo_trafico_id.name"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">PROPULSIÓN <i class="letras_chicas">(Propulsion):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta Propulsion)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">MAQUINARIA PRINCIPAL: MARCA, MODELO,<br/> <i class="letras_chicas">(Main Engine: Brand and Model):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta Maquinaria)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">SERIE, POTENCIA <i class="letras_chicas">(Serial Number, Horse Power):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>(Falta Serial)</span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="4" class="normal_9" align="justify">
+                        La PATENTE DE NAVEGACIÓN tiene el carácter de permanente. Sin embargo, deberá renovarse cuando la nave cambie de nombre, de uso, 
+                        de servicio y/o sus características técnicas básicas<br/>
+                        <i>The Statutory Certificate of Register is a permanent document. However, should be cancelled and substituted by another one when the name of vessel, use, service,
+                        and/or technical features and specifications change.</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="60px"/>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
+</odoo>

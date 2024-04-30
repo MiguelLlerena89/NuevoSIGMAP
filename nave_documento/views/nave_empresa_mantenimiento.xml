@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tipo -->
+    <record id="view_nave_empresa_mantenimiento_tipo_tree" model="ir.ui.view">
+        <field name="name">nave.empresa.mantenimiento.tipo.tree</field>
+        <field name="model">nave.empresa.mantenimiento.tipo</field>
+        <field name="arch" type="xml">
+            <tree string="Empresa de Mantenimiento - Tipos" editable="top">
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_empresa_mantenimiento_tipo_action_menu" model="ir.actions.act_window">
+        <field name="name">Empresa de Mantenimiento - Tipos</field>
+        <field name="res_model">nave.empresa.mantenimiento.tipo</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_nave_empresa_mantenimiento_tipo_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea un nuevo tipo para empresas de Mantenimiento
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Tipo -->
+    <record id="view_nave_empresa_mantenimiento_clasificacion_tree" model="ir.ui.view">
+        <field name="name">nave.empresa.mantenimiento.clasificacion.tree</field>
+        <field name="model">nave.empresa.mantenimiento.clasificacion</field>
+        <field name="arch" type="xml">
+            <tree string="Empresa de Mantenimiento - Clasificación" editable="top">
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_empresa_mantenimiento_clasificacion_action_menu" model="ir.actions.act_window">
+        <field name="name">Empresa de Mantenimiento - Clasificación</field>
+        <field name="res_model">nave.empresa.mantenimiento.clasificacion</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_nave_empresa_mantenimiento_clasificacion_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea una nueva clasificación para empresas de Mantenimiento
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Uso -->
+    <record id="view_nave_empresa_mantenimiento_uso_tree" model="ir.ui.view">
+        <field name="name">nave.empresa.mantenimiento.uso.tree</field>
+        <field name="model">nave.empresa.mantenimiento.uso</field>
+        <field name="arch" type="xml">
+            <tree string="Empresa de Mantenimiento - Usos" editable="top">
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_empresa_mantenimiento_uso_action_menu" model="ir.actions.act_window">
+        <field name="name">Empresa de Mantenimiento - Usos</field>
+        <field name="res_model">nave.empresa.mantenimiento.uso</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_nave_empresa_mantenimiento_uso_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea un nuevo uso para empresas de Mantenimiento
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Empresas de Mantenimiento -->
+    <record id="view_nave_empresa_mantenimiento_form" model="ir.ui.view">
+        <field name="name">nave.empresa.mantenimiento.form</field>
+        <field name="model">nave.empresa.mantenimiento</field>
+        <field name="arch" type="xml">
+            <form string="Empresa de Mantenimiento">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="alert alert-danger oe_edit_only" role="alert" attrs="{'invisible': ['|',('partner_id','=',False),('partner_is_valid','=',True)]}">
+                        La empresa/persona seleccionada ya tiene otra empresa de Mantenimiento asociada.
+                    </div>
+                    <div class="alert alert-warning oe_edit_only" role="alert" attrs="{'invisible': [('partner_id','!=',False)]}">
+                        Selecciona o registra una empresa/persona. Puede buscar por nombre o número de identificación.
+                    </div>
+                    <field name="company_type" invisible="1"/>
+                    <field name="partner_is_valid" invisible="1"/>
+                    <group string="Empresa">
+                        <group>
+                            <field name="active" widget="boolean_toggle"/>
+                            <field name="partner_id"
+                                options="{'no_quick_create':True}"
+                                context="{'default_company_type':'company'}"/>
+                            <field name="l10n_ec_business_name"
+                                readonly="1"
+                                attrs="{'invisible':['|',('partner_id','=',False),('company_type','!=','company')]}" />
+                        </group>
+                        <group attrs="{'invisible':[('partner_id','=',False)]}">
+                            <label for="l10n_latam_identification_type_id" string="Identification Number"/>
+                            <div>
+                                <field name="l10n_latam_identification_type_id" placeholder="Type" readonly="1"/>
+                                <span class="oe_read_only"> - </span>
+                                <field name="vat" placeholder="Number" readonly="1"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="direccion" readonly="1"/>
+                            <field name="representante_legal_id"
+                                readonly="1"
+                                options="{'no_open':True}"
+                                attrs="{'invisible':['|','|',('id','=',False),('partner_id','=',False),('company_type','!=','company')]}"/>
+                            <field name="representante_tecnico_id"
+                                options="{'no_quick_create':True}"
+                                attrs="{'invisible':['|','|',('id','=',False),('partner_id','=',False),('company_type','!=','company')]}"/>
+                        </group>
+                    </group>
+                    <group string="Información">
+                        <group>
+                            <field name="tipo_id" options="{'no_open':True}"/>
+                        </group>
+                        <group>
+                            <field name="jurisdiccion_id" options="{'no_open':True}"/>
+                        </group>
+                    </group>
+                    <group attrs="{'invisible':[('id','=',False)]}">
+                        <group>
+                            <field name="clasificacion_id" options="{'no_open':True}"/>
+                            <field name="guias_longitud" />
+                            <field name="guias_numero" />
+                            <field name="acuerdo_ministerial" />
+                        </group>
+                        <group>
+                            <field name="uso_id" options="{'no_open':True}"/>
+                            <field name="capacidad_levante" />
+                            <field name="potencia_winche" />
+                            <field name="area_ocupacion" />
+                        </group>
+                    </group>
+                    <group string="Licencia" attrs="{'invisible':[('id','=',False)]}">
+                        <field name="matricula_active" invisible="1"/>
+                        <field name="matricula" attrs="{'invisible':[('matricula','=','')]}"/>
+                        <field name="matricula_caducidad" attrs="{'invisible':[('matricula_active','=',False)]}"/>
+                        <field name="matricula_estado" attrs="{'invisible':[('matricula_active','=','')]}"/>
+                        <field name="observacion" />
+                    </group>
+                    <notebook attrs="{'invisible': [('partner_id','=',False)]}">
+                        <page string="Autorizaciones">
+                            <field name="autorizacion_ids" nolabel="1">
+                                <tree string="Autorizaciones" 
+                                    decoration-muted="active == False"
+                                    decoration-danger="is_canceled == True"
+                                    decoration-info="active == True and is_canceled == False"
+                                    editable="top" delete="0">
+
+                                    <field name="codigo_documento"/>
+                                    <field name="fecha_emision"/>
+                                    <field name="fecha_caducidad"/>
+                                    <field name="reparto_id" options="{'no_open':True,'no_create':True,'no_create_edit':True}"/>
+                                    <field name="numero_formato"/>
+                                    <field name="active" widget="boolean_toggle"/>
+                                    <field name="is_canceled" widget="boolean_toggle"/>
+                                    <field name="create_uid" optional="hide"/>
+                                    <field name="create_date" optional="hide"/>
+                                    <field name="write_uid" optional="hide"/>
+                                    <field name="write_date" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_empresa_mantenimiento_tree" model="ir.ui.view">
+        <field name="name">nave.empresa.mantenimiento.tree</field>
+        <field name="model">nave.empresa.mantenimiento</field>
+        <field name="arch" type="xml">
+            <tree string="Empresas de Mantenimiento">
+                <field name="partner_id" string="Empresa/Persona"/>
+                <field name="vat"/>
+                <field name="jurisdiccion_id"/>
+                <field name="tipo_id"/>
+                <field name="clasificacion_id"/>
+                <field name="uso_id"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_empresa_mantenimiento_action_menu" model="ir.actions.act_window">
+        <field name="name">Empresas</field>
+        <field name="res_model">nave.empresa.mantenimiento</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_empresa_mantenimiento_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea una nueva empresa de Mantenimiento
+            </p>
+        </field>
+    </record>
+
+</odoo>

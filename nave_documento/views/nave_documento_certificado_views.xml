@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_nave_documento_certificado_tree" model="ir.ui.view">
+        <field name="name">nave.documento.certificado.tree</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Seguridad de Nave">
+                <field name="name"/>
+                <field name="nave_id"/>
+                <field name="reparto_id"/>
+                <field name="es_provisional"/>
+                <field name="fecha_emision"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_caducidad"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="state" string="Estado"
+                    decoration-info="state == 'en_tramite'"
+                    decoration-success="state == 'vigente'"
+                    decoration-primary="state == 'por_firmar'"
+                    decoration-muted="state == 'suspendido'"
+                    decoration-warning="state == 'caducado'"
+                    decoration-danger="state == 'anulado'"
+                    widget="badge" optional="show"/>
+                <!-- <field name="data" filename="filename" widget="binary" readonly="1" force_save="1"/>                     -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_nave_documento_certificado_form" model="ir.ui.view">
+        <field name="name">nave.documento.certificado.form</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Seguridad de Nave">
+                <header>
+                    <button name="action_generar_documento" type="object" class="btn-primary" states="en_tramite" string="Enviar a supervisión" data-hotkey="k"/>
+                    <button name="action_recargar_descripcion" type="object" class="btn-primary" states="en_tramite" string="Recargar Descripción" data-hotkey="r"
+                        attrs="{'invisible':[('es_texto_html','=',False)]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="pendiente,vigente,caducado"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="header_left_group">
+                            <field name="tipo_certificado" invisible="1"/>
+                            <field name="servicio_id" invisible="1"/>
+                            <field name="es_texto_html" invisible="1"/>
+                            <field name="es_provisional"
+                                attrs="{'invisible':[('servicio_id','not in',(%(tramite.tramite_documento_142)d, %(tramite.tramite_documento_126)d, %(tramite.tramite_documento_127)d))]}"/>
+                            <field name="nave_inspeccion_id" readonly="1" attrs="{'invisible':[('nave_inspeccion_id','=',False)]}"/>
+                            <field name="calificacion_final" readonly="1" attrs="{'invisible':['|',('nave_inspeccion_id','=',False),('calificacion_final','=',False)]}"/>
+                            <field name="documento_emitido_id" readonly="1"/>
+                            <field name="nave_id"/>
+                            <field name="reparto_id"/>
+                            <field name="attachments_required" attrs="{'invisible': [('attachments_required', '=', False)]}"/>
+                            <field name="attachment_ids" widget="many2many_binary"
+                                attrs="{
+                                    'invisible': [('attachments_required', '=', False)],
+                                    'required': [('attachments_required', '=', True)]
+                                }"/>
+                            <!--field name="data"
+                                attrs="{
+                                    'invisible': [('attachments_required', '=', False)],
+                                    'required': [('attachments_required', '=', True)]
+                                }"/>
+                            <field name="filename"
+                                attrs="{
+                                    'invisible': [('attachments_required', '=', False)],
+                                    'required': [('attachments_required', '=', True)]
+                                }"/-->
+                        </group>
+                        <group name="header_right_group">
+                            <field name="fecha_emision"/>
+                            <field name="fecha_inicio" readonly="1"/>
+                            <field name="fecha_caducidad"/>
+                            <field name="numero_formato"
+                                attrs="{
+                                    'invisible': [('numero_formato', '=', 0)],
+                                    'readonly': True}"
+                                />
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <group name="observaciones" string="Observaciones"
+                        attrs="{
+                            'invisible': [('es_texto_html', '=', True)]}">
+                        <field name="observacion" nolabel="1" colspan="2" />
+                    </group>
+                    <group name="registro_juridico_info" string="Texto del Certificado Jurídico"
+                        attrs="{
+                            'invisible': [('es_texto_html', '=', False)]}">
+                        <field name="titulo" />
+                        <field name="descripcion" widget="html"  /><!--options="{'style': 'height: 300px;'}"-->
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_arqueo" model="ir.actions.act_window">
+        <field name="name">Arqueo de Nave</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'arqueo_nave')]</field>
+        <field name="context">{'tipo_certificado':'arqueo_nave'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra arqueos de naves
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_seguridad_prevencion_contaminacion" model="ir.actions.act_window">
+        <field name="name">Seguridad y Prevención de la Contaminación</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'prevencion_contaminacion')]</field>
+        <field name="context">{'tipo_certificado':'prevencion_contaminacion'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra certificado de seguridad y prevención de la contaminación
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_seguridad_buque_carga" model="ir.actions.act_window">
+        <field name="name">Seguridad para Buques de Carga</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'buque_carga')]</field>
+        <field name="context">{'tipo_certificado':'buque_carga'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra certificado de seguridad para busques de carga
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_seguridad_buque_pasaje" model="ir.actions.act_window">
+        <field name="name">Seguridad para Buque de Pasaje</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'buque_pasaje')]</field>
+        <field name="context">{'tipo_certificado':'buque_pasaje'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra certificado de seguridad para buque de pasaje
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_lineas_carga" model="ir.actions.act_window">
+        <field name="name">Certificado de Lineas de Carga</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'linea_carga')]</field>
+        <field name="context">{'tipo_certificado':'linea_carga'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de lineas de carga
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_seguridad_radioelectrica_buque" model="ir.actions.act_window">
+        <field name="name">Seguridad Radioeléctrica de Buque</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'radioelectrica')]</field>
+        <field name="context">{'tipo_certificado':'radioelectrica'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra certificado de seguridad radioeléctrica de buque
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_prevencion_contaminacion_hidrocarburos" model="ir.actions.act_window">
+        <field name="name">Prevención a la Contaminación por Hidrocarburos</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'prevencion_hidrocarburos')]</field>
+        <field name="context">{'tipo_certificado':'prevencion_hidrocarburos'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra certificado de prevención a la contaminación por hidrocarburos
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_prevencion_contaminacion_aguas_sucias" model="ir.actions.act_window">
+        <field name="name">Prevención a la Contaminación por Aguas Sucias</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'prevencion_aguas_sucias')]</field>
+        <field name="context">{'tipo_certificado':'prevencion_aguas_sucias'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra certificado de prevención a la contaminación por aguas sucias
+            </p>
+        </field>
+    </record>
+
+    <!-- <record id="action_nave_documento_declaracion_provisional_cumplimiento" model="ir.actions.act_window">
+        <field name="name">Declaración Provisional de Cumplimiento</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'declaracion_cumplimiento'),('es_provisional','=', True)]</field>
+        <field name="context">{'tipo_certificado':'declaracion_cumplimiento', 'es_provisional': True}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra declaración provisional de cumplimiento
+            </p>
+        </field>
+    </record> -->
+
+    <record id="action_nave_documento_declaracion_cumplimiento" model="ir.actions.act_window">
+        <field name="name">Declaración de Cumplimiento</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'declaracion_cumplimiento')]</field>
+        <field name="context">{'tipo_certificado':'declaracion_cumplimiento'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra declaración de cumplimiento
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_gestion_seguridad" model="ir.actions.act_window">
+        <field name="name">Certificado de Gestión de Seguridad (ISM) [Pasaje navegable > 12 pax]</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'gestion_seguridad')]</field>
+        <field name="context">{'tipo_certificado':'gestion_seguridad'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de gestión de seguridad
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_documento_cumplimiento" model="ir.actions.act_window">
+        <field name="name">Documento de Cumplimiento de Compañía por ISM (DOC)</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'documento_cumplimiento')]</field>
+        <field name="context">{'tipo_certificado':'documento_cumplimiento'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de documento de cumplimiento de compañía
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_registro_sinoptico_continuo" model="ir.actions.act_window">
+        <field name="name">Registro Sinóptico Continuo del Buque</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'registro_sinoptico_continuo')]</field>
+        <field name="context">{'tipo_certificado':'registro_sinoptico_continuo'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de registro sinóptico continuo del buque
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_internacional_proteccion_buque" model="ir.actions.act_window">
+        <field name="name">Certificado Internacional de Protección del Buque</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'proteccion_buque')]</field>
+        <field name="context">{'tipo_certificado':'proteccion_buque'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado internacional de protección del buque
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_documento_inspeccion_dique_en_astilleros" model="ir.actions.act_window">
+        <field name="name">Certificado de Inspección de dique en astilleros/varaderos nacional</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'inspeccion_dique_astillero')]</field>
+        <field name="context">{'tipo_certificado':'inspeccion_dique_astillero'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado de inspección de dique en astilleros/varaderos nacional
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_documento_permiso_trafico" model="ir.actions.act_window">
+        <field name="name">Permiso de Tráfico Nacional/Internacional</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'permiso_trafico')]</field>
+        <field name="context">{'tipo_certificado':'permiso_trafico'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado de permiso de tráfico nacional/internacional
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_dotacion_minima_seguridad" model="ir.actions.act_window">
+        <field name="name">Certificado de Dotación Mínima de Seguridad</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'dotacion_minima_seguridad')]</field>
+        <field name="context">{'tipo_certificado':'dotacion_minima_seguridad'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado de dotación mínima de seguridad
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_exencion" model="ir.actions.act_window">
+        <field name="name">Certificado de Exención</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'exencion')]</field>
+        <field name="context">{'tipo_certificado':'exencion'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado de exención
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_autorizacion_cambio_nombre" model="ir.actions.act_window">
+        <field name="name">Autorización cambio de Nombre de Nave</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'autorizacion_cambio_nombre')]</field>
+        <field name="context">{'tipo_certificado':'autorizacion_cambio_nombre'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de autorizaciones de cambio de nombre de naves
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_cambio_propietario" model="ir.actions.act_window">
+        <field name="name">Cambio Propietario de Nave</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'cambio_propietario')]</field>
+        <field name="context">{'tipo_certificado':'cambio_propietario'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de cambio de propietario de naves
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_cambio_puerto_registro" model="ir.actions.act_window">
+        <field name="name">Cambio de Puerto de Registro</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'cambio_puerto_registro')]</field>
+        <field name="context">{'tipo_certificado':'cambio_puerto_registro'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de cambio de puerto de registro de naves
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_cambio_caracteristicas_tecnica" model="ir.actions.act_window">
+        <field name="name">Cambio características técnicas</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'cambio_caracteristicas_tecnica')]</field>
+        <field name="context">{'tipo_certificado':'cambio_caracteristicas_tecnica'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de cambio de características técnicas de naves
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_cancelacion_gravamen_hipoteca" model="ir.actions.act_window">
+        <field name="name">Cancelación de Gravamen e Hipotecas</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'cancelacion_gravamen_hipoteca')]</field>
+        <field name="context">{'tipo_certificado':'cancelacion_gravamen_hipoteca'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de cancelaciones de gravamen e hipotecas
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_cancelacion_matricula" model="ir.actions.act_window">
+        <field name="name">Cancelación de Matrícula (Baja de Nave)</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'cancelacion_matricula')]</field>
+        <field name="context">{'tipo_certificado':'cancelacion_matricula'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de cancelaciones de matrículas
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_cancelacion_registro_interdiccion" model="ir.actions.act_window">
+        <field name="name">Cancelación de Registro de Interdicción</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'cancelacion_registro_interdiccion')]</field>
+        <field name="context">{'tipo_certificado':'cancelacion_registro_interdiccion'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de cancelaciones de registro de interdicción
+            </p>
+        </field>
+    </record>
+
+    <!-- <record id="action_nave_documento_registro_nave_otra_capitania" model="ir.actions.act_window">
+        <field name="name">Certificado de Registro de Nave en otra Capitanía</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'registro_nave_otra_capitania')]</field>
+        <field name="context">{'tipo_certificado':'registro_nave_otra_capitania'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificados de registro de nave en otra capitania
+            </p>
+        </field>
+    </record> -->
+
+    <record id="action_nave_documento_registro_propiedad" model="ir.actions.act_window">
+        <field name="name">Certificado de Registro de Propiedad</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'registro_propiedad')]</field>
+        <field name="context">{'tipo_certificado':'registro_propiedad'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado de registro de propiedad
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_historia_dominio" model="ir.actions.act_window">
+        <field name="name">Certificado de Historia Dominio</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'historia_dominio')]</field>
+        <field name="context">{'tipo_certificado':'historia_dominio'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado de historia de dominio
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_registro_gravamen_hipoteca" model="ir.actions.act_window">
+        <field name="name">Registro de Gravamen e Hipoteca</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'registro_gravamen_hipoteca')]</field>
+        <field name="context">{'tipo_certificado':'registro_gravamen_hipoteca'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado de registro de gravamen e hipoteca
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_registro_interdiccion" model="ir.actions.act_window">
+        <field name="name">Registro de Interdicción</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'registro_interdiccion')]</field>
+        <field name="context">{'tipo_certificado':'registro_interdiccion'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado de registro de interdicción
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_registro_inscripcion" model="ir.actions.act_window">
+        <field name="name">Registro de Inscripción de embarcación por primera vez</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'registro_inscripcion')]</field>
+        <field name="context">{'tipo_certificado':'registro_inscripcion'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado de registro de interdicción
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_pasavante_navegacion" model="ir.actions.act_window">
+        <field name="name">Pasavante de Navegación</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'pasavante_navegacion')]</field>
+        <field name="context">{'tipo_certificado':'pasavante_navegacion'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado de pasavante de navegación
+            </p>
+        </field>
+    </record>
+
+    <record id="action_nave_documento_patente_navegacion" model="ir.actions.act_window">
+        <field name="name">Patente de Navegación</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'patente_navegacion')]</field>
+        <field name="context">{'tipo_certificado':'patente_navegacion'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran certificado de patente de navegación
+            </p>
+        </field>
+    </record>
+
+    <record id="action_aprobacion_manual_gestion_seguridad" model="ir.actions.act_window">
+        <field name="name">Aprobación de Manual de Gestión de Seguridad (MGS)</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'manual_gestion_seguridad')]</field>
+        <field name="context">{'tipo_certificado':'manual_gestion_seguridad'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran carta de aprobación de manual de gestión de seguridad
+            </p>
+        </field>
+    </record>
+
+    <record id="action_aprobacion_plan_proteccion_buque_instalacion_portuaria" model="ir.actions.act_window">
+        <field name="name">Aprobación de Plan PBIP (Buque/Instalación Portuaria)</field>
+        <field name="res_model">nave.documento.certificado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_certificado', '=', 'plan_proteccion_buque_portuaria')]</field>
+        <field name="context">{'tipo_certificado':'plan_proteccion_buque_portuaria'}</field>
+        <field name="view_id" ref="view_nave_documento_certificado_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentran carta de aprobación de protección de buque e instalación portuaria
+            </p>
+        </field>
+    </record>
+
+</odoo>

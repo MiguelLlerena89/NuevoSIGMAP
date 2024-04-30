@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_linea_carga" model="ir.actions.report">
+        <field name="name">Certificado Lineas de Carga</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_lineascarga</field>
+        <field name="report_file">nave_documento.report_lineascarga</field>
+        <field name="print_report_name">'Certificado Internacional de Lineas de Carga - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_lineascarga" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'CERTIFICADO INTERNACIONAL DE LINEAS DE CARGA'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'International Load Line Certificate'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de las disposiciones del Convenio Internacional de 1966 sobre líneas de carga, con la autoridad conferida por el Gobierno de Ecuador.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>Issued under the provisions of the International Convention of Load Lines, 1966, under the authority of the Government of Ecuador.</i>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_bajo_autoridad']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="after">
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <th style="border:4px solid black;" class="text-center">Nombre del Buque<br/><i>Name of ship</i></th>
+                    <th style="border:4px solid black;" class="text-center">Número o letras distintivos<br/><i>Distinctive numbers of letters</i></th>                                            
+                    <th style="border:4px solid black;" class="text-center">Puerto de Registro<br/><i>Port of Register</i></th>                    
+                    <th style="border:4px solid black;" class="text-center">Número OMI<br/><i>IMO Number</i></th>
+                    <th style="border:4px solid black;" class="text-center">Eslora *<br/><i>Length *</i></th>
+                </tr>
+                <tr>
+                    <td style="border:4px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.name"></span>
+                    </td>
+                    <td style="border:4px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.senial_llamada"/>
+                    </td>
+                    <td style="border:4px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.reparto_id.city_id.name"></span>
+                    </td>
+                    <td style="border:4px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.omi_number"></span>
+                    </td>
+                    <td style="border:4px solid black;" align="center">
+                        <span class="datos_certificado" t-field="o.nave_id.eslora"></span>
+                    </td>
+                </tr>
+            </table>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="titulo_seccion" align="left">SE CERTIFICA:<br/></td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="justify">
+                        <ol>
+                            <li>
+                                Que el buque ha sido objeto de reconocimiento de conformidad con lo prescrito en el artículo 14 del Convenio<br/>
+                                <i>That the ship has been surveyed in accordance with the requirements of article 14 of the Convention</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Que el reconocimiento ha puesto de manifiesto que han sido asignados los francobordos y se han marcado las líneas de
+                                carga anteriormente indicadas de conformidad con lo dispuesto en el Convenio<br/>
+                                <i>That the survey showed that the freeboards have been assigned and load lines shown above have marked in accordance witn the Convention</i><br/>
+                                *Eslora como es definido en el artículo 2 8)<br/>
+                                *Length (L) as defined in article 2 8)<br/>
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td width="30%" align="left">El presente certificado es válido hasta:<br/><i>This Certificate is valid until:</i></td>
+                    <td style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span></td>
+                </tr>
+                <!-- <tr>
+                    <td colspan="4" height="20px"/>
+                </tr> -->
+            </table>
+
+            <t t-call="nave_documento.custom_report_expendido_vertical"/>
+
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td align="left"><b>NOTAS</b></td><br/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        <ol>
+                            <li>
+                                Cuando el buque parte de un Puerto situado en un río o en aguas interiores, se le permitirá cargar hasta un calado mayor
+                                correspondiente al peso del combustible y otras provisiones necesarias para el consumo entre el punto de salida y la mar.<br/>
+                                <i>When the ship departs from a port situated on a river or inland waters, deeper loading shall be permitted corresponding to the
+                                weight of fuel and all other materials required for consumption between the point of departures and the sea.</i><br/>
+                            </li>
+                            <li>
+                                Cuando el buque navegue en aguas dulce de densidad igual a la unidad, la línea de carga correspondiente podrá sumergirse en
+                                la cantidad correspondiente a la concesión para agua dulce indicada anteriormente. Cuando la densidad sea diferente de la
+                                unidad se hará una concesión proporcional a la diferencia entre 1.025 y la densidad real.<br/>
+                                <i>When a ship is in fresh water of unit density the appropriate load lines may be submerged by the amount of fresh water
+                                allowance shown above. Where the density is other than unity, an allowance shall be made proportional to the difference
+                                between 1.025 and the actual density.</i><br/>
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo de reconocimientos anuales.</b><br/>
+                        <b><i>Endorsement for anual surveys.</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        SE CERTIFICA que en el reconocimiento efectuado de conformidad con lo prescrito en el artículo 4 1) c) del Convenio, se ha
+                        comprobado que el buque cumple con las prescripciones pertinentes del mismo.<br/>
+                        <i>THIS IS TO CERTIFY that, at an annual survey required by article 14 1) c) of the convention, the ship was found to comply with
+                        the relevant requirements of the Convention.</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Reconocimiento Anual<br/>
+                        <i>Annual Survey</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Reconocimiento Anual<br/>
+                        <i>Annual Survey</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Reconocimiento Anual<br/>
+                        <i>Annual Survey</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Reconocimiento anual de conformidad con el artículo19 8) c)</b><br/>
+                        <b><i>Annual Survey in accordance with article 19 8) c)</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        SE CERTIFICA que en el Reconocimiento efectuado de conformidad con lo prescrito en el artículo 19 8) c) del Convenio, se ha
+                        comprobado que el buque cumple con las prescripciones pertinentes del mismo.<br/>
+                        <i>THIS IS TO CERTIFY that, at Survey in accordance with article 19 8) c) of the Convention, the ship was found to comply with the
+                        relevant requirements of the Convention.</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo para prorrogar el certificado, si su validez es inferior a cinco años cuando el artículo 19 3)
+                        sea aplicable.</b><br/>
+                        <b><i>Endorsement to extend the certificate, if valid for less than 5 years where article 19 3) applies.</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        El buque cumple con las prescripciones pertinentes del Convenio, y se aceptará el presente certificado como válido, de
+                        conformidad con lo prescrito en el artículo 19 3) del convenio hasta:<br/>
+                        <i>The ship complies with the relevant requirements of the Convention and this certificate shall, in accordance with article 19 3) of
+                        the Convention, be accepted as valid until</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo cuando, habiéndose efectuado el reconocimiento de renovación, el artículo 19 4) sea
+                        aplicable.</b><br/>
+                        <b><i>Endorsement where the renewal survey has been completed and article 19 4) applies.</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        El buque cumple con las prescripciones pertinentes del Convenio, y se aceptará el presente certificado como válido, de
+                        conformidad con lo prescrito en el artículo 19 4) del Convenio hasta:<br/>
+                        <i>The ship complies with the relevant requirements of the Convention and this certificate shall, in accordance with article 19 4) of
+                        the Convention, be accepted as valid until</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo para prorrogar la validez del certificado hasta la llegada al puerto de reconocimiento o por
+                        un período de gracia, cuando el artículo 19 5) ó 19 6) sea aplicable.</b><br/>
+                        <b><i>Endorsement to extend the validity of the certificate until reaching the port of survey or for a period of
+                        grace where article 19 5) or 19 6) applies.</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        El presente certificado se aceptará como válido, de conformidad con lo prescrito en el artículo 19 5) / 19 6) del convenio hasta:<br/>
+                        <i>The certificate shall, in accordance with article 19 5) / 19 6) of the convention, be accepted as valid until</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo para adelantar la fecha de vencimiento anual cuando el artículo 19 8) es aplicable.</b><br/>
+                        <b><i>Endorsement for advancement of anniversary date. where article 19 8) applies.</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        De conformidad con el artículo 19 8) del Convenio, la nueva fecha de vencimiento anual es:<br/>
+                        <i>In accordance with article 19 8) of the Convention, the new anniversary date is:</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        De conformidad con el artículo 19 8) del Convenio, la nueva fecha de vencimiento anual es:<br/>
+                        <i>In accordance with article 19 8) of the Convention, the new anniversary date is:</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5px"></td>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
+</odoo>

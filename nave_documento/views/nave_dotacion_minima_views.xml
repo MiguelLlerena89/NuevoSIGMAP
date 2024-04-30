@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_nave_dotacion_minima_form" model="ir.ui.view">
+        <field name="name">nave.dotacion.minima.form</field>
+        <field name="model">nave.dotacion.minima</field>
+        <field name="arch" type="xml">
+            <form string="Dotacion mínima">
+                <sheet>
+                    <div class="oe_title">
+                        <h3 class="mt0">
+                            <field name="name" string="Nombre" placeholder="[servicio] [tráfico] (zona1, zona2) / min-máx TRB / min-máx HP"/>
+                        </h3>
+                        <div class="oe_edit_only" attrs="{'invisible':[('name','!=',False)]}">p.e. PESQUEROS COSTEROS (A1) / 0-10 TRB / 0-500 HP</div>
+                    </div>
+                    <!--group>
+                        <group name="nave" string="Nave">
+                            <field name="servicio_nave_id"/>
+                            <field name="trafico_nave_id" />
+                            <field name="zona_nave_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group name="trb" string="TRB">
+                            <field name="min_trb"/>
+                            <field name="max_trb"/>
+                        </group>
+                        <group name="potencia" string="Potencia (HP)">
+                            <field name="min_potencia"/>
+                            <field name="max_potencia"/>
+                        </group>
+                    </group-->
+                    <notebook>
+                        <page string="Dotacion mínima ">
+                            <field name="jerarquia_ids">
+                                <tree string="Dotacion mínima" editable="bottom">
+                                    <field name="dotacion_minima_id" invisible="1"/>
+                                    <field name="jerarquia_id"/>
+                                    <field name="number" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_dotacion_minima_tree" model="ir.ui.view">
+        <field name="name">nave.dotacion.minima.tree</field>
+        <field name="model">nave.dotacion.minima</field>
+        <field name="arch" type="xml">
+            <tree string="Dotacion mínima">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_dotacion_minima_action_menu" model="ir.actions.act_window">
+        <field name="name">Dotacion mínima</field>
+        <field name="res_model">nave.dotacion.minima</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_dotacion_minima_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new authorised list
+            </p>
+        </field>
+    </record>
+
+</odoo>

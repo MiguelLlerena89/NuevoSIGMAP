@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.module.category" id="security_dirnea_inspecciones">
+        <field name="name">Inspecciones</field>
+    </record>
+
+    <record id="group_listas_chequeo_admin" model="res.groups">
+        <field name="name">Listas de Chequeo</field>
+        <field name="category_id" ref="nave_documento.security_dirnea_inspecciones"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_inspecciones_admin" model="res.groups">
+        <field name="name">Administración Inspecciones</field>
+        <field name="category_id" ref="nave_documento.security_dirnea_inspecciones"/>
+        <field name="implied_ids" eval="[(4, ref('nave_documento.group_listas_chequeo_admin'))]"/>
+    </record>
+
+    <record model="ir.module.category" id="security_naves_groups">
+        <field name="name">NAVES</field>
+    </record>
+
+    <record model="res.groups" id="group_spm_supervisor">
+        <field name="name">DIRNEA SPM Supervisor</field>
+        <field name="category_id" ref="nave_documento.security_naves_groups"/>
+        <field name="implied_ids" eval="[(4, ref('usuarios.group_inspector'))]"/>
+    </record>
+
+    <record model="res.groups" id="group_spm_tecnico">
+        <field name="name">DIRNEA SPM Técnico Naval</field>
+        <field name="category_id" ref="nave_documento.security_naves_groups"/>
+        <field name="implied_ids" eval="[(4, ref('usuarios.group_inspector'))]"/>
+    </record>
+
+    <record model="res.groups" id="group_dirreg_asigna_inspector">
+        <field name="name">Dirección Regional Asigna Inspector</field>
+        <field name="category_id" ref="nave_documento.security_naves_groups"/>
+        <!--field name="category_id" ref="usuarios.security_dirreg_groups"/-->
+        <field name="implied_ids" eval="[(4, ref('usuarios.group_inspector'))]"/>
+    </record>
+
+    <record model="res.groups" id="group_dtm_supervisor">
+        <field name="name">Capitanía DTM Supervisor</field>
+        <field name="category_id" ref="nave_documento.security_naves_groups"/>
+        <field name="implied_ids" eval="[(4, ref('usuarios.group_inspector'))]"/>
+    </record>
+
+    <record model="res.groups" id="group_dtm_tecnico">
+        <field name="name">Capitanía DTM Técnico Naval</field>
+        <field name="category_id" ref="nave_documento.security_naves_groups"/>
+        <field name="implied_ids" eval="[(4, ref('usuarios.group_inspector'))]"/>
+    </record>
+
+    <!--
+        DIRNEA
+            ATENUS
+            SPM Operador
+                Inspector
+            SPM Supervisor
+                Supervisa Inspección
+
+        DIR REG
+            asigna Inspector
+
+        CAP
+            DTM Operador
+                Inspector
+            DTM Supervisor
+                Supervisa Inspeccion
+
+        AUDITOR
+            Naves Rector del Puerto
+    -->
+
+</odoo>

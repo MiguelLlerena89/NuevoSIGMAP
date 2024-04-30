@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="nave_inspeccion_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia inspecciones</field>
+      <field name="code">nave_inspeccion_sequence_code</field>
+      <field name="prefix">INSPECCION/%(year)s/%(month)s/</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Persona - Nave -->
+    <record id="documento_nave_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia documento nave</field>
+      <field name="code">documento_nave_sequence_code</field>
+      <field name="prefix">DOCNAVE/%(year)s/%(month)s/</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Informe Técnico Favorable importación/nacionalización de Nave -->
+    <record id="nave_inf_tec_fav_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Informe Técnico Favorable importación/nacionalización Nave</field>
+      <field name="code">documento_inf_tec_fav_code</field>
+      <field name="prefix">ITFNA-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia contrato fletamento de Nave -->
+    <record id="nave_contr_fleta_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Contrato Fletamento Nave</field>
+      <field name="code">documento_contrato_fletamento_code</field>
+      <field name="prefix">FCFLE-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia contrato fletamento a Casco desnudo de Nave -->
+    <record id="nave_contr_fleta_casco_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Contrato Fletamento a Casco Desnudo Nave</field>
+      <field name="code">documento_contr_fleta_casco_code</field>
+      <field name="prefix">FCFCD-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia contrato fletamento por Exploración de Nave -->
+    <record id="nave_contr_fleta_explo_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Contrato Fletamento por Exploración Nave</field>
+      <field name="code">documento_contr_fleta_explo_code</field>
+      <field name="prefix">FCFEX-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia contrato Asociación de Nave -->
+    <record id="nave_contr_asoci_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Contrato de Asociación Nave</field>
+      <field name="code">documento_contrato_asociacion_code</field>
+      <field name="prefix">FCASO-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia contrato Internación Temporal de Nave -->
+    <record id="nave_contr_int_temp_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Contrato de Internación Temporal Nave</field>
+      <field name="code">documento_contr_int_temp_code</field>
+      <field name="prefix">FCITE-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Informe Técnico Favorable por contratos de Nave -->
+    <record id="nave_inf_tec_fav_contr_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Informe Técnico Favorable por contratos Nave</field>
+      <field name="code">documento_inf_tec_fav_contr_code</field>
+      <field name="prefix">ITFFC-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Inspección Rector del Puerto de Nave -->
+    <record id="nave_rector_puerto_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Inspección Rector de Puerto Nave</field>
+      <field name="code">documento_rector_puerto_code</field>
+      <field name="prefix">SDRDP-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Matrícula de Nave -->
+    <record id="nave_matricula_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Matricula Nave</field>
+      <field name="code">documento_matricula_nave_code</field>
+      <field name="prefix">MANA-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado Internacional de Arqueo de Nave -->
+    <record id="certificado_internacional_arqueo_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Certificado Internacional de Arqueo</field>
+      <field name="code">documento_arqueo_code</field>
+      <field name="prefix">CIAR-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Seguridad y Prevención de la Contaminación -->
+    <record id="certificado_seguridad_prevencion_contaminacion_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Certificado de Seguridad y Prevención de la Contaminación</field>
+      <field name="code">documento_seguridad_prevencion_contaminacion_code</field>
+      <field name="prefix">CSPC-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Seguridad para Buques de Carga -->
+    <record id="certificado_seguridad_buques_carga_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Certificado de Seguridad para Buques de Carga</field>
+      <field name="code">documento_seguridad_buques_carga_code</field>
+      <field name="prefix">CSBC-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">4</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Seguridad para Buque de Pasaje -->
+    <record id="certificado_seguridad_buques_pasaje_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Certificado de Seguridad para Buque de Pasaje</field>
+      <field name="code">documento_seguridad_buque_pasaje_code</field>
+      <field name="prefix">CSBP-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">4</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado Lineas de Carga  -->
+    <record id="certificado_lineas_carga_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado de Lineas de Carga</field>
+      <field name="code">documento_lineas_carga_code</field>
+      <field name="prefix">CILC-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Seguridad Radioeléctrica de Buque -->
+    <record id="certificado_seguridad_radioelectrica_buque_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Certificado de Seguridad Radioeléctrica de Buque</field>
+      <field name="code">documento_seguridad_radioelectrica_buque_code</field>
+      <field name="prefix">CSR-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Dotación Mínima de Seguridad  -->
+    <record id="certificado_dotacion_minima_seguridad_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado de Dotación Mínima de Seguridad</field>
+      <field name="code">documento_dotacion_minima_seguridad_code</field>
+      <field name="prefix">DOTA-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Excención  -->
+    <record id="certificado_exencion_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado de Exención</field>
+      <field name="code">documento_exencion_code</field>
+      <field name="prefix">EXE-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado Internacional de Prevención a la Contaminación por Hidrocarburos (IOPP) -->
+    <record id="certificado_prevencion_hidrocarburos_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Certificado Internacional de Prevención a la Contaminación por Hidrocarburos</field>
+      <field name="code">documento_prevencion_hidrocarburos_code</field>
+      <field name="prefix">IOPP-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">4</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado Internacional de Prevención de la Contaminación por Aguas Sucias -->
+    <record id="certificado_internacional_prevencion_contaminacion_aguas_sucias_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Certificado Internacional de Prevención de la Contaminación por Aguas Sucias</field>
+      <field name="code">documento_prevencion_contaminacion_aguas_sucias_code</field>
+      <field name="prefix">ISPP-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Declaracion de Cumplimiento Provicional CAP (Tanqueros Hidrocarburos mayores a 15 años)  -->
+    <record id="certificado_declaracion_cumplimiento_provisional_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Declaracion de Cumplimiento Provicional CAP</field>
+      <field name="code">documento_declaracion_cumplimiento_provisional_code</field>
+      <field name="prefix">CCAP-PROV-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">3</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Declaracion de Cumplimiento CAP (Tanqueros Hidrocarburos mayores a 15 años)  -->
+    <record id="certificado_declaracion_cumplimiento_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Declaracion de Cumplimiento CAP</field>
+      <field name="code">documento_declaracion_cumplimiento_code</field>
+      <field name="prefix">CCAP-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">3</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado Provisional de Gestión de la Seguridad -->
+    <record id="certificado_gestion_seguridad_provisional_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado Provisional de Gestión de la Seguridad</field>
+      <field name="code">documento_gestion_seguridad_provisional_code</field>
+      <field name="prefix">SMC-PROV-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">3</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Gestión de la Seguridad  -->
+    <record id="certificado_gestion_seguridad_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado de Gestión de la Seguridad</field>
+      <field name="code">documento_gestion_seguridad_code</field>
+      <field name="prefix">SMC-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">3</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento de Cumplimiento Provisional -->
+    <record id="certificado_documento_cumplimiento_provisional_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento de Cumplimiento Provisional</field>
+      <field name="code">documento_documento_cumplimiento_provisional_code</field>
+      <field name="prefix">DOC-PROV-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">3</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento de Cumplimiento  -->
+    <record id="certificado_documento_cumplimiento_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento de Cumplimiento</field>
+      <field name="code">documento_documento_cumplimiento_code</field>
+      <field name="prefix">DOC-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">3</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Registro Sinóptico Continuo del Buque  -->
+    <record id="certificado_registro_sinoptico_continuo_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Registro Sinóptico Continuo del Buque</field>
+      <field name="code">documento_registro_sinoptico_continuo_code</field>
+      <field name="prefix">RSC-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">3</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado Internacional de Protección del Buque (PBIP) (Pasaje > 35 pax)  -->
+    <record id="certificado_internacional_proteccion_buque_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Certificado Internacional de Protección del Buque (PBIP) (Pasaje > 35 pax)</field>
+      <field name="code">documento_internacional_proteccion_buque_code</field>
+      <field name="prefix">PBIP-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">3</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Permiso Tráfico Nacional/Internacional  -->
+    <record id="certificado_permiso_trafico_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Permiso de Tráfico Nacional/Internacional</field>
+      <field name="code">documento_permiso_trafico_code</field>
+      <field name="prefix">PTRAN-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado Vare y Desvare  -->
+    <record id="certificado_vare_desvare_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado Vare y Desvare</field>
+      <field name="code">documento_vare_desvare_code</field>
+      <field name="prefix">PVAR-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">4</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Autorización cambio de Nombre de Nave  -->
+    <record id="certificado_autorizacion_cambio_nombre_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Autorización cambio de Nombre de Nave</field>
+      <field name="code">documento_autorizacion_cambio_nombre_code</field>
+      <field name="prefix">AUT-AUT-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Cambio Propietario de Nave  -->
+    <record id="certificado_cambio_propietario_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Cambio Propietario de Nave</field>
+      <field name="code">documento_cambio_propietario_code</field>
+      <field name="prefix">REG-PRO-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Cambio de Puerto de Registro  -->
+    <record id="certificado_cambio_puerto_registro_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Cambio de Puerto de Registro</field>
+      <field name="code">documento_cambio_puerto_registro_code</field>
+      <field name="prefix">AUT-AUT-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Cambio de características técnicas  -->
+    <record id="certificado_cambio_caracteristicas_tecnica_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Cambio de características técnicas</field>
+      <field name="code">documento_cambio_caracteristicas_tecnica_code</field>
+      <field name="prefix">CERT-PRO-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Cancelación de Gravamen e Hipotecas  -->
+    <record id="certificado_cancelacion_gravamen_hipoteca_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Cancelación de Gravamen e Hipotecas</field>
+      <field name="code">documento_cancelacion_gravamen_hipoteca_code</field>
+      <field name="prefix">REG-CAN-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Cancelación de Matrícula (Baja de Nave)  -->
+    <record id="certificado_cancelacion_matricula_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Cancelación de Matrícula (Baja de Nave)</field>
+      <field name="code">documento_cancelacion_matricula_code</field>
+      <field name="prefix">AUT-AUT-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Cancelación de Registro de Interdicción  -->
+    <record id="certificado_cancelacion_registro_interdiccion_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Cancelación de Registro de Interdicción</field>
+      <field name="code">documento_cancelacion_registro_interdiccion_code</field>
+      <field name="prefix">REG-CAN-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Registro de Nave en otra Capitanía  -->
+    <!-- <record id="certificado_registro_nave_otra_capitania_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Registro de Nave en otra Capitanía</field>
+      <field name="code">documento_registro_nave_otra_capitania_code</field>
+      <field name="prefix">AUT-AUT-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record> -->
+
+    <!--Secuencia Documento Certificado de Registro de Propiedad  -->
+    <record id="certificado_registro_propiedad_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado de Registro de Propiedad</field>
+      <field name="code">documento_registro_propiedad_code</field>
+      <field name="prefix">CER-PRO-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Historia Dominio  -->
+    <record id="certificado_historia_dominio_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado de Historia Dominio</field>
+      <field name="code">documento_historia_dominio_code</field>
+      <field name="prefix">CER-PRO-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Registro de Gravamen e Hipoteca  -->
+    <record id="certificado_registro_gravamen_hipoteca_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Registro de Gravamen e Hipoteca</field>
+      <field name="code">documento_registro_gravamen_hipoteca_code</field>
+      <field name="prefix">CER-GRV-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Registro de Interdicción  -->
+    <record id="certificado_registro_interdiccion_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Registro de Interdicción</field>
+      <field name="code">documento_registro_interdiccion_code</field>
+      <field name="prefix">REG-INT-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Registro de Inscripción de embarcación por primera vez  -->
+    <record id="certificado_registro_inscripcion_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Registro de Inscripción de embarcación por primera vez</field>
+      <field name="code">documento_registro_inscripcion_code</field>
+      <field name="prefix">CER-PRO-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Pasavante de Navegación  -->
+    <record id="certificado_pasavante_navegacion_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado de Pasavante de Navegación</field>
+      <field name="code">documento_pasavante_navegacion_code</field>
+      <field name="prefix">PASA-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Certificado de Patente de Navegación  -->
+    <record id="certificado_patente_navegacion_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado de Patente de Navegación</field>
+      <field name="code">documento_patente_navegacion_code</field>
+      <field name="prefix">PTNT-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Oficio de Aprobación de Cuadro de Zafarrancho  -->
+    <record id="oficio_cuadro_zafarrancho_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Aprobación de Cuadro de Zafarrancho</field>
+      <field name="code">documento_cuadro_zafarrancho_code</field>
+      <field name="prefix">SPM-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Carta de Aprobación de Manual de Gestión de Seguridad (MGS) -->
+    <record id="certificado_manual_gestion_seguridad_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Aprobación de Manual de Gestión de Seguridad (MGS)</field>
+      <field name="code">documento_manual_gestion_seguridad_code</field>
+      <field name="prefix">MGS-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">3</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <!--Secuencia Documento Carta de Aprobación de Plan PBIP (Buque/Instalación Portuaria) -->
+    <record id="certificado_plan_proteccion_buque_portuaria_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Aprobación de Plan PBIP (Buque/Instalación Portuaria)</field>
+      <field name="code">documento_plan_proteccion_buque_portuaria_code</field>
+      <field name="prefix">PPIP-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">3</field>
+      <field name="number_next">1</field>
+    </record>
+  </data>
+</odoo>

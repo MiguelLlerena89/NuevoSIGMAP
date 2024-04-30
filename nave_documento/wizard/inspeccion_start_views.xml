@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_inspeccion_start_wizard_form" model="ir.ui.view">
+        <field name="name">nave.inspeccion.start.wizard.form</field>
+        <field name="model">nave.inspeccion.start.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="empezar" invisible="1"/>
+                        <field name="inspeccion_id" readonly="1" force_save="1"/>
+                        <field name="llenar" attrs="{'invisible': [('empezar', '=', False)]}"/>
+                        <field name="respuesta" attrs="{'invisible': [('empezar', '=', True),('llenar', '=', False)]}"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name='button_empezar_a_llenar' type='object' class='btn-primary'
+                        attrs="{'invisible':['|',('empezar','=',False),('llenar','=',True),('respuesta','=',False)]}">Empezar</button>
+                    <button name='button_completar_preguntas' type='object' class='btn-primary'
+                        attrs="{'invisible':['|',('empezar','=',True),('respuesta','=',False)]}">Completar</button>
+                    <button string='Cancelar' class='btn-default' special='cancel' />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_inspeccion_reset_wizard_form" model="ir.ui.view">
+        <field name="name">nave.inspeccion.reset.wizard.form</field>
+        <field name="model">nave.inspeccion.reset.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="alert alert-danger oe_edit_only" role="alert">
+                        Cuidado! Todas las evidencias y comentarios, así como las respuestas serán borrados y no podrá recuperar los cambios. Confirme la acción marcando la casilla.
+                    </div>
+                    <group>
+                        <field name="inspeccion_id" readonly="1" force_save="1"/>
+                        <field name="limpiar"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name='button_limpiar' type='object' class='btn-danger'
+                        attrs="{'invisible':[('limpiar','=',False)]}">Entiendo los riesgos, limpiar!</button>
+                    <button string='Cancelar' class='btn-default' special='cancel' />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_inspeccion_start_wizard" model="ir.actions.act_window">
+        <field name="name">Empezar Inspección</field>
+        <field name="res_model">nave.inspeccion.start.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_inspeccion_fill_wizard" model="ir.actions.act_window">
+        <field name="name">Completar respuestas en Inspección</field>
+        <field name="res_model">nave.inspeccion.start.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_inspeccion_reset_wizard" model="ir.actions.act_window">
+        <field name="name">¿Está seguro que desea limpiar la inspección?</field>
+        <field name="res_model">nave.inspeccion.reset.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!--  Inspeccion -->
+    <record id="view_nave_inspeccion_form_inherited_01" model="ir.ui.view">
+        <field name="name">nave.inspeccion.form</field>
+        <field name="model">nave.inspeccion</field>
+        <field name="inherit_id" ref="nave_documento.view_nave_inspeccion_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="button_empezar_inspeccion" type="object" class="oe_highlight oe_edit_only"
+                    string="Empezar Inspección"
+                    id="button_empezar_inspeccion"
+                    attrs="{'invisible': ['|',('lista_llenada','=',True),'|',('lista_para_llenar','=',False),'|',('estado_lista_chequeo','!=','por_llenar'),('state','!=','programada')]}"/>
+                <button
+                    name="button_completar" type="object" class="oe_highlight oe_edit_only"
+                    string="Completar Respuestas"
+                    id="button_completar"
+                    attrs="{'invisible': ['|',('lista_llenada','=',True),'|',('lista_para_llenar','=',False),'|',('estado_lista_chequeo','!=','llenando'),('state','!=','programada')]}"/>
+                <button
+                    name="button_limpiar" type="object" class="btn-danger oe_edit_only"
+                    string="Limpiar/Resetear"
+                    id="button_limpiar"
+                    attrs="{'invisible': ['|',('lista_para_llenar','=',False),'|',('estado_lista_chequeo','!=','llenando'),('state','!=','programada')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

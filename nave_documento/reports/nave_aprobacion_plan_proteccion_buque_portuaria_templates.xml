@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_aprobacion_plan_proteccion_buque_instalacion_portuaria" model="ir.actions.report">
+        <field name="name">Aprobación de Plan PBIP (Buque/Instalación Portuaria)</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_aprobacionplanproteccionbuqueportuaria</field>
+        <field name="report_file">nave_documento.report_aprobacionplanproteccionbuqueportuaria</field>
+        <field name="print_report_name">'Aprobación de Plan PBIP (Buque/Instalación Portuaria) - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_aprobacionplanproteccionbuqueportuaria" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'Carta de Aprobación del PPIP'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Approval Letter Plan'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" align="justify">
+                        Expedido en virtud de las disposiciones del Convenio SOLAS Capítulo XI-2 y parte A del Código Internacional para la Protección de los Buques y las Instalaciones Portuarias.<br/>
+                        <i>Issued under the provisions of the SOLAS Chapter XI-2 and part A of the International Code for the Security of Ships and of Port Facilities (ISPS Code)</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td colspan="4" align="justify">
+                    <b>Ha aprobado el PPIP de la siguiente instalación portuaria luego de haber verificado que en todos sus aspectos cumple con los requerimientos del Código PBIP;</b><br/>
+                    <i>Has approved the SPPF of the following port facility after verify that in all aspect is in complies with the applicable requirements of the ISPS Code;</i></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_por_autoridad_es']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_por_autoridad_en']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="after">
+            <!-- <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="4" align="justify">
+                    <b>Ha aprobado el PPIP de la siguiente instalación portuaria luego de haber verificado que en todos sus aspectos cumple con los requerimientos del Código PBIP;</b><br/>
+                    <i>Has approved the SPPF of the following port facility after verify that in all aspect is in complies with the applicable requirements of the ISPS Code;</i></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table -->
+
+            <t t-call="nave_documento.custom_report_expendido_horizontal"/>
+
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Aprobación de Enmiendas al PPIP</b><br/>
+                        <b><i>Amendment Approval to the SPPF</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        SE CERTIFICA que en una enmienda al PPIP ha sido aprobada por la DIRNEA, de conformidad con lo descrito en la sección 16.60 de la parte B del Código PBIP.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td>
+                        <i>THIS IS TO CERTIFY that an Amendment to the SPPF has been approved by DIRNEA in accordance with the section 16.60 of the part B of the ISPS Code.</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Enmienda 1 al PPIP<br/>
+                        <i>Amendment 1 to the SPPF</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Aprobado en/<i>Approved at</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Enmienda 2 al PPIP<br/>
+                        <i>Amendment 2 to the SPPF</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Aprobado en/<i>Approved at</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Enmienda 3 al PPIP<br/>
+                        <i>Amendment 3 to the SPPF</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Aprobado en/<i>Approved at</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Enmienda 4 al PPIP<br/>
+                        <i>Amendment 4 to the SPPF</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Aprobado en/<i>Approved at</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Enmienda 5 al PPIP<br/>
+                        <i>Amendment 5 to the SPPF</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Aprobado en/<i>Approved at</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Enmienda 6 al PPIP<br/>
+                        <i>Amendment 6 to the SPPF</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Aprobado en/<i>Approved at</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Enmienda 7 al PPIP<br/>
+                        <i>Amendment 7 to the SPPF</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Aprobado en/<i>Approved at</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Enmienda 8 al PPIP<br/>
+                        <i>Amendment 8 to the SPPF</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Aprobado en/<i>Approved at</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_seguridad_radioeletrcia_buque" model="ir.actions.report">
+        <field name="name">Certificado de Seguridad Radioeléctrica de Buque</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_seguridadradioelectrica</field>
+        <field name="report_file">nave_documento.report_seguridadradioelectrica</field>
+        <field name="print_report_name">'Certificado de Seguridad Radioeléctrica de Buque - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_seguridadradioelectrica" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'Certificado de Seguridad Radioeléctrica de Buque'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Ship Radio Safety Certificate'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud del Convenio Internacional para la Seguridad para la vida humana en el mar, SOLAS 1974, en 
+                        su forma modificada por el correspondiente Protocolo de 1988.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>Issued under the provisions of the International Convention for the Safety of life at sea, SOLAS 1974, as modified by 
+                        the Protocol of 1988.</i><br/>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+
+         <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_por_autoridad_es']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+         <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_por_autoridad_en']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+         <xpath expr="//table[@id='nave_info_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_horizontal']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="titulo_seccion" align="left">Se certifica: / <i> This is to certify:</i></td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        <section class="toc-decimal">
+                            <ol>
+                                <li>
+                                    Que el buque ha sido objeto de reconocimiento, de conformidad con lo prescrito en la regla I/9 del Convenio
+                                    / <i>That the ship has been surveyed in accordance with the requirements of regulation I/9 of the Convention.</i><br/>
+                                </li>
+                                <br/>
+                                <li>
+                                    Que el reconocimiento ha puesto de manifiesto lo siguiente:/<br/>
+                                    <i>That the survey showed that:</i>
+                                    <ol>
+                                        <li>
+                                            que el buque cumple con las prescripciones del Convenio en lo que respecta a instalaciones radioeléctricas;/
+                                            <i>the ship complied with the requirements of the Convention as regards radio installations;</i><br/>
+                                        </li>
+                                        <br/>
+                                        <li>
+                                            Que el funcionamiento de las instalaciones radioeléctricas utilizadas en los dispositivos de salvamento 
+                                            cumple las prescripciones del convenio/<i>the functioning of radio installations used in life-saving appliances complied with the requirements of the Convention;</i>
+                                        </li>
+                                        <br/>
+                                    </ol>
+                                </li>
+                                <li>
+                                    Que <s>se ha/no</s> se ha expedido un Certificado de exención/<i>That an Exemption Certificate has not been issued.</i><br/>
+                                </li>
+                            </ol>
+                        </section>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td align="justify">
+                        El presente certificado es válido hasta el/<i>This Certificate is valid until: </i><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd/MMMM/y'}"></span>
+                        a condición que se realicen los reconocimientos periódicos, de conformidad con lo prescrito en la regla I/9 del Convenio /
+                        <i>subject to the periodical surveys in accordance with regulation I/9 of the Convention.</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <t t-call="nave_documento.custom_report_expendido_horizontal"/>
+
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo de la verificación intermedia.</b><br/>
+                        <i>Endorsement of the intermediate verification.</i>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        SE CERTIFICA que en el reconocimiento efectuado de conformidad con lo prescrito en la regla I/9 del Convenio,
+                        se ha comprobado que el buque cumple con las prescripciones pertinentes del mismo.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td>
+                        <i>THIS IS TO CERTIFY that verification has been carried out accordance with regulation I/9 of the Convention.</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación Intermedia<br/>
+                        <i>Intermediate Verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <!-- <line x1="10" y1="20" x2="200" y2="20" style="line-style: solid;"/>          -->
+            <div style="left: 10px; right: 10px; border-top: 2px solid black;"></div><!--position: fixed; top: 50px;-->
+            <br/>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo de verificaciones adicionales</b><br/>
+                        <i>Endorsement of additional verification</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación adicional<br/>
+                        <i>Additional Verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10px"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación adicional<br/>
+                        <i>Additional Verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <!-- <line x1="10" y1="20" x2="200" y2="20" style="line-style: solid;"/>          -->
+            <div style="left: 10px; right: 10px; border-top: 2px solid black;"></div><!--position: fixed; top: 50px;-->
+            <br/>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo para prorrogar la validez, cuando sea aplicable las reglas I/14 c), I/14 d), I/14 e), 
+                        o I/14 f).</b><br/>
+                        <b><i>Endorsement of extend validity when applicable out accordance with regulation I/14 c), I/14 d), I/14 e), o I/14 f).</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Verificación periódica<br/>
+                        <i>Periodical Verification</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado: ........................................................<br/>
+                        <i>Signed by</i><br/><br/>
+                        Lugar: ........................................................<br/>
+                        <i>Place</i><br/><br/>
+                        Fecha: ........................................................<br/>
+                        <i>Date</i><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
+</odoo>

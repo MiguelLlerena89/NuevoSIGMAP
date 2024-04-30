@@ -1,0 +1,36 @@
+id,rubro_id:id,name,tipo,variable,monto,monto_base,valor_minimo,valor_maximo,literal
+rubro_tarifa_inf_tec_fav,nave_documento.tarifario_rubro_inf_tec_fav,Tarifa - Informe Técnico Favorable Importación/Nacionalización de Nave,Constante,,25,0.0,,,
+rubro_tarifa_inf_tec_fav_contr,nave_documento.tarifario_rubro_inf_tec_fav_contr,"Tarifa - Informe Técnico Favorable para Naves con contrato de fletamento, asociación o arrendamiento",Constante,,25,0.0,,,
+rubro_tarifa_contr_fleta_10,nave_documento.tarifario_rubro_contr_fleta,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento (0,10] TRB - Fletamento",Constante,,6.47,0.0,,,a
+rubro_tarifa_contr_fleta_10_300,nave_documento.tarifario_rubro_contr_fleta,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento (10,300] TRB - Fletamento",Fórmula,TRB,0.16,6.47,,,b
+rubro_tarifa_contr_fleta_300,nave_documento.tarifario_rubro_contr_fleta,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento >300 TRB - Fletamento",Fórmula,TRB,0.16,54.09,,324.38,c
+rubro_tarifa_contr_fleta_casco_10,nave_documento.tarifario_rubro_contr_fleta_casco,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento (0,10] TRB - Fletamento Casco Desnudo",Constante,,6.47,0.0,,,a
+rubro_tarifa_contr_fleta_casco_10_300,nave_documento.tarifario_rubro_contr_fleta_casco,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento (10,300] TRB - Fletamento Casco Desnudo",Fórmula,TRB,0.16,6.47,,,b
+rubro_tarifa_contr_fleta_casco_300,nave_documento.tarifario_rubro_contr_fleta_casco,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento >300 TRB - Fletamento Casco Desnudo",Fórmula,TRB,0.16,54.09,,324.38,c
+rubro_tarifa_contr_fleta_explo_10,nave_documento.tarifario_rubro_contr_fleta_explo,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento (0,10] TRB - Fletamento por Exploración",Constante,,6.47,0.0,,,a
+rubro_tarifa_contr_fleta_explo_10_300,nave_documento.tarifario_rubro_contr_fleta_explo,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento (10,300] TRB - Fletamento por Exploración",Fórmula,TRB,0.16,6.47,,,b
+rubro_tarifa_contr_fleta_explo_300,nave_documento.tarifario_rubro_contr_fleta_explo,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento >300 TRB- Fletamento por Exploración",Fórmula,TRB,0.16,54.09,,324.38,c
+rubro_tarifa_contr_asoci_10,nave_documento.tarifario_rubro_contr_asoci,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento (0,10] TRB - Asociación",Constante,,6.47,0.0,,,a
+rubro_tarifa_contr_asoci_10_300,nave_documento.tarifario_rubro_contr_asoci,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento (10,300] TRB - Asociación",Fórmula,TRB,0.16,6.47,,,b
+rubro_tarifa_contr_asoci_300,nave_documento.tarifario_rubro_contr_asoci,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento >300 TRB - Asociación",Fórmula,TRB,0.16,54.09,,324.38,c
+rubro_tarifa_contr_int_temp_10,nave_documento.tarifario_rubro_contr_int_temp,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento (0,10] TRB - Internación Temporal",Constante,,6.47,0.0,,,a
+rubro_tarifa_contr_int_temp_10_300,nave_documento.tarifario_rubro_contr_int_temp,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento (10,300] TRB - Internación Temporal",Fórmula,TRB,0.16,6.47,,,b
+rubro_tarifa_contr_int_temp_300,nave_documento.tarifario_rubro_contr_int_temp,"Tarifa - Registro o resciliación de contrato de fletamento, asociación o arrendamiento >300 TRB - Internación Temporal",Fórmula,TRB,0.16,54.09,,324.38,c
+rubro_tarifa_rector_puerto,nave_documento.tarifario_rubro_rector_puerto,Tarifa - Inspección detallada por Estado Rector de Puerto,Fórmula,TRB,0.01,729.87,,,
+rubro_tarifa_rubro_reg_prop,nave_documento.tarifario_rubro_reg_prop,Tarifa - Emisión Certificado de Registro de Propiedad,Constante,,8.11,0.0,,,
+rubro_tarifa_matri,nave_documento.tarifario_rubro_matri,Tarifa - Matricula de la nave,Fórmula,TRB,0.27,,2.58,,
+rubro_tarifa_matri_baja,nave_documento.tarifario_rubro_matri_baja,Tarifa - Cancelación de matrícula por baja de la nave,Constante,,7.76,0.0,,,
+rubro_tarifa_vare_desv,nave_documento.tarifario_rubro_vare_desv,Tarifa - Certificado de Permiso de vare y desvare,formula,eslora,0.27,,,,
+rubro_tarifa_desguace,nave_documento.tarifario_rubro_desguace,Tarifa - Aprobación del desguace de una nave de bandera Nacional o Extranjera,constante,,50.0,,,,
+rubro_tarifa_seg_prev_10_150,nave_documento.tarifario_rubro_segu_prev_cont,"Tarifa - Inspecciones de Seguridad y Prevención de la Contaminación (10,150] TRB",formula,trb,0.32,,,,
+rubro_tarifa_seg_prev_150_500,nave_documento.tarifario_rubro_segu_prev_cont,"Tarifa - inspecciones de Seguridad y Prevención de la Contaminación (150,500] TRB",formula,trb,0.48,,,,
+rubro_tarifa_seg_prev_pesca_500_1500,nave_documento.tarifario_rubro_segu_prev_cont_pesca,"Tarifa - inspecciones de Seguridad y Prevención de la Contaminación Pesca (500,1500] TRB",constante,,940.74,,,,
+rubro_tarifa_seg_prev_pesca_1500_2500,nave_documento.tarifario_rubro_segu_prev_cont_pesca,"Tarifa - inspecciones de Seguridad y Prevención de la Contaminación Pesca (1500,2500] TRB",constante,,1248.94,,,,
+rubro_tarifa_seg_prev_pesca_2500,nave_documento.tarifario_rubro_segu_prev_cont_pesca,"Tarifa - inspecciones de Seguridad y Prevención de la Contaminación Pesca >2500 TRB",constante,,1589.49,,,,
+rubro_tarifa_segu_radio_10_500,nave_documento.tarifario_rubro_segu_radio_ini,"Tarifa - inspecciones de Seguridad Radioeléctrica de Buques (10,500] TRB",constante,,75.54,,,,
+rubro_tarifa_segu_radio_500_1000,nave_documento.tarifario_rubro_segu_radio_ini,"Tarifa - inspecciones de Seguridad Radioeléctrica de Buques (500,1000] TRB",constante,,120.85,,,,
+rubro_tarifa_segu_radio_1000_1500,nave_documento.tarifario_rubro_segu_radio_ini,"Tarifa - inspecciones de Seguridad Radioeléctrica de Buques (1000,1500] TRB",constante,,181.29,,,,
+rubro_tarifa_segu_radio_1500,nave_documento.tarifario_rubro_segu_radio_ini,"Tarifa - inspecciones de Seguridad Radioeléctrica de Buques >1500 TRB",constante,,226.61,,,,
+rubro_tarifa_segu_pasaje_0_500,nave_documento.tarifario_rubro_segu_pasaje_ini,"Tarifa - nspección de Seguridad para buques de pasaje (0,500] TRB",constante,,655.55,,,,a
+rubro_tarifa_segu_pasaje_500_1500,nave_documento.tarifario_rubro_segu_pasaje_ini,"Tarifa - nspección de Seguridad para buques de pasaje (500,1500] TRB",constante,,1300.60,,,,b
+rubro_tarifa_segu_pasaje_1500,nave_documento.tarifario_rubro_segu_pasaje_ini,"Tarifa - nspección de Seguridad para buques de pasaje >1500 TRB",constante,,1703.03,,,,c

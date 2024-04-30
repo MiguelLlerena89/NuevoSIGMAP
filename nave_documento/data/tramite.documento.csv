@@ -1,0 +1,24 @@
+id,name,caduca,periodo_caducidad,caducidad,es_inspeccion,emitido_por_dirnea,tipo_documento_id:id,es_provisional
+tramite_documento_inf_tec_fav,Informe Técnico Favorable Importación/Nacionalización de Nave,True,months,6,False,True,base_sigmap.nave,FALSE
+tramite_documento_inf_tec_fav_contr,"Informe Técnico Favorable para Naves con contrato de fletamento, asociación o arrendamiento",True,months,6,False,True,base_sigmap.nave,FALSE
+tramite_documento_contr_fleta,Contrato de Fletamento,True,months,6,False,True,base_sigmap.nave,FALSE
+tramite_documento_contr_fleta_casco,Contrato de Fletamento Casco Desnudo,True,months,6,False,True,base_sigmap.nave,FALSE
+tramite_documento_contr_fleta_explo,Contrato de Fletamento por Exploración,True,months,6,False,True,base_sigmap.nave,FALSE
+tramite_documento_contr_asoci,Contrato de Asociación,True,months,6,False,True,base_sigmap.nave,FALSE
+tramite_documento_contr_int_temp,Contrato por Internación Temporal,True,months,6,False,True,base_sigmap.nave,FALSE
+tramite_documento_nave_rector_puerto,Supervisión detallada Estado Rector del Puerto,True,months,6,True,True,base_sigmap.nave,FALSE
+tramite_documento_reg_prop,Certificado de Registro de Propiedad,False,,,False,True,base_sigmap.nave,FALSE
+tramite_documento_nave_matri,Matrícula de la Nave,True,years,1,False,True,base_sigmap.nave,FALSE
+tramite_documento_nave_matri_baja,Cancelación de Matrícula (Baja de Nave),False,,,False,True,base_sigmap.nave,FALSE
+tramite_documento_nave_vare,Permiso de Vare/Desvare,True,years,1,False,True,base_sigmap.nave,FALSE
+tramite_documento_nave_desg,Autorización Desguace Nave Bandera Nacional/Extranjera,False,,,False,True,base_sigmap.nave,FALSE
+tramite_documento_nave_segu_prev,"Inspección y Certificado de Seguridad y Prevención de la Contaminación para Naves de Carga, Pasaje y Pesca",True,years,1,True,True,base_sigmap.nave,FALSE
+tramite_documento_nave_segu_pasaje,Inspección de Seguridad para buques de pasaje,True,years,1,True,True,base_sigmap.nave,FALSE
+tramite_documento_nave_segu_radio,Inspección y Certificado de Seguridad Radioeléctrica de Buques,True,years,5,True,True,base_sigmap.nave,FALSE
+tramite_documento_nave_vare_plan,Declaración del plan y período de los trabajos a realizarse en la embarcación en un astillero/varadero autorizado,False,,,False,False,base_sigmap.nave,FALSE
+tramite_documento_nave_vare_carta,Carta de aceptación del astillero/varadero autorizado,False,,,False,False,base_sigmap.nave,FALSE
+tramite_documento_nave_vare_calado,Aprobación de calado aéreo por parte del comité de seguridad (para astilleros/varaderos de Durán),False,,,False,False,base_sigmap.nave,FALSE
+tramite_documento_nave_desg_carta,Carta de aceptación de la empresa donde se realizará el desguace,False,,,False,False,base_sigmap.nave,FALSE
+tramite_documento_nave_desg_autor,Autorización de facilidad portuaria para el desguace,False,,,False,False,base_sigmap.nave,FALSE
+tramite_documento_nave_desg_decl_adua,Copia de la Declaración Aduanera (para Buques Internacionales),False,,,False,False,base_sigmap.nave,FALSE
+tramite_documento_nave_desg_canc_registro,Certificado de Cancelación de registro emitido por la autoridad Marítima del país de orígen (para Buques Internacionales),False,,,False,False,base_sigmap.nave,FALSE

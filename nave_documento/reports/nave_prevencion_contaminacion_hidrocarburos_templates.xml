@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_certificado_prevencion_contaminacion_hidrocarburos" model="ir.actions.report">
+        <field name="name">Certificado Internacional de Prevención a la Contaminación por Hidrocarburos</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_prevencioncontaminacionhidrocarburos</field>
+        <field name="report_file">nave_documento.report_prevencioncontaminacionhidrocarburos</field>
+        <field name="print_report_name">'Certificado Internacional de Prevención a la Contaminación por Hidrocarburos - %s' % (object.nave_id.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_prevencioncontaminacionhidrocarburos" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'CERTIFICADO INTERNACIONAL DE PREVENCION DE LA CONTAMINACION POR HIDROCARBUROS'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'International Oli Pollution Prevention Certificate'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" align="justify">
+                        Expedido en virtud de lo disposiciones del Convenio Internacional de prevenir la contaminación por los buques, 1973, en su forma modificado por el
+                        correspondiente Protocolo de 1978 y enmendado por resolución MEPC 39 (29), (denominado en adelante "el Convenio"), con la autoridad conferida por el
+                        Gobierno de Ecuador, de conformidad con la Resolución A 883(21) de la Asamblea, relativa a la implantación a Escala Mundial del Sistema Armonizado de
+                        Reconocimientos y Certificación.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="justify">
+                        <i>Issued under the provision of the International Convention for Pollution from Ships, 1973, as modified by the Protocol of 1978 relating thereto,
+                        and as amencied by resolution MEPC 39 (29), (hereinafter referred to as "the Convention") under the authority of the Govemment of Ecuador, in accordance with
+                        Assembly Resolution A. 883(21) relating to the Global Implementation of the Hamonized System of Survery and Certification</i>
+                    </td><br/>
+                </tr>
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_bajo_autoridad']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='numero_personas_buque_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='zona_maritima_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='eslora_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//tr[@id='fecha_construccion_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+         <xpath expr="//tr[@id='fecha_coloco_quilla_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="titulo_seccion" align="left">SE CERTIFICA:<br/><i>THIS IS TO CERTIFY:</i></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        <ol>
+                            <li>
+                                Que buque ha sido objeto de reconocimiento, de conformidad con lo dispuesto en la regla 6 del Anexo I del Convenio; y<br/>
+                                <i>That the ship has been survered in accordance with regulation 6 of Annex I of the Convention; and</i><br/>
+                            </li>
+                            <br/>
+                            <li>
+                                Que el reconomiento ha puesto de manifiesto que la estructura, el equipo, los sistemas, los accesorios, los medios y los materiales del buque, y el estado
+                                de todo ello, son satisfactorios en todos los sentidos y que el buque cumple con las prescripciones aplicables del Anexo I del Convenio.<br/>
+                                <i>That the survery shows that the structure, equipment, systems, fitting, arrangement and material of the ship and the condition thereof are in all respects
+                                satisfactory and that ship complies with the applicable requirements of the Annex I of the Convention</i><br/>
+                            </li>
+                            <br/>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                    <td width="30%" align="left">El presente certificado es válido hasta:<br/><i>This Certificate is valid until:</i></td>
+                    <td class="datos_certificado" style="vertical-align:top;text-align:left;"><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd MMMM y'}"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td colspan="2" align="justify">
+                        A reserva de que se efectúa los pertinentes reconocimientos de conformidad con la regla 6 del Anexo I del Convenio.<br/>
+                        <i>Subject to surverys in accordance with regulation 6 of the Convention.</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+
+            <t t-call="nave_documento.custom_report_expendido_vertical"/>
+
+            <p style="page-break-before:always;"></p>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo de Reconocimientos Anuales e Intermedios</b><br/>
+                        <b><i>Endorsement for Annual and Intermediate Surveys</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        SE CERTIFICA que en el reconocimiento efectuado de conformidad con lo prescrito en la regla 6 del Anexo I del Convenio se ha comprobado que el buque
+                        cumple las disposiciones pertinentes del Convenio.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td>
+                        <i>THIS IS TO CERTIFY that at a survey required by regulation 6 of Annex I of the Convention the ship was found to comply with the relevant provisions of the Convention.</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Reconocimiento Anual<br/>
+                        <i>Annual Survey</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Lugar/<i>Place</i>: ........................................................<br/>
+                        <br/><br/>
+                        Fecha/<i>Date</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Reconocimiento Anual / Intermedio<br/>
+                        <i>Annual / Intermediate Survey</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Lugar/<i>Place</i>: ........................................................<br/>
+                        <br/><br/>
+                        Fecha/<i>Date</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Reconocimiento Anual / Intermedio<br/>
+                        <i>Annual / Intermediate Survey</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Lugar/<i>Place</i>: .............................................................<br/>
+                        <br/><br/>
+                        Fecha/<i>Date</i>: ..............................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                        Reconocimiento Anual<br/>
+                        <i>Annual Survey</i>
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/>
+                        Lugar/<i>Place</i>: ........................................................<br/>
+                        <br/><br/>
+                        Fecha/<i>Date</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Reconocimiento Anual / Intermedio de conformidad con lo prescrito en la regla 10.8.3</b><br/>
+                        <b><i>Annual / Intermediate Survey in Accordance with regulation 10.8.3</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        SE CERTIFICA que en el Reconocimiento anual/intermedio efectuado de conformidad con lo prescrito en la regla 10.8.3 del Anexo I del Convenio, se ha
+                        comprobado que el buque cumple con las disposiciones pertinentes del Convenio.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i>THIS IS TO CERTIFY that, at an annual/intermediate survey in accordance with regulation 10.8.3 of Annex I of the Convention, the ship was found to comply with
+                        the relevant provisions of the Convention.</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td colspan="2" width="50%" align="left">
+                            Reconocimiento Anual<br/>
+                            <i>Annual Survey</i>
+                        </td>
+                        <td colspan="2" style="vertical-align:top;text-align:left;">
+                            Firmado/<i>Signed: </i>: ........................................................<br/>
+                            <br/><br/><br/><br/>
+                            Lugar/<i>Place</i>: ........................................................<br/>
+                            <br/><br/>
+                            Fecha/<i>Date</i>: ........................................................<br/>
+                            <br/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20px"></td>
+                    </tr>
+                </table>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo para prorrogar el Certificado, si es válido durante un período inferior a 5 años, cuando se aplica la regla 10.3</b><br/>
+                        <b><i>Endorsement to extend the Certificate if Valid for less than 5 years where regulation 10.3 applies</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        El buque cumple las disposiciones pertinentes del Convenio y, de conformidad con lo prescrito en la regla 10.3 del Anexo I del Convenio, el presente certificado
+                        se aceptará como válido hasta:<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i>The ship complies with the relevant provisions of the Convention, and this Certificate shall, in accordance with regulations 10.3 of Annex I of the Convention, be
+                        accepted as valid until:</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td colspan="2" width="50%" align="left">
+                            Reconocimiento Anual<br/>
+                            <i>Annual Survey</i>
+                        </td>
+                        <td colspan="2" style="vertical-align:top;text-align:left;">
+                            Firmado/<i>Signed: </i>: ........................................................<br/>
+                            <br/><br/><br/><br/>
+                            Lugar/<i>Place</i>: ........................................................<br/>
+                            <br/><br/>
+                            Fecha/<i>Date</i>: ........................................................<br/>
+                            <br/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20px"></td>
+                    </tr>
+                </table>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo requerido cuando se ha efectuado el reconocimiento de renovación y se aplica la regla 10.4</b><br/>
+                        <b><i>Endorsement where the Renewal Survey has Been Completed and Regulation 10.4 Applies</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        El buque cumple las disposiciones pertinentes del Convenio, y se aceptará el presente Certificado como válido, de conformidad con lo prescrito en la regla 10.4
+                        del Anexo I del Convenio, hasta<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i>The ship complies with the relevant provisions of the Convention, and this Certificate shall, in accordance with regulations 10.4 of Annex I of the Convention, be
+                        accepted as valid until:</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" width="50%" align="left">
+                    </td>
+                    <td colspan="2" style="vertical-align:top;text-align:left;">
+                        Firmado/<i>Signed: </i>: ........................................................<br/>
+                        <br/><br/><br/><br/>
+                        Lugar/<i>Place</i>: ........................................................<br/>
+                        <br/><br/>
+                        Fecha/<i>Date</i>: ........................................................<br/>
+                        <br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20px"></td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo para prorrogar la validez del Certificado hasta la llegada al puerto de Reconocimiento o durante un período de gracia, cuando se aplican las
+                        reglas 10.5 ó 10.6</b><br/>
+                        <b><i>Endorsement to Extend the Validity of the Certificate until Reaching the Port of Survey or for a Period of Grace where Regulation 10.5 or 10.6 Applies</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        De conformidad con lo prescrito en las reglas 10.5 ó 10.6 del Anexo I del Convenio, este Certificado se aceptará como válido, hasta:<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        <i>This Certificate shall, in accordance with regulation 10.5 or 10.6 of Annex I of the Convention, be accepted as valid until:</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td colspan="2" width="50%" align="left">
+                        </td>
+                        <td colspan="2" style="vertical-align:top;text-align:left;">
+                            Firmado/<i>Signed: </i>: ........................................................<br/>
+                            <br/><br/><br/><br/>
+                            Lugar/<i>Place</i>: ........................................................<br/>
+                            <br/><br/>
+                            Fecha/<i>Date</i>: ........................................................<br/>
+                            <br/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20px"></td>
+                    </tr>
+                </table>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <b>Refrendo para adelantar la fecha de vencimiento anual cuando se aplica la reglas 10.8</b><br/>
+                        <b><i>Endorsement for Advancement of Anniversary Date where regulation 10.8 Applies</i></b>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr>
+                    <td align="justify">
+                        De conformidad con lo prescrito en la regla 10.8 del Anexo I del Convenio, la nueva fecha de vencimiento anual es:<br/>
+                        <i>In accordance with regulation 10.8 of Annex I of the Convention, the new anniversary date is :</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td colspan="2" width="50%" align="left">
+                        </td>
+                        <td colspan="2" style="vertical-align:top;text-align:left;">
+                            Firmado/<i>Signed: </i>: ........................................................<br/>
+                            <br/><br/><br/><br/>
+                            Lugar/<i>Place</i>: ........................................................<br/>
+                            <br/><br/>
+                            Fecha/<i>Date</i>: ........................................................<br/>
+                            <br/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20px"></td>
+                    </tr>
+                </table>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        De conformidad con lo prescrito en la regla 10.8 del Anexo I del Convenio, la nueva fecha de vencimiento anual es:<br/>
+                        <i>In accordance with regulation 10.8 of Annex I of the Convention, the new anniversary date is :</i><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td colspan="2" width="50%" align="left">
+                        </td>
+                        <td colspan="2" style="vertical-align:top;text-align:left;">
+                            Firmado/<i>Signed: </i>: ........................................................<br/>
+                            <br/><br/><br/><br/>
+                            Lugar/<i>Place</i>: ........................................................<br/>
+                            <br/><br/>
+                            Fecha/<i>Date</i>: ........................................................<br/>
+                            <br/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="20px"></td>
+                    </tr>
+                </table>
+            </table>
+        </xpath>
+    </template>
+
+</odoo>

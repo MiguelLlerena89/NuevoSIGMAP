@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <template id="report_navedocumentobase">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <!-- <link rel="stylesheet" type="text/css" href="/sigmap_/static/src/css/styles.css" /> -->
+                        <link rel="stylesheet" href="/nave_documento/static/src/css/styles.css"></link>
+                        <!-- <t t-call="personal_maritimo_documento.custom_report_header"/> -->
+                        <!-- <div align="right" style="font-family:Arial;font-size:14px;font-weight: bold;text-decoration:none;">
+                            Certificado No. <span t-field="o.name"/>
+                        </div> -->
+                        <div class="col-xs-12" style="font-size: 13px">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="cabecera_info">
+                                <tr>
+                                    <td colspan="2" align="right" style="font-size: 14px" class="text-right"><b>Certificado No. <span t-field="o.name"/></b></td>
+                                </tr>
+                                <tr>
+                                    <td height="30" colspan="4" align="center">
+                                        <div class="o_utm_no_data_img">
+                                            <img src="/base_sigmap/static/src/img/escudoEcuador.jpg" alt="Escudo Ecuador" style="max-height: 5cm; max-width: 8cm;" class="utm_chart_image image-responsive mt8"/>
+                                        </div>
+                                        <br/>
+                                    </td>
+                                </tr>
+                                <tr id="pais_cabecera_info">
+                                    <td colspan="4" class="text-center" style="font-size: 15px"><b>República del Ecuador</b></td><br/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="5px"/>
+                                </tr>
+                                <!-- <tr id="titulos_cabecera_info">
+                                    <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                                        <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or ''"/></b><br/>
+                                        <span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or ''"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="5px"/>
+                                </tr> -->
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template inherit_id="nave_documento.report_navedocumentobase" id="report_navecertificadobase" primary="True">
+        <xpath expr="//table[1]" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="entidad_autorizada_info">
+                <tr id="texto_bajo_autoridad">
+                    <td colspan="4" class="normal_9" align="justify">
+                        <b>Bajo la autoridad del Gobierno de la República del Ecuador</b><br/>
+                        <i>Under the authority of the Government of the Republic of Ecuador</i><br/><br/>
+                        La Dirección Nacional de los Espacios Acuáticos (DIRNEA)<br/>
+                    </td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+                <tr id="texto_por_autoridad_es">
+                    <td width="5%" class="normal" align="left">Por:</td>
+                    <td class="normal" align="justify"><b><span class="datos_certificado" t-field="o.reparto_id.name"></span></b></td><br/>
+                </tr>
+                <tr id="texto_por_autoridad_en">
+                    <td align="left"><i>By:</i></td>
+                    <td class="normal_9" align="justify">(Persona u organización autorizada) <i>(Authorized person or organization) </i></td><br/>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="nave_info_vertical">
+                <tr id="texto_datos_nave">
+                    <td class="titulo_seccion" align="left">Datos relativos al buque:<br/><i>Particulars of Ship</i></td>
+                    <br/>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="right">Nombre del buque<br/><i class="letras_chicas">Name of Ship</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.name"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="right">Número o letra distintivos<br/><i class="letras_chicas">Distinctive number of letters</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.senial_llamada"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="right">Puerto de matrícula<br/><i class="letras_chicas">Port of Registry</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.reparto_id.name"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="right">Arqueo bruto:<br/><i class="letras_chicas">Gross Tonnage</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.trb"/></td>
+                </tr>
+                <tr id="numero_personas_buque_vertical">
+                    <td colspan="2" width="50%" align="right">Número de personas que el buque está autorizado a transportar:<br/><i class="letras_chicas">Number of persons which the ship is certified to carry</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>0</span></td>
+                </tr>
+                <tr id="peso_muerto_vertical">
+                    <td colspan="2" width="50%" align="right">Peso muerto del buque:<br/><i class="letras_chicas">Deadweight</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.peso_muerto"/></td>
+                </tr>
+                <tr id="eslora_vertical">
+                    <td colspan="2" width="50%" align="right">Eslora del buque (regla III / 3.12):<br/><i class="letras_chicas">Length of Ship (regulation III / 3.12)</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.eslora"/></td>
+                </tr>
+                <tr id="zona_maritima_vertical">
+                    <td colspan="2" width="50%" align="right">Zonas Marítimas Autorizado a operar:<br/><i class="letras_chicas">Sea areas in which ship is certified to operate</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>0</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="50%" align="right">Número IMO:<br/><i class="letras_chicas">IMO number</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.omi_number"/></td>
+                </tr>
+                <tr id="tipo_buque_vertical">
+                    <td colspan="2" width="50%" align="right">Tipo de Buque:<br/><i class="letras_chicas">Type of Ship</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.nave_tipo_id.name"/></td>
+                </tr>
+                <tr id="fecha_construccion_vertical">
+                    <td colspan="2" width="50%" align="right">Fecha de Construcción:<br/><i class="letras_chicas">Year of Build</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span></span></td>
+                </tr>
+                <tr id="fecha_entrega_construccion_vertical">
+                    <td colspan="2" width="50%" align="right">Fecha de entrega luego de su construcción:<br/><i class="letras_chicas">Delivery date</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span></span></td>
+                </tr>
+                <tr id="fecha_coloco_quilla_vertical">
+                    <td colspan="2" width="50%" align="right">Fecha en la que se colocó la quilla:<br/><i class="letras_chicas">Date on which keel was laid</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="nave_info_horizontal">
+                <!-- <tr>
+                    <td class="titulo_seccion" align="left">La Dirección Nacional de los Espacios Acuáticos (DIRNEA)<br/></td>
+                    <br/>
+                </tr> -->
+                <tr>
+                    <td colspan="2" width="30%" align="left">Nombre del buque / <i class="letras_chicas">Name of Ship:</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.name"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="30%" align="left">Señal de Llamada / <i class="letras_chicas">Call sign:</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.senial_llamada"/></td>
+                </tr>
+                <tr id="smm_horizontal">
+                    <td colspan="2" width="30%" align="left">Identificación del SMM / <i class="letras_chicas">MMSI:</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.mmsi"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="30%" align="left">Puerto de matrícula / <i class="letras_chicas">Port of Registry:</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.reparto_id.name"/></td>
+                </tr>
+                <tr id="tipo_buque_horizontal">
+                    <td colspan="2" width="30%" align="left">Tipo de Buque / <i class="letras_chicas">Type of Ship:</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.nave_tipo_id.name"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="30%" align="left">Arqueo bruto / <i class="letras_chicas">Gross Tonnage:</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.trb"/></td>
+                </tr>
+                <!-- <tr id="numero_personas_buque_horizontal">
+                    <td colspan="2" width="30%" align="left">Número de personas que el buque está autorizado a transportar / <i class="letras_chicas">Number of persons which the ship is certified to carry:</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>0</span></td>
+                </tr>
+                <tr id="peso_muerto">
+                    <td colspan="2" width="30%" align="left">Peso muerto del buque / <i class="letras_chicas">Deadweight:</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.peso_muerto"/></td>
+                </tr>
+                <tr id="eslora">
+                    <td colspan="2" width="30%" align="left">Eslora del buque (regla III / 3.12) / <i class="letras_chicas">Length of Ship (regulation III / 3.12):</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.eslora"/></td>
+                </tr> -->
+                <tr id="zona_maritima_horizontal">
+                    <td colspan="2" width="30%" align="left">Zonas Marítimas Autorizado a operar / <i class="letras_chicas">Sea areas in which ship is certified to operate:</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>0</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="30%" align="left">Número IMO / <i class="letras_chicas">IMO number:</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span t-field="o.nave_id.omi_number"/></td>
+                </tr>
+                <!-- <tr id="fecha_construccion">
+                    <td colspan="2" width="30%" align="left">Fecha de Construcción / <i class="letras_chicas">Year of Build:</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="30%" align="left">Fecha de entrega luego de su construcción:<br/><i class="letras_chicas">Delivery date</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span></span></td>
+                </tr>-->
+                <tr id="fecha_coloco_quilla_horizontal">
+                    <td colspan="2" width="30%" align="justify">
+                        Fecha en la que se colocó la quilla del buque o fase equivalente o, 
+                        cuando proceda, fecha en que se efectuó obras de transformación, 
+                        reforma o modificación importante / 
+                        <i class="letras_chicas">Date on which keel was laid or ship 
+                        was at similar stage of construction or, where applicable, date on which work for 
+                        a conversión ora n alteration or modification of a major carácter was commenced.</i></td>
+                    <td width="2%" class="text-center"></td>
+                    <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
+    <!-- <template id="custom_report_nave_info">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="nave_info_vertical">
+            <tr>
+                <td class="titulo_seccion" align="left">Datos relativos al buque:<br/><i>Particulars of Ship</i></td>
+                <br/>
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Nombre del buque<br/><i class="letras_chicas">Name of Ship</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span t-field="o.nave_id.name"/></b></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Número o letra distintivos<br/><i class="letras_chicas">Distinctive number of letters</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span t-field="o.nave_id.senial_llamada"/></b></td>                
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Puerto de matrícula<br/><i class="letras_chicas">Port of Registry</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span t-field="o.nave_id.reparto_id.name"/></b></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Arqueo bruto:<br/><i class="letras_chicas">Gross Tonnage</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span t-field="o.nave_id.trb"/></b></td>
+            </tr>
+            <tr id="numero_personas_buque_vertical">
+                <td colspan="2" width="30%" align="right">Número de personas que el buque está autorizado a transportar:<br/><i class="letras_chicas">Number of persons which the ship is certified to carry</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><span>0</span></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Peso muerto del buque:<br/><i class="letras_chicas">Deadweight</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span t-field="o.nave_id.peso_muerto"/></b></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Eslora del buque (regla III / 3.12):<br/><i class="letras_chicas">Length of Ship (regulation III / 3.12)</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span t-field="o.nave_id.eslora"/></b></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Zonas Marítimas Autorizado a operar:<br/><i class="letras_chicas">Sea areas in which ship is certified to operate</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span>0</span></b></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Número IMO:<br/><i class="letras_chicas">IMO number</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span t-field="o.nave_id.omi_number"/></b></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Tipo de Buque:<br/><i class="letras_chicas">Type of Ship</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span t-field="o.nave_id.nave_tipo_id.name"/></b></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Fecha de Construcción:<br/><i class="letras_chicas">Year of Build</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span></span></b></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Fecha de entrega luego de su construcción:<br/><i class="letras_chicas">Delivery date</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span></span></b></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="30%" align="right">Fecha en la que se colocó la Quilla:<br/><i class="letras_chicas">Date on which keel was laid</i></td>
+                <td width="2%" class="text-center"></td>
+                <td colspan="2" class="datos_certificado" width="50%" style="vertical-align:top;text-align:left;"><b><span></span></b></td>
+            </tr>
+            <tr>
+                <td colspan="4" height="10px"/>
+            </tr>
+        </table>
+    </template> -->
+
+   <template id="custom_report_expendido_vertical">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="letras_chicas">Expedido en:<br/><i class="letras_chicas">Issued at:</i></td>
+                <td class="letras_chicas" width="30%" style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.reparto_id.city_id.name"></span></td>
+                <td class="letras_chicas">el:<br/><i class="letras_chicas">on:</i></td>
+                <td class="letras_chicas" width="50%" style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd MMMM y'}"/></td>
+            </tr>
+            <!-- <tr>
+                <td colspan="6" height="60px"></td>
+            </tr> -->
+        </table>
+    </template>
+
+   <template id="custom_report_expendido_horizontal">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="letras_chicas">Expedido en: <span class="datos_certificado" t-field="o.reparto_id.city_id.name"></span> / <i class="letras_chicas">Issued at: </i><span t-field="o.reparto_id.city_id.name"></span></td>
+                <td class="letras_chicas" width="50%" style="vertical-align:top;text-align:left;"><b><span class="datos_certificado" t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd MMMM y'}"/></b></td>
+            </tr>
+            <!-- <tr>
+                <td colspan="6" height="60px"></td>
+            </tr> -->
+        </table>
+    </template>
+
+   <template id="custom_report_authorized_signature_nave">
+        <div style="font-size: 13px">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td height="50px"/></tr>
+                <tr>
+                    <t t-if="o.aprueba_id">
+                        <td class="text-uppercase" style="vertical-align:middle;text-align:left;">
+                            <br/><br/><span style="color: rgba(255, 255, 255, 0.0);">QRAPROBACION</span><br/><br/>
+                            <span>____________________________________</span><br/>
+                            <span t-esc="o.aprueba_id.name.upper()"/><br/>
+                            <span t-esc="o.aprueba_id.rango_id.name.upper()"/><br/>
+                            <b><span t-if="o.reparto_id" t-esc="o.reparto_id.name.upper()"/><br/></b>
+                        </td>
+                    </t>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+   <template id="custom_report_footer_sumilla_nave">
+        <div style="font-size: 13px">
+            <table cellpadding="0" cellspacing="0" width="100%" border="0">
+                <tr><td height="50px"/></tr>
+                <tr t-foreach="o.documento_emitido_id._get_sumilla_documento()" t-as="sumilla_footer">
+                    <td class="pie" align="left">
+                        <span t-if="sumilla_footer['sumilla']" t-esc="sumilla_footer['sumilla']"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+</odoo>

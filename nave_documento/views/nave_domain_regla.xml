@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_nave_regla_form" model="ir.ui.view">
+        <field name="name">nave.lista.autorizada.regla.form</field>
+        <field name="model">nave.lista.autorizada.regla</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Regla - Característica de Nave">
+                <group>
+                    <group id="header_left_group">
+                        <field name="lista_autorizada_id" readonly="1" force_save="1"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="variable" />
+                        <field name="tipo" attrs="{'invisible': [('variable', '=', False)]}"/>
+                        <field name="valor" attrs="{'invisible': ['|',('variable', '=', False),'|',('tipo', '=', False),('variable', 'not in', ['eslora', 'trb', 'hp'])]}"/>
+                        <field name="resource_ref"
+                            attrs="{'invisible': ['|',('variable', '=', False),'|',('tipo', '=', False),'|',('variable', 'in', ['eslora', 'trb', 'hp']),('tipo', 'in', ('alguno_de','ninguno_de'))]}"
+                            options="{'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+                <!-- lista_autorizada_regla_id , regla_variable -->
+                <notebook attrs="{'invisible': [('tipo', 'not in', ('alguno_de','ninguno_de'))]}">
+                    <page name="opciones" string="Opciones">
+                        <field name="regla_or_ids" nolabel="1">
+                            <tree string="Opciones" editable="top">
+                                <field name="lista_autorizada_regla_id" invisible="1"/>
+                                <field name="regla_variable" invisible="1"/>
+                                <field name="resource_ref" options="{'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            </tree>
+                        </field>                    
+                    </page>
+                </notebook>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_lista_autorizada_form_inherit" model="ir.ui.view">
+        <field name="name">nave.lista.autorizada.form.inherit</field>
+        <field name="model">nave.lista.autorizada</field>
+        <field name="inherit_id" ref="nave_documento.view_nave_lista_autorizada_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Reglas">
+                    <field name="regla_ids" nolabel="1">
+                        <tree string="Reglas">
+                            <field name="variable"/>
+                            <field name="tipo" />
+                            <field name="valor_str" />
+                            <!--field name="valor" />
+                            <field name="resource_ref"/-->
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+
+    <record id="view_nave_regla_chequeo_form" model="ir.ui.view">
+        <field name="name">nave.lista.chequeo.regla.form</field>
+        <field name="model">nave.lista.chequeo.regla</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Regla - Característica de Nave">
+                <group>
+                    <group id="header_left_group">
+                        <field name="lista_chequeo_id" readonly="1" force_save="1"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="variable" />
+                        <field name="tipo" attrs="{'invisible': [('variable', '=', False)]}"/>
+                        <field name="valor" attrs="{'invisible': ['|',('variable', '=', False),'|',('tipo', '=', False),('variable', 'not in', ['eslora', 'trb', 'hp'])]}"/>
+                        <field name="resource_ref"
+                            attrs="{'invisible': ['|',('variable', '=', False),'|',('tipo', '=', False),'|',('variable', 'in', ['eslora', 'trb', 'hp']),('tipo', 'in', ('alguno_de','ninguno_de'))]}"
+                            options="{'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+                <!-- lista_chequeo_regla_id , regla_variable -->
+                <notebook attrs="{'invisible': [('tipo', 'not in', ('alguno_de','ninguno_de'))]}">
+                    <page name="opciones" string="Opciones">
+                        <field name="regla_or_ids" nolabel="1">
+                            <tree string="Opciones" editable="top">
+                                <field name="lista_chequeo_regla_id" invisible="1"/>
+                                <field name="regla_variable" invisible="1"/>
+                                <field name="resource_ref"  options="{'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            </tree>
+                        </field>                    
+                    </page>
+                </notebook>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_lista_chequeo_form_inherit" model="ir.ui.view">
+        <field name="name">lista.chequeo.form.inherit</field>
+        <field name="model">lista.chequeo</field>
+        <field name="inherit_id" ref="nave_documento.view_lista_chequeo_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Reglas">
+                    <field name="regla_ids" nolabel="1">
+                        <tree string="Reglas">
+                            <field name="variable"/>
+                            <field name="tipo" />
+                            <field name="valor_str" />
+                            <!--field name="valor" />
+                            <field name="resource_ref"/-->
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+
+    <record id="view_nave_regla_dotacion_form" model="ir.ui.view">
+        <field name="name">nave.dotacion.regla.form</field>
+        <field name="model">nave.dotacion.regla</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Regla - Característica de Nave">
+                <group>
+                    <group id="header_left_group">
+                        <field name="dotacion_id" readonly="1" force_save="1"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="variable" />
+                        <field name="tipo" attrs="{'invisible': [('variable', '=', False)]}"/>
+                        <field name="valor" attrs="{'invisible': ['|',('variable', '=', False),'|',('tipo', '=', False),('variable', 'not in', ['eslora', 'trb', 'hp'])]}"/>
+                        <field name="resource_ref"
+                            attrs="{'invisible': ['|',('variable', '=', False),'|',('tipo', '=', False),'|',('variable', 'in', ['eslora', 'trb', 'hp']),('tipo', 'in', ('alguno_de','ninguno_de'))]}"
+                             options="{'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+                <!-- dotacion_regla_id , regla_variable -->
+                <notebook attrs="{'invisible': [('tipo', 'not in', ('alguno_de','ninguno_de'))]}">
+                    <page name="opciones" string="Opciones">
+                        <field name="regla_or_ids" nolabel="1">
+                            <tree string="Opciones" editable="top">
+                                <field name="dotacion_regla_id" invisible="1"/>
+                                <field name="regla_variable" invisible="1"/>
+                                <field name="resource_ref"  options="{'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            </tree>
+                        </field>                    
+                    </page>
+                </notebook>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_dotacion_minima_form_inherit" model="ir.ui.view">
+        <field name="name">nave.dotacion.minima.form.inherit</field>
+        <field name="model">nave.dotacion.minima</field>
+        <field name="inherit_id" ref="nave_documento.view_nave_dotacion_minima_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Reglas">
+                    <field name="regla_ids" nolabel="1">
+                        <tree string="Reglas">
+                            <field name="variable"/>
+                            <field name="tipo" />
+                            <field name="valor_str" />
+                            <!--field name="valor" />
+                            <field name="resource_ref"/-->
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>    
+</odoo>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Matrícula Nave -->
+    <record id="action_report_certificado_dotacion_minima_seguridad" model="ir.actions.report">
+        <field name="name">Dotación Mínima de Seguridad</field>
+        <field name="model">nave.documento.certificado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nave_documento.report_dotacionminimaseguridad</field>
+        <field name="report_file">nave_documento.report_dotacionminimaseguridad</field>
+        <field name="print_report_name">'Certificado de Dotación Mínima de Seguridad - %s' % (object.matricula)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_nave"/>
+        <!-- <field name="binding_model_id" ref="model_nave_documento_certificado"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="nave_documento.report_navecertificadobase" id="report_dotacionminimaseguridad" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'DOCUMENTO DE DOTACIÓN MÍNIMA'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Minimum Safe Manning Document'"/></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Certifico que la Dotación Mínima de Seguridad que consta en el presente documento, es la requerida para que el Buque indicado pueda navegar en
+                        condiciones mínimas de seguridad, y ha sido determinada cumpliendo las normas nacionales y reglamentarias vigentes, observando los Principios
+                        y Directrices de la Resolución OMI A.1047 (27) de la Organización Marítima Internacional.<br/>
+                        <i>This is to certify that the Minimum Safe Manning stated on this document is the required for the indicated vessel in order to navigate under minimum
+                        safety conditions, and has been determined in accordance to national rules and regulations in force, observing the Principles and Guidelines of IMO
+                        Resolution A.1047 (27) of the International Maritime Organization.</i>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>This is to certify that the Minimum Safe Manning stated on this document is the required for the indicated vessel in order to navigate under minimum
+                        safety conditions, and has been determined in accordance to national rules and regulations in force, observing the Principles and Guidelines of IMO
+                        Resolution A.1047 (27) of the International Maritime Organization.</i>
+                    </td>
+                </tr> -->
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']/tr[@id='texto_bajo_autoridad']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_horizontal']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="attributes">
+            <!-- <attribute name="invisible">1</attribute> -->
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[@id='nave_info_vertical']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <ol>
+                            <li>
+                                <b>Datos de la Nave</b> / <i>General Information:</i><br/><br/>
+                                <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Nombre del buque<br/><i>Ship's name</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Tipo de buque<br/><i>Ship Type</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Puerto de Registro<br/><i>Port of Register</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Tonelaje de Registro Bruto (TRB)<br/><i>Gross Tonnage</i></th>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span class="datos_certificado" t-field="o.nave_id.name"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span class="datos_certificado" t-field="o.nave_id.nave_tipo_id.name"/>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span class="datos_certificado" t-field="o.nave_id.reparto_id.name"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span class="datos_certificado" t-field="o.nave_id.trb"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="border:1px solid black;" class="text-center">Área de Operación<br/><i>Trading Area</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Indicativo de Llamada<br/><i>Call Sign</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Nombre del Armador<br/><i>Owner name</i></th>
+                                        <th style="border:1px solid black;" class="text-center">Potencia Total - Maquinaria Principal (HP)<br/><i>Power - Main Engine</i></th>
+                                    </tr>
+                                    <tr>
+                                        <td class="datos_certificado" style="border:1px solid black;" align="center">
+                                            <span class="datos_certificado" t-field="o.nave_id.nave_zona_id.name"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span class="datos_certificado" t-field="o.nave_id.manga"></span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span class="datos_certificado" >(Falta Nombre de Armador)</span>
+                                        </td>
+                                        <td style="border:1px solid black;" align="center">
+                                            <span class="datos_certificado" >(Falta Power Maquina)</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br/>
+                            </li>
+                            <br/>
+                            <li>
+                                <b>Dotación Mínima</b> / <i>Minimum Safe Manning:</i><br/><br/>
+                                <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2" style="border:1px solid black;" class="text-center">Departamento de Cubierta<br/><i>Deck Deparment</i></th>
+                                            <th colspan="2" style="border:1px solid black;" class="text-center">Departamento de Máquinas<br/><i>Engine Deparment</i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="valor_total" t-value="0"/>
+                                        <tr>
+                                            <td colspan="2" style="border: 1px solid black;">
+                                                <table class="table table-condensed" border="0">
+                                                    <tr>
+                                                        <th class="text-center">Especialidad</th>
+                                                        <th class="text-center">Cantidad</th>
+                                                    </tr>
+                                                    <tbody>
+                                                        <tr t-foreach="o.nave_id.dotacion_minima_jerarquia_ids" t-as="p">
+                                                            <t t-set="valor_total" t-value="valor_total + p.number"/>
+                                                            <t t-if="p.jerarquia_id != False">
+                                                                <td>
+                                                                    <span t-field="p.jerarquia_id.name" />
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    <span t-field="p.number" />
+                                                                </td>
+                                                            </t>
+                                                        </tr>
+                                                        <tr t-foreach="o.nave_id.dotacion_minima_jerarquia_ids" t-as="f">
+                                                            <t t-set="valor_total" t-value="valor_total + f.number"/>
+                                                            <t t-if="f.jerarquia_id != False">
+                                                                <td>
+                                                                    <span t-field="f.jerarquia_id.name" />
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    <span t-field="f.number" />
+                                                                </td>
+                                                            </t>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td colspan="2" style="border: 1px solid black;">
+                                                <table class="table table-condensed" border="0">
+                                                    <tr>
+                                                        <th class="text-center">Especialidad</th>
+                                                        <th class="text-center">Cantidad</th>
+                                                    </tr>
+                                                    <tbody>
+                                                        <tr t-foreach="o.nave_id.dotacion_minima_jerarquia_ids" t-as="d">
+                                                            <t t-set="valor_total" t-value="valor_total + d.number"/>
+                                                            <t t-if="d.jerarquia_id != False">
+                                                                <td>
+                                                                    <span t-field="d.jerarquia_id.name" />
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    <span t-field="d.number" />
+                                                                </td>
+                                                            </t>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="text-align:center" style="border: 1px solid black;">
+                                                <strong>Número Total</strong><br/><i>Total Number</i>
+                                            </td>
+                                            <td colspan="2" class="text-align:center" style="border: 1px solid black;">
+                                                <span class="datos_certificado"  t-esc="valor_total"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="text-align:center" style="border: 1px solid black;">
+                                                <strong>Observaciones</strong><br/><i>Remarks</i>
+                                            </td>
+                                            <td colspan="2" class="text-align:center" style="border: 1px solid black;">
+                                                <span class="datos_certificado"  t-field="o.observacion" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br/>
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        El presente documento deberá renovarse obligatoriamente, cada cinco años o cuando la embarcacion cambie de nombre, puerto de registro,
+                        tonelaje bruto, uso o servicio.<br/>
+                        <i>This document must be renewed every five years or when the ship changes its name, port of registry, G.R.T., use or service.</i>                        
+                        <br/>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="normal">
+                <tr>
+                    <td style="text-align:left" >El presente certificado será válido hasta:<br/><i>This certificate is valid until:</i></td>
+                    <td class="letras_chicas" width="50%" style="vertical-align:top;text-align:left;"><b><span class="datos_certificado" t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd MMMM y'}"/></b></td>
+                </tr>
+                <tr><td height="10px"/></tr>
+            </table>
+            <br/>
+
+            <t t-call="nave_documento.custom_report_expendido_vertical"/>
+
+        </xpath>
+    </template>
+
+</odoo>

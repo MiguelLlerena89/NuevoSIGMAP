@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_crea_edita_pregunta_wizard_form" model="ir.ui.view">
+        <field name="name">lista.chequeo.pregunta.wizard.form</field>
+        <field name="model">lista.chequeo.pregunta.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="lista_chequeo_id"
+                            invisible="0"
+                            readonly="1"
+                            force_save="1"/>
+                    </group>
+                    <group>
+                        <group>
+                            <div>
+                                <field name="crear_editar_op" widget="radio" options="{'horizontal': true}"/>
+                            </div>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="grupo_id" options="{'no_open': True, 'no_quick_create':True, 'no_create_edit':True}"/>
+                    </group>
+                    <group name="compuesta" string="Sub Pregunta" attrs="{'invisible':[('grupo_id','=',False)]}">
+                        <group>
+                            <field name="is_parent" />
+                        </group>
+                    </group>
+                    <group attrs="{'invisible':['|',('grupo_id','=',False),('is_parent','=',False)]}">
+                        <field name="parent_id"
+                            attrs="{'required':[('is_parent','=',True)]}"
+                            options="{'no_open': True, 'no_quick_create':True, 'no_create_edit':True}"/>
+                    </group>
+                    <group name="pregunta" string="Pregunta" attrs="{'invisible':['|',('grupo_id','=',False),('crear_editar_op','=','crear')]}">
+                        <field name="pregunta_id_domain" invisible="1"/>
+                        <field name="pregunta_id"
+                            attrs="{
+                                'required':[('crear_editar_op','in',('editar','borrar'))],
+                                'invisible':[('is_parent','=',True),('parent_id','=',False)]}"
+                            options="{'no_open': True, 'no_quick_create':True, 'no_create_edit':True}"
+                            domain="pregunta_id_domain"/>
+                    </group>
+                    <field name="pregunta_has_child_ids" invisible="1"/>
+                    <div class="alert alert-danger oe_edit_only" role="alert"
+                        attrs="{'invisible':['|','|',('crear_editar_op','!=','borrar'),('pregunta_id','=',False),('pregunta_has_child_ids','=',False)]}">
+                        La pregunta tiene sub-preguntas. Primero borre todas las sub-preguntas, antes de intentar borrar esta pregunta. Puede verificar las páginas Sub Preguntas o Grupo al final de este formulario para visualizar la jerarquía.
+                    </div>
+                    <group attrs="{
+                        'invisible':['|',('grupo_id','=',False),('crear_editar_op','in',('editar','borrar')),('pregunta_id','=',False)],
+                        'readonly':[('is_parent','=',True),('parent_id','=',False)]}">
+                        <group>
+                            <field name="sequence" attrs="{'readonly':[('crear_editar_op','=','borrar')]}"/>
+                            <field name="name" attrs="{'readonly':[('crear_editar_op','=','borrar')]}"/>
+                            <field name="puntaje_no_satisfactorio"
+                                attrs="{
+                                    'invisible':[('is_parent', '=', True)],
+                                    'readonly':[('crear_editar_op','=','borrar')]}"/>
+                            <field name="porcentaje_si_hijo" widget="percentage"
+                                attrs="{
+                                    'invisible':[('is_parent', '=', False)],
+                                    'readonly':[('crear_editar_op','=','borrar')]}" />
+                        </group>
+                        <group>
+                            <field name="texto" widget="html" attrs="{'readonly':[('crear_editar_op','=','borrar')]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="sub_preguntas" string="Sub Preguntas"
+                            attrs="{'invisible':['|','|',('is_parent','=',True),('pregunta_id','=',False),('pregunta_child_ids', '=', False)]}">
+                            <field name="pregunta_child_ids">
+                                <tree string="Preguntas" default_order="sequence_for_o2m_order asc">
+                                    <field name="sequence_for_o2m_order" invisible="1"/>
+                                    <field name="sequence"/>
+                                    <field name="name"/>
+                                    <field name="porcentaje_si_hijo" widget="percentage"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="preguntas_hermanas" string="Sub Preguntas"
+                            attrs="{'invisible':['|',('parent_id','=',False),('parent_child_ids','=',False)]}">
+                            <field name="parent_child_ids">
+                                <tree string="Preguntas">
+                                    <field name="sequence"/>
+                                    <field name="name"/>
+                                    <field name="porcentaje_si_hijo" widget="percentage"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="preguntas_grupo" string="Preguntas del Grupo" attrs="{'invisible':['|',('grupo_id', '=', False),('grupo_pregunta_ids','=',False)]}">
+                            <field name="grupo_pregunta_ids">
+                                <tree string="Preguntas" default_order="sequence_for_o2m_order asc">
+                                    <field name="sequence_for_o2m_order" invisible="1"/>
+                                    <field name="sequence_for_o2m_parent" string="Nº"/>
+                                    <field name="sequence_for_o2m_child" string="-"/>
+                                    <field name="name"/>
+                                    <!--field name="texto"/-->
+                                    <field name="porcentaje_for_o2m_child" string="-" readonly="1"/>
+                                    <field name="puntaje_for_o2m_parent" string="Puntaje" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button name='action_crea_edita_pregunta' type='object' class='btn-primary'
+                        attrs="{'invisible':['|',('grupo_id','=',False),('name','=',False)]}">Grabar &amp; Cerrar</button>
+                    <button name='action_crea_edita_pregunta_nuevo' type='object' class='btn-primary'
+                        attrs="{'invisible':['|','|',('grupo_id','=',False),('name','=',False),('crear_editar_op','=','borrar')]}">Grabar &amp; Nuevo</button>
+                    <button string='Cancelar' class='btn-default' special='cancel' />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_crea_edita_pregunta_wizard" model="ir.actions.act_window">
+        <field name="name">Crear/Editar Pregunta</field>
+        <field name="res_model">lista.chequeo.pregunta.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+    <!--  Lista de Chequeo -->
+    <record id="view_lista_chequeo_form_inherited_01" model="ir.ui.view">
+        <field name="name">lista.chequeo.form</field>
+        <field name="model">lista.chequeo</field>
+        <field name="inherit_id" ref="nave_documento.view_lista_chequeo_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="button_crea_edita_pregunta" type="object" class="oe_highlight oe_edit_only"
+                    string="Crear/Editar/Borrar Pregunta"
+                    id="button_crea_edita_pregunta"
+                    data-hotkey="+"
+                    attrs="{'invisible': ['|',('id','=',False),('grupo_pregunta_ids','=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
