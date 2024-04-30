@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem name="Departamentos"
+        id="menu_departamento_dirnea"
+        groups="account.group_account_readonly,account.group_account_invoice"
+        sequence="10">
+        <menuitem id="menu_departamento" name="Administración" sequence="1">
+            <menuitem id="menu_action_departamento_dirnea"
+              name="Departamentos"
+              action="action_departamento_dirnea" sequence="1"/>
+        </menuitem>
+
+    </menuitem>
+</odoo>

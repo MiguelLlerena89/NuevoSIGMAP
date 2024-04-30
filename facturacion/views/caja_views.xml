@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sigmap_facturador_inherit_tree" model="ir.ui.view">
+            <field name="model">sigmap.facturador</field>
+            <field name="inherit_id" ref="usuarios.view_sigmap_facturador_tree"/>
+            <field name="arch" type="xml">
+                <field name="active" position="after">
+                    <field name="abierta"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_sigmap_facturador_inherit_form" model="ir.ui.view">
+            <field name="model">sigmap.facturador</field>
+            <field name="inherit_id" ref="usuarios.view_sigmap_facturador_form"/>
+            <field name="arch" type="xml">
+                <field name="active" position="after">
+                    <field name="name"/>
+                    <field name="abierta"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_facturacion_sesion_caja_tree" model="ir.ui.view">
+            <field name="name">apertura.cierre.caja.tree</field>
+            <field name="model">facturacion.sesion.caja</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Sesión de Caja" create="false">
+                    <field name="caja_id"/>
+                    <field name="establecimiento"/>
+                    <field name="punto_emision"/>
+                    <field name="fecha_apertura"/>
+                    <field name="fecha_cierre"/>
+                    <field name="valor_apertura"/>
+                    <field name="valor_cierre"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_facturacion_sesion_caja_form" model="ir.ui.view">
+            <field name="name">apertura.cierre.caja.form</field>
+            <field name="model">facturacion.sesion.caja</field>
+            <field name="arch" type="xml">
+                <form string="Sesión de Caja" create="false" edit="false">
+                    <header>
+                        <button name="print_xlsx_caja_report" class="oe_highlight" string="Reporte caja" type="object" attrs="{'invisible': [('fecha_cierre','=',False)]}"/>
+                        <button name="print_xlsx_facturacion" class="oe_highlight" string="Reporte facturación" type="object" attrs="{'invisible': [('fecha_cierre','=',False)]}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="caja_id"/>
+                                <field name="establecimiento"/>
+                                <field name="punto_emision"/>
+                                <field name="fecha_apertura"/>
+                                <field name="fecha_cierre"/>
+                            </group>
+                            <group>
+                                <field name="valor_apertura"/>
+                                <field name="valor_cierre"/>
+                                <field name="total_facturado"/>
+                                <field name="total_nc"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="recaudaciones" string="Recaudaciones">
+                                <field name="payment_ids" nolabel="1">
+                                    <tree string="Pago">
+                                        <field name="caja_id" invisible="1"/>
+                                        <field name="move_id"/>
+                                        <field name="partner_id"/>
+                                        <field name="journal_id"/>
+                                        <field name="ref"/>
+                                        <field name="amount" widget="monetary" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="invoices" string="Resumen">
+                                <field name="invoice_ids" nolabel="1">
+                                    <tree string="Resumen" decoration-danger="move_type == 'out_refund'" decoration-success="move_type == 'entry'" decoration-info="move_type == 'out_invoice'">
+                                        <field name="caja_id" invisible="1"/>
+                                        <field name="partner_id"/>
+                                        <field name="journal_id"/>
+                                        <field name="ref"/>
+                                        <field name="move_type" invisible="1"/>
+                                        <field name="amount_total_signed" widget="monetary"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page id="related_doc" string="Documentos relacionados">
+                                <field name="xls_caja_reporte_filename"/>
+                                <field name="xls_caja_reporte_file" widget="binary" filename="xml_filename" readonly="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="action_facturacion_sesion_caja" model="ir.actions.act_window">
+            <field name="name">Sesión de Caja</field>
+            <field name="res_model">facturacion.sesion.caja</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_facturacion_sesion_caja_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Define cajas.
+                </p>
+            </field>
+        </record>
+        <!--menuitem
+            action="action_caja"
+            name="Cajas"
+            id="menu_action_caja"
+            parent="account.menu_finance_receivables"
+            sequence="112"/-->
+        <menuitem
+            action="action_facturacion_sesion_caja"
+            name="Sesión de Caja"
+            id="menu_action_facturacion_sesion_caja"
+            parent="account.menu_finance_receivables"
+            sequence="113"/>
+    </data>
+</odoo>

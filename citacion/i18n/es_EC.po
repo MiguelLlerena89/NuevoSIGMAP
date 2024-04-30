@@ -1,0 +1,722 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* citacion
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0-20230925\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-16 11:46+0000\n"
+"PO-Revision-Date: 2023-11-16 11:46+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields.selection,name:citacion.selection__citacion_citacion__state__approved
+#, python-format
+msgid "Approved"
+msgstr "Supervisado"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: code:addons/citacion/models/citacion.py:0
+#: code:addons/citacion/models/contravencion.py:0
+#: code:addons/citacion/models/sancionado_ayuda.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__articulo_description
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__articulo_id
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_num__articulo_id
+#: model:ir.model.fields,field_description:citacion.field_citacion_sancionado_ayuda__articulo_id
+#, python-format
+msgid "Article"
+msgstr "Artículo"
+
+#. module: citacion
+#: model:ir.ui.menu,name:citacion.menu_citacion_settings_contravencion_ley_art_action
+msgid "Articles"
+msgstr "Artículos"
+
+#. module: citacion
+#: model_terms:ir.actions.act_window,help:citacion.citacion_contravencion_ley_art_action_menu
+#: model_terms:ir.actions.act_window,help:citacion.citacion_contravencion_ley_num_action_menu
+msgid "Ask technical support, the contravention's list must not be empty."
+msgstr "Consulte a Soporte Técnico. Esta lista no debería estar vacía"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__jefe_id
+#, python-format
+msgid "Boarding Chief"
+msgstr "Jefe de Abordaje"
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields.selection,name:citacion.selection__citacion_citacion__state__canceled
+#, python-format
+msgid "Canceled"
+msgstr "Cancelado"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: code:addons/citacion/models/sancionado_ayuda.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__capitan_id
+#: model:ir.model.fields,field_description:citacion.field_citacion_sancionado_ayuda__capitan
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+#, python-format
+msgid "Captain"
+msgstr "Capitán"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: code:addons/citacion/models/sancionado_ayuda.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__armador_id
+#: model:ir.model.fields,field_description:citacion.field_citacion_sancionado_ayuda__armador
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+#, python-format
+msgid "Charterer"
+msgstr "Armador"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model,name:citacion.model_citacion_citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__citacion_id
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+#, python-format
+msgid "Citation"
+msgstr "Citación"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__document_number
+#, python-format
+msgid "Citation Nº"
+msgstr "Citación Nº"
+
+#. module: citacion
+#: model:res.groups,name:citacion.group_citacion_supervisor
+msgid "Citation Supervisor"
+msgstr "Supervisor de Citaciones"
+
+#. module: citacion
+#: model:res.groups,name:citacion.group_citacion_user
+msgid "Citation User"
+msgstr "Oficial de Citaciones"
+
+#. module: citacion
+#: model:ir.actions.act_window,name:citacion.citacion_citacion_action_menu
+#: model:ir.module.category,name:citacion.security_citaciones_groups
+#: model:ir.ui.menu,name:citacion.menu_citacion
+#: model:ir.ui.menu,name:citacion.menu_citacion_citacion
+#: model:ir.ui.menu,name:citacion.menu_citacion_citacion_action
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_tree
+msgid "Citations"
+msgstr "Citaciones"
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+msgid "Classes"
+msgstr "Clases"
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+msgid "Confirm"
+msgstr "Solicitar Supervición"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields.selection,name:citacion.selection__citacion_citacion__state__confirmed
+#, python-format
+msgid "Confirmed"
+msgstr "En Revisión"
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+msgid "Contravention Classes"
+msgstr "Clases de Contravención"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/contravencion.py:0
+#: code:addons/citacion/models/contravencion.py:0
+#: model:ir.model,name:citacion.model_citacion_contravencion_ley_art
+#: model:ir.model,name:citacion.model_citacion_contravencion_ley_num
+#, python-format
+msgid "Contravention Law"
+msgstr "Contravención - Ley"
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_contravencion_ley_art_tree
+msgid "Contravention Law Articles"
+msgstr "Contravención - Artículos"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__contravencion_ids
+#, python-format
+msgid "Contraventions"
+msgstr "Contravenciones"
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_contravencion_ley_num_tree
+msgid "Contraventions Law Numerals"
+msgstr "Contravenciones - Numerales"
+
+#. module: citacion
+#: model:ir.actions.act_window,name:citacion.citacion_contravencion_ley_art_action_menu
+msgid "Contraventions Law articles"
+msgstr "Contravenciones - Artículos"
+
+#. module: citacion
+#: model:ir.actions.act_window,name:citacion.citacion_contravencion_ley_num_action_menu
+msgid "Contraventions Law numerals"
+msgstr "Contravenciones - Numerales"
+
+#. module: citacion
+#: model_terms:ir.actions.act_window,help:citacion.citacion_citacion_action_menu
+msgid "Create a new Citation"
+msgstr "Crear una nueva Citación"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__create_uid
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__create_uid
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_art__create_uid
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_num__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__create_date
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__create_date
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_art__create_date
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_num__create_date
+msgid "Created on"
+msgstr "Fecha Creación"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/sancionado_ayuda.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_sancionado_ayuda__tripulante
+#, python-format
+msgid "Crew Member"
+msgstr "Tripulante"
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+msgid "Data"
+msgstr "Datos"
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+msgid "Dates"
+msgstr "Fechas"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__datetime
+#, python-format
+msgid "Datetime"
+msgstr "Fecha y Hora - Citación"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__datetime_limit
+#, python-format
+msgid "Datetime Limit"
+msgstr "Fecha y Hora límite - impugnación"
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+msgid "Degrees"
+msgstr "Grados"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/sancionado_ayuda.py:0
+#: code:addons/citacion/models/sancionado_ayuda.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_sancionado_ayuda__articulo_description
+#: model:ir.model.fields,field_description:citacion.field_citacion_sancionado_ayuda__numeral_description
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+#, python-format
+msgid "Description"
+msgstr "Descripción"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__display_name
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__display_name
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_art__display_name
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_num__display_name
+#: model:ir.model.fields,field_description:citacion.field_citacion_sancionado_ayuda__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__reparto_id
+#, python-format
+msgid "Distribution"
+msgstr "Reparto"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,help:citacion.field_citacion_citacion__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/contravencion.py:0
+#: code:addons/citacion/models/contravencion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_art__description
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_num__description
+#, python-format
+msgid "Full Description"
+msgstr "Texto - Articulado"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__id
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__id
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_art__id
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_num__id
+msgid "ID"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,help:citacion.field_citacion_citacion__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__armador_identification_number
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__capitan_identification_number
+#, python-format
+msgid "Identification number"
+msgstr "Nº Cédula"
+
+#. module: citacion
+#: model:ir.model.fields,help:citacion.field_citacion_citacion__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,help:citacion.field_citacion_citacion__message_has_error
+#: model:ir.model.fields,help:citacion.field_citacion_citacion__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion____last_update
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion____last_update
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_art____last_update
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_num____last_update
+msgid "Last Modified on"
+msgstr "Fecha última modificación"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__write_uid
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__write_uid
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_art__write_uid
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_num__write_uid
+msgid "Last Updated by"
+msgstr "Modificado por"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__write_date
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__write_date
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_art__write_date
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_num__write_date
+msgid "Last Updated on"
+msgstr "Fecha modificación"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__latitude
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__latitude_dms
+#, python-format
+msgid "Latitude"
+msgstr "Latitud"
+
+#. module: citacion
+#: model:ir.ui.menu,name:citacion.menu_citacion_settings_laws
+msgid "Law"
+msgstr "Ley"
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+msgid "Location"
+msgstr "Ubicación"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__longitude
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__longitude_dms
+#, python-format
+msgid "Longitude"
+msgstr "Longitud"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+msgid "More information"
+msgstr "Ampliar Información"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__armador_name
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__capitan_name
+#, python-format
+msgid "Name"
+msgstr "Nombre"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,help:citacion.field_citacion_citacion__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,help:citacion.field_citacion_citacion__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: code:addons/citacion/models/citacion.py:0
+#: code:addons/citacion/models/sancionado_ayuda.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__numeral_description
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__numeral_id
+#: model:ir.model.fields,field_description:citacion.field_citacion_sancionado_ayuda__numeral_id
+#, python-format
+msgid "Numeral"
+msgstr "Numeral"
+
+#. module: citacion
+#: model:ir.ui.menu,name:citacion.menu_citacion_settings_contravencion_ley_num_action
+msgid "Numerals"
+msgstr "Numerales"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__offender_id
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+#, python-format
+msgid "Offender"
+msgstr "Contraventor"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__offender_identification_number
+#, python-format
+msgid "Offender identification number"
+msgstr "Nº Cédula"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__offender_name
+#, python-format
+msgid "Offender name"
+msgstr "Nombre"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__more_comments
+#, python-format
+msgid "Other/More information"
+msgstr "Más información"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/sancionado_ayuda.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_sancionado_ayuda__propietario
+#, python-format
+msgid "Owner"
+msgstr "Propietario"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields.selection,name:citacion.selection__citacion_citacion__state__pending
+#, python-format
+msgid "Pending"
+msgstr "Borrador"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__jefe_grado
+#, python-format
+msgid "Rank"
+msgstr "Grado/Nombre"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__punto_referencia
+#, python-format
+msgid "Reference"
+msgstr "Punto de Referencia"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__nave_matricula
+#, python-format
+msgid "Registration Number"
+msgstr "Matrícula"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: citacion
+#: model:ir.ui.menu,name:citacion.menu_citacion_settings
+msgid "Settings"
+msgstr "Configuración"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__nave_id
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+#, python-format
+msgid "Ship"
+msgstr "Nave"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__caracteristicas
+#, python-format
+msgid "Ship Characteristics"
+msgstr "Características"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__nave_tipo_nombre
+#, python-format
+msgid "Ship Type/Name"
+msgstr "Tipo/Nombre"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/contravencion.py:0
+#: code:addons/citacion/models/contravencion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_art__name
+#: model:ir.model.fields,field_description:citacion.field_citacion_contravencion_ley_num__name
+#, python-format
+msgid "Short Name"
+msgstr "Artículo"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__state
+#, python-format
+msgid "States"
+msgstr "Estados"
+
+#. module: citacion
+#: model:ir.model.fields,help:citacion.field_citacion_citacion__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__nave_trb
+#, python-format
+msgid "TRB"
+msgstr "TRB"
+
+#. module: citacion
+#: model_terms:ir.ui.view,arch_db:citacion.view_citacion_citacion_form
+msgid "To Pending"
+msgstr "Volver a Borrador"
+
+#. module: citacion
+#: model:ir.model.fields,help:citacion.field_citacion_citacion__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__updated_by
+msgid "Updated by"
+msgstr "Actualizado por"
+
+#. module: citacion
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: citacion
+#: model:ir.model.fields,help:citacion.field_citacion_citacion__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: citacion
+#: model:ir.actions.act_window,name:citacion.citacion_sancionado_ayuda_action_menu
+#: model:ir.ui.menu,name:citacion.menu_citacion_settings_sancionado_ayuda_action
+msgid "Who can be fined?"
+msgstr "¿Quién puede ser sancionado?"
+
+#. module: citacion
+#: model:ir.model,name:citacion.model_citacion_citacion_contravencion
+msgid "citacion.citacion.contravencion"
+msgstr "Contravención"
+
+#. module: citacion
+#. odoo-python
+#: code:addons/citacion/models/citacion.py:0
+#: model:ir.model.fields,field_description:citacion.field_citacion_citacion_contravencion__numeral_id_domain
+#, python-format
+msgid "numeral_id domain"
+msgstr "dominio - numeral_id"

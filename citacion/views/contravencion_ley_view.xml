@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_citacion_contravencion_ley_art_tree" model="ir.ui.view">
+        <field name="name">citacion.contravencion.ley.art.tree</field>
+        <field name="model">citacion.contravencion.ley.art</field>
+        <field name="arch" type="xml">
+            <tree string="Contravention Law Articles" create="0">
+                <field name="name" />
+                <field name="description" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_citacion_contravencion_ley_num_tree" model="ir.ui.view">
+        <field name="name">citacion.contravencion.ley.num.tree</field>
+        <field name="model">citacion.contravencion.ley.num</field>
+        <field name="arch" type="xml">
+            <tree string="Contraventions Law Numerals" create="0">
+                <field name="articulo_id" />
+                <field name="name" />
+                <field name="description" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="citacion_contravencion_ley_art_action_menu" model="ir.actions.act_window">
+        <field name="name">Contraventions Law articles</field>
+        <field name="res_model">citacion.contravencion.ley.art</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_citacion_contravencion_ley_art_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Ask technical support, the contravention's list must not be empty.
+            </p>
+        </field>
+    </record>
+
+    <record id="citacion_contravencion_ley_num_action_menu" model="ir.actions.act_window">
+        <field name="name">Contraventions Law numerals</field>
+        <field name="res_model">citacion.contravencion.ley.num</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_citacion_contravencion_ley_num_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Ask technical support, the contravention's list must not be empty.
+            </p>
+        </field>
+    </record>
+
+</odoo>

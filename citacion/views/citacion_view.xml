@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_citacion_citacion_form" model="ir.ui.view">
+        <field name="name">citacion.citacion.form</field>
+        <field name="model">citacion.citacion</field>
+        <field name="arch" type="xml">
+            <form string="Citation">
+                <header>
+                    <button name="action_pending" type="object" states="confirmed,warrant" string="To Pending"/>
+                    <button name="action_canceled" type="object" states="pending" string="Cancel"/>
+                    <button name="action_warrant" type="object" states="pending" string="Arrest Warrant"/>
+                    <button name="action_confirmed" type="object" states="pending" string="Ask Review"/>
+                    <button name="action_approved" type="object" states="confirmed" string="Approve"/>
+                    <field name="state" widget="statusbar" statusbar_visible="pending,confirmed,approved"/>
+                </header>
+                <sheet>
+                    <!--widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="active" invisible="1" /-->
+                    <group>
+                        <field name="document_number" required="1"/>
+                        <field name="reparto_id"  required="1"/>
+                    </group>
+                    <group name="dates" string="Dates">
+                        <group>
+                            <field name="datetime"  required="1"/>
+                        </group>
+                        <group>
+                            <field name="datetime_limit"/>
+                        </group>
+                    </group>
+                    <group name="location" string="Location">
+                        <group>
+                            <field name="latitude"  required="1"/>
+                            <field name="latitude_dms" string="Degrees" />
+                        </group>
+                        <group>
+                            <field name="longitude"  required="1"/>
+                            <field name="longitude_dms" string="Degrees" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="punto_referencia"/>
+                    </group>
+                    <group name="ship" string="Ship">
+                        <field name="nave_id"/>
+                    </group>
+                    <group>
+                        <field name="nave_tipo_nombre"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="nave_matricula"/>
+                        </group>
+                        <group>
+                            <field name="nave_trb"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="caracteristicas" colspan="1"/>
+                    </group>
+                    <br />
+                    <group>
+                        <group name="captain" string="Captain">
+                            <field name="capitan_id"/>
+                            <field name="capitan_name" required="1"/>
+                            <field name="capitan_identification_number" required="1"/>
+                        </group>
+                        <group name="charterer" string="Charterer">
+                            <field name="armador_id"/>
+                            <field name="armador_name" required="1"/>
+                            <field name="armador_identification_number" required="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group name="data" string="Data">
+                            <field name="jefe_id" required="1"/>
+                            <field name="jefe_grado"/>
+                        </group>
+                        <group  name="offender" string="Offender">
+                            <field name="offender_id"/>
+                            <field name="offender_name" required="1"/>
+                            <field name="offender_identification_number" required="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Contravention Classes">
+                            <field name="contravencion_ids" nolabel="1">
+                                <tree string="Classes"
+                                    editable="top" create="1" edit="1" delete="1">
+                                    <field name="articulo_id" required="1"/>
+                                    <field name="articulo_description" readonly="1" string="Description"/>
+                                    <field name="numeral_id_domain" invisible="1"/>
+                                    <field name="numeral_id" domain="numeral_id_domain" attrs="{'readonly':[('articulo_id','=',False)]}" required="1"/>
+                                    <field name="numeral_description" readonly="1" string="Description"/>
+                                </tree>
+                            </field>
+                            <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <field colspan="6" name="more_comments" nolabel="1" placeholder="More information"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_citacion_citacion_tree" model="ir.ui.view">
+        <field name="name">citacion.citacion.tree</field>
+        <field name="model">citacion.citacion</field>
+        <field name="arch" type="xml">
+            <tree string="Citations">
+                <field name="reparto_id"/>
+                <field name="datetime"/>
+                <field name="nave_tipo_nombre"/>
+                <field name="nave_matricula"/>
+                <field name="offender_name" string="Offender" />
+                <field name="offender_identification_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="citacion_citacion_action_menu_pending" model="ir.actions.act_window">
+        <field name="name">Citations</field>
+        <field name="res_model">citacion.citacion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('state', 'in', ('pending', 'canceled'))]</field>
+        <field name="view_id" ref="view_citacion_citacion_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Citation
+            </p>
+        </field>
+    </record>
+
+    <record id="view_citacion_citacion_tree_confirmed" model="ir.ui.view">
+        <field name="name">citacion.citacion.tree</field>
+        <field name="model">citacion.citacion</field>
+        <field name="arch" type="xml">
+            <tree string="Citations">
+                <field name="reparto_id"/>
+                <field name="datetime"/>
+                <field name="jefe_id"/>
+                <field name="nave_tipo_nombre"/>
+                <field name="nave_matricula"/>
+                <field name="offender_name"/>
+                <field name="offender_identification_number"/>
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="citacion_citacion_action_menu_confirmed" model="ir.actions.act_window">
+        <field name="name">Citations in Review</field>
+        <field name="res_model">citacion.citacion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'create': False}</field>
+        <field name="domain">[('state', 'in', ('approved', 'confirmed'))]</field>
+        <field name="view_id" ref="view_citacion_citacion_tree_confirmed"/>
+    </record>
+
+    <record id="view_citacion_citacion_tree_warrant" model="ir.ui.view">
+        <field name="name">citacion.citacion.tree</field>
+        <field name="model">citacion.citacion</field>
+        <field name="arch" type="xml">
+            <tree string="Citations">
+                <field name="reparto_id"/>
+                <field name="datetime"/>
+                <field name="jefe_id"/>
+                <field name="nave_tipo_nombre"/>
+                <field name="nave_matricula"/>
+                <field name="latitude_dms" />
+                <field name="longitude_dms" />
+                <!--field name="state" /-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="citacion_citacion_action_menu_warrant" model="ir.actions.act_window">
+        <field name="name">Search and Arrest Warrant</field>
+        <field name="res_model">citacion.citacion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'create': False}</field>
+        <field name="domain">[('state', '=', 'warrant')]</field>
+        <field name="view_id" ref="view_citacion_citacion_tree_warrant"/>
+    </record>
+
+</odoo>

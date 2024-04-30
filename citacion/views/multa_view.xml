@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_citacion_multa_form" model="ir.ui.view">
+        <field name="name">citacion.multa.form</field>
+        <field name="model">citacion.multa</field>
+        <field name="arch" type="xml">
+            <form string="Penalty">
+                <header>
+                    <button name="action_analyzing" type="object" states="in_challenge" string="Back to Analyze"/>
+                    <button name="action_canceled" type="object" states="analyzing,in_challenge" string="Cancel"/>
+                    <button name="action_notified" type="object" states="analyzing" string="to Notified"/>
+                    <button name="action_in_challenge" type="object" states="analyzing,notified" string="Challenge"/>
+                    <button name="action_contested" type="object" states="in_challenge" string="to Contested"/>
+                    <button name="action_to_pay" type="object" states="in_challenge,notified" string="Approve"/>
+                    <field name="state" widget="statusbar" statusbar_visible="analyzing,notified,in_challenge,contested,to_pay"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="reparto_id"/>
+                    </group>
+                    <group name="Citation" string="Citation">
+                        <field name="citacion_id"/>
+                        <field name="contraventor_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Contravention Classes">
+                            <field name="citacion_contravencion_ids" nolabel="1" readonly="1">
+                                <tree string="Classes" create="0" edit="0" delete="0">
+                                    <field name="articulo_id" />
+                                    <field name="articulo_description" string="Description"/>
+                                    <field name="numeral_id_domain" invisible="1"/>
+                                    <field name="numeral_id" domain="numeral_id_domain"/>
+                                    <field name="numeral_description" readonly="1" string="Description"/>
+                                </tree>
+                            </field>
+                            <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <field colspan="6" name="more_comments" nolabel="1" placeholder="More information"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <group name="Penalty" string="Penalty">
+                        <group>
+                            <field name="articulo_numeral_id"/>
+                        </group>
+                        <group>
+                            <field name="aplica_concurrencia"/>
+                            <field name="aplica_reincidencia"/>
+                        </group>
+                    </group>
+                    <group name="Invoice" string="Invoice">
+                        <group>
+                            <field name="product_id"/>
+                            <field name="value"/>
+                        </group>
+                        <group>
+                            <field name="description"/>                        
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_citacion_multa_tree" model="ir.ui.view">
+        <field name="name">citacion.multa.tree</field>
+        <field name="model">citacion.multa</field>
+        <field name="arch" type="xml">
+            <tree string="Penalties">
+                <field name="reparto_id"/>
+                <field name="contraventor_id"/>
+                <field name="articulo_numeral_id"/>
+                <field name="value"/>
+                <field name="state"/>
+                <field name="factura_numero" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="citacion_multa_action_menu" model="ir.actions.act_window">
+        <field name="name">Penalties</field>
+        <field name="res_model">citacion.multa</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_citacion_multa_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Penalty
+            </p>
+        </field>
+    </record>
+
+    <record id="view_citacion_multa_tree_challenged" model="ir.ui.view">
+        <field name="name">citacion.multa.tree</field>
+        <field name="model">citacion.multa</field>
+        <field name="arch" type="xml">
+            <tree string="Penalties">
+                <field name="reparto_id"/>
+                <field name="contraventor_id"/>
+                <field name="articulo_numeral_id"/>
+                <field name="value"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="citacion_multa_action_menu_in_challenge" model="ir.actions.act_window">
+        <field name="name">Penalties in Challenge</field>
+        <field name="res_model">citacion.multa</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'create': False}</field>
+        <field name="domain">[('state', 'in', ('in_challenge', 'contested'))]</field>
+        <field name="view_id" ref="view_citacion_multa_tree_challenged"/>
+    </record>
+</odoo>

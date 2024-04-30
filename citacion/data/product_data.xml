@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="product_category_multa" model="product.category">
+            <field name="name">Penalty</field>
+        </record>
+
+        <record id="product_product_multa_por_contravencion" model="product.product">
+            <field name="name">Multa por contravención</field>
+            <field name="categ_id" ref="citacion.product_category_multa"/>
+        </record>
+    </data>
+</odoo>

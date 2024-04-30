@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_payment_caja_form_inherit" model="ir.ui.view">
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                <field name="caja_id"/>
+                <field name="sesion_caja_id"/>
+                <field name="monto_disponible" />
+            </field>
+        </field>
+    </record>
+
+    <record id="account_payment_state_draft_por_confirmar_form_inherit" model="ir.ui.view">
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//h1[1]" position="replace" mode="inner">
+                <h1 attrs="{'invisible': [('state', '!=', 'draft')]}"><span>Por Confirmar</span></h1>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_payment_search_my_payments_inherit" model="ir.ui.view">
+        <field name="name">account.payment.search.my_payments.inherit</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='outbound_filter']" position="after">
+                <filter name="pagos_cliente_mis_solicitudes" string="Pagos de Cliente de mis solicitudes" domain="[('sale_order_create_user_id', '=', uid),('partner_type', '=', 'customer'), ('is_internal_transfer', '=', False)]"/>
+                <filter name="pagos_proveedor_mis_solicitudes" string="Pagos de Proveedor de mis solicitudes" domain="[('sale_order_create_user_id', '=', uid),('partner_type', '=', 'supplier'), ('is_internal_transfer', '=', False)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="account.action_account_payments" model="ir.actions.act_window">
+        <field name="context">{'search_default_pagos_cliente_mis_solicitudes': 1}</field>
+    </record>
+
+    <record id="account.action_account_payments_payable" model="ir.actions.act_window">
+        <field name="context">{'search_default_pagos_proveedor_mis_solicitudes': 1}</field>
+    </record>
+
+</odoo>

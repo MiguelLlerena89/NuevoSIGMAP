@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_citacion_sancionado_ayuda_tree" model="ir.ui.view">
+        <field name="name">citacion.sancionado.ayuda.tree</field>
+        <field name="model">citacion.sancionado.ayuda</field>
+        <field name="arch" type="xml">
+            <tree default_order='articulo_id,numeral_id' string="Fined" editable="top">
+                <field name="articulo_id" />
+                <field name="articulo_description" readonly="1"/>
+                <field name="numeral_id_domain" invisible="1"/>
+                <field name="numeral_id" domain="numeral_id_domain" attrs="{'readonly':[('articulo_id','=',False)]}"/>
+                <field name="numeral_description" readonly="1" />
+                <field name="capitan"/>
+                <field name="tripulante"/>
+                <field name="armador"/>
+                <field name="propietario"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="citacion_sancionado_ayuda_action_menu" model="ir.actions.act_window">
+        <field name="name">Who can be fined?</field>
+        <field name="res_model">citacion.sancionado.ayuda</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_citacion_sancionado_ayuda_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add hints for the citation users.
+            </p>
+        </field>
+    </record>
+
+</odoo>

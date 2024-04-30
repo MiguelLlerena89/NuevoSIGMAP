@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_motivo_anulacion_pago_wizard" model="ir.actions.act_window">
+        <field name="name">Motivo anulación</field>
+        <field name="res_model">motivo.anulacion.pago.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_motivo_anulacion_pago_wizard_form" model="ir.ui.view">
+        <field name="name">motivo.anulacion.pago.wizard.form</field>
+        <field name="model">motivo.anulacion.pago.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group colspan="4">
+                            <field name="motivo"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name='action_motivo_anulacion' string='Grabar' type='object' class='btn-primary'/>
+                    <button string='Cancelar' class='btn-default' special='cancel' />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_motivo_anulacion_pago_form_inherit" model="ir.ui.view">
+        <field name="name">account.payment.motivo.anulacion</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <field name="ref" position="after">
+                <field name="motivo_anulacion"/>
+            </field>
+            <xpath expr="//header/button[@name='action_cancel']" position="attributes">
+                <attribute name="groups">base.group_system</attribute>
+                <attribute name="states">posted</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_action_control_suministro"
+        parent="tramite.menu_persona_mar_1_config"
+        action="action_control_suministro"
+        sequence="8"/>
+    <menuitem id="menu_action_suministro"
+        parent="tramite.menu_persona_mar_1_config"
+        action="action_suministro"
+        sequence="9"/>
+    <menuitem id="menu_action_uom_suministro"
+        parent="tramite.menu_persona_mar_1_config"
+        action="action_uom_suministro"
+        sequence="10"/>
+
+</odoo>

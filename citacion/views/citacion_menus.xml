@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem name="Citations" id="menu_citacion" sequence="13">
+        <menuitem id="menu_citacion_events" name="Events" sequence="1">
+            <menuitem id="menu_citacion_events_citations" name="Citations" sequence="1">
+                <menuitem id="menu_citacion_events_citations_pending"
+                    name="Citations"
+                    action="citacion_citacion_action_menu_pending"
+                    sequence="1"/>
+                <menuitem id="menu_citacion_events_citations_confirmed"
+                    name="In Review"
+                    action="citacion_citacion_action_menu_confirmed"
+                    sequence="2"/>
+                <menuitem id="menu_citacion_events_citations_warrant"
+                    name="Search and Arrest"
+                    action="citacion_citacion_action_menu_warrant"
+                    sequence="3"/>
+            </menuitem>
+        </menuitem>
+        <menuitem id="menu_citacion_penalties" name="Penalties" sequence="2">
+            <menuitem id="menu_citacion_penalties_all"
+                name="Penalties"
+                action="citacion_multa_action_menu"
+                sequence="1"/>
+            <menuitem id="menu_citacion_penalties_in_challenge"
+                name="In Challenge"
+                action="citacion_multa_action_menu_in_challenge"
+                sequence="2"/>
+        </menuitem>
+        <menuitem id="menu_citacion_settings" name="Settings" sequence="3">
+            <menuitem id="menu_citacion_settings_laws" name="Law" sequence="1">
+                <menuitem id="menu_citacion_settings_contravencion_ley_art_action"
+                    name="Articles"
+                    action="citacion_contravencion_ley_art_action_menu"
+                    sequence="1"/>
+                <menuitem id="menu_citacion_settings_contravencion_ley_num_action"
+                    name="Numerals"
+                    action="citacion_contravencion_ley_num_action_menu"
+                    sequence="2"/>
+                <menuitem id="menu_citacion_settings_sancionado_ayuda_action"
+                    name="Who can be fined?"
+                    action="citacion_sancionado_ayuda_action_menu"
+                    sequence="3"/>
+            </menuitem>
+        </menuitem>
+    </menuitem>
+</odoo>

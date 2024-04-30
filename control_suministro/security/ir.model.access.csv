@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_control_suministro_user,access_control_suministro_user,model_control_suministro,base.group_system,1,1,1,1
+access_suministro_user,access_suministro_user,model_suministro,base.group_system,1,1,1,1
+access_uom_suministro_user,access_uom_suministro_user,model_uom_suministro,base.group_system,1,1,1,1

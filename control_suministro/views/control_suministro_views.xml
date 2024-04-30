@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_control_suministro_tree" model="ir.ui.view">
+        <field name="name">Control suministro</field>
+        <field name="model">control.suministro</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Control suministros">
+                <field name="suministro_id"/>
+                <field name="unidad_id"/>
+                <field name="company_id"/>
+                <field name="user_id"/>
+                <field name="fecha_entrega"/>
+                <field name="name" string="Observación"/>
+                <field name="cantidad"/>
+                <field name="cantidad_unidades"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_control_suministro_form" model="ir.ui.view">
+        <field name="name">Control suministro formulario</field>
+        <field name="model">control.suministro</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Control suministro">
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="name" string="Observación"/>
+                    </h1>
+                </div>
+                <group>
+                    <group id="header_left_group">
+                        <field name="suministro_id"/>
+                        <field name="unidad_id"/>
+                        <field name="company_id"/>
+                        <field name="user_id"/>
+                        <field name="cantidad"/>
+                        <field name="cantidad_unidades"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="fecha_entrega"/>
+                    </group>
+                </group>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="action_control_suministro" model="ir.actions.act_window">
+        <field name="name">Control de suministros</field>
+        <field name="res_model">control.suministro</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_control_suministro_tree"/>
+        <field name="help" type="html">
+            <p>
+                No control suministro found.
+            </p>
+        </field>
+    </record>
+    <record id="view_suministro_tree" model="ir.ui.view">
+        <field name="name">Suministro</field>
+        <field name="model">suministro</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Suministro">
+                    <field name="company_id" invisible="1"/>
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                    <field name="unidad_id"/>
+                    <field name="cantidad_unidades"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_suministro_form" model="ir.ui.view">
+        <field name="name">Suministro formulario</field>
+        <field name="model">suministro</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Suministro">
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="company_id" invisible="1"/>
+                    </h1>
+                </div>
+                <group>
+                    <group id="header_left_group">
+                        <field name="name"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="descripcion"/>
+                        <field name="unidad_id"/>
+                        <field name="cantidad_unidades"/>
+                    </group>
+                </group>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_uom_suministro_tree" model="ir.ui.view">
+        <field name="name">Unidad de suministro</field>
+        <field name="model">uom.suministro</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Unidad de suministro">
+                    <field name="name"/>
+                    <field name="codigo"/>
+                    <field name="unidades"/>
+                    <field name="unidad_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_uom_suministro_form" model="ir.ui.view">
+        <field name="name">Unidad suministro formulario</field>
+        <field name="model">uom.suministro</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Unidad de suministro">
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <group>
+                    <group id="header_left_group">
+                        <field name="codigo"/>
+                        <field name="unidades"/>
+                        <field name="unidad_id"/>
+                    </group>
+                </group>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="action_uom_suministro" model="ir.actions.act_window">
+        <field name="name">Unidad suministro</field>
+        <field name="res_model">uom.suministro</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_uom_suministro_tree"/>
+        <field name="help" type="html">
+            <p>
+                No unidad found.
+            </p>
+        </field>
+    </record>
+    <record id="action_suministro" model="ir.actions.act_window">
+        <field name="name">Suministro</field>
+        <field name="res_model">suministro</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_suministro_tree"/>
+        <field name="help" type="html">
+            <p>
+                No suministro found.
+            </p>
+        </field>
+    </record>
+</odoo>

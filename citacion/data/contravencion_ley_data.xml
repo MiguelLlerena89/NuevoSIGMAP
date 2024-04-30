@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Articles -->
+        <record id="contravencion_ley_art_127" model="citacion.contravencion.ley.art">
+            <field name="name">ART. 127</field>
+            <field name="description">Contravenciones Administrativas de primera clase en los espacios acuáticos</field>
+        </record>
+        <record id="contravencion_ley_art_128" model="citacion.contravencion.ley.art">
+            <field name="name">ART. 128</field>
+            <field name="description">Contravenciones Administrativas de segunda clase en los espacios acuáticos</field>
+        </record>
+        <record id="contravencion_ley_art_129" model="citacion.contravencion.ley.art">
+            <field name="name">ART. 129</field>
+            <field name="description">Contravenciones Administrativas de tercera clase en los espacios acuáticos</field>
+        </record>
+        <record id="contravencion_ley_art_130" model="citacion.contravencion.ley.art">
+            <field name="name">ART. 130</field>
+            <field name="description">De la contravención administrativa por vertimiento de hidrocarburos y su categorización</field>
+        </record>
+
+
+        <!-- Numerals art 127 -->
+        <record id="contravencion_ley_art_127_01" model="citacion.contravencion.ley.num">
+            <field name="name">1</field>
+            <field name="description">No acudir a tiempo al zarpe del buque ocasionando un retraso del mismo</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_02" model="citacion.contravencion.ley.num">
+            <field name="name">2</field>
+            <field name="description">Navegar con motores fuera de borda diferentes él. los que se encuentren
+registrados en su documentación; y sin autorización</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_03" model="citacion.contravencion.ley.num">
+            <field name="name">3</field>
+            <field name="description">Realizar trabajos de reparación, de mantenimiento de las naves o artefactos
+navales en zonas de playa, sin la debida autorización emitida por la autoridad
+competente</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_04" model="citacion.contravencion.ley.num">
+            <field name="name">4</field>
+            <field name="description">Incumplir lasnormas de navegación para prevenir choques y abordajes, sin que
+existan. heridos o pérdida de vidas humanas y/ o daños materiales a terceros</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_05" model="citacion.contravencion.ley.num">
+            <field name="name">5</field>
+            <field name="description">Embarcar o desembarcar pasajeros y/ o carga en general; en muelles o
+embarcaderos con destino diferente o no autorizados por la autoridad competente</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_06" model="citacion.contravencion.ley.num">
+            <field name="name">6</field>
+            <field name="description">Realizar maniobras inadecuadas sin poner en peligro la seguridad de la vid�
+humana en el rnar.Ja seguridad de la navegación y el ambiente marino</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_07" model="citacion.contravencion.ley.num">
+            <field name="name">7</field>
+            <field name="description">Botar basura o desechos sólidos, no autorizados, a los espacios acuáticos
+nacionales; sin perjuicio de otras acciones legales a que hubiera lugar</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_08" model="citacion.contravencion.ley.num">
+            <field name="name">8</field>
+            <field name="description">No comparecer, sin causa justificada, a. la· citación realizada por el Capitán de
+Puerto, o por el Jurado de Capitanes</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_09" model="citacion.contravencion.ley.num">
+            <field name="name">9</field>
+            <field name="description">Navegar con equipos defectuosos, averiados; o teniéndolos operativos, sm
+emplearlos, siempre que afecten 1� operación o seguridad de la nave</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_10" model="citacion.contravencion.ley.num">
+            <field name="name">10</field>
+            <field name="description">Navegar sin permiso de zarpe otorgado por la Capitanía de Puerto; con
+documentos caducados de la nave o ·de la tripulación; o, sin documentos</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_11" model="citacion.contravencion.ley.num">
+            <field name="name">11</field>
+            <field name="description">Negar el embarque o no brindar las facilidades a las autoridades debidamente
+autorizadas por la' Capitanía de Puerto, en el cumplimiento de sus fµnciones</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_12" model="citacion.contravencion.ley.num">
+            <field name="name">12</field>
+            <field name="description">No acudir o demorarse, en calidad de Práctico, al arribo o zarpe de la nave,
+ocasionando un retraso de la maniobra</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_13" model="citacion.contravencion.ley.num">
+            <field name="name">13</field>
+            <field name="description">No registrar los actos o contratos de naves, dentro de los siguientes 30 días. de
+haberse celebrado dichos actos</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_14" model="citacion.contravencion.ley.num">
+            <field name="name">14</field>
+            <field name="description">No informar a la Capitanía del Puerto, su arribo hasta dos horas posteriores</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_15" model="citacion.contravencion.ley.num">
+            <field name="name">15</field>
+            <field name="description">Atracar, abarloar o varar una nave o artefacto naval para realizar trabajos, en
+un dique, astillero, varadero o factoría naval que no cuente con los respectivos
+permisos o documentos que le acrediten su actividad</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_16" model="citacion.contravencion.ley.num">
+            <field name="name">16</field>
+            <field name="description">Realizar trabajos de mantenimiento o reparación a naves o artefactos navales
+sin los permisos o documentos que autoricen su actividad</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_17" model="citacion.contravencion.ley.num">
+            <field name="name">17</field>
+            <field name="description">No reportar a la Capitanía de Puerto, un siniestro o suceso en los espacios
+acuáticos</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_18" model="citacion.contravencion.ley.num">
+            <field name="name">18</field>
+            <field name="description">Emplear embarcaciones menores no autorizadas en la faena de pesca</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_19" model="citacion.contravencion.ley.num">
+            <field name="name">19</field>
+            <field name="description">Emitir falsas alarmas de emergencia, o usar indebidamente estaciones de radio,
+pitos, sirenas o señales pirotécnicas a bordo de una embarcación</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_20" model="citacion.contravencion.ley.num">
+            <field name="name">20</field>
+            <field name="description">No cumplir con las disposiciones emitidas por el servicio de tráfico marítimo,
+sin poner en riesgo la seguridad de la vida humana en el mar; seguridad de la
+navegación o el ambiente marino</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_21" model="citacion.contravencion.ley.num">
+            <field name="name">21</field>
+            <field name="description">Emitir disposiciones erróneas en cumplimiento de funciones en el servicio de
+tráfico marítimo, sin poner en ·riesgo la. seguridad de la vida humana en el mar,
+seguridad de la navegación o el ambiente marino</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_22" model="citacion.contravencion.ley.num">
+            <field name="name">22</field>
+            <field name="description">Desembarcarse sin autorización del· Capitán, afectando' a la seguridad de ·1a
+nave</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_23" model="citacion.contravencion.ley.num">
+            <field name="name">23</field>
+            <field name="description">No retirar los restos náufragos, o material proveniente de la nave, en el plazo
+ordenado por la Capitanía de Puerto</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_24" model="citacion.contravencion.ley.num">
+            <field name="name">24</field>
+            <field name="description">Movilizar sin autorización del Capitán de Puerto una nave o artefacto naval,
+conociendo que existe una orden de embargo, secuestro o prohibición de zarpe, sin
+autorización de la capitanía de puerto, siempre y cuando no sea por situación de
+emergencia</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_25" model="citacion.contravencion.ley.num">
+            <field name="name">25</field>
+            <field name="description">Desactivar, inhabilitar, o portar en mal estado, el dispositivo de monitoreo de
+naves o artefactos navales</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_26" model="citacion.contravencion.ley.num">
+            <field name="name">26</field>
+            <field name="description">Causar o promover indisciplina a bordo de naves o artefactos navales; siempre
+que el hecho no constituya delito</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+        <record id="contravencion_ley_art_127_27" model="citacion.contravencion.ley.num">
+            <field name="name">27</field>
+            <field name="description">No acatar disposiciones de la Capitanía de Puerto o del personal de las unidades
+de la Fuerza Naval del Ecuador, en el rol de· Policía Marítima</field>
+            <field name="articulo_id" ref="contravencion_ley_art_127"/>
+        </record>
+
+
+        <!-- Numerals art 128 -->
+        <record id="contravencion_ley_art_128_01" model="citacion.contravencion.ley.num">
+            <field name="name">1</field>
+            <field name="description">Navegar sin la dotación mínima de seguridad</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_02" model="citacion.contravencion.ley.num">
+            <field name="name">2</field>
+            <field name="description">Exceder la capacidad de pasajeros o carga autorizada al zarpe o durante la
+navegac1on</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_03" model="citacion.contravencion.ley.num">
+            <field name="name">3</field>
+            <field name="description">Embarcar personas no autorizadas en tráfico internacional, sin perjuicio de otras
+acciones legales a las que hubiere lugar</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_04" model="citacion.contravencion.ley.num">
+            <field name="name">4</field>
+            <field name="description">Utilizar una embarcación en actividades distintas para la que está clasificada y
+autorizada; sin perjuicio de otras acciones legales a las que hubiere lugar</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_05" model="citacion.contravencion.ley.num">
+            <field name="name">5</field>
+            <field name="description">Navegar en áreas protegidas sin autorización o sin cumplir los procedimientos
+establecidos, sin perjuicio de otras acciones legales a las que hubiere lugar</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_06" model="citacion.contravencion.ley.num">
+            <field name="name">6</field>
+            <field name="description">Zarpar y navegar en una nave o artefacto naval, conociendo que existe una orden
+de secuestro, embargo, retención o prohibición de zarpe, sin perjuicio de otras
+acciones legales a las que hubiere lugar</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_07" model="citacion.contravencion.ley.num">
+            <field name="name">7</field>
+            <field name="description">Realizar maniobras de salvataje de buques o extracción de restos de naufragio,
+sin autorización de la Capitanía de Puerto</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_08" model="citacion.contravencion.ley.num">
+            <field name="name">8</field>
+            <field name="description">Desembarcar o embarcar tripulantes o pasajeros, sm la autorización de 1?.
+Capitanía de Puerto y del representante de la autoridad sanitaria</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_09" model="citacion.contravencion.ley.num">
+            <field name="name">9</field>
+            <field name="description">No prestar auxilio a personas que se encuentren en peligro en los espacios
+acuáticos, a menos que esto implique poner en riesgo a la propia tripulación o la
+nave</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_10" model="citacion.contravencion.ley.num">
+            <field name="name">10</field>
+            <field name="description">Dejar abandonadauna nave o artefacto naval, injustificadamente</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_11" model="citacion.contravencion.ley.num">
+            <field name="name">11</field>
+            <field name="description">Construir, modificar o desguazar una nave o artefacto naval, sm las
+autorizaciones contempladas en la Ley</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_12" model="citacion.contravencion.ley.num">
+            <field name="name">12</field>
+            <field name="description">Cargar, desembarcar o transportar mercancías peligrosas sm cumplir las
+normas de seguridad</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_13" model="citacion.contravencion.ley.num">
+            <field name="name">13</field>
+            <field name="description">Navegar sin dispositivos de navegación, salvamento o de prevención de la
+contaminación, conforme las normas establecidas al tipo y actividad de la nave</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_14" model="citacion.contravencion.ley.num">
+            <field name="name">14</field>
+            <field name="description">Operar terminales portuarios, terminales petroleros, instalaciones flotantes,
+muelles, varaderos, plataformas fijas, costa afuera y toda instalación que estuviera
+ubicada en las playas o riberas de ríos, sin los materiales y equipos autorizados
+para la prevención y control de la contaminación</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_15" model="citacion.contravencion.ley.num">
+            <field name="name">15</field>
+            <field name="description">Incumplir las disposiciones emitidas por el servicio de tráfico marítimo,
+poniendo en riesgo la seguridad de la vida humana en el mar, seguridad de la
+navegación o el ambiente marino; sin perjuicio de las acciones legales a las que
+hubiere lugar</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_16" model="citacion.contravencion.ley.num">
+            <field name="name">16</field>
+            <field name="description">Permitir que personas no autorizadas tomen el mando de la nave</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_17" model="citacion.contravencion.ley.num">
+            <field name="name">17</field>
+            <field name="description">No retirar obstáculos a la navegación en los plazos concedidos .por la Capitanía
+de Puerto</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_18" model="citacion.contravencion.ley.num">
+            <field name="name">18</field>
+            <field name="description">Navegar al mando o de guardia en una nave, en estado de embriaguez o bajo
+los efectos de sustancias sujetas a fiscalización</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_19" model="citacion.contravencion.ley.num">
+            <field name="name">19</field>
+            <field name="description">Realizar maniobras inadecuadas poniendo en peligro la seguridad de la vida
+humana en el mar, la seguridad de la navegación y el ambiente marino</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_20" model="citacion.contravencion.ley.num">
+            <field name="name">20</field>
+            <field name="description">Desembarcarse antes de terminar la maniobra de practicaje</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_21" model="citacion.contravencion.ley.num">
+            <field name="name">21</field>
+            <field name="description">Verter sólidos o líquidos contaminantes en los espacios acuáticos; sin perjuicio
+de otras acciones legales a que hubiere lugar</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_22" model="citacion.contravencion.ley.num">
+            <field name="name">22</field>
+            <field name="description">Navegar en aguas restringidas, sin autorización</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+        <record id="contravencion_ley_art_128_23" model="citacion.contravencion.ley.num">
+            <field name="name">23</field>
+            <field name="description">Incumplir las normas de navegación para prevenir choques y abordajes,
+ocasionando heridos o pérdida de vidas humanas y/ o daños materiales a terceros,
+sin perjuicio de las acciones legales correspondientes</field>
+            <field name="articulo_id" ref="contravencion_ley_art_128"/>
+        </record>
+
+
+        <!-- Numerals art 129 -->
+        <record id="contravencion_ley_art_129_01" model="citacion.contravencion.ley.num">
+            <field name="name">1</field>
+            <field name="description">Abandonar a pasajeros o tripulantes en puertos extranjeros</field>
+            <field name="articulo_id" ref="contravencion_ley_art_129"/>
+        </record>
+        <record id="contravencion_ley_art_129_02" model="citacion.contravencion.ley.num">
+            <field name="name">2</field>
+            <field name="description">Ejecutar eventos o competencias acuáticas sin autorización de la autoridad
+competente y Capitanía de Puerto,</field>
+            <field name="articulo_id" ref="contravencion_ley_art_129"/>
+        </record>
+        <record id="contravencion_ley_art_129_03" model="citacion.contravencion.ley.num">
+            <field name="name">3</field>
+            <field name="description">Realizar maniobras en los espacios acuáticos que comprometan la seguridad de
+las personas, navegación o de los bienes</field>
+            <field name="articulo_id" ref="contravencion_ley_art_129"/>
+        </record>
+        <record id="contravencion_ley_art_129_04" model="citacion.contravencion.ley.num">
+            <field name="name">4</field>
+            <field name="description">Realizar trabajos de exploración científica, levantamientos hidrográficos o
+instalación de ayudas a la navegación, sin la autorización respectiva</field>
+            <field name="articulo_id" ref="contravencion_ley_art_129"/>
+        </record>
+        <record id="contravencion_ley_art_129_05" model="citacion.contravencion.ley.num">
+            <field name="name">5</field>
+            <field name="description">Navegar con el certificado de responsabilidad civil por daños causados por
+contaminación caducado</field>
+            <field name="articulo_id" ref="contravencion_ley_art_129"/>
+        </record>
+    </data>
+
+</odoo>
