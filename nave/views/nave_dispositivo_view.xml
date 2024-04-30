@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Dispositivo Clase -->
+    <record id="view_nave_dispositivo_modelo_tipo_clase_tree" model="ir.ui.view">
+        <field name="name">nave.dispositivo.modelo.tipo.clase.tree</field>
+        <field name="model">nave.dispositivo.modelo.tipo.clase</field>
+        <field name="arch" type="xml">
+            <tree string="Ship Electronic - Classes" editable="bottom">
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="active" widget="boolean_toggle" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_dispositivo_clase_action_menu" model="ir.actions.act_window">
+        <field name="name">Ship Electronic - Classes</field>
+        <field name="res_model">nave.dispositivo.modelo.tipo.clase</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_dispositivo_modelo_tipo_clase_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Ship Electronic Class
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Dispositivo Tipo -->
+    <record id="view_nave_dispositivo_tipo_tree" model="ir.ui.view">
+        <field name="name">nave.dispositivo.modelo.tipo.tree</field>
+        <field name="model">nave.dispositivo.modelo.tipo</field>
+        <field name="arch" type="xml">
+            <tree string="Ship Electronic - Types" editable="bottom">
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="clase_id"/>
+                <field name="active" widget="boolean_toggle" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_dispositivo_tipo_action_menu" model="ir.actions.act_window">
+        <field name="name">Ship Electronic - Types</field>
+        <field name="res_model">nave.dispositivo.modelo.tipo</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_dispositivo_tipo_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Ship Electronic Type
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Dispositivo Marca -->
+    <record id="view_nave_dispositivo_marca_tree" model="ir.ui.view">
+        <field name="name">nave.dispositivo.modelo.marca.tree</field>
+        <field name="model">nave.dispositivo.modelo.marca</field>
+        <field name="arch" type="xml">
+            <tree string="Ship Electronic - Brands" editable="bottom">
+                <field name="name"/>
+                <field name="full_name"/>
+                <field name="codigo"/>
+                <field name="active" widget="boolean_toggle" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_dispositivo_marca_action_menu" model="ir.actions.act_window">
+        <field name="name">Ship Electronic - Brands</field>
+        <field name="res_model">nave.dispositivo.modelo.marca</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_dispositivo_marca_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Ship Electronic Brand
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Dispositivo Modelo -->
+    <record id="view_nave_dispositivo_modelo_form" model="ir.ui.view">
+        <field name="name">nave.dispositivo.modelo.form</field>
+        <field name="model">nave.dispositivo.modelo</field>
+        <field name="arch" type="xml">
+            <form string="Ship Electronic - Model">
+                <sheet>
+                    <group>
+                        <field name="active" widget="boolean_toggle" />
+                        <field name="name" />
+                        <field name="full_name" />
+                        <field name="marca_id" />
+                        <field name="tipo_id" />
+                        <field name="clase_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_dispositivo_modelo_tree" model="ir.ui.view">
+        <field name="name">nave.dispositivo.modelo.tree</field>
+        <field name="model">nave.dispositivo.modelo</field>
+        <field name="arch" type="xml">
+            <tree string="Ship Electronic - Models">
+                <field name="name"/>
+                <field name="marca_id" />
+                <field name="tipo_id" />
+                <field name="clase_id" />
+                <field name="active" widget="boolean_toggle" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_dispositivo_modelo_action_menu" model="ir.actions.act_window">
+        <field name="name">Ship Electronic - Models</field>
+        <field name="res_model">nave.dispositivo.modelo</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_dispositivo_modelo_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Ship Electronic Model
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Dispositivo -->
+    <record id="view_nave_dispositivo_form" model="ir.ui.view">
+        <field name="name">nave.dispositivo.form</field>
+        <field name="model">nave.dispositivo</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="es_ais" widget="boolean_toggle" />
+                            <field name="active" widget="boolean_toggle" />
+                            <field name="numero_serie" />
+                            <field name="codigo" />
+                            <field name="name" />
+                        </group>
+                        <group>
+                            <field name="modelo_id" />
+                            <field name="marca_id" />
+                            <field name="tipo_id" />
+                            <field name="clase_id" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_dispositivo_tree" model="ir.ui.view">
+        <field name="name">nave.dispositivo.tree</field>
+        <field name="model">nave.dispositivo</field>
+        <field name="arch" type="xml">
+            <tree string="Ship Electronics">
+                <field name="numero_serie" />
+                <field name="codigo"/>
+                <field name="name"/>
+                <field name="modelo_id" />
+                <field name="marca_id" />
+                <field name="tipo_id" />
+                <field name="clase_id" />
+                <field name="es_ais" optional="hide"/>
+                <field name="active" widget="boolean_toggle" invisible="0"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_dispositivo_action_menu" model="ir.actions.act_window">
+        <field name="name">Ship Electronics</field>
+        <field name="res_model">nave.dispositivo</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_dispositivo_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Ship Electronic
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Relation Nave - Dispositivo -->
+    <record id="view_nave_nave_dispositivo_tree" model="ir.ui.view">
+        <field name="name">nave.nave.dispositivo.tree</field>
+        <field name="model">nave.nave.dispositivo</field>
+        <field name="arch" type="xml">
+            <tree string="Electronics in Ships"
+                decoration-muted="active == False"
+                decoration-danger="dispositivo_valido == False"
+                editable="top">
+                <field name="dispositivo_id" />
+                <field name="numero_serie" />
+                <field name="modelo_name" />
+                <field name="marca_name" />
+                <field name="nave_id" attrs="{'readonly':[('dispositivo_id', '=', False)]}"/>
+                <field name="fecha_inicio" attrs="{'readonly':[('dispositivo_id', '=', False)]}"/>
+                <field name="fecha_fin" />
+                <field name="licencia" />
+                <field name="dispositivo_valido" invisible="0"/>
+                <field name="es_ais" optional="hide"/>
+                <field name="active" attrs="{'readonly':[('fecha_fin', '!=', False)]}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_nave_dispositivo_action_menu" model="ir.actions.act_window">
+        <field name="name">Electronics in Ships</field>
+        <field name="res_model">nave.nave.dispositivo</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Assign Ship Electronics to Ships if Licence is available and active
+            </p>
+        </field>
+    </record>
+
+    <!-- Nave inherit : Historial Equipos -->
+    <record id="view_nave_nave_form_inherit_electronics" model="ir.ui.view">
+        <field name="name">nave.nave.form.inherit.electronics</field>
+        <field name="model">nave.nave</field>
+        <field name="inherit_id" ref="nave.view_nave_nave_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Electronics">
+                    <field name="dispositivo_ids" nolabel="1" readonly="1">
+                        <tree string="Electronics" decoration-danger="dispositivo_valido == False" create="0" edit="0" delete="0">
+                            <field name="dispositivo_valido" invisible="1"/>
+                            <field name="dispositivo_id" />
+                            <field name="numero_serie" />
+                            <field name="modelo_name" />
+                            <field name="marca_name" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>            
+        </field>
+    </record>
+
+</odoo>

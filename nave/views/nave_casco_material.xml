@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Material de Casco -->
+    <record id="view_nave_casco_material_tree" model="ir.ui.view">
+        <field name="name">nave.casco.material.tree</field>
+        <field name="model">nave.casco.material</field>
+        <field name="arch" type="xml">
+            <tree string="Materiales para Cascos" editable="top">
+                <field name="name" />
+                <field name="active" widget="boolean_toggle" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_casco_material_action_menu" model="ir.actions.act_window">
+        <field name="name">Materiales para Cascos de Naves</field>
+        <field name="res_model">nave.casco.material</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{'delete':False, 'active_test': False}</field>
+        <field name="view_id" ref="view_nave_casco_material_tree" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registre un nuevo Material para casco
+            </p>  
+        </field>
+    </record>
+
+</odoo>

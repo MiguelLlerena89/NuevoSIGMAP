@@ -1,0 +1,22 @@
+id,name
+nave_estado_abandonada,Abandonada
+nave_estado_baja,Baja de Embarcación
+nave_estado_investiga,Bajo investigación
+nave_estado_desaparecida,Desaparecida
+nave_estado_deudas,Deudas con la Autoridad Marítima
+nave_estado_veda,En Veda
+nave_estado_impedida,Impedida de Navegar
+nave_estado_mantenimiento,Mantenimiento
+nave_estado_multada,Multada
+nave_estado_duplicada,Nave Duplicada en Sistema
+nave_estado_desguace,Nave en estado de desguace
+nave_estado_sinactividad,No presenta actividad en el Sistema
+nave_estado_citacion,Citación
+nave_estado_operativa,Operativa
+nave_estado_prohib_zarpe,Prohibición de Zarpe
+nave_estado_susp_mat_arm,Suspendida matrícula de armador
+nave_estado_varada,"Incendiada, Hundida ó Varada"
+nave_estado_susp_mat_nav,Suspendida matrícula de la nave
+nave_estado_act_ili,"Actividad Ilícita (migrantes, contrabando, narcotráfico, pesca ilegal, etc)"
+nave_estado_susp_perm_estatutarios,"Suspensión de permiso estatutario de actividad (SRP, ARCERNN, PNG, CONSEJO DE GOBIERNO GALÁPAGOS, etc)"
+nave_estado_ord_jud,"Orden Judicial (Prohibición de enajenar, Secuestro, Remate, Embargo, Depósito judicial, etc)"

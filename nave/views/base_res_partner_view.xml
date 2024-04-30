@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="base_res_partner_nave_action_menu" model="ir.actions.act_window">
+        <field name="name">Partners</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Create a Contact in your address book
+            </p><p>
+            Sigmap helps you track all activities related to your contacts.
+            </p>
+        </field>
+    </record>
+</odoo>

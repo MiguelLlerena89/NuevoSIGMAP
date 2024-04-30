@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Constructor -->
+    <record id="view_nave_constructor_form" model="ir.ui.view">
+        <field name="name">nave_constructor.form</field>
+        <field name="model">nave.constructor</field>
+        <field name="arch" type="xml">
+            <form string="Builder">
+                <sheet>
+                    <group>
+                        <field name="es_ecuatoriano" widget="boolean_toggle"/>
+                    </group>
+                    <group attrs="{'invisible':[('es_ecuatoriano','=',False)]}">
+                        <group>
+                            <field name="partner_id" options="{'no_quick_create':True}"/>
+                        </group>
+                        <group attrs="{'invisible':[('partner_id','=',False)]}">
+                            <label for="partner_identification_type_id" string="Identification Number"/>
+                            <div>
+                                <field name="partner_identification_type_id" placeholder="Type" readonly="1"/>
+                                <span class="oe_read_only"> - </span>
+                                <field name="partner_vat" placeholder="Number" readonly="1"/>
+                            </div>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="country_id" />
+                            <field name="name" />
+                        </group>
+                        <group>
+                            <field name="puerto_id" />
+                            <field name="tipo_astillero_id" />
+                        </group>
+                    </group>
+                    <!--notebook>
+                        <page string="Ships History">
+                            <field name="nave_ids"
+                                nolabel="1"
+                                widget="section_one2many"
+                                mode="tree"
+                                readonly="1">
+                                <tree string="Ships History" create="0" edit="0" delete="0">
+                                    <field name="fecha_construccion" />
+                                    <field name="tipo_construccion_id" />
+                                    <field name="nave_id" />
+                                    <field name="fecha_planos" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_constructor_tree" model="ir.ui.view">
+        <field name="name">nave.constructor.tree</field>
+        <field name="model">nave.constructor</field>
+        <field name="arch" type="xml">
+            <tree string="Builders">
+                <field name="name" />
+                <field name="country_id" />
+                <field name="puerto_id" />
+                <field name="tipo_astillero_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_constructor_action_menu" model="ir.actions.act_window">
+        <field name="name">Builders</field>
+        <field name="res_model">nave.constructor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_constructor_tree" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new builder
+            </p>  
+        </field>
+    </record>
+
+
+    <!-- Historial Construcciones -->
+    <record id="view_nave_historial_construccion_form" model="ir.ui.view">
+        <field name="name">nave.nave.construccion.form</field>
+        <field name="model">nave.nave.construccion</field>
+        <field name="arch" type="xml">
+            <form string="Construction History Record">
+                <sheet>
+                    <group name="construction" string="Construcción">
+                        <group>
+                            <field name="constructor_id" />
+                            <field name="tipo_construccion_id" />
+                        </group>
+                        <group>
+                            <field name="nave_id" />
+                            <field name="nave_name" />
+                            <field name="propietario_id" />
+                        </group>
+                    </group>
+                    <group name="fechas" string="Fechas">
+                        <field name="fecha_planos" />
+                        <field name="fecha_firma_contrato" attrs="{'invisible':[('tipo_construccion_id','!=',%(base_sigmap.tipo_construccion_constr)d)]}"/>
+                        <field name="fecha_puesta_quilla" attrs="{'invisible':[('tipo_construccion_id','!=',%(base_sigmap.tipo_construccion_constr)d)]}"/>
+                        <field name="fecha_construccion" />
+                    </group>
+                    <group name="blueprint" string="Planos">
+                        <field name="sello_planos_1920" widget="image" options="{'zoom': true}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_historial_construccion_tree" model="ir.ui.view">
+        <field name="name">nave.nave.construccion.tree</field>
+        <field name="model">nave.nave.construccion</field>
+        <field name="arch" type="xml">
+            <tree string="Construction History">
+                <field name="tipo_construccion_id" />
+                <field name="constructor_id" />
+                <field name="nave_id" />
+                <field name="fecha_construccion" />
+                <field name="fecha_planos" />
+                <field name="write_uid" />
+                <field name="active" widget="boolean_toggle" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_nave_historial_construccion_action_menu" model="ir.actions.act_window">
+        <field name="name">Construction History</field>
+        <field name="res_model">nave.nave.construccion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_historial_construccion_tree" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new building record for Ships
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Nave inherit : Historial Construcciones -->
+    <record id="view_nave_nave_form_inherit_constructions" model="ir.ui.view">
+        <field name="name">nave.nave.form.inherit.constructions</field>
+        <field name="model">nave.nave</field>
+        <field name="inherit_id" ref="nave.view_nave_nave_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='fechas']" position="inside">
+                <group name="construccion/constr" string="Construcción">
+                    <field name="fecha_constr_planos" string="Aprobación de planos"/>
+                    <field name="planos_constr" />
+                    <field name="fecha_constr_contrato" string="Firma de Contrato"/>
+                    <field name="fecha_constr_quilla" string="Puesta de Quilla"/>
+                    <field name="fecha_constr_construccion" string="Construcción"/>
+                </group>
+                <group name="construccion/modifi" string="Última Modificación">
+                    <field name="fecha_modif_planos" string="Aprobación de planos"/>
+                    <field name="planos_modif" />
+                    <field name="fecha_modif_construccion" string="Última Modificación"/>
+                </group>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Construction History">
+                    <field name="construccion_ids" nolabel="1" readonly="1">
+                        <tree string="Construction History" create="0" edit="0" delete="0">
+                            <field name="tipo_construccion_id" />
+                            <field name="constructor_id" />
+                            <field name="fecha_construccion" />
+                            <field name="fecha_planos" />
+                            <field name="write_uid" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>            
+        </field>
+    </record>
+</odoo>

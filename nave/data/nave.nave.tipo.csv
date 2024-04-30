@@ -1,0 +1,56 @@
+id,name,codigo,grupo_nave_id:id
+tipo_nave_BSV,Buque de servicio de Vigilancia Aduanero,BSV,nave.grupo_nave_gua
+tipo_nave_PME,Pesca Merluza,PME,nave.grupo_nave_pes
+tipo_nave_ANG,ANGUILERO,ANG,nave.grupo_nave_pes
+tipo_nave_DFL,Dique Flotante,DFL,nave.grupo_nave_carga
+tipo_nave_KAY,Kayak,KAY,nave.grupo_nave_pasaje
+tipo_nave_TRE,Table a Remo,TRE,nave.grupo_nave_pasaje
+tipo_nave_BAR,Gabarra,BAR,nave.grupo_nave_carga
+tipo_nave_BLK,Buque de Carga al Granel,BLK,nave.grupo_nave_carga
+tipo_nave_BOT,Bote Guardacosta,BOT,nave.grupo_nave_gua
+tipo_nave_BUQ,Buque Guardacosta,BUQ,nave.grupo_nave_gua
+tipo_nave_CAM,Camaronero,CAM,nave.grupo_nave_pes
+tipo_nave_CHA,Barcaza,CHA,nave.grupo_nave_carga
+tipo_nave_CIT,Buque Cisterna,CIT,nave.grupo_nave_tanque
+tipo_nave_CON,Portacontenedores,CON,nave.grupo_nave_carga
+tipo_nave_CRO,Crucero,CRO,nave.grupo_nave_pasaje
+tipo_nave_DIV,Barco empleado por los buzos,DIV,nave.grupo_nave_pasaje
+tipo_nave_DRG,Draga,DRG,nave.grupo_nave_carga
+tipo_nave_ECO,Buque escuela,ECO,nave.grupo_nave_pasaje
+tipo_nave_FBT,Transbordador,FBT,nave.grupo_nave_pasaje
+tipo_nave_FIB,Fibras (Canoa),FIB,nave.grupo_nave_pes
+tipo_nave_FPS,Patrullero rapido,FPS,nave.grupo_nave_pasaje
+tipo_nave_FRG,Buque Frigorifico,FRG,nave.grupo_nave_carga
+tipo_nave_GEN,Buque de Carga General,GEN,nave.grupo_nave_carga
+tipo_nave_GS,Buque de Guerra,GS,nave.grupo_nave_gua
+tipo_nave_HID,Hidrografica,HID,nave.grupo_nave_carga
+tipo_nave_LON,Long Line,LON,nave.grupo_nave_pes
+tipo_nave_NET,Buque de antipolucion,NET,nave.grupo_nave_carga
+tipo_nave_OIL,Petrolero,OIL,nave.grupo_nave_tanque
+tipo_nave_PA,"Buque de pasaje < 12 pasajeros",PA,nave.grupo_nave_pasaje
+tipo_nav_PA2,Buque de pasaje entre 12 y 35 pasajeros,PA2,nave.grupo_nave_pasaje
+tipo_nave_PA3,"Buque de pasaje > 35 pasajeros",PA3,nave.grupo_nave_pasaje
+tipo_nave_PAR,Pesca artesanal,PAR,nave.grupo_nave_pes
+tipo_nave_PER,Unidad de perforacion,PER,nave.grupo_nave_tanque
+tipo_nave_PH,Barco pesquero,PH,nave.grupo_nave_pes
+tipo_nave_PLE,Plataforma,PLE,nave.grupo_nave_tanque
+tipo_nave_PLT,Embarcacion de practicos,PLT,nave.grupo_nave_pasaje
+tipo_nave_PMX,Carga y pasaje,PMX,nave.grupo_nave_pasaje
+tipo_nave_PVI,Pesca Vivencial,PVI,nave.grupo_nave_pes
+tipo_nave_QUI,Quimiquero,QUI,nave.grupo_nave_tanque
+tipo_nave_SAR,Sardinero,SAR,nave.grupo_nave_pes
+tipo_nave_SLO,Balandra,SLO,nave.grupo_nave_pes
+tipo_nave_THO,Atunero,THO,nave.grupo_nave_pes
+tipo_nave_TPG,Buque Gasero,TPG,nave.grupo_nave_tanque
+tipo_nave_TPT,Transporte,TPT,nave.grupo_nave_carga
+tipo_nave_TUG,"Empujador/Remolcador",TUG,nave.grupo_nave_carga
+tipo_nave_TVH,Transportador de Vehiculos,TVH,nave.grupo_nave_carga
+tipo_nave_VDO,Lancha Guardacosta,VDO,nave.grupo_nave_gua
+tipo_nave_VLR,Velero,VLR,nave.grupo_nave_pasaje
+tipo_nave_YAT,Yate,YAT,nave.grupo_nave_pasaje
+tipo_nave_SUV,Supply Vessel,SUV,nave.grupo_nave_carga
+tipo_nave_BAY,Barcaza de Apoyo,BAY,nave.grupo_nave_carga
+tipo_nave_LDC,Lancha de Carga,LDC,nave.grupo_nave_carga
+tipo_nave_CME,Servicio de Carga de Embarcaciones Menores,CME,nave.grupo_nave_carga
+tipo_nave_CHL,Chalana,CHL,nave.grupo_nave_carga
+tipo_nave_HOS,Hospital,HOS,nave.grupo_nave_gua

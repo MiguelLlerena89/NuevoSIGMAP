@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Zona -->
+    <record id="view_nave_nave_zona_tree" model="ir.ui.view">
+        <field name="name">nave.nave.zona.tree</field>
+        <field name="model">nave.nave.zona</field>
+        <field name="arch" type="xml">
+            <tree string="Zonas Marítimas" editable="top">
+                <field name="name" />
+                <field name="active" widget="boolean_toggle" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_zona_action_menu" model="ir.actions.act_window">
+        <field name="name">Zonas</field>
+        <field name="res_model">nave.nave.zona</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{'delete':False, 'active_test': False}</field>
+        <field name="view_id" ref="view_nave_nave_zona_tree" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registre una nueva zona
+            </p>  
+        </field>
+    </record>
+
+</odoo>

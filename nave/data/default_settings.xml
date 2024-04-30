@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--record id="config_nave_reparto_requiere_ais_ids" model="ir.config_parameter">
+            <field name="key">nave.reparto_requiere_ais_ids</field>
+            <field name="value" eval="[
+                ref('usuarios.sigmap_reparto_DIRGIN'),
+            ]" />
+        </record-->
+    </data>
+</odoo>

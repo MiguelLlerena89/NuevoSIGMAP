@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_nave_nave_form" model="ir.ui.view">
+        <field name="name">nave.nave.form</field>
+        <field name="model">nave.nave</field>
+        <field name="arch" type="xml">
+            <form string="Nave">
+                <sheet>
+                    <group name="generales-1" string="General">
+                        <group>
+                            <field name="name"/>
+                            <field name="omi_number" />
+                            <field name="matricula" readonly="1"/>
+                            <field name="mmsi"/>
+                            <field name="senial_llamada"/>
+                        </group>
+                        <group>
+                            <field name="reparto_id" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            <field name="bandera_pais_id" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            <field name="nave_origen_id" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                        </group>
+                    </group>
+                    <br />
+                    <group name="generales-2">
+                        <group>
+                            <field name="nave_zona_ids" widget="many2many_tags" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            <field name="nave_zona_id" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            <field name="nave_tipo_id" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            <field name="nave_tipo_grupo_id" readonly="1" force_save="1"/>
+                            <field name="tipo_trafico_id" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            <field name="nave_estado_id" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                        </group>
+                        <group>
+                            <field name="nave_clase_matricula_id" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            <field name="nave_servicio_id" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            <field name="uso" />
+                        </group>
+                    </group>
+                    <group name="principales-1" string="Principal">
+                        <group>
+                            <field name="trb"/>
+                            <field name="eslora" />
+                            <field name="eslora_pp" />
+                        </group>
+                        <group>
+                            <field name="trn" />
+                            <field name="eslora_convenio" />
+                        </group>    
+                    </group>
+                    <br />
+                    <group name="principales-2">
+                        <group>
+                            <field name="manga" />
+                            <field name="puntal" />
+                            <field name="desplazamiento" />
+                            <field name="peso_muerto" />
+                        </group>
+                        <group>
+                            <field name="calado" />
+                            <field name="calado_aereo" />
+                            <field name="pasajeros" />
+                            <field name="tripulantes" />
+                        </group>
+                    </group>
+                    <group name="fechas" string="Fechas Construcción">
+
+                    </group>
+                    <group name='informacion_autorizada'>
+                        <group>
+                            <field name="lista_autorizada" />
+                            <field name="dms"/>
+                        </group>
+                        <group>
+                            <field name="active" widget="boolean_toggle" invisible="1"/>
+                        </group>
+                    </group>
+                    <group name="" string="">
+                        <group>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Ship Owners">
+                            <field name="nave_propietario_ids" nolabel="1" readonly="1">
+                                <tree string="Ship Owners" create="0" edit="0" delete="0">
+                                    <field name="propietario_id"/>
+                                    <field name="fecha_inicio"/>
+                                    <field name="fecha_fin"/>
+                                    <field name="tipo_fletamento_int_id"/>
+                                    <field name="active" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Ship Charterers">
+                            <field name="nave_armador_ids" nolabel="1" readonly="1">
+                                <tree string="Ship Charterers History" create="0" edit="0" delete="0" >
+                                    <field name="armador_id"/>
+                                    <field name="fecha_inicio"/>
+                                    <field name="fecha_fin"/>
+                                    <field name="active" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_nave_form_0_min" model="ir.ui.view">
+        <field name="name">nave.nave.form</field>
+        <field name="model">nave.nave</field>
+        <field name="arch" type="xml">
+            <form string="Nave">
+                <sheet>
+                    <group name="generales-1" string="General">
+                        <group>
+                            <field name="name"/>
+                            <field name="omi_number" />
+                        </group>
+                        <group>
+                            <field name="reparto_id"/>
+                            <field name="bandera_pais_id"/>
+                            <field name="nave_origen_id" />
+                        </group>
+                    </group>
+                    <br />
+                    <group name="generales-2">
+                        <group>
+                            <field name="nave_zona_ids" widget="many2many_tags" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            <field name="nave_zona_id" />
+                            <field name="nave_tipo_id" />
+                            <field name="nave_tipo_grupo_id" readonly="1" force_save="1"/>
+                            <field name="tipo_trafico_id" />
+                            <field name="nave_estado_id" />
+                        </group>
+                        <group>
+                            <field name="nave_clase_matricula_id" />
+                            <field name="nave_servicio_id" />
+                            <field name="uso" />
+                        </group>
+                    </group>
+                    <group name="principales-1" string="Principal">
+                        <group>
+                            <field name="trb"/>
+                            <field name="manga" />
+                        </group>
+                        <group>
+                            <field name="eslora" />
+                            <field name="puntal" />
+                        </group>    
+                    </group>
+                    <br />
+                    <group name="otros" string="Otros">
+                        <field name="aplica_descuento" widget="boolean_toggle"/>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_nave_form_2" model="ir.ui.view">
+        <field name="name">nave.nave.form</field>
+        <field name="model">nave.nave</field>
+        <field name="arch" type="xml">
+            <form string="Nave">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="senial_llamada"/>
+                            <field name="mmsi"/>
+                        </group>
+                        <group>
+                            <field name="matricula" readonly="1"/>
+                            <field name="omi_number"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="bandera_pais_id"/>
+                            <field name="nave_origen_id" />
+                        </group>
+                        <group>
+                            <field name="reparto_id"/>
+                            <!--field name="Fecha Registro" /-->
+                        </group>
+                    </group>
+                    <group name="Dimensiones" string="Dimensions">
+                        <group>
+                            <field name="eslora" />
+                            <field name="manga" />
+                            <field name="puntal" />
+                            <field name="calado" />
+                            <field name="calado_aereo" />
+                        </group>
+                        <group>
+                            <field name="desplazamiento" />
+                            <field name="peso_muerto" />
+                            <field name="trb"/>
+                            <field name="trn" />
+                        </group>
+                    </group>
+                    <group name="Operación" string="Operation">
+                        <group>
+                            <field name="nave_zona_ids" widget="many2many_tags" options="{'no_create':True, 'no_create_edit':True, 'no_quick_create':True, 'no_open':True}"/>
+                            <field name="nave_zona_id" />
+                            <field name="nave_tipo_propulsion_id" />
+                            <field name="tipo_trafico_id" />
+                            <field name="material_casco_id" />
+                        </group>
+                        <group>
+                            <field name="nave_clase_matricula_id" />
+                            <field name="nave_tipo_id" />
+                            <field name="nave_servicio_id" />
+                            <field name="uso" />
+                        </group>
+                    </group>
+                    <group name="avaluo" string="Avalúo y Clasificación">
+                        <group>
+                            <!--field name="puerto_registro_id"/-->
+                        </group>
+                        <group>
+                            <field name="avaluo" />
+                        </group>
+                    </group>
+                    <group name="informacion_autorizada" string="Información Autorizo">
+                        <group>
+                            <field name="lista_autorizada" />
+                            <field name="dms"/>
+                        </group>
+                        <group>
+                            <field name="active" widget="boolean_toggle" invisible="1"/>
+                        </group>
+                    </group>
+                    <separator string="Información Adicional"/>
+                    <notebook>
+                        <page string="Ship Owners">
+                            <field name="nave_propietario_ids" nolabel="1" readonly="1">
+                                <tree string="Ship Owners" create="0" edit="0" delete="0">
+                                    <field name="propietario_id"/>
+                                    <field name="fecha_inicio"/>
+                                    <field name="fecha_fin"/>
+                                    <field name="tipo_fletamento_int_id"/>
+                                    <field name="active" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Ship Charterers">
+                            <field name="nave_armador_ids" nolabel="1" readonly="1">
+                                <tree string="Ship Charterers History" create="0" edit="0" delete="0" >
+                                    <field name="armador_id"/>
+                                    <field name="fecha_inicio"/>
+                                    <field name="fecha_fin"/>
+                                    <field name="active" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_nave_tree" model="ir.ui.view">
+        <field name="name">nave.nave.tree</field>
+        <field name="model">nave.nave</field>
+        <field name="arch" type="xml">
+            <tree string="Ships">
+                <field name="name" />
+                <field name="bandera_pais_id" />
+                <field name="omi_number" />
+                <field name="matricula" />
+                <field name="reparto_id" />
+                <field name="nave_tipo_id" />
+                <field name="nave_servicio_id" />
+                <field name="lista_autorizada" />
+                <field name="active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="nave_nave_action_menu_0_min" model="ir.actions.act_window">
+        <field name="name">Registrar</field>
+        <field name="res_model">nave.nave</field>
+        <field name="context">{}</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_nave_nave_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_nave_nave_form_0_min')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea una nueva Nave
+            </p>
+        </field>
+    </record>
+
+    <record id="nave_nave_action_menu" model="ir.actions.act_window">
+        <field name="name">Registrar Datos Técnicos</field>
+        <field name="res_model">nave.nave</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_nave_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Agrega o modifica Datos Técnicos de una Nave
+            </p>
+        </field>
+    </record>
+
+    <record id="nave_nave_action_menu_only_read" model="ir.actions.act_window">
+        <field name="name">Consultar Naves</field>
+        <field name="res_model">nave.nave</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'create': False, 'edit': False}</field>
+        <field name="view_id" ref="view_nave_nave_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Consultas de naves
+            </p>
+        </field>
+    </record>
+    
+    <record id="nave_nave_action_menu_only_create" model="ir.actions.act_window">
+        <field name="name">Ships</field>
+        <field name="res_model">nave.nave</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'edit': False}</field>
+        <field name="view_id" ref="view_nave_nave_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear una nave
+            </p>
+        </field>
+    </record>
+
+    <record id="nave_nave_action_menu_only_edit" model="ir.actions.act_window">
+        <field name="name">Ships</field>
+        <field name="res_model">nave.nave</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'create': False}</field>
+        <field name="view_id" ref="view_nave_nave_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Actualizar naves
+            </p>
+        </field>
+    </record>
+
+    <!-- Registration form must me shorter -->
+    <!--record id="nave_nave_action_menu_create" model="ir.actions.act_window">
+        <field name="name">Ships</field>
+        <field name="res_model">nave.nave</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_nave_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new ship
+            </p>
+        </field>
+    </record-->
+
+</odoo>

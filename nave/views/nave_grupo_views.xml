@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_nave_nave_grupo_form" model="ir.ui.view">
+        <field name="name">nave.nave.grupo.form</field>
+        <field name="model">nave.nave.grupo</field>
+        <field name="arch" type="xml">
+            <form string="Ship Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                        </group>
+                        <group>
+                            <field name="codigo" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                        </group>
+                        <group>
+                            <field name="active" widget="boolean_toggle" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_nave_grupo_tree" model="ir.ui.view">
+        <field name="name">nave.nave.grupo.tree</field>
+        <field name="model">nave.nave.grupo</field>
+        <field name="arch" type="xml">
+            <tree string="Ship Group" editable="bottom">
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="active" widget="boolean_toggle" invisible="0"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_grupo_action_menu" model="ir.actions.act_window">
+        <field name="name">Ship Group</field>
+        <field name="res_model">nave.nave.grupo</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_nave_grupo_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Ship Group
+            </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem id="menu_sigmap_naves" name="Naves" sequence="12">
+        <menuitem id="menu_sigmap_naves_primary" name="Principal" sequence="1">
+            <menuitem id="menu_sigmap_primarys_naves" name="Naves" sequence="1">
+              <menuitem id="menu_sigmap_primarys_naves_nave_readonly"
+                name="Consultar"
+                action="nave_nave_action_menu_only_read"
+                sequence="1"/>
+              <menuitem id="menu_sigmap_primarys_naves_nave_0_min"
+                name="Registrar"
+                action="nave_nave_action_menu_0_min"
+                sequence="2"/>
+              <menuitem id="menu_sigmap_primarys_naves_update"
+                name="Datos Técnicos"
+                action="nave_nave_action_menu"
+                sequence="3"/>              
+            </menuitem>
+            <menuitem id="menu_sigmap_primarys_personas" name="Personas" sequence="2">
+                  <menuitem id="menu_sigmap_primarys_personas_armadores"
+                    name="Armadores"
+                    action="base_sigmap.sigmap_armador_action_menu"
+                    sequence="1"/>
+                  <menuitem id="menu_sigmap_primarys_personas_propietarios"
+                    name="Propietarios"
+                    action="base_sigmap.sigmap_propietario_action_menu"
+                    sequence="2"/>
+                  <menuitem id="menu_sigmap_primarys_personas_agencia"
+                    name="Agencias Navieras"
+                    action="base_sigmap.sigmap_agencia_naviera_action_menu"
+                    sequence="3"/>
+                  <!--menuitem id="menu_sigmap_naves_personas_res_partner_action"
+                      name="Partners"
+                      action="base_sigmap.base_res_partner_nave_action_menu"
+                      sequence="4"/-->
+            </menuitem>
+            <menuitem id="menu_sigmap_primarys_bitacoras" name="Histórico" sequence="3">
+                <menuitem id="menu_sigmap_primarys_bitacoras_pictures"
+                  name="Fotografías"
+                  action="nave_nave_foto_action_menu"
+                  sequence="1"/>
+                <menuitem id="menu_sigmap_primarys_bitacoras_matriculas"
+                  name="Matrículas"
+                  action="nave_nave_matricula_bitacora_action_menu"
+                  sequence="2"/>
+                <menuitem id="menu_sigmap_primarys_bitacoras_construcciones"
+                  name="Construcción"
+                  action="view_nave_historial_construccion_action_menu"
+                  sequence="3"/>
+                <menuitem id="menu_sigmap_primarys_bitacoras_electronics"
+                  name="Equipos Electrónicos"
+                  action="nave_nave_nave_dispositivo_action_menu"
+                  sequence="4"/>
+            </menuitem>
+        </menuitem>
+        <menuitem id="menu_naves_secondary" name="General" sequence="2">
+            <menuitem id="menu_naves_secondary_construction" name="Construcción" sequence="1">
+                <menuitem id="menu_naves_secondary_construction_constructor_action"
+                  name="Constructores"
+                  action="nave_constructor_action_menu"
+                  sequence="1"/>
+                <menuitem id="menu_naves_secondary_construction_puerto_action"
+                  name="Puertos"
+                  action="base_sigmap.sigmap_puerto_action_menu"
+                  sequence="2"/>
+                <menuitem id="menu_naves_secondary_construction_tipo_astillero_action"
+                  name="Tipos de Astilleros"
+                  action="base_sigmap.sigmap_tipo_astillero_action_menu"
+                  sequence="3"/>
+                <menuitem id="menu_naves_secondary_construction_tipo_construccion_action"
+                  name="Tipos de Construcción"
+                  action="base_sigmap.sigmap_tipo_construccion_action_menu"
+                  sequence="4"/>
+                <menuitem
+                  id="menu_naves_secondary_construction_sociedad_clasificadora_action"
+                  name="Sociedades Clasificadoras"
+                  action="base_sigmap.sigmap_sociedad_clasificadora_action_menu"
+                  sequence="5"/>
+            </menuitem>
+            <menuitem id="menu_naves_secondary_machines" name="Máquinas" sequence="2">
+                <!--menuitem id="menu_naves_secondary_machines_motor_action"
+                  name="Dispositivos"
+                  action="nave_nave_dispositivo_action_menu"
+                  sequence="1"/-->
+                <menuitem id="menu_naves_secondary_machines_modelo_action" name="Modelos y Marcas" sequence="2">
+                  <menuitem id="menu_naves_secondary_machines_modelo_modelo_action"
+                    name="Modelos"
+                    action="nave_nave_maquina_modelo_action_menu"
+                    sequence="1"/>
+                  <menuitem id="menu_naves_secondary_machines_modelo_marca_action"
+                    name="Marcas"
+                    action="nave_nave_maquina_marca_action_menu"
+                    sequence="2"/>
+                  <menuitem id="menu_naves_secondary_machines_modelo_tipo_action"
+                    name="Tipos"
+                    action="nave_nave_maquina_tipo_action_menu"
+                    sequence="3"/>
+                </menuitem>
+                <menuitem id="menu_naves_secondary_machines_fuel_action" name="Combustible" sequence="3">
+                  <menuitem id="menu_naves_secondary_machines_fuel_fuel_action"
+                    name="Tipos de Combustible"
+                    action="nave_maquina_combustible_action_menu"
+                    sequence="1"/>
+                  <menuitem id="menu_naves_secondary_machines_fuel_clase_action"
+                    name="Clases"
+                    action="nave_maquina_combustible_clase_action_menu"
+                    sequence="2"/>
+                </menuitem>    
+            </menuitem>
+            <menuitem id="menu_naves_secondary_electronic" name="Equipos Electrónicos" sequence="3">
+                <menuitem id="menu_naves_secondary_electronic_dispositivo_action"
+                  name="Dispositivos"
+                  action="nave_nave_dispositivo_action_menu"
+                  sequence="1"/>
+                <menuitem id="menu_naves_secondary_electronic_modelo_action"
+                  name="Modelos"
+                  action="nave_nave_dispositivo_modelo_action_menu"
+                  sequence="2"/>
+                <menuitem id="menu_naves_secondary_electronic_marca_action"
+                  name="Marcas"
+                  action="nave_nave_dispositivo_marca_action_menu"
+                  sequence="3"/>
+                <menuitem id="menu_naves_secondary_electronic_tipo_action"
+                  name="Tipos"
+                  action="nave_nave_dispositivo_tipo_action_menu"
+                  sequence="4"/>
+                <menuitem id="menu_naves_secondary_electronic_clase_action"
+                  name="Clases"
+                  action="nave_nave_dispositivo_clase_action_menu"
+                  sequence="5"/>
+            </menuitem>
+            <menuitem id="menu_naves_secondary_electronic_canales"
+              name="Canales y Frecuencias"
+              action="nave_canal_action_menu"
+              sequence="4"/>
+        </menuitem>
+        <menuitem id="menu_sigmap_naves_settings" name="Configuración" sequence="6">
+            <menuitem id="configuration"
+                name="General"
+                action="action_nave_config_settings"
+                sequence="1"/>
+            <menuitem id="menu_sigmap_naves_settings_rules" name="Reglas" sequence="2"/>
+            <menuitem id="menu_sigmap_naves_settings_inspecciones" name="Inspecciones" sequence="3"/>
+            <menuitem id="menu_sigmap_naves_settings_naves" name="Naves" sequence="4">
+              <menuitem id="menu_sigmap_settings_naves_clase_action"
+                name="Clases Matrícula"
+                action="nave_nave_clase_matricula_action_menu"
+                sequence="3"/>
+              <menuitem id="menu_sigmap_settings_naves_origen_action"
+                name="Orígenes"
+                action="nave_nave_origen_action_menu"
+                sequence="4"/>
+              <menuitem id="menu_sigmap_settings_naves_tipo_propulsion_action"
+                name="Tipos de Propulsión"
+                action="nave_tipo_propulsion_action_menu"
+                sequence="5"/>
+              <menuitem id="menu_sigmap_settings_naves_casco_material_action"
+                name="Materiales de Casco"
+                action="nave_casco_material_action_menu"
+                sequence="6"/>
+              <menuitem id="menu_sigmap_settings_naves_tipo_action"
+                name="Tipos de Nave"
+                action="nave_nave_tipo_action_menu"
+                sequence="7"/>
+              <menuitem id="menu_sigmap_settings_naves_servicio_action"
+                name="Servicios de Nave"
+                action="nave_nave_servicio_action_menu"
+                sequence="8"/>
+              <menuitem id="menu_sigmap_settings_naves_trafico_action"
+                name="Tipos de Tráfico"
+                action="base_sigmap.sigmap_tipo_trafico_action_menu"
+                sequence="9"/>
+              <menuitem id="menu_sigmap_settings_naves_zona_action"
+                name="Zonas Marítimas"
+                action="nave_nave_zona_action_menu"
+                sequence="10"/>
+              <menuitem id="menu_sigmap_settings_naves_grupo_action"
+                name="Grupos"
+                action="nave_nave_grupo_action_menu"
+                sequence="11"/>
+            </menuitem>        
+        </menuitem>
+        <!-- <menuitem id="menu_servicios_generados_nave" 
+                name="Servicios Generados de Nave" 
+                sequence="4">
+        </menuitem>                 -->
+    </menuitem>
+</odoo>

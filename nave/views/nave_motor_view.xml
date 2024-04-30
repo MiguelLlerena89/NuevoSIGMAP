@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Combustible Clase -->
+    <record id="view_nave_maquina_combustible_clase_tree" model="ir.ui.view">
+        <field name="name">nave.maquina.combustible.clase.tree</field>
+        <field name="model">nave.maquina.combustible.clase</field>
+        <field name="arch" type="xml">
+            <tree string="Clases de Combustible" editable="bottom">
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="active" widget="boolean_toggle" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_maquina_combustible_clase_action_menu" model="ir.actions.act_window">
+        <field name="name">Clases de Combustible</field>
+        <field name="res_model">nave.maquina.combustible.clase</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_maquina_combustible_clase_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registra una nueva clase de Combustible
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Combustible -->
+    <record id="view_nave_maquina_combustible_tree" model="ir.ui.view">
+        <field name="name">nave.maquina.combustible.tree</field>
+        <field name="model">nave.maquina.combustible</field>
+        <field name="arch" type="xml">
+            <tree string="Combustibles" editable="bottom">
+                <field name="name"/>
+                <field name="clase_id"/>
+                <field name="codigo_petroecuador"/>
+                <field name="active" widget="boolean_toggle" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_maquina_combustible_action_menu" model="ir.actions.act_window">
+        <field name="name">Combustibles</field>
+        <field name="res_model">nave.maquina.combustible</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_maquina_combustible_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registra un nuevo Combustible
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Máquina Tipo -->
+    <record id="view_nave_maquina_tipo_tree" model="ir.ui.view">
+        <field name="name">nave.maquina.modelo.tipo.tree</field>
+        <field name="model">nave.maquina.modelo.tipo</field>
+        <field name="arch" type="xml">
+            <tree string="Tipos de Máquinas" editable="bottom">
+                <field name="name"/>
+                <field name="descripcion"/>
+                <field name="codigo"/>
+                <field name="active" widget="boolean_toggle" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_maquina_tipo_action_menu" model="ir.actions.act_window">
+        <field name="name">Tipos de Máquinas</field>
+        <field name="res_model">nave.maquina.modelo.tipo</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_maquina_tipo_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registra un nuevo tipo de máquina
+            </p>
+        </field>
+    </record>
+
+    <!-- Máquina Marca -->
+    <record id="view_nave_maquina_marca_tree" model="ir.ui.view">
+        <field name="name">nave.maquina.modelo.marca.tree</field>
+        <field name="model">nave.maquina.modelo.marca</field>
+        <field name="arch" type="xml">
+            <tree string="Marcas de Máquinas" editable="bottom">
+                <field name="name"/>
+                <field name="full_name"/>
+                <field name="codigo_troquelado" />
+                <field name="codigo"/>
+                <field name="active" widget="boolean_toggle" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_maquina_marca_action_menu" model="ir.actions.act_window">
+        <field name="name">Marcas de Máquinas</field>
+        <field name="res_model">nave.maquina.modelo.marca</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_maquina_marca_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registra una nueva marca de máquinas
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Máquina Modelo -->
+    <record id="view_nave_maquina_modelo_form" model="ir.ui.view">
+        <field name="name">nave.maquina.modelo.form</field>
+        <field name="model">nave.maquina.modelo</field>
+        <field name="arch" type="xml">
+            <form string="Modelo - Máquinas">
+                <sheet>
+                    <group>
+
+                    </group>
+                    <group>
+                        <group>
+                            <field name="active" widget="boolean_toggle" />
+                            <field name="codigo" />
+                            <field name="name" />
+                            <field name="full_name" />
+                            <!--field name="tipo_id" />
+                            <field name="tipo_combustible_id" />
+                            <field name="clase_combustible_id" />
+                            <field name="categoria_motor" />
+                            <field name="tipo_borda" /-->
+                        </group>
+                        <group>
+                            <field name="marca_id" />
+                            <field name="maquinaria" />
+                            <field name="tipo_maquinaria" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_maquina_modelo_tree" model="ir.ui.view">
+        <field name="name">nave.maquina.modelo.tree</field>
+        <field name="model">nave.maquina.modelo</field>
+        <field name="arch" type="xml">
+            <tree string="Modelos para Máquinas">
+                <field name="name"/>
+                <field name="marca_id" />
+                <field name="maquinaria" />
+                <field name="tipo_maquinaria" />
+                <!--field name="tipo_id" />
+                <field name="tipo_combustible_id" />
+                <field name="clase_combustible_id" />
+                <field name="categoria_motor" />
+                <field name="tipo_borda" /-->
+                <field name="active" widget="boolean_toggle" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_maquina_modelo_action_menu" model="ir.actions.act_window">
+        <field name="name">Modelos para Máquinas</field>
+        <field name="res_model">nave.maquina.modelo</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_maquina_modelo_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Ship Electronic Model
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Máquina -->
+    <!--record id="view_nave_maquina_form" model="ir.ui.view">
+        <field name="name">nave.maquina.form</field>
+        <field name="model">nave.maquina</field>
+        <field name="arch" type="xml">
+            <form string="Máquina">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="active" widget="boolean_toggle" />
+                            <field name="codigo" />
+                            <field name="name" />
+                            <field name="full_name" />
+                            <field name="tipo_id" />
+                            <field name="tipo_combustible_id" />
+                            <field name="clase_combustible_id" />
+                            <field name="categoria_motor" />
+                            <field name="tipo_borda" />
+                        </group>
+                        <group>
+                            <field name="marca_id" />
+                            <field name="maquinaria" />
+                            <field name="tipo_maquinaria" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nave_maquina_tree" model="ir.ui.view">
+        <field name="name">nave.maquina.tree</field>
+        <field name="model">nave.maquina</field>
+        <field name="arch" type="xml">
+            <tree string="Máquinas">
+                <field name="numero_serie" />
+                <field name="maquinaria" />
+                <field name="tipo_maquinaria" />
+                <field name="clase" />
+                <field name="tipo_combustible_id" />
+                <field name="clase_combustible_id" />
+                <field name="marca_id" />
+
+                <field name="categoria_motor" />
+                <field name="tipo_borda" />
+                <field name="active" widget="boolean_toggle" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nave_nave_maquina_modelo_action_menu" model="ir.actions.act_window">
+        <field name="name">Modelos para Máquinas</field>
+        <field name="res_model">nave.maquina.modelo</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_nave_maquina_modelo_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Ship Electronic Model
+            </p>
+        </field>
+    </record-->
+
+</odoo>

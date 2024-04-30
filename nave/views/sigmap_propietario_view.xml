@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sigmap_propietario_form_nave_inherit" model="ir.ui.view">
+        <field name="name">sigmap.propietario.form.nave.inherit</field>
+        <field name="model">sigmap.propietario</field>
+        <field name="inherit_id" ref="base_sigmap.view_sigmap_propietario_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Ships History">
+                        <field name="nave_propietario_ids" nolabel="1">
+                            <tree string="Ships" editable='top' delete="0">
+                                <field name="nave_id"/>
+                                <field name="fecha_inicio"/>
+                                <field name="fecha_fin"/>
+                                <field name="tipo_fletamento_int_id"/>
+                                <field name="active" invisible="0"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

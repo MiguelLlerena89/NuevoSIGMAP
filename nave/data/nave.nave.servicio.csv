@@ -1,0 +1,27 @@
+id,name,codigo
+nave_servicio_LP,Lancha de Patrullera,LP
+nave_servicio_DI,Dique,DI
+nave_servicio_AN,Artefacto naval,AN
+nave_servicio_BG,Buque Gasero,BG
+nave_servicio_CG,Carga general,CG
+nave_servicio_CP,Carga y pasaje,CP
+nave_servicio_DP,Deportiva o de recreación,DP
+nave_servicio_DR,Draga,DR
+nave_servicio_GB,Gabarra,GB
+nave_servicio_GR,Granalero,GR
+nave_servicio_IN,De Investigacion,IN
+nave_servicio_LG,Guardacostas,LG
+nave_servicio_PJ,Pasaje,PJ
+nave_servicio_PQ,Pesca,PQ
+nave_servicio_RM,Remolcador,RM
+nave_servicio_TA,Tanquero de agua,TA
+nave_servicio_TH,Tanquero de hidrocarburos,TH
+nave_servicio_TM,Tanquero de carga mixta,TM
+nave_servicio_TQ,Tanquero quimiqueros,TQ
+nave_servicio_CA,Manejo de Carga,CA
+nave_servicio_RS,Reparación y Salvataje,RS
+nave_servicio_RC,Remolque y Carga,RC
+nave_servicio_BH,Barcaza de hidrocarburos,BH
+nave_servicio_HO,Hospital,HO
+nave_servicio_BS,Bote Salvavida,BS
+nave_servicio_CL,"Carga General y Liquida",CL

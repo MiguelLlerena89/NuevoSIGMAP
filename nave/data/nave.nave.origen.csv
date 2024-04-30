@@ -1,0 +1,9 @@
+id,name,codigo
+nave_origen_cons,Construccion,CON
+nave_origen_impo,Importacion,IMP
+nave_origen_flet,Fletamento,FLE
+nave_origen_flet_casc,Fletamento Casco Desnudo,FCD
+nave_origen_flet_expo,Fletamento por Exploracion,FLX
+nave_origen_contr_aso,Contrato Asociacion,ASO
+nave_origen_int_temp,Internacion Temporal,ITT
+nave_origen_int,Internacional,IAA

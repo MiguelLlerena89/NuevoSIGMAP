@@ -1,0 +1,2443 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nave
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0-20230925\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-13 23:50+0000\n"
+"PO-Revision-Date: 2023-12-13 23:50+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_constructor_form
+msgid "<span class=\"oe_read_only\"> - </span>"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__message_needaction
+#: model:ir.model.fields,field_description:nave.field_nave_nave__message_needaction
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__message_needaction
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__message_needaction
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__message_needaction
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__message_needaction
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__message_needaction
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__message_needaction
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__message_needaction
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__message_needaction
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__message_needaction
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: code:addons/nave/models/nave_casco_material.py:0
+#: code:addons/nave/models/nave_clase_matricula.py:0
+#: code:addons/nave/models/nave_constructor.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_estado.py:0
+#: code:addons/nave/models/nave_foto.py:0
+#: code:addons/nave/models/nave_foto.py:0
+#: code:addons/nave/models/nave_grupo.py:0
+#: code:addons/nave/models/nave_matricula_bitacora.py:0
+#: code:addons/nave/models/nave_origen.py:0
+#: code:addons/nave/models/nave_owner.py:0
+#: code:addons/nave/models/nave_servicio.py:0
+#: code:addons/nave/models/nave_tipo.py:0
+#: code:addons/nave/models/nave_tipo_propulsion.py:0
+#: code:addons/nave/models/nave_zona.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_canal__active
+#: model:ir.model.fields,field_description:nave.field_nave_canal_banda__active
+#: model:ir.model.fields,field_description:nave.field_nave_casco_material__active
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__active
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__active
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_marca__active
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo__active
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo_clase__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto_tipo__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__active
+#: model:ir.model.fields,field_description:nave.field_nave_nave_zona__active
+#: model:ir.model.fields,field_description:nave.field_nave_tipo_propulsion__active
+#, python-format
+msgid "Active?"
+msgstr "Activo?"
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__activity_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave__activity_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__activity_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__activity_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__activity_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__activity_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__activity_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__activity_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__activity_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__activity_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__activity_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__activity_exception_decoration
+#: model:ir.model.fields,field_description:nave.field_nave_nave__activity_exception_decoration
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__activity_exception_decoration
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__activity_exception_decoration
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__activity_exception_decoration
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__activity_exception_decoration
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__activity_exception_decoration
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__activity_exception_decoration
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__activity_exception_decoration
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__activity_exception_decoration
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__activity_exception_decoration
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__activity_state
+#: model:ir.model.fields,field_description:nave.field_nave_nave__activity_state
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__activity_state
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__activity_state
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__activity_state
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__activity_state
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__activity_state
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__activity_state
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__activity_state
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__activity_state
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__activity_state
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__activity_type_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave__activity_type_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__activity_type_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__activity_type_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__activity_type_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__activity_type_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__activity_type_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__activity_type_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__activity_type_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__activity_type_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__activity_type_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_nave_dispositivo_action_menu
+msgid "Assign Ship Electronics to Ships if Licence is available and active"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__message_attachment_count
+#: model:ir.model.fields,field_description:nave.field_nave_nave__message_attachment_count
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__message_attachment_count
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__message_attachment_count
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__message_attachment_count
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__message_attachment_count
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__message_attachment_count
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__message_attachment_count
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__message_attachment_count
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__message_attachment_count
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__message_attachment_count
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__avaluo
+#, python-format
+msgid "Avalúo"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_canal__banda_id
+#: model:ir.model.fields,field_description:nave.field_nave_canal__banda_tipo
+#, python-format
+msgid "Banda"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__bandera_pais_id
+#, python-format
+msgid "Bandera País"
+msgstr "Bandera"
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_historial_construccion_form
+msgid "Blueprint"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__fecha_planos
+#, python-format
+msgid "Blueprint Approval Date"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__sello_planos_1920
+#, python-format
+msgid "Blueprint Registration Number"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__marca_id
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__marca_id
+#, python-format
+msgid "Brand"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_electronic_marca_action
+msgid "Brands"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model,name:nave.model_nave_constructor
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__constructor_id
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_constructor_form
+#, python-format
+msgid "Builder"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_constructor_action_menu
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_construction_constructor_action
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_constructor_tree
+msgid "Builders"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__tipo_construccion_id
+#, python-format
+msgid "Building Type"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_construction_tipo_construccion_action
+msgid "Building Types"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__construccion_ids
+#, python-format
+msgid "Built History"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__calado
+#, python-format
+msgid "Calado (mts)"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__calado_aereo
+#, python-format
+msgid "Calado Aéreo (mts)"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_frecuencia__canal_id
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_canal_form
+#, python-format
+msgid "Canal"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_canal_action_menu
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_canal_tree
+msgid "Canales"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_electronic_canales
+msgid "Canales y Frecuencias"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_propietario.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__tipo_fletamento_int_id
+#, python-format
+msgid "Charter Type"
+msgstr "Tipo Fletamento"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_propietario.py:0
+#: model:ir.model.fields,help:nave.field_nave_nave_propietario__tipo_fletamento_int_id
+#, python-format
+msgid "Charter Type for foreign ships"
+msgstr "Tipo Fletamento - naves extranjeras"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_armador.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__nave_armador_ids
+#, python-format
+msgid "Charters"
+msgstr "Armadores"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__nave_clase_matricula_id
+#, python-format
+msgid "Clase Matrícula"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__clase_id
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__clase_id
+#, python-format
+msgid "Class"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_electronic_clase_action
+msgid "Classes"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_clase_matricula.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_grupo.py:0
+#: code:addons/nave/models/nave_origen.py:0
+#: code:addons/nave/models/nave_servicio.py:0
+#: code:addons/nave/models/nave_tipo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__codigo
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__codigo
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_marca__codigo
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo__codigo
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo_clase__codigo
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__codigo
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__codigo
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__codigo
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__codigo
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__codigo
+#, python-format
+msgid "Code"
+msgstr "Código"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_matricula_bitacora.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__company_id
+#, python-format
+msgid "Company"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_construction
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_historial_construccion_form
+msgid "Construction"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__fecha_construccion
+#, python-format
+msgid "Construction Date"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.view_nave_historial_construccion_action_menu
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_historial_construccion_tree
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_form_inherit_constructions
+msgid "Construction History"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_historial_construccion_form
+msgid "Construction History Record"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_bitacoras_construcciones
+msgid "Constructions"
+msgstr "Construcciones"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__country_id
+#, python-format
+msgid "Country"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_foto_action_menu
+msgid "Create a new Picture"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_foto_tipo_action_menu
+msgid "Create a new Picture Type"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_dispositivo_action_menu
+msgid "Create a new Ship Electronic"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_dispositivo_marca_action_menu
+msgid "Create a new Ship Electronic Brand"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_dispositivo_clase_action_menu
+msgid "Create a new Ship Electronic Class"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_dispositivo_modelo_action_menu
+msgid "Create a new Ship Electronic Model"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_dispositivo_tipo_action_menu
+msgid "Create a new Ship Electronic Type"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_grupo_action_menu
+msgid "Create a new Ship Group"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_origen_action_menu
+msgid "Create a new Ship Origin"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_clase_matricula_action_menu
+msgid "Create a new Ship Registration Class"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_matricula_bitacora_action_menu
+msgid "Create a new Ship Registration Log"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_servicio_action_menu
+msgid "Create a new Ship Service"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_tipo_action_menu
+msgid "Create a new Ship Type"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_constructor_action_menu
+msgid "Create a new builder"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.view_nave_historial_construccion_action_menu
+msgid "Create a new building record for Ships"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_action_menu
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_action_menu_only_read
+msgid "Create a new ship"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_canal__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_canal_banda__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_casco_material__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_marca__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo_clase__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_frecuencia__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto_tipo__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_zona__create_uid
+#: model:ir.model.fields,field_description:nave.field_nave_tipo_propulsion__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_canal__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_canal_banda__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_casco_material__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_marca__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo_clase__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_frecuencia__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto_tipo__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_zona__create_date
+#: model:ir.model.fields,field_description:nave.field_nave_tipo_propulsion__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_estado.py:0
+#, python-format
+msgid "Código Externo"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_casco_material.py:0
+#: code:addons/nave/models/nave_clase_matricula.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_estado.py:0
+#: code:addons/nave/models/nave_origen.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_casco_material__name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo__descripcion
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__name
+#, python-format
+msgid "Description"
+msgstr "Descripción"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__desplazamiento
+#, python-format
+msgid "Desplazamiento (t)"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_form
+msgid "Dimensions"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_canal__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_canal_banda__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_casco_material__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_marca__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo_clase__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_frecuencia__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto_tipo__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_zona__display_name
+#: model:ir.model.fields,field_description:nave.field_nave_tipo_propulsion__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__display_type
+msgid "Display Type"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave__dms
+msgid "Dispositivo DMS"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__dispositivo_ids
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_electronic_dispositivo_action
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_form_inherit_electronics
+#, python-format
+msgid "Electronics"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_nave_dispositivo_action_menu
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_bitacoras_electronics
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_dispositivo_tree
+msgid "Electronics in Ships"
+msgstr "Servicios Movíl Marítimo"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__dispositivo_valido
+#, python-format
+msgid "Enabled?"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_owner.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__fecha_fin
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__fecha_fin
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__fecha_fin
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__fecha_fin
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__fecha_fin
+#, python-format
+msgid "End Date"
+msgstr "Fecha fin"
+
+#. module: nave
+#: model:ir.model.fields.selection,name:nave.selection__nave_nave__lista_autorizada__2
+msgid "Error"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__eslora
+#, python-format
+msgid "Eslora (mts)"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__fecha_tramite
+msgid "Fecha Trámite"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__message_follower_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave__message_follower_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__message_follower_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__message_follower_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__message_follower_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__message_follower_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__message_follower_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__message_follower_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__message_follower_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__message_follower_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__message_follower_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__message_partner_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave__message_partner_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__message_partner_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__message_partner_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__message_partner_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__message_partner_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__message_partner_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__message_partner_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__message_partner_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__message_partner_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__message_partner_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_constructor__activity_type_icon
+#: model:ir.model.fields,help:nave.field_nave_nave__activity_type_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_agencia_naviera__activity_type_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_armador__activity_type_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_clase_matricula__activity_type_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_grupo__activity_type_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_matricula_bitacora__activity_type_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_origen__activity_type_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_owner__activity_type_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_propietario__activity_type_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_servicio__activity_type_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_tipo__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_frecuencia__frecuencia
+#, python-format
+msgid "Frecuencia"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_canal_form
+msgid "Frecuencias"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__full_name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_marca__full_name
+#, python-format
+msgid "Full Name"
+msgstr ""
+
+#. module: nave
+#: model:res.groups,name:nave.group_ship_registration_manager
+msgid "Generating Ship Registration Manager"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_settings_naves_grupo_action
+msgid "Groups"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_tipo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__grupo_nave_id
+#, python-format
+msgid "Grupo Nave"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__has_message
+#: model:ir.model.fields,field_description:nave.field_nave_nave__has_message
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__has_message
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__has_message
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__has_message
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__has_message
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__has_message
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__has_message
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__has_message
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__has_message
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__has_message
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_bitacoras
+msgid "History"
+msgstr "Históricos"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_casco_material.py:0
+#: model:ir.model,name:nave.model_nave_casco_material
+#, python-format
+msgid "Hull Material"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_settings_naves_casco_material_action
+msgid "Hull Materials"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_canal__id
+#: model:ir.model.fields,field_description:nave.field_nave_canal_banda__id
+#: model:ir.model.fields,field_description:nave.field_nave_casco_material__id
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__id
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__id
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__id
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_marca__id
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo__id
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo_clase__id
+#: model:ir.model.fields,field_description:nave.field_nave_frecuencia__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto_tipo__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_zona__id
+#: model:ir.model.fields,field_description:nave.field_nave_tipo_propulsion__id
+msgid "ID"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__activity_exception_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave__activity_exception_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__activity_exception_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__activity_exception_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__activity_exception_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__activity_exception_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__activity_exception_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__activity_exception_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__activity_exception_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__activity_exception_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__activity_exception_icon
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_constructor__activity_exception_icon
+#: model:ir.model.fields,help:nave.field_nave_nave__activity_exception_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_agencia_naviera__activity_exception_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_armador__activity_exception_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_clase_matricula__activity_exception_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_grupo__activity_exception_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_matricula_bitacora__activity_exception_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_origen__activity_exception_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_owner__activity_exception_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_propietario__activity_exception_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_servicio__activity_exception_icon
+#: model:ir.model.fields,help:nave.field_nave_nave_tipo__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_constructor_form
+msgid "Identification Number"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_constructor__partner_vat
+msgid "Identification Number for selected type"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__partner_identification_type_id
+#, python-format
+msgid "Identification Type"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_constructor__message_needaction
+#: model:ir.model.fields,help:nave.field_nave_nave__message_needaction
+#: model:ir.model.fields,help:nave.field_nave_nave_agencia_naviera__message_needaction
+#: model:ir.model.fields,help:nave.field_nave_nave_armador__message_needaction
+#: model:ir.model.fields,help:nave.field_nave_nave_clase_matricula__message_needaction
+#: model:ir.model.fields,help:nave.field_nave_nave_grupo__message_needaction
+#: model:ir.model.fields,help:nave.field_nave_nave_matricula_bitacora__message_needaction
+#: model:ir.model.fields,help:nave.field_nave_nave_origen__message_needaction
+#: model:ir.model.fields,help:nave.field_nave_nave_owner__message_needaction
+#: model:ir.model.fields,help:nave.field_nave_nave_propietario__message_needaction
+#: model:ir.model.fields,help:nave.field_nave_nave_servicio__message_needaction
+#: model:ir.model.fields,help:nave.field_nave_nave_tipo__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_constructor__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_constructor__message_has_sms_error
+#: model:ir.model.fields,help:nave.field_nave_nave__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_nave__message_has_sms_error
+#: model:ir.model.fields,help:nave.field_nave_nave_agencia_naviera__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_nave_agencia_naviera__message_has_sms_error
+#: model:ir.model.fields,help:nave.field_nave_nave_armador__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_nave_armador__message_has_sms_error
+#: model:ir.model.fields,help:nave.field_nave_nave_clase_matricula__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_nave_clase_matricula__message_has_sms_error
+#: model:ir.model.fields,help:nave.field_nave_nave_grupo__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_nave_grupo__message_has_sms_error
+#: model:ir.model.fields,help:nave.field_nave_nave_matricula_bitacora__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_nave_matricula_bitacora__message_has_sms_error
+#: model:ir.model.fields,help:nave.field_nave_nave_origen__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_nave_origen__message_has_sms_error
+#: model:ir.model.fields,help:nave.field_nave_nave_owner__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_nave_owner__message_has_sms_error
+#: model:ir.model.fields,help:nave.field_nave_nave_propietario__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_nave_propietario__message_has_sms_error
+#: model:ir.model.fields,help:nave.field_nave_nave_servicio__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_nave_servicio__message_has_sms_error
+#: model:ir.model.fields,help:nave.field_nave_nave_tipo__message_has_error
+#: model:ir.model.fields,help:nave.field_nave_nave_tipo__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_foto_form
+msgid "Info"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__message_is_follower
+#: model:ir.model.fields,field_description:nave.field_nave_nave__message_is_follower
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__message_is_follower
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__message_is_follower
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__message_is_follower
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__message_is_follower
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__message_is_follower
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__message_is_follower
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__message_is_follower
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__message_is_follower
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__message_is_follower
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_canal____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_canal_banda____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_casco_material____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_constructor____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_marca____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo_clase____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_frecuencia____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto_tipo____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_nave_zona____last_update
+#: model:ir.model.fields,field_description:nave.field_nave_tipo_propulsion____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_canal__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_canal_banda__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_casco_material__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_marca__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo_clase__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_frecuencia__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto_tipo__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_nave_zona__write_uid
+#: model:ir.model.fields,field_description:nave.field_nave_tipo_propulsion__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_canal__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_canal_banda__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_casco_material__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_marca__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo_clase__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_frecuencia__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto_tipo__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_nave_zona__write_date
+#: model:ir.model.fields,field_description:nave.field_nave_tipo_propulsion__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__licencia
+#, python-format
+msgid "Licencia"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave__lista_autorizada
+msgid "Lista Autorizada"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields.selection,name:nave.selection__nave_frecuencia__unidad__mhz
+msgid "MHz"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__mmsi
+#, python-format
+msgid "MMSI"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_primary
+msgid "Main"
+msgstr "Principal"
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__message_main_attachment_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave__message_main_attachment_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__message_main_attachment_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__message_main_attachment_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__message_main_attachment_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__message_main_attachment_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__message_main_attachment_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__message_main_attachment_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__message_main_attachment_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__message_main_attachment_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__message_main_attachment_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__manga
+#, python-format
+msgid "Manga (mts)"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__marca_name
+msgid "Marca"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave__material_casco_id
+msgid "Material de Casco"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_casco_material_tree
+msgid "Materiales para Cascos"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_casco_material_action_menu
+msgid "Materiales para Cascos de Naves"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__matricula
+#, python-format
+msgid "Matrícula"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_bitacoras_matriculas_action
+msgid "Matrículas"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__message_has_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave__message_has_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__message_has_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__message_has_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__message_has_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__message_has_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__message_has_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__message_has_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__message_has_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__message_has_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__message_has_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave__message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__modelo_id
+#, python-format
+msgid "Model"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__modelo_name
+msgid "Modelo"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_electronic_modelo_action
+msgid "Models"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields.selection,name:nave.selection__nave_nave__dms__sin
+#, python-format
+msgid "NO TIENE"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: code:addons/nave/models/nave_constructor.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_foto.py:0
+#: code:addons/nave/models/nave_grupo.py:0
+#: code:addons/nave/models/nave_servicio.py:0
+#: code:addons/nave/models/nave_tipo.py:0
+#: code:addons/nave/models/nave_tipo_propulsion.py:0
+#: code:addons/nave/models/nave_zona.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_canal__name
+#: model:ir.model.fields,field_description:nave.field_nave_canal_banda__name
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_marca__name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo__name
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo_clase__name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto_tipo__name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__name
+#: model:ir.model.fields,field_description:nave.field_nave_nave_zona__name
+#: model:ir.model.fields,field_description:nave.field_nave_tipo_propulsion__name
+#, python-format
+msgid "Name"
+msgstr "Nombre"
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_form
+msgid "Nave"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave__activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__activity_date_deadline
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__activity_summary
+#: model:ir.model.fields,field_description:nave.field_nave_nave__activity_summary
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__activity_summary
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__activity_summary
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__activity_summary
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__activity_summary
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__activity_summary
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__activity_summary
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__activity_summary
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__activity_summary
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__activity_summary
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__activity_type_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave__activity_type_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__activity_type_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__activity_type_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__activity_type_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__activity_type_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__activity_type_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__activity_type_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__activity_type_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__activity_type_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__activity_type_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields.selection,name:nave.selection__nave_nave__lista_autorizada__1
+msgid "No cumple"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__name
+#, python-format
+msgid "Nombre"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_constructor_form
+msgid "Number"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__message_needaction_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave__message_needaction_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__message_needaction_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__message_needaction_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__message_needaction_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__message_needaction_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__message_needaction_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__message_needaction_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__message_needaction_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__message_needaction_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__message_needaction_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__message_has_error_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave__message_has_error_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__message_has_error_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__message_has_error_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__message_has_error_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__message_has_error_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__message_has_error_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__message_has_error_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__message_has_error_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__message_has_error_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__message_has_error_counter
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_constructor__message_needaction_counter
+#: model:ir.model.fields,help:nave.field_nave_nave__message_needaction_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_agencia_naviera__message_needaction_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_armador__message_needaction_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_clase_matricula__message_needaction_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_grupo__message_needaction_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_matricula_bitacora__message_needaction_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_origen__message_needaction_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_owner__message_needaction_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_propietario__message_needaction_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_servicio__message_needaction_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_tipo__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_constructor__message_has_error_counter
+#: model:ir.model.fields,help:nave.field_nave_nave__message_has_error_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_agencia_naviera__message_has_error_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_armador__message_has_error_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_clase_matricula__message_has_error_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_grupo__message_has_error_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_matricula_bitacora__message_has_error_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_origen__message_has_error_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_owner__message_has_error_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_propietario__message_has_error_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_servicio__message_has_error_counter
+#: model:ir.model.fields,help:nave.field_nave_nave_tipo__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__omi_number
+#, python-format
+msgid "Número OMI"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__numero_serie
+msgid "Número de Serie"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields.selection,name:nave.selection__nave_nave__dms__ope
+#, python-format
+msgid "OPERATIVO"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields.selection,name:nave.selection__nave_nave__dms__rep
+#, python-format
+msgid "OPERATIVO Y REPORTANDO"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_form
+msgid "Operation"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__order_id
+msgid "Order Reference"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__nave_origen_id
+#, python-format
+msgid "Origen"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_estado.py:0
+#: code:addons/nave/models/nave_origen.py:0
+#: model:ir.model,name:nave.model_nave_nave_origen
+#, python-format
+msgid "Origin"
+msgstr "Origen"
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_naves_secondary
+msgid "Other"
+msgstr "General"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_propietario.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__nave_propietario_ids
+#, python-format
+msgid "Owners"
+msgstr "Propietarios"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__partner_id
+#, python-format
+msgid "Partner"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_personas
+msgid "Partners"
+msgstr "Personas"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__peso_muerto
+#, python-format
+msgid "Peso Muerto (t)"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_foto.py:0
+#: code:addons/nave/models/nave_foto.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__foto_128
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__foto_1920
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_foto_form
+#, python-format
+msgid "Picture"
+msgstr "Fotos"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_foto.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__fecha_foto
+#, python-format
+msgid "Picture Date"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_foto_tipo_tree
+msgid "Picture Type"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_foto.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__foto_ids
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_bitacoras_pictures
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_form_inherit_pictures
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_foto_tree
+#, python-format
+msgid "Pictures"
+msgstr "Fotos"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__puerto_id
+#, python-format
+msgid "Port"
+msgstr "Puerto"
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_construction_puerto_action
+msgid "Ports"
+msgstr "Puertos"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_canal__precio
+#, python-format
+msgid "Price"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields.selection,name:nave.selection__nave_nave__uso__pri
+#, python-format
+msgid "Private"
+msgstr "Privado"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_tipo_propulsion.py:0
+#: model:ir.model,name:nave.model_nave_tipo_propulsion
+#, python-format
+msgid "Propulsion Type"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_settings_naves_tipo_propulsion_action
+msgid "Propulsion Types"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields.selection,name:nave.selection__nave_nave__uso__pub
+#, python-format
+msgid "Public"
+msgstr "Público"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__reparto_id
+#, python-format
+msgid "Puerto de Registro"
+msgstr "Reparto"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__puntal
+#, python-format
+msgid "Puntal (mts)"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_matricula_bitacora.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__matricula
+#, python-format
+msgid "Registration"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_clase_matricula.py:0
+#: model:ir.model,name:nave.model_nave_nave_clase_matricula
+#, python-format
+msgid "Registration Class"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_casco_material_action_menu
+msgid "Registre un nuevo Material para casco"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_canal_action_menu
+msgid "Registre un nuevo canal"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_tipo_propulsion_action_menu
+msgid "Registre un nuevo tipo de propulsión"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.actions.act_window,help:nave.nave_nave_zona_action_menu
+msgid "Registre una nueva zona"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_agencia.py:0
+#: code:addons/nave/models/nave_armador.py:0
+#: code:addons/nave/models/nave_propietario.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__nave_owner_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__nave_owner_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__nave_owner_id
+#, python-format
+msgid "Related Owner Registry"
+msgstr "Propietario"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_armador.py:0
+#: model:ir.model,name:nave.model_nave_nave_armador
+#, python-format
+msgid "Relation between the ship and the Ship Charterer"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_propietario.py:0
+#: model:ir.model,name:nave.model_nave_nave_propietario
+#, python-format
+msgid "Relation between the ship and the Ship Owner"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_agencia.py:0
+#: model:ir.model,name:nave.model_nave_nave_agencia_naviera
+#, python-format
+msgid "Relation between the ship and the Shipping Agency"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__activity_user_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave__activity_user_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__activity_user_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__activity_user_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__activity_user_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__activity_user_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__activity_user_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__activity_user_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__activity_user_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__activity_user_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__activity_user_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_settings_rules
+msgid "Rules"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields.selection,name:nave.selection__nave_frecuencia__tipo__rx
+msgid "Rx"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__message_has_sms_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave__message_has_sms_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__message_has_sms_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__message_has_sms_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__message_has_sms_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__message_has_sms_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__message_has_sms_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__message_has_sms_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__message_has_sms_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__message_has_sms_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__message_has_sms_error
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields.selection,name:nave.selection__nave_nave_construccion__display_type__line_section
+msgid "Section"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__numero_serie
+#, python-format
+msgid "Serial Number"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__nave_servicio_id
+#, python-format
+msgid "Servicio"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_settings
+msgid "Settings"
+msgstr "Configuración"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__senial_llamada
+#, python-format
+msgid "Señal de Llamada"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: code:addons/nave/models/nave_constructor.py:0
+#: code:addons/nave/models/nave_foto.py:0
+#: code:addons/nave/models/nave_matricula_bitacora.py:0
+#: code:addons/nave/models/nave_owner.py:0
+#: model:ir.model,name:nave.model_nave_nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__nave_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__nave_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_construccion__nave_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__nave_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__nave_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__nave_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__nave_id
+#, python-format
+msgid "Ship"
+msgstr "Nave"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model,name:nave.model_nave_nave_construccion
+#, python-format
+msgid "Ship Building"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_armador.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__armador_id
+#, python-format
+msgid "Ship Charterer"
+msgstr "Armador"
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_personas_armadores_action
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_form
+msgid "Ship Charterers"
+msgstr "Armadores"
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_form
+msgid "Ship Charterers History"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model,name:nave.model_nave_dispositivo
+#, python-format
+msgid "Ship Electronic"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_dispositivo_marca_action_menu
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_dispositivo_marca_tree
+msgid "Ship Electronic - Brands"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_dispositivo_clase_action_menu
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_dispositivo_modelo_tipo_clase_tree
+msgid "Ship Electronic - Classes"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_dispositivo_modelo_form
+msgid "Ship Electronic - Model"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_dispositivo_modelo_action_menu
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_dispositivo_modelo_tree
+msgid "Ship Electronic - Models"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_dispositivo_tipo_action_menu
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_dispositivo_tipo_tree
+msgid "Ship Electronic - Types"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#, python-format
+msgid ""
+"Ship Electronic is assigned. Search filtering by serial_number and close "
+"that assignation first!"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_dispositivo_action_menu
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_electronic
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_dispositivo_tree
+msgid "Ship Electronics"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_grupo.py:0
+#: model:ir.actions.act_window,name:nave.nave_nave_grupo_action_menu
+#: model:ir.model,name:nave.model_nave_nave_grupo
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_grupo_tree
+#, python-format
+msgid "Ship Group"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_origen_form
+msgid "Ship Origin"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_origen_action_menu
+#: model:ir.ui.menu,name:nave.menu_sigmap_settings_naves_origen_action
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_origen_tree
+msgid "Ship Origins"
+msgstr "Orígenes para Naves"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_owner.py:0
+#: code:addons/nave/models/nave_propietario.py:0
+#: model:ir.model,name:nave.model_nave_nave_owner
+#: model:ir.model,name:nave.model_sigmap_propietario
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__propietario_id
+#, python-format
+msgid "Ship Owner"
+msgstr "Propietario"
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_personas_propietarios_action
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_form
+msgid "Ship Owners"
+msgstr "Propietario"
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_form
+msgid "Ship Owners History"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_foto.py:0
+#: model:ir.model,name:nave.model_nave_nave_foto
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_foto_form
+#, python-format
+msgid "Ship Picture"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_foto_action_menu
+msgid "Ship Pictures"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_foto_tipo_action_menu
+msgid "Ship Pictures Types"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_matricula_bitacora_form
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_matricula_bitacora_tree
+msgid "Ship Registration"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_clase_matricula_form
+msgid "Ship Registration Class"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_clase_matricula_action_menu
+#: model:ir.ui.menu,name:nave.menu_sigmap_settings_naves_clase_action
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_clase_matricula_tree
+msgid "Ship Registration Classes"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_matricula_bitacora.py:0
+#: model:ir.actions.act_window,name:nave.nave_nave_matricula_bitacora_action_menu
+#: model:ir.model,name:nave.model_nave_nave_matricula_bitacora
+#, python-format
+msgid "Ship Registration Log"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_servicio.py:0
+#: model:ir.model,name:nave.model_nave_nave_servicio
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_servicio_form
+#, python-format
+msgid "Ship Service"
+msgstr "Servicio"
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_servicio_action_menu
+#: model:ir.ui.menu,name:nave.menu_sigmap_settings_naves_servicio_action
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_servicio_tree
+msgid "Ship Services"
+msgstr ""
+
+#. module: nave
+#: model:ir.model,name:nave.model_sigmap_armador
+msgid "Ship Sharterer"
+msgstr "Armador"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_tipo.py:0
+#: model:ir.model,name:nave.model_nave_nave_tipo
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_grupo_form
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_tipo_form
+#, python-format
+msgid "Ship Type"
+msgstr "Tipo de Nave"
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_tipo_action_menu
+#: model:ir.ui.menu,name:nave.menu_sigmap_settings_naves_tipo_action
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_tipo_tree
+msgid "Ship Types"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_agencia.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__nave_agencia_ids
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves_personas_agencia_action
+#, python-format
+msgid "Shipping Agencies"
+msgstr "Agencias Navieras"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_agencia.py:0
+#: model:ir.model,name:nave.model_sigmap_agencia_naviera
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__agencia_id
+#, python-format
+msgid "Shipping Agency"
+msgstr "Agencia Naviera"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: code:addons/nave/models/sigmap_agencia.py:0
+#: code:addons/nave/models/sigmap_armador.py:0
+#: code:addons/nave/models/sigmap_propietario.py:0
+#: model:ir.actions.act_window,name:nave.nave_nave_action_menu
+#: model:ir.actions.act_window,name:nave.nave_nave_action_menu_only_read
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__nave_ids
+#: model:ir.model.fields,field_description:nave.field_sigmap_agencia_naviera__nave_agencia_ids
+#: model:ir.model.fields,field_description:nave.field_sigmap_armador__nave_armador_ids
+#: model:ir.model.fields,field_description:nave.field_sigmap_propietario__nave_propietario_ids
+#: model:ir.ui.menu,name:nave.menu_sigmap_naves
+#: model:ir.ui.menu,name:nave.menu_sigmap_primarys_naves_readonly_action
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_tree
+#: model_terms:ir.ui.view,arch_db:nave.view_sigmap_agencia_naviera_form_nave_inherit
+#: model_terms:ir.ui.view,arch_db:nave.view_sigmap_armador_form_nave_inherit
+#: model_terms:ir.ui.view,arch_db:nave.view_sigmap_propietario_form_nave_inherit
+#, python-format
+msgid "Ships"
+msgstr "Naves"
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_primarys_naves_action
+msgid "Ships DTM"
+msgstr "Registrar Naves"
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_sigmap_agencia_naviera_form_nave_inherit
+#: model_terms:ir.ui.view,arch_db:nave.view_sigmap_armador_form_nave_inherit
+#: model_terms:ir.ui.view,arch_db:nave.view_sigmap_propietario_form_nave_inherit
+msgid "Ships History"
+msgstr "Histórico de Nave"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__tipo_astillero_id
+#, python-format
+msgid "Shipyard Type"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_construction_tipo_astillero_action
+msgid "Shipyard Types"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields.selection,name:nave.selection__nave_nave__lista_autorizada__0
+msgid "Si"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#, python-format
+msgid "Something went wrong!"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_owner.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__fecha_inicio
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__fecha_inicio
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__fecha_inicio
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__fecha_inicio
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__fecha_inicio
+#, python-format
+msgid "Start Date"
+msgstr "Fecha Inicio"
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_constructor__activity_state
+#: model:ir.model.fields,help:nave.field_nave_nave__activity_state
+#: model:ir.model.fields,help:nave.field_nave_nave_agencia_naviera__activity_state
+#: model:ir.model.fields,help:nave.field_nave_nave_armador__activity_state
+#: model:ir.model.fields,help:nave.field_nave_nave_clase_matricula__activity_state
+#: model:ir.model.fields,help:nave.field_nave_nave_grupo__activity_state
+#: model:ir.model.fields,help:nave.field_nave_nave_matricula_bitacora__activity_state
+#: model:ir.model.fields,help:nave.field_nave_nave_origen__activity_state
+#: model:ir.model.fields,help:nave.field_nave_nave_owner__activity_state
+#: model:ir.model.fields,help:nave.field_nave_nave_propietario__activity_state
+#: model:ir.model.fields,help:nave.field_nave_nave_servicio__activity_state
+#: model:ir.model.fields,help:nave.field_nave_nave_tipo__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__trb
+#, python-format
+msgid "TRB"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__trn
+#, python-format
+msgid "TRN"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_nave_construccion__display_type
+msgid "Technical field for UX purpose."
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_clase_matricula.py:0
+#: code:addons/nave/models/nave_grupo.py:0
+#: code:addons/nave/models/nave_origen.py:0
+#: code:addons/nave/models/nave_servicio.py:0
+#: code:addons/nave/models/nave_tipo.py:0
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_clase_matricula_code_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_grupo_code_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_origen_code_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_servicio_code_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_tipo_code_uniq
+#, python-format
+msgid "The code must be unique"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_casco_material.py:0
+#: code:addons/nave/models/nave_clase_matricula.py:0
+#: code:addons/nave/models/nave_estado.py:0
+#: code:addons/nave/models/nave_foto.py:0
+#: code:addons/nave/models/nave_grupo.py:0
+#: code:addons/nave/models/nave_matricula_bitacora.py:0
+#: code:addons/nave/models/nave_origen.py:0
+#: code:addons/nave/models/nave_servicio.py:0
+#: code:addons/nave/models/nave_tipo.py:0
+#: code:addons/nave/models/nave_tipo_propulsion.py:0
+#: model:ir.model.constraint,message:nave.constraint_nave_casco_material_name_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_clase_matricula_name_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_foto_tipo_name_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_grupo_name_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_matricula_bitacora_name_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_origen_name_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_servicio_name_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_tipo_name_uniq
+#: model:ir.model.constraint,message:nave.constraint_nave_tipo_propulsion_name_uniq
+#, python-format
+msgid "The name must be unique"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_matricula_bitacora.py:0
+#: model:ir.model.constraint,message:nave.constraint_nave_nave_matricula_bitacora_matricula_uniq
+#, python-format
+msgid "The registration must be unique"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_constructor__partner_identification_type_id
+msgid "The type of identification"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_frecuencia__tipo
+#, python-format
+msgid "Tipo"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__tipo_trafico_id
+#, python-format
+msgid "Tipo Tráfico"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__nave_tipo_id
+#, python-format
+msgid "Tipo de Nave"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__nave_tipo_propulsion_id
+#, python-format
+msgid "Tipo de Propulsion"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_matricula_bitacora.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__tipo_tramite
+#, python-format
+msgid "Tipo de Trámite"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_tipo_propulsion_action_menu
+msgid "Tipos de propulsión"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_settings_naves_trafico_action
+msgid "Traffic Types"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_matricula_bitacora.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__tramite_id
+#, python-format
+msgid "Tramite"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields.selection,name:nave.selection__nave_frecuencia__tipo__tx
+msgid "Tx"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: code:addons/nave/models/nave_foto.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo__tipo_id
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo__tipo_id
+#: model:ir.model.fields,field_description:nave.field_nave_nave_foto__tipo_foto_id
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_constructor_form
+#, python-format
+msgid "Type"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_constructor__activity_exception_decoration
+#: model:ir.model.fields,help:nave.field_nave_nave__activity_exception_decoration
+#: model:ir.model.fields,help:nave.field_nave_nave_agencia_naviera__activity_exception_decoration
+#: model:ir.model.fields,help:nave.field_nave_nave_armador__activity_exception_decoration
+#: model:ir.model.fields,help:nave.field_nave_nave_clase_matricula__activity_exception_decoration
+#: model:ir.model.fields,help:nave.field_nave_nave_grupo__activity_exception_decoration
+#: model:ir.model.fields,help:nave.field_nave_nave_matricula_bitacora__activity_exception_decoration
+#: model:ir.model.fields,help:nave.field_nave_nave_origen__activity_exception_decoration
+#: model:ir.model.fields,help:nave.field_nave_nave_owner__activity_exception_decoration
+#: model:ir.model.fields,help:nave.field_nave_nave_propietario__activity_exception_decoration
+#: model:ir.model.fields,help:nave.field_nave_nave_servicio__activity_exception_decoration
+#: model:ir.model.fields,help:nave.field_nave_nave_tipo__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_naves_secondary_electronic_tipo_action
+msgid "Types"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_frecuencia__unidad
+#, python-format
+msgid "Unidad"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave__updated_by
+msgid "Updated by"
+msgstr "Actualizado por"
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__uso
+#, python-format
+msgid "Uso"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__user_id
+msgid "Usuario"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__partner_vat
+#, python-format
+msgid "VAT"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields.selection,name:nave.selection__nave_canal_banda__tipo__vhf
+msgid "VHF"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__website_message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave__website_message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_agencia_naviera__website_message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_armador__website_message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_clase_matricula__website_message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_grupo__website_message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_matricula_bitacora__website_message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_origen__website_message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_owner__website_message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_propietario__website_message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_servicio__website_message_ids
+#: model:ir.model.fields,field_description:nave.field_nave_nave_tipo__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: nave
+#: model:ir.model.fields,help:nave.field_nave_constructor__website_message_ids
+#: model:ir.model.fields,help:nave.field_nave_nave__website_message_ids
+#: model:ir.model.fields,help:nave.field_nave_nave_agencia_naviera__website_message_ids
+#: model:ir.model.fields,help:nave.field_nave_nave_armador__website_message_ids
+#: model:ir.model.fields,help:nave.field_nave_nave_clase_matricula__website_message_ids
+#: model:ir.model.fields,help:nave.field_nave_nave_grupo__website_message_ids
+#: model:ir.model.fields,help:nave.field_nave_nave_matricula_bitacora__website_message_ids
+#: model:ir.model.fields,help:nave.field_nave_nave_origen__website_message_ids
+#: model:ir.model.fields,help:nave.field_nave_nave_owner__website_message_ids
+#: model:ir.model.fields,help:nave.field_nave_nave_propietario__website_message_ids
+#: model:ir.model.fields,help:nave.field_nave_nave_servicio__website_message_ids
+#: model:ir.model.fields,help:nave.field_nave_nave_tipo__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave__nave_zona_id
+#, python-format
+msgid "Zona Marítima"
+msgstr ""
+
+#. module: nave
+#: model:ir.actions.act_window,name:nave.nave_nave_zona_action_menu
+msgid "Zonas"
+msgstr ""
+
+#. module: nave
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_nave_zona_tree
+#: model_terms:ir.ui.view,arch_db:nave.view_nave_tipo_propulsion_tree
+msgid "Zonas Marítimas"
+msgstr ""
+
+#. module: nave
+#: model:ir.ui.menu,name:nave.menu_sigmap_settings_naves_zona_action
+msgid "Zones"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_dispositivo_modelo_tipo__clase_id
+#, python-format
+msgid "class"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__dispositivo_id
+#, python-format
+msgid "dispositivo"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_canal__frecuencia_ids
+#, python-format
+msgid "frecuencias"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_constructor.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_constructor__es_ecuatoriano
+#, python-format
+msgid "is Ecuadorian?"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_dispositivo.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_nave_dispositivo__nave_id
+#, python-format
+msgid "nave"
+msgstr ""
+
+#. module: nave
+#: model:ir.model,name:nave.model_nave_canal
+msgid "nave.canal"
+msgstr ""
+
+#. module: nave
+#: model:ir.model,name:nave.model_nave_canal_banda
+msgid "nave.canal.banda"
+msgstr ""
+
+#. module: nave
+#: model:ir.model,name:nave.model_nave_dispositivo_modelo
+msgid "nave.dispositivo.modelo"
+msgstr ""
+
+#. module: nave
+#: model:ir.model,name:nave.model_nave_dispositivo_modelo_marca
+msgid "nave.dispositivo.modelo.marca"
+msgstr ""
+
+#. module: nave
+#: model:ir.model,name:nave.model_nave_dispositivo_modelo_tipo
+msgid "nave.dispositivo.modelo.tipo"
+msgstr ""
+
+#. module: nave
+#: model:ir.model,name:nave.model_nave_dispositivo_modelo_tipo_clase
+msgid "nave.dispositivo.modelo.tipo.clase"
+msgstr ""
+
+#. module: nave
+#: model:ir.model,name:nave.model_nave_frecuencia
+msgid "nave.frecuencia"
+msgstr ""
+
+#. module: nave
+#: model:ir.model,name:nave.model_nave_nave_dispositivo
+msgid "nave.nave.dispositivo"
+msgstr ""
+
+#. module: nave
+#: model:ir.model,name:nave.model_nave_nave_foto_tipo
+msgid "nave.nave.foto.tipo"
+msgstr ""
+
+#. module: nave
+#: model:ir.model,name:nave.model_nave_nave_zona
+msgid "nave.nave.zona"
+msgstr ""
+
+#. module: nave
+#. odoo-python
+#: code:addons/nave/models/nave_canal_frecuencia.py:0
+#: model:ir.model.fields,field_description:nave.field_nave_canal_banda__tipo
+#, python-format
+msgid "tipo"
+msgstr ""

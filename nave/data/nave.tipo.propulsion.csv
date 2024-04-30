@@ -1,0 +1,9 @@
+id,name
+sigmap_tipo_propulsion_ELECTRICA,ELECTRICA
+sigmap_tipo_propulsion_HELICE,A HELICE
+sigmap_tipo_propulsion_MIXTA,MIXTA
+sigmap_tipo_propulsion_REMO,A REMO
+sigmap_tipo_propulsion_SIN_PROPULSI,SIN PROPULSION
+sigmap_tipo_propulsion_VELA,A VELA
+sigmap_tipo_propulsion_PEKE-PEKE,PEKE-PEKE
+sigmap_tipo_propulsion_MECANICA,MECANICAs

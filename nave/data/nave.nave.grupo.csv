@@ -1,0 +1,6 @@
+id,name,codigo
+grupo_nave_gua,Guardia Costera,GUA
+grupo_nave_pes,Pesqueros,PES
+grupo_nave_carga,Carga,CAR
+grupo_nave_pasaje,Pasajeros,PAS
+grupo_nave_tanque,Tanqueros,TAN

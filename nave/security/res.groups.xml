@@ -1,0 +1,13 @@
+<odoo>
+    <!--Matrícula de Nave -->
+    <record model="res.groups" id="group_ship_registration_manager">
+        <field name="name">Generating Ship Registration Manager</field>
+    </record>
+
+    <record id="base.group_system" model="res.groups">
+        <field
+            name="implied_ids"
+            eval="[(4, ref('nave.group_ship_registration_manager'))]"
+        />
+    </record>
+</odoo>
