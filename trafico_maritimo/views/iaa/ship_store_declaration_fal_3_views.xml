@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_iaa_ship_store_declaration_form" model="ir.ui.view">
+        <field name="name">iaa.vessel.voyage.information.ship.store.declaration.form.inherit</field>
+        <field name="model">iaa.vessel.voyage.information</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_iaa_vessel_voyage_information_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="imo_ship_store_declaration_info" string="IMO Ship's Stores Declaration FAL 3">
+                    <group string="Ship's Stores Declaration">
+                        <group name="ship_store_declaration_details">
+                            <label for="persons_number_onboard" string="Number of persons onboard"/>
+                            <div class="o_row">
+                                <field name="persons_number_onboard" class="oe_inline"/>
+                                <b><span>Period of Stay</span></b>
+                                <field name="period_of_stay" class="oe_inline ms-3"/>
+                                <b><span>Place of storage</span></b>
+                                <field name="place_of_storage" class="oe_inline ms-12"/>
+                            </div>
+                        </group>
+                    </group>
+                    <field name="articles_ids" string="Articles">
+                        <tree string="Articles" editable="bottom">
+                            <field name="vessel_voyage_info_id" invisible="1"/>
+                            <field name="product_id"/>
+                            <field name="qty_received"/>
+                            <field name="product_uom"/>
+                            <field name="office_user_id"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

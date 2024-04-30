@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_iaa_nill_list_form" model="ir.ui.view">
+        <field name="name">iaa.vessel.voyage.information.nill.list.form.inherit</field>
+        <field name="model">iaa.vessel.voyage.information</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_iaa_vessel_voyage_information_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="imo_nill_list_info" string="IMO Nill List">
+                    <separator string="IMO NILL LIST"/>
+                    <group>
+                        <group name="nill_declaration">
+                            <field name="arms_ammunition"/>
+                            <field name="narcotics"/>
+                            <field name="parcel"/>
+                            <field name="mail"/>
+                            <field name="passenger"/>
+                            <field name="stowaway"/>
+                            <field name="thru_cargo"/>
+                            <field name="birds_or_animals"/>
+                        </group>
+                    </group>
+                    <!-- <field name="nill_list_ids">
+                        <tree string="Nill List" editable="bottom">
+                            <field name="vessel_voyage_info_id" invisible="1"/>
+                            <field name="arms_ammunition"/>
+                            <field name="narcotics"/>
+                            <field name="parcel"/>
+                            <field name="mail"/>
+                            <field name="passenger"/>
+                            <field name="stowaway"/>
+                            <field name="thru_cargo"/>
+                            <field name="birds_or_animals"/>
+                        </tree>
+                    </field> -->
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

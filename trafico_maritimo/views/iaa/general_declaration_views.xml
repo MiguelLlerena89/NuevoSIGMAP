@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_iaa_general_declaration_form" model="ir.ui.view">
+        <field name="name">iaa.vessel.voyage.information.general.declaration.form.inherit</field>
+        <field name="model">iaa.vessel.voyage.information</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_iaa_vessel_voyage_information_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="imo_general_declaration_info" string="IMO General Declaration FAL 1">
+                    <separator string="IMO GENERAL DECLARATION FAL 1"/>
+                    <group name="general_declaration_details" string="General Declaration">
+                        <label for="onwer" string="Onwer"/>
+                        <div class="o_row">
+                            <field name="onwer" widget="radio" options="{'horizontal': true}"/>
+                            <!-- <field name="arrival" class="oe_inline"/>
+                            <b><span>Arrival</span></b>
+                            <field name="departure" class="oe_inline ms-3"/>
+                            <b><span>Departure</span></b> -->
+                        </div>
+                    </group>
+                    <group>
+                        <group name="general_declaration_left">
+                            <field name="next_port_id"/>
+                            <field name="certificate_of_registry"/>
+                            <field name="position_of_ship"/>
+                            <field name="voyage_previous"/>
+                            <field name="crew_number"/>
+                            <field name="passanger_number"/>
+                            <field name="notes"/>
+                        </group>
+                        <group name="general_declaration_right">
+                            <field name="attached_documents_ids" widget="many2many_binary"/>
+                            <field name="cargo_declaration"/>
+                            <field name="ship_stores_declaration"/>
+                            <field name="crew_list"/>
+                            <field name="passenger_list"/>
+                            <field name="term_residue_reception"/>
+                            <field name="crew_effects_declaration"/>
+                            <field name="maritime_declaration_of_health"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

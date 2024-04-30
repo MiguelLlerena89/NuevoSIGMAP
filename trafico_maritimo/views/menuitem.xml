@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Top menu item -->
+        <menuitem name="Tráfico Marítimo" id="trafico_maritimo.menu_root"/>
+        <!-- menu categories -->
+        <menuitem name="Trámites" id="trafico_maritimo.menu_1" parent="trafico_maritimo.menu_root" sequence="1">
+                <menuitem id="menu_sale_quotations_tm"
+                        name="Solicitud de trámite"
+                        action="sale.action_quotations_with_onboarding"
+                        groups="sales_team.group_sale_salesman"
+                        sequence="1"/>
+
+                <menuitem id="menu_sale_order_tm"
+                        name="Órdenes"
+                        action="sale.action_orders"
+                        groups="sales_team.group_sale_salesman"
+                        sequence="2"/>
+
+                <menuitem id="menu_action_tramite_tm"
+                        name="Trámites"
+                        action="tramite.action_tramite"
+                        sequence="5"/>
+                <menuitem id="menu_action_tramite_documento_tm"
+                        name="Documentos y servicios disponibles"
+                        action="tramite.action_tramite_documento" sequence="3"/>
+                <menuitem id="menu_action_tramite_documento_emitido_tm"
+                        name="Documentos emitidos"
+                        action="tramite.action_tramite_documento_emitido" sequence="4"/>
+        </menuitem>
+
+        <menuitem name="Control de Tráfico" id="trafico_maritimo.menu_2" parent="trafico_maritimo.menu_root" sequence="2">
+                <!-- <menuitem id="menu_control_combustible"
+                        name="Compra de Combustible"
+                        action="trafico_maritimo.action_window"
+                        sequence="1"/> -->
+                <!-- <menuitem id="menu_control_nacional" name="Control Nacional" sequence="2">
+                <menuitem id="menu_control_zarpes_tm"
+                        name="Permiso de Zarpes (Cabotaje e Internacionales)"
+                        action="trafico_maritimo.action_window"
+                        sequence="1"/>
+                </menuitem> -->
+
+                <!-- <menuitem id="menu_control_nacional" name="Control Nacional" sequence="3">
+                        <menuitem id="menu_arribo"
+                                name="Permiso de Arribos"
+                                action="action_arribo"
+                                sequence="1"/>
+                        <menuitem id="menu_zarpe"
+                                name="Permiso de Zarpes"
+                                action="action_zarpe_nacional"
+                                sequence="2"/>
+                </menuitem>
+                <menuitem id="menu_control_internacional" name="Control Internacional" sequence="4">
+                        <menuitem id="menu_señal_arribo_int"
+                                name="(SP) Plan de Viaje"
+                                action="action_arribo"
+                                sequence="1"/>
+                        <menuitem id="menu_arribo_int"
+                                name="(PR) Zarpe/Posicion"
+                                action="action_zarpe_internacional"
+                                sequence="2"/>
+                        <menuitem id="menu_señal_zarpe_int"
+                                name="(DR) Alteración de Ruta"
+                                action="action_arribo"
+                                sequence="3"/>
+                        <menuitem id="menu_zarpe_imt"
+                                name="(FR) Arribo/Final"
+                                action="action_arribo"
+                                sequence="4"/>
+                </menuitem> -->
+
+                <menuitem id="menu_control_nacional" name="Control Navegación" sequence="1">
+                        <menuitem id="menu_navegacion"
+                                name="Navegaciones"
+                                action="action_trafico_maritimo_navegacion"
+                                sequence="1"/>
+                        <!-- <menuitem id="menu_arribo"
+                                name="Permiso de Arribos"
+                                action="trafico_maritimo_documento.action_arribo_nacional"
+                                sequence="1"/>
+                        <menuitem id="menu_zarpe"
+                                name="Permiso de Zarpes"
+                                action="trafico_maritimo_documento.action_zarpe_nacional"
+                                sequence="2"/> -->
+                </menuitem>
+                <menuitem id="menu_control_internacional" name="Control Internacional" sequence="3">
+                        <menuitem id="menu_trafico_maritimo_internacional_prezarpe"
+                                name="Pre-Zarpe"
+                                action="trafico_maritimo.action_prezarpe_internacional"
+                                sequence="1"/>
+                        <menuitem id="menu_trafico_maritimo_internacional_prearribo"
+                                name="Pre-Arribo"
+                                action="trafico_maritimo.action_prearribo_internacional"
+                                sequence="2"/>
+                </menuitem>
+
+
+                <menuitem id="menu_iaa_services" name="IAA Services" sequence="5">
+                        <menuitem id="menu_instruction"
+                                name="IAA Instruction"
+                                action="action_iaa_instruction"
+                                sequence="1"/>
+                        <menuitem id="menu_vessel_voyage_information"
+                                name="IAA Forms"
+                                action="action_vessel_voyage_information"
+                                sequence="2"/>
+                </menuitem>
+        </menuitem>
+
+        <menuitem name="Configuracion" id="trafico_maritimo.menu_3" parent="trafico_maritimo.menu_root" sequence="10">
+                <!-- <menuitem id="menu_sale_quotations_tm"
+                        name="Configuración"
+                        action="trafico_maritimo.action_window"
+                        sequence="1"/> -->
+                <menuitem id="base_sigmap_port_menu_config"
+                        name="Puertos"
+                        action="base_sigmap.sigmap_puerto_action_menu"
+                        sequence="2"/>
+                <menuitem id="nave_ship_type_menu_config"
+                        name="Tipo de Nave"
+                        action="nave.nave_nave_tipo_action_menu"
+                        sequence="3"/>
+                <menuitem id="menu_trafico_maritimo_ruta_config"
+                        name="Rutas"
+                        action="trafico_maritimo.action_trafico_maritimo_ruta"
+                        sequence="4"/>
+        </menuitem>
+
+        <!--
+        <menuitem name="Solicitud Combustible" id="trafico_maritimo.combustible" parent="trafico_maritimo.menu_1" action="trafico_maritimo.action_window"/>
+        <menuitem name="Solicitud Permiso Zarpe" id="trafico_maritimo.permiso_zarpe" parent="trafico_maritimo.menu_1" action="trafico_maritimo.action_server"/>
+        <menuitem name="Solicitud Permiso Arribo" id="trafico_maritimo.permiso_arribo" parent="trafico_maritimo.menu_1" action="trafico_maritimo.action_window"/>
+
+        <menuitem name="Configuracion" id="trafico_maritimo.configuracion" parent="trafico_maritimo.menu_2" action="trafico_maritimo.action_window"/>-->
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_iaa_instruction_form" model="ir.ui.view">
+        <field name="name">iaa.instruction.form</field>
+        <field name="model">iaa.instruction</field>
+        <field name="arch" type="xml">
+            <form string="IAA Instruction">
+                <sheet>
+                    <group col="4">
+                        <group name="header_left">
+                            <field name="name"/>
+                        </group>
+                        <group name="header_rigth">
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="instruction"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_iaa_instruction_tree" model="ir.ui.view">
+        <field name="name">iaa.instruction.tree</field>
+        <field name="model">iaa.instruction</field>
+        <field name="arch" type="xml">
+            <tree string="IAA Instruction">
+                <field name="name"/>
+                <field name="instruction"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_iaa_instruction" model="ir.actions.act_window">
+        <field name="name">Instruction</field>
+        <field name="res_model">iaa.instruction</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_iaa_instruction_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nueva instrucción
+            </p>
+        </field>
+    </record>
+
+</odoo>

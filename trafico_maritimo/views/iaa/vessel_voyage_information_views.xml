@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_iaa_vessel_voyage_information_form" model="ir.ui.view">
+        <field name="name">iaa.vessel.voyage.information.form</field>
+        <field name="model">iaa.vessel.voyage.information</field>
+        <field name="arch" type="xml">
+            <form string="Vessel Information">
+                <header>
+                    <button name="action_procesar" type="object" states="borrador" string="Registrar" class="btn-primary" data-hotkey="o"/>
+                    <button name="action_revisar" type="object" states="ingresado" string="Revisar" class="btn-primary" data-hotkey="p"/>
+                    <button name="action_confirmar" type="object" states="revision" string="Confirmar" class="btn-primary" data-hotkey="p"/>
+                    <button name="action_cancelar" type="object" string="Cancelar" data-hotkey="z"/><!--states="borrador,ingresado,revisar,aceptado"-->
+                    <field name="state" widget="statusbar" statusbar_visible="borrador,revision,aceptado,cancelado"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="active" invisible="1"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group name="header_details" string="General Information of Vessel">
+                        <group name="header_left_group">
+                            <field name="nave_id" />
+                            <field name="call_sign"/>
+                            <field name="nave_tipo_id"/>
+                            <field name="build_year"/>
+
+                            <field name="loa"/>
+                            <field name="lpp"/>
+                            <field name="lenght"/>
+
+                            <field name="breadth"/>
+
+                            <field name="shipping_line_id" />
+
+                            <field name="shipowner_id"/>
+                        </group>
+                        <group name="header_right_group">
+                            <field name="omi_number" />
+                            <field name="bandera_pais_id"/>
+                            <field name="mmsi"/>
+                            <field name="port_id"/>
+                            <field name="date_registry"/>
+
+                            <field name="trb"/>
+                            <field name="trn"/>
+                            <field name="deadweit"/>
+
+                            <field name="depth"/>
+                            <field name="arrival_draught"/>
+                            <field name="design_draught"/>
+
+                            <field name="classification_society"/>
+                            <field name="security_level_type"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="vessel_voyage_info" string="Vessel Voyage Information">
+                            <group name="international_ship_security_details" string="International Ship Security Certificate">
+                                <group name="international_ship_security">
+                                    <label for="date_issuance" string="Date Issuance"/>
+                                    <label for="approved_certificate_type" string="Certificate Type"/>
+                                    <div class="o_row" colspan="2">
+                                        <field name="date_issuance" widget="date" class="oe_inline"/>
+                                        <!-- <b><span>Certificate Type: </span></b> -->
+                                        <!-- <b><span>Approved</span></b> -->
+                                        <field name="approved_certificate_type" class="oe_inline ms-3"/>
+                                        <b><span>Approved</span></b>
+                                        <field name="interim_certificate_type" class="oe_inline ms-9"/>
+                                        <b><span>Interim</span></b>
+                                        <field name="final_certificate_type" class="oe_inline ms-12"/>
+                                        <b><span>Final </span></b>
+                                    </div>
+                                </group>
+                                <group name="international_ship_security_1">
+                                    <group>
+                                        <label for="vessel_security_plan" string="Vessel Security Plan"/>
+                                        <div class="o_row" colspan="2">
+                                            <field name="vessel_security_plan" class="oe_inline"/>
+                                        </div>
+                                    </group>
+                                </group>
+                            </group>
+                            <group name="international_ship_security_details_2">
+                                <group name="international_ship_security_2_1">
+                                    <label for="change_owner_certificate_interim" string="Indicate Certificate Interim"/>
+                                    <div class="o_row" colspan="2">
+                                        <field name="change_owner_certificate_interim" class="oe_inline"/>
+                                        <b><span>Change of Owner / Operat</span></b>
+                                        <field name="new_to_certificate_interim" class="oe_inline ms-3"/>
+                                        <b><span>New to / re-entry into sea</span></b>
+                                        <field name="transfer_vessel_certificate_interim" class="oe_inline ms-9"/>
+                                        <b><span>Transfer of vesselea</span></b>
+                                    </div>
+                                </group>
+                                <group name="international_ship_security_2_2">
+                                    <group>
+                                        <label for="flag_administration" string="Flag Administration or RSO"/>
+                                        <div class="o_row" colspan="2">
+                                            <field name="flag_administration" class="oe_inline"/>
+                                        </div>
+                                    </group>
+                                </group>
+                            </group>
+                            <group name="security_maritime_officer_details" string="Security Maritime Officers">
+                                <group name="security_maritime_officer_left_group">
+                                    <field name="sso_id"/>
+                                    <field name="duties_on_board" />
+                                    <field name="sso_email_address"/>
+                                </group>
+                                <group name="security_maritime_officer_center_group">
+                                    <field name="cso_id"/>
+                                    <field name="cso_phone_number"/>
+                                    <field name="cso_email_address"/>
+                                </group>
+                                <group name="header_security_maritime_officer_right_group">
+                                    <field name="reporting_party_id"/>
+                                    <field name="reporting_compamy"/>
+                                    <field name="reporting_party_email_address"/>
+                                </group>
+                            </group>
+                            <group name="voyage_details" string="Voyage Information">
+                                <group name="voyage_left_group">
+                                    <field name="port_id"/>
+                                    <field name="eta"/>
+                                    <field name="etd"/>
+                                    <field name="terminal" />
+                                    <field name="caption_port_office"/>
+                                </group>
+                                <group name="voyage_left_group">
+                                    <field name="contact_port"/>
+                                    <field name="contact_port_phone"/>
+                                    <field name="contact_port_email"/>
+                                </group>
+                            </group>
+                            <field name="last_ports_ids" string="Last Ten Ports">
+                                <tree string="Last Ten Ports">
+                                    <field name="vessel_voyage_info_id" invisible="1"/>
+                                    <field name="port_id"/>
+                                    <field name="date_arrival"/>
+                                    <field name="date_departure"/>
+                                    <field name="security_level_type"/>
+                                    <field name="vessel_security_plan"/>
+                                    <field name="additional_measures"/>
+                                    <field name="procedures_ship_to_ship"/>
+                                </tree>
+                                <form string="Last Ten Ports Line">
+                                    <group>
+                                        <group>
+                                            <field name="vessel_voyage_info_id" invisible="1"/>
+                                            <field name="port_id" />
+                                            <label for="vessel_security_plan"/>
+                                            <div class="o_row">
+                                                <field name="vessel_security_plan"/>
+                                            </div>
+                                            <field name="additional_measures" />
+                                            <field name="procedures_ship_to_ship" />
+                                        </group>
+                                        <group>
+                                            <field name="date_arrival" widget="date"/>
+                                            <field name="date_departure" widget="date"/>
+                                            <field name="security_level_type" />
+                                        </group>
+                                    </group>
+                                 </form>
+                            </field>
+                            <group name="cargo_details" string="Cargo">
+                                <group name="cargo">
+                                    <field name="description_cargo"/>
+                                    <field name="amount_cargo" />
+                                    <field name="dangerous_cargo"/>
+                                </group>
+                            </group>
+                        </page>
+                        <!-- <page name="imo_general_declaration_info" string="IMO General Declaration FAL 1">
+                            <group name="general_declaration_details" string="General Declaration">
+                                <group name="general_declaration_left">
+                                    <field name="onwer" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="next_port_id"/>
+                                    <field name="certificate_of_registry"/>
+                                    <field name="position_of_ship"/>
+                                    <field name="voyage_previous"/>
+                                    <field name="crew_number"/>
+                                    <field name="passanger_number"/>
+                                    <field name="notes"/>
+                                </group>
+                                <group name="general_declaration_right">
+                                    <field name="attached_documents_ids" widget="many2many_binary"/>
+                                    <field name="cargo_declaration"/>
+                                    <field name="ship_stores_declaration"/>
+                                    <field name="crew_list"/>
+                                    <field name="passenger_list"/>
+                                    <field name="term_residue_reception"/>
+                                    <field name="crew_effects_declaration"/>
+                                    <field name="maritime_declaration_of_health"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="imo_ship_store_declaration_info" string="IMO Ship's Stores Declaration FAL 3">
+                            <group string="Ship's Stores Declaration">
+                                <group name="ship_store_declaration_details">
+                                    <label for="persons_number_onboard" string="Number of persons onboard"/>
+                                    <div class="o_row">
+                                        <field name="persons_number_onboard" class="oe_inline"/>
+                                        <b><span>Period of Stay</span></b>
+                                        <field name="period_of_stay" class="oe_inline ms-3"/>
+                                        <b><span>Place of storage</span></b>
+                                        <field name="place_of_storage" class="oe_inline ms-12"/>
+                                    </div>
+                                </group>
+                            </group>
+                            <field name="articles_ids" string="Articles">
+                                <tree string="Articles" editable="bottom">
+                                    <field name="vessel_voyage_info_id" invisible="1"/>
+                                    <field name="product_id"/>
+                                    <field name="qty_received"/>
+                                    <field name="product_uom"/>
+                                    <field name="office_user_id"/>
+                                </tree>
+                            </field>
+                        </page> -->
+                        <!-- <page name="imo_crews_effects_declaration_info" string="IMO Crews's Effects Declaration FAL 4">
+                            <field name="crew_effects_ids" string="Effects ineligible for relief from customs duties">
+                                <tree string="Crew's Effects" editable="bottom">
+                                    <field name="vessel_voyage_info_id" invisible="1"/>
+                                    <field name="family_name"/>
+                                    <field name="rank_id"/>
+                                    <field name="product_id"/>
+                                    <field name="qty_received"/>
+                                    <field name="product_description"/>
+                                </tree>
+                            </field>
+                        </page> -->
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_iaa_vessel_voyage_information_tree" model="ir.ui.view">
+        <field name="name">iaa.vessel.voyage.information.tree</field>
+        <field name="model">iaa.vessel.voyage.information</field>
+        <field name="arch" type="xml">
+            <tree string="Formato IAA">
+                <field name="name"/>
+                <field name="nave_id"/>
+                <field name="omi_number"/>
+                <field name="shipowner_id"/>
+                <field name="mmsi"/>
+                <field name="nave_tipo_id"/>
+                <field name="eta"/>
+                <field name="etd"/>
+                <field name="security_level_type"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="state" string="Estado"
+                    decoration-info="state == 'borrador'"
+                    decoration-primary="state == 'revision'"
+                    decoration-success="state == 'aceptado'"
+                    widget="badge" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_vessel_voyage_information" model="ir.actions.act_window">
+        <field name="name">Formato IAA</field>
+        <field name="res_model">iaa.vessel.voyage.information</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_iaa_vessel_voyage_information_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define IAA Format
+            </p>
+        </field>
+    </record>
+
+</odoo>

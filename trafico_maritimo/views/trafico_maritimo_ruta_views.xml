@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_trafico_maritimo_ruta_form" model="ir.ui.view">
+        <field name="name">trafico.maritimo.ruta.form</field>
+        <field name="model">trafico.maritimo.ruta</field>
+        <field name="arch" type="xml">
+            <form string="Rutas">
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="user_id" invisible="1"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group col="4">
+                        <group name="header_left">
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="ruta_geocoordenada_info" string="Ruta - Geocoordenada">
+                            <field name="ruta_geocoordenada_ids">
+                                <tree string="Ruta">
+                                    <field name="trafico_maritimo_ruta_id" invisible="1"/>
+                                    <field name="orden" align="center"/>
+                                    <field name="latitud" invisible="1"/>
+                                    <field name="longitud" invisible="1"/>
+                                    <field name="latitud_dms"/>
+                                    <field name="longitud_dms"/>
+                                </tree>
+                                <form string="Ruta - Posición">
+                                    <field name="trafico_maritimo_ruta_id" invisible="1"/>
+                                    <label for="orden" string="Orden"/>
+                                    <field name="orden" nolabel="1" />
+                                    <group>
+                                        <group>
+                                            <div class="o_row" colspan="2">
+                                                <label for="latitud_dms" string="Latitud"/>
+                                                <field name="latitud_dms" nolabel="1"  class="oe_inline"/>
+                                                <field name="latitud" invisible="1"/>
+                                            </div>
+                                            <!-- <field name="latitud" invisible="1"/>
+                                            <label for="latitud_dms" string="Latitud"/>
+                                            <field name="latitud_dms"/> -->
+                                        </group>
+                                        <group>
+                                            <div class="o_row" colspan="2">
+                                                <label for="longitud_dms" string="Longitud"/>
+                                                <field name="longitud_dms" nolabel="1"  class="oe_inline"/>
+                                                <field name="longitud" invisible="1"/>
+                                            </div>
+                                            <!-- <field name="longitud" invisible="1"/>
+                                            <label for="longitud_dms" string="Longitud"/>
+                                            <field name="longitud_dms"/> -->
+                                        </group>
+                                    </group>
+                                 </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_trafico_maritimo_ruta_tree" model="ir.ui.view">
+        <field name="name">trafico.maritimo.ruta.tree</field>
+        <field name="model">trafico.maritimo.ruta</field>
+        <field name="arch" type="xml">
+            <tree string="Rutas"><!--editable="bottom"-->
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_trafico_maritimo_ruta" model="ir.actions.act_window">
+        <field name="name">Rutas</field>
+        <field name="res_model">trafico.maritimo.ruta</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_trafico_maritimo_ruta_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nueva ruta
+            </p>
+        </field>
+    </record>
+
+</odoo>

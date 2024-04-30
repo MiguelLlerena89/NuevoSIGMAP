@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_trafico_maritimo_internacional_costera_tree" model="ir.ui.view">
+        <field name="name">trafico.maritimo.internacional.costera.tree</field>
+        <field name="model">trafico.maritimo.internacional.costera</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Tráfico Marítimo Internacional Costera">
+                <field name="name"/>
+                <!-- <field name="ultimo_evento"/> -->
+                <field name="nave_id"/>
+                <field name="omi_number"/>
+                <field name="matricula"/>
+                <field name="mmsi"/>
+                <!-- <field name="reparto_origen_id" string="Juridicción Zarpe"/>
+                <field name="puerto_origen_id" string="Puerto Zarpe"/>
+                <field name="reparto_final_id" string="Juridicción Arribo"/>
+                <field name="puerto_destino_id"/>
+                <field name="fecha_origen"/>
+                <field name="fecha_destino"/> -->
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- <record id="view_trafico_maritimo_internacional_costera_form" model="ir.ui.view">
+        <field name="name">trafico.maritimo.internacional.costera.form</field>
+        <field name="model">trafico.maritimo.internacional.costera</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Tráfico Marítimo Internacional Costera">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="user_id" invisible="1"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="ultimo_evento" widget="radio" options="{'horizontal': true}" invisible="1"/>
+                            <field name="ultimo_evento_descripcion" invisible="1"/>
+                        </group>
+                    </group>
+                    <group name="ship_info_details" string="Información de la Nave">
+                        <group name="ship_info_header_left_group">
+                            <field name="nave_id" />
+                            <field name="bandera_pais_id" />
+                            <field name="call_sign"/>
+                            <field name="mmsi"/>
+                            <field name="lista_autorizada"/>
+                            <field name="nave_tipo_id"/>
+                        </group>
+                        <group name="ship_info_header_right_group">
+                            <field name="omi_number" />
+                            <field name="matricula"/>
+                            <field name="trb"/>
+                            <field name="eslora"/>
+                            <field name="manga" />
+                            <field name="puntal_calado_aereo" string="Puntal/Calado/Calado Aereo"/>
+                        </group>
+                    </group>
+                    <group name="iaa_details" string="Información Formato IAA">
+                        <group name="iaa_left_group">
+                            <field name="trafico_maritimo_iaa_id"/>
+                        </group>
+                    </group>
+                    <group name="trafico_maritimo_prenavegacion_details" string="Información de Jurisdicción - Puerto">
+                        <group>
+                            <label for="reparto_origen_id" string="Jurisdicción Zarpe" attrs="{'invisible': [('ultimo_evento', '!=', 'P')]}"/>
+                            <label for="reparto_origen_id" string="Jurisdicción Arribo" attrs="{'invisible': [('ultimo_evento', '!=', 'F')]}"/>
+                            <field name="reparto_origen_id" nolabel="1" domain="[('tipo_id', '=', (%(base_sigmap.sigmap_reparto_tipo_capitania)d))]"
+                                attrs="{'required': 1}"/>
+
+                            <label for="puerto_origen_id" string="Puerto Zarpe" attrs="{'invisible': [('ultimo_evento', '!=', 'P')]}"/>
+                            <label for="puerto_origen_id" string="Puerto Arribo" attrs="{'invisible': [('ultimo_evento', '!=', 'F')]}"/>
+                            <field name="puerto_origen_id" nolabel="1"
+                                attrs="{'required': 1}"/>
+
+                            <label for="fecha_origen" string="Fecha - Hora Ingreso Área de Control/Zarpe" attrs="{'invisible': [('ultimo_evento', '!=', 'P')]}"/>
+                            <label for="fecha_origen" string="Fecha - Hora Estimada de Arribo (ETA)" attrs="{'invisible': [('ultimo_evento', '!=', 'F')]}"/>
+                            <field name="fecha_origen" nolabel="1"
+                                attrs="{'required': 1}"/>
+                            <field name="calado_arribo" string="Calado de Arribo"
+                                attrs="{'invisible': [('ultimo_evento', '!=', 'P')],
+                                        'required': [('ultimo_evento', '=', 'P')]}"/>
+                        </group>
+                        <group attrs="{'invisible': [('ultimo_evento', '=', 'F')]}">
+                            <field name="reparto_final_id" string="Jurisdicción Arribo" domain="[('tipo_id', '=', (%(base_sigmap.sigmap_reparto_tipo_capitania)d))]"
+                                attrs="{'required': [('ultimo_evento', '=', 'P')]}"/>
+                            <field name="puerto_destino_id" string="Puerto Próximo"
+                                attrs="{'required': [('ultimo_evento', '=', 'P')]}"/>
+                            <field name="fecha_destino" string="Fecha - Hora Estimada de Arribo (ETA)"
+                                attrs="{'required': [('ultimo_evento', '=', 'P')]}"/>
+                        </group>
+                    </group>
+                    <group name="trafico_maritimo_prearribo_details" string="Información de la Navegación de Arribo"
+                        attrs="{'invisible': [('ultimo_evento', '=', 'P')]}">
+                        <group name="prearribo_left_group">
+                            <field name="rumbo"/>
+                            <field name="velocidad"/>
+                            <field name="latitud"/>
+                        </group>
+                        <group name="prearribo_right_group">
+                            <field name="fecha_hora_qth" />
+                            <field name="fuente_qth"/>
+                            <field name="longitud"/>
+                            <field name="calado_arribo"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="ruta_info" string="Ruta">
+                            <field name="ruta_ids">
+                                <tree string="Ruta" editable="bottom">
+                                    <field name="trafico_maritimo_navegacion_id" invisible="1"/>
+                                    <field name="orden"/>
+                                    <field name="latitud_dms"/>
+                                    <field name="longitud_dms"/>
+                                    <field name="ultimo_evento"/>
+                                    <field name="rumbo"/>
+                                    <field name="velocidad"/>
+                                    <field name="fecha"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record> -->
+
+    <record id="view_trafico_maritimo_internacional_costera_form" model="ir.ui.view">
+        <field name="name">trafico.maritimo.internacional.costera.form</field>
+        <field name="model">trafico.maritimo.internacional.costera</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_trafico_maritimo_navegacion_form"/>
+        <field name="groups_id" eval="[(5,)]"/>
+        <field name="mode">primary</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='ship_info_details']" position="after">
+                <group name="iaa_details" string="Información Formato IAA">
+                    <group name="iaa_left_group">
+                        <field name="trafico_maritimo_iaa_id"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='fecha_origen']" position="after">
+                <field name="calado_arribo" string="Calado de Arribo"
+                    attrs="{'invisible': [('ultimo_evento', '!=', 'P')],
+                            'required': [('ultimo_evento', '=', 'P')]}"/>
+            </xpath>
+            <xpath expr="//group[@name='trafico_maritimo_navegacion_details']" position="after">
+                <group name="trafico_maritimo_prearribo_details" string="Información de la Navegación de Arribo"
+                    attrs="{'invisible': [('ultimo_evento', '=', 'P')]}">
+                    <group name="prearribo_left_group">
+                        <field name="rumbo"
+                            attrs="{'required': [('ultimo_evento', '=', 'F')]}"/>
+                        <field name="velocidad"
+                            attrs="{'required': [('ultimo_evento', '=', 'F')]}"/>
+                        <field name="latitud_dms"/>
+                    </group>
+                    <group name="prearribo_right_group">
+                        <field name="fecha_hora_qth"
+                            attrs="{'required': [('ultimo_evento', '=', 'F')]}"/>
+                        <field name="fuente_qth"/>
+                        <field name="longitud_dms"/>
+                        <field name="calado_arribo" style="width: 100px;"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//notebook/page[@name='imo_crews_list_info']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='imo_cargo_info']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='imo_passenger_list_info']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_prezarpe_internacional" model="ir.actions.act_window">
+        <field name="name">Pre-Zarpes Nacionales / Internacionales</field>
+        <field name="res_model">trafico.maritimo.internacional.costera</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_trafico_maritimo_internacional_costera_tree"/>
+        <field name="context">{'default_ultimo_evento': 'P', 'default_tipo': 'INT'}</field>
+        <field name="domain">[('ultimo_evento', '=', 'P')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra pre-zarpes internacionales
+            </p>
+        </field>
+    </record>
+
+
+    <record id="action_prearribo_internacional" model="ir.actions.act_window">
+        <field name="name">Pre-Arribos Internacionales</field>
+        <field name="res_model">trafico.maritimo.internacional.costera</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_trafico_maritimo_internacional_costera_tree"/>
+        <field name="context">{'default_ultimo_evento': 'F', 'default_tipo': 'INT'}</field>
+        <field name="domain">[('ultimo_evento', '=', 'F')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra pre-arribos internacionales
+            </p>
+        </field>
+    </record>
+
+</odoo>

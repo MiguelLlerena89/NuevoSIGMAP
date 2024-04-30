@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_iaa_dangerous_load_form" model="ir.ui.view">
+        <field name="name">iaa.vessel.voyage.information.dangerous.load.form.inherit</field>
+        <field name="model">iaa.vessel.voyage.information</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_iaa_vessel_voyage_information_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="imo_dangerous_load_info" string="IMO Dangerous Goods Manifest FAL 7">
+                    <separator string="IMO DANGEROUS GOODS MANIFEST FAL 7"/>
+                    <field name="dangerous_load_ids">
+                        <tree string="Dangerous Load" editable="bottom">
+                            <field name="vessel_voyage_info_id" invisible="1"/>
+                            <field name="container_no"/>
+                            <field name="package_type"/>
+                            <field name="proper_shipping_name"/>
+                            <field name="class_value"/>
+                            <field name="onu_no"/>
+                            <field name="packing_group"/>
+                            <field name="subsidiary_risk"/>
+                            <field name="flashpoint"/>
+                            <field name="marine_pollutant"/>
+                            <field name="ems"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

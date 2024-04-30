@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_nave_nave_motors_form_inherit" model="ir.ui.view">
+        <field name="name">nave.nave.motors.form.inherit</field>
+        <field name="model">nave.nave</field>
+        <field name="inherit_id" ref="nave.view_nave_nave_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='informacion_autorizada']" position="after">
+                <group name="Navegación" string="Navegación">
+                    <group>
+                        <field name="estado_navegacion"/>
+                    </group>
+                    <group>
+                        <field name="es_nave_nueva_navegacion" /><!--invisible="1"-->
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="motors_ship" string="Motores Fuera de Borda">
+                    <field name="motors_ids">
+                        <tree string="Motores Fuera de Borda'" editable="bottom">
+                            <field name="nave_id" invisible="1"/>
+                            <field name="codigo_motor"/>
+                            <field name="codigo_troquelado"/>
+                            <field name="tipo_marca"/>
+                            <field name="tipo_motor"/>
+                            <field name="serie"/>
+                            <field name="modelo"/>
+                            <field name="velocidad"/>
+                            <field name="potencia"/>
+                            <field name="propietario"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

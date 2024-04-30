@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_iaa_maritime_declaration_heath_form" model="ir.ui.view">
+        <field name="name">iaa.vessel.voyage.information.dangerous.load.form.inherit</field>
+        <field name="model">iaa.vessel.voyage.information</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_iaa_vessel_voyage_information_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="imo_maritime_declaration_heath_info" string="Maritime Declaration of Heath">
+                    <separator string="ATTACHMENT TO MODEL OF MARITIME DECLARATION OF HEATH"/>
+                    <field name="maritime_declaration_heath_ids">
+                        <tree string="Maritime Declaration of Heath"><!--editable="bottom"-->
+                            <field name="vessel_voyage_info_id" invisible="1"/>
+                            <field name="personal_maritimo_id"/>
+                            <field name="age"/>
+                            <field name="genero"/>
+                            <field name="nationality"/>
+                            <field name="port_id"/>
+                            <field name="date"/>
+                            <field name="nature_illness"/>
+                            <field name="date_onset_symptoms"/>
+                            <field name="reported_to_a_port_medical_officer"/>
+                            <field name="disposal_of_case"/>
+                            <field name="medicines_treatment"/>
+                            <field name="notes"/>
+                        </tree>
+                        <form string="Maritime Declaration of Heath">
+                            <sheet>
+                                <group>
+                                    <group>
+                                        <field name="personal_maritimo_id"/>
+                                        <field name="age"/>
+                                        <field name="genero"/>
+                                        <field name="nationality"/>
+                                    </group>
+                                    <group>
+                                        <field name="port_id"/>
+                                        <field name="date"/>
+                                        <field name="nature_illness"/>
+                                        <field name="date_onset_symptoms"/>
+                                        <field name="reported_to_a_port_medical_officer" widget="boolean_toggle"/>
+                                        <field name="disposal_of_case"/>
+                                        <field name="medicines_treatment"/>
+                                    </group>
+                                    <group>
+                                        <field name="notes"/>
+                                    </group>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

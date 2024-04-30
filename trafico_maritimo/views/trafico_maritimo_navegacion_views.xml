@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_trafico_maritimo_navegacion_tree" model="ir.ui.view">
+        <field name="name">trafico.maritimo.navegacion.tree</field>
+        <field name="model">trafico.maritimo.navegacion</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Control Marítimo">
+                <field name="name"/>
+                <field name="ultimo_evento"/>
+                <field name="nave_id"/>
+                <!-- <field name="omi_number"/>
+                <field name="matricula"/> -->
+                <!-- <field name="mmsi"/> -->
+                <field name="reparto_origen_id" string="Juridicción Zarpe"/>
+                <field name="puerto_origen_id" string="Puerto Zarpe"/>
+                <field name="fecha_despacho" string="Fecha y hora de despacho"/>
+                <field name="reparto_final_id" string="Juridicción Arribo"/>
+                <field name="puerto_destino_id" string="Puerto Destino"/>
+                <field name="fecha_origen" string="Fecha y hora zarpe"/>
+                <field name="fecha_destino" string="Fecha y hora estimada de arribo"/>
+                <!-- <field name="nave_tipo_id"/>
+                <field name="nave_servicio_id"/>
+                <field name="nave_nationality"/> -->
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_trafico_maritimo_navegacion_form" model="ir.ui.view">
+        <field name="name">trafico.maritimo.navegacion.form</field>
+        <field name="model">trafico.maritimo.navegacion</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Control Marítimo">
+                <header>
+                    <!-- <button name="action_validar" type="object" string="Validar" class="btn-primary" attrs="{'invisible': ['|',('imprimir', '=', True) ,('state', 'in', ['vigente','caducado','anulado','cancelado'])]}" data-hotkey="o"/>
+                    <button name="action_caducar" type="object" states="vigente" string="Caducar" data-hotkey="z"/>
+                    <button name="action_cancelar" type="object" states="pendiente,vigente" string="Cancelar" data-hotkey="z"/> -->
+                    <!-- <button name="action_pendiente" type="object" states="cancelado" string="Establecer como pendiente" data-hotkey="w"/> -->
+                    <!-- <button name="action_create_arribo_inicial" type="object" string="Crear Arribo Inicial" attrs="{'invisible': [('es_primera_vez', '=', False)]}" data-hotkey="w"/> -->
+                    <!-- <field name="state" widget="statusbar" statusbar_visible="pendiente,vigente,caducado"/> -->
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="user_id" invisible="1"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="ultimo_evento" widget="radio" options="{'horizontal': true}" invisible="1"/>
+                            <!-- <field name="imprimir" widget="boolean_toggle" invisible="1"/> -->
+                            <!--<field name="reimprimir" widget="boolean_toggle" invisible="1"/>
+                                 attrs="{
+                                    'invisible': [('state', 'not in', ['vigente'])],
+                                    'readonly': [('state', 'in', ('anulado','cancelado'))]}" -->
+                        </group>
+                    </group>
+                    <group name="ship_info_details" string="Información de la Nave">
+                        <group name="ship_info_header_left_group">
+                            <field name="nave_id" />
+                            <field name="call_sign"/>
+                            <field name="nave_tipo_id"/>
+                            <field name="nave_servicio_id"/>
+                            <field name="shipowner_id"/>
+                            <field name="shipping_line_id"/>
+                        </group>
+                        <group name="ship_info_header_right_group">
+                            <field name="omi_number" />
+                            <field name="matricula"/>
+                            <field name="trb"/>
+                            <field name="trn"/>
+                            <field name="mmsi"/>
+                            <field name="tipo_trafico_id" readonly="1"/>
+                            <field name="tipo" readonly="1"/>
+                        </group>
+                    </group>
+                    <!-- <group name="trafico_maritimo_navegacion_details" string="Información de la Navegación">
+                        <group>
+                            <field name="reparto_origen_id" domain="[('tipo_id', '=', (%(base_sigmap.sigmap_reparto_tipo_capitania)d))]"
+                                attrs="{'required': 1}"/>
+                            <field name="puerto_origen_id"
+                                attrs="{'required': 1}"/>
+                            <field name="fecha_origen"
+                                attrs="{'required': 1}"/>
+                        </group>
+                        <group>
+                            <field name="reparto_final_id" domain="[('tipo_id', '=', (%(base_sigmap.sigmap_reparto_tipo_capitania)d))]"
+                                attrs="{'required': [('ultimo_evento', '=', 'P')]}"/>
+                            <field name="puerto_destino_id" string="Puerto Próximo"
+                                attrs="{'required': [('ultimo_evento', '=', 'P')]}"/>
+                            <field name="fecha_destino" string="Fecha - Hora Estimada de Arribo (ETA)"
+                                attrs="{'required': [('ultimo_evento', '=', 'P')]}"/>
+                        </group>
+                    </group> -->
+                    <group name="trafico_maritimo_navegacion_details" string="Información de la Navegación">
+                        <!-- <group>
+                            <label for="reparto_origen_id" string="Jurisdicción Zarpe" attrs="{'invisible': [('ultimo_evento', '!=', 'P')]}"/>
+                            <label for="reparto_origen_id" string="Jurisdicción Arribo" attrs="{'invisible': [('ultimo_evento', '!=', 'F')]}">
+                            <field name="reparto_origen_id" nolabel="1" domain="[('tipo_id', '=', (%(base_sigmap.sigmap_reparto_tipo_capitania)d))]"/>
+
+                            <label for="puerto_origen_id" string="Puerto Zarpe" attrs="{'invisible': [('ultimo_evento', '!=', 'P')]}"/>
+                            <label for="puerto_origen_id" string="Puerto Arribo" attrs="{'invisible': [('ultimo_evento', '!=', 'F')]}"/>
+                            <field name="puerto_origen_id" nolabel="1"/>
+
+                            <label for="fecha_origen" string="Fecha - Hora Ingreso Área de Control/Zarpe" attrs="{'invisible': [('ultimo_evento', '!=', 'P')]}"/>
+                            <label for="fecha_origen" string="Fecha - Hora Estimada de Arribo (ETA)" attrs="{'invisible': [('ultimo_evento', '!=', 'F')]}"/>
+                            <field name="fecha_origen" nolabel="1"/>
+                        </group> -->
+                        <group>
+                            <label for="reparto_origen_id" string="Jurisdicción Zarpe" attrs="{'invisible': [('ultimo_evento', '=', 'F')]}"/>
+                            <label for="reparto_origen_id" string="Jurisdicción Arribo" attrs="{'invisible': [('ultimo_evento', '!=', 'F')]}"/>
+                            <field name="reparto_origen_id" nolabel="1" domain="[('tipo_id', '=', (%(base_sigmap.sigmap_reparto_tipo_capitania)d))]"
+                                attrs="{'required': 1}"/>
+
+                            <label for="puerto_origen_id" string="Puerto Zarpe" attrs="{'invisible': [('ultimo_evento', '=', 'F')]}"/>
+                            <label for="puerto_origen_id" string="Puerto Arribo" attrs="{'invisible': [('ultimo_evento', '!=', 'F')]}"/>
+                            <field name="puerto_origen_id" nolabel="1"
+                                attrs="{'required': 1}"/>
+
+                            <label for="fecha_origen" string="Fecha - Hora Ingreso Área de Control/Zarpe" attrs="{'invisible': [('ultimo_evento', '=', 'F')]}"/>
+                            <label for="fecha_origen" string="Fecha - Hora Estimada de Arribo (ETA)" attrs="{'invisible': [('ultimo_evento', '!=', 'F')]}"/>
+                            <field name="fecha_origen" nolabel="1"
+                                attrs="{'required': 1}"/>
+                        </group>
+                        <group attrs="{'invisible': [('ultimo_evento', 'not in', ('P','Z'))]}">
+                            <label for="reparto_final_id" string="Jurisdicción Arribo"/>
+                            <field name="reparto_final_id" nolabel="1" domain="[('tipo_id', '=', (%(base_sigmap.sigmap_reparto_tipo_capitania)d))]"/>
+                            <label for="puerto_destino_id" string="Puerto Próximo"/>
+                            <field name="puerto_destino_id" nolabel="1"/>
+                            <label for="fecha_destino" string="Fecha - Hora Estimada de Arribo (ETA)"/>
+                            <field name="fecha_destino" nolabel="1" />
+                        </group>
+                    </group>
+                    <group name="observaciones" string="Observaciones">
+                        <group colspan="4">
+                            <field name="observacion"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="ruta_info" string="Ruta">
+                            <field name="ruta_ids">
+                                <tree string="Ruta - Coordenadas" editable="bottom">
+                                    <field name="trafico_maritimo_navegacion_id" invisible="1"/>
+                                    <field name="orden"/>
+                                    <field name="latitud_dms"/>
+                                    <field name="longitud_dms"/>
+                                    <field name="ultimo_evento"/>
+                                    <field name="rumbo"/>
+                                    <field name="velocidad"/>
+                                    <field name="fecha"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="imo_crews_list_info" string="Dotación">
+                            <!-- <separator string="CREW LIST"/> -->
+                            <field name="crew_list_ids">
+                                <tree string="Crew's List" editable="bottom">
+                                    <field name="trafico_maritimo_navegacion_id" invisible="1"/>
+                                    <field name="ultimo_evento" invisible="1"/>
+                                    <field name="jerarquia_plaza_id"/>
+                                    <field name="personal_maritimo_id"/>
+                                    <field name="jerarquia_id"/>
+                                    <field name="nationality"/>
+                                    <field name="birthday"/>
+                                    <field name="numero_libretin"/>
+                                    <field name="obligatorio" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="motors_zarpe" string="Motores Fuera de Borda"
+                            attrs="{'invisible': [('tipo', '!=', 'NAC')]}">
+                            <!-- <separator string="Motors List"/> -->
+                            <field name="motors_zarpe_ids">
+                                <tree string="Motores Fuera de Borda'" editable="bottom">
+                                    <field name="trafico_maritimo_navegacion_id" invisible="1"/>
+                                    <field name="codigo_motor"/>
+                                    <field name="codigo_troquelado"/>
+                                    <field name="tipo_marca"/>
+                                    <field name="tipo_motor"/>
+                                    <field name="serie"/>
+                                    <field name="modelo"/>
+                                    <field name="velocidad"/>
+                                    <field name="potencia"/>
+                                    <field name="propietario"/>
+                                    <field name="active" widget="boolean_toggle"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="imo_cargo_info" string="Carga">
+                            <!-- <separator string="CARGA"/> -->
+                            <field name="cargo_ids">
+                                <tree string="Cargo" editable="bottom">
+                                    <field name="trafico_maritimo_navegacion_id" invisible="1"/>
+                                    <field name="container_no"/>
+                                    <field name="package_type"/>
+                                    <field name="gross_weight"/>
+                                    <field name="measurement"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="imo_passenger_list_info" string="Pasajeros">
+                            <!-- <separator string="PASSEGERS LIST"/> -->
+                            <field name="passengers_list_ids">
+                                <tree string="Pasajeros" editable="bottom">
+                                    <field name="trafico_maritimo_navegacion_id" invisible="1"/>
+                                    <field name="personal_maritimo_id"/>
+                                    <field name="nationality"/>
+                                    <field name="birthday"/>
+                                    <field name="l10n_latam_identification_type_id"/>
+                                    <field name="vat"/>
+                                    <field name="port_embarkation_id"/>
+                                    <field name="port_disembarkation_id"/>
+                                    <field name="passeger_trafic"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- <record id="view_trafico_maritimo_base_form" model="ir.ui.view">
+        <field name="name">trafico.maritimo.navegacion.form</field>
+        <field name="model">trafico.maritimo.navegacion</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Control Marítimo">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="user_id" invisible="1"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="ultimo_evento" widget="radio" options="{'horizontal': true}"/>
+                        </group>
+                    </group>
+                    <group name="ship_info_details" string="Información de la Nave">
+                        <group name="header_left_group">
+                            <field name="nave_id" />
+                            <field name="call_sign"/>
+
+                            <field name="nave_tipo_id"/>
+                            <field name="build_year"/>
+
+                            <field name="loa"/>
+                            <field name="lpp"/>
+                            <field name="lenght"/>
+
+                            <field name="breadth"/>
+
+                            <field name="shipping_line_id" />
+
+                            <field name="shipowner_id"/>
+                            <field name="mmsi"/>
+                        </group>
+                        <group name="header_right_group">
+                            <field name="omi_number" />
+                            <field name="ship_register"/>
+                            <field name="port"/>
+                            <field name="date_registry"/>
+
+                            <field name="gross_tonnage"/>
+                            <field name="net_tonnage"/>
+                            <field name="deadweit"/>
+
+                            <field name="depth"/>
+                            <field name="arrival_draught"/>
+                            <field name="design_draught"/>
+
+                            <field name="classification_society"/>
+                            <field name="security_level_type"/>
+                        </group>
+                    </group>
+                    <group name="trafico_maritimo_base_details" string="Información de la Navegación">
+                        <group name="trafico_maritimo_base_info_left">
+                            <field name="juridiccion_origen"/>
+                            <field name="puerto_origen"/>
+                            <field name="fecha_origen"/>
+                        </group>
+                        <group name="trafico_maritimo_base_right">
+                            <field name="juridiccion_final"/>
+                            <field name="puerto_final"/>
+                            <field name="fecha_destino"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="ruta_info" string="Ruta">
+                            <field name="ruta_ids">
+                                <tree string="Ruta" editable="bottom">
+                                    <field name="trafico_maritimo_id" invisible="1"/>
+                                    <field name="ruta"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="imo_crews_list_info" string="Dotación">
+                            <field name="crew_list_ids">
+                                <tree string="Crew's List" editable="bottom">
+                                    <field name="trafico_maritimo_id" invisible="1"/>
+                                    <field name="personal_maritimo_id"/>
+                                    <field name="jerarquia_id"/>
+                                    <field name="nationality"/>
+                                    <field name="birthday"/>
+                                    <field name="numero_libretin"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="imo_cargo_info" string="Carga">
+                            <field name="cargo_ids">
+                                <tree string="Cargo" editable="bottom">
+                                    <field name="trafico_maritimo_id" invisible="1"/>
+                                    <field name="container_no"/>
+                                    <field name="package_type"/>
+                                    <field name="gross_weight"/>
+                                    <field name="measurement"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="imo_passenger_list_info" string="Pasajeros">
+                            <field name="passengers_list_ids">
+                                <tree string="Pasajeros" editable="bottom">
+                                    <field name="trafico_maritimo_id" invisible="1"/>
+                                    <field name="personal_maritimo_id"/>
+                                    <field name="nationality"/>
+                                    <field name="birthday"/>
+                                    <field name="l10n_latam_identification_type_id"/>
+                                    <field name="vat"/>
+                                    <field name="port_embarkation_id"/>
+                                    <field name="port_disembarkation_id"/>
+                                    <field name="passeger_trafic"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record> -->
+
+    <record id="action_trafico_maritimo_navegacion" model="ir.actions.act_window">
+        <field name="name">Tráfico Marítimo Navegación</field>
+        <field name="res_model">trafico.maritimo.navegacion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_trafico_maritimo_navegacion_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No existen registro de tráfico marítimo navegacion
+            </p>
+        </field>
+    </record>
+
+</odoo>

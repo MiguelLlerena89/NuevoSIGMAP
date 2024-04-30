@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_nave_historial_construccion_reparto_form_inherit" model="ir.ui.view">
+        <field name="name">nave.nave.construccion.reparto.form.inherit</field>
+        <field name="model">nave.nave.construccion</field>
+        <field name="inherit_id" ref="nave.view_nave_historial_construccion_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fecha_construccion']" position="after">
+                <field name="reparto_id"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

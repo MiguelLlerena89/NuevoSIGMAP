@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_iaa_crew_list_form" model="ir.ui.view">
+        <field name="name">iaa.vessel.voyage.information.crew.list.form.inherit</field>
+        <field name="model">iaa.vessel.voyage.information</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_iaa_vessel_voyage_information_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="imo_crews_list_info" string="IMO Crews's List FAL 5">
+                    <separator string="IMO CREW LIST FAL 5"/>
+                    <field name="crew_list_ids">
+                        <tree string="Crew's List" editable="bottom">
+                            <field name="vessel_voyage_info_id" invisible="1"/>
+                            <field name="personal_maritimo_id"/>
+                            <field name="jerarquia_id"/>
+                            <field name="nationality"/>
+                            <field name="birthday"/>
+                            <field name="numero_libretin"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

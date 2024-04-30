@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_iaa_crew_effects_declaration_form" model="ir.ui.view">
+        <field name="name">iaa.vessel.voyage.information.crew.effects.declaration.form.inherit</field>
+        <field name="model">iaa.vessel.voyage.information</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_iaa_vessel_voyage_information_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="imo_crews_effects_declaration_info" string="IMO Crews's Effects Declaration FAL 4">
+                    <separator string="IMO CREW EFFECTS DECLARATION FAL 4"/>
+                    <field name="crew_effects_ids" string="Effects ineligible for relief from customs duties">
+                        <tree string="Crew's Effects" editable="bottom">
+                            <field name="vessel_voyage_info_id" invisible="1"/>
+                            <field name="personal_maritimo_id"/>
+                            <field name="jerarquia_id"/>
+                            <field name="product_id"/>
+                            <field name="qty_received"/>
+                            <field name="product_description"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

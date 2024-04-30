@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="view_trafico_maritimo_form" model="ir.ui.view">
+      <field name="name">Control de Combustible</field>
+      <field name="model">trafico_maritimo</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+          <form string="Control de Combustible">
+            <header>
+                <button name="button_imprimir" class="btn-primary" string="Imprimir" data-hotkey="p"/>
+            </header>
+            <sheet>
+                <group string="Información de la Nave">
+                    <field name="nombre"/>
+                    <field name="dato1"/>
+                    <field name="dato2"/>
+                </group>
+                <group string="Caracteristicas Tecnicas">
+                    <field name="dato3"/>
+                    <field name="dato4"/>
+                    <field name="dato5"/>
+                    <field name="dato6"/>
+                    <field name="dato7"/>
+                </group>
+                <group string="Control en base al recorrido del DMS">
+                    <field name="dato8"/>
+                    <field name="dato9"/>
+                </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_trafico_maritimo_tree" model="ir.ui.view">
+        <field name="name">Control de Combustible</field>
+        <field name="model">trafico_maritimo</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Control de Combustible">
+                <field name="nombre"/>
+                <field name="dato1"/>
+                <field name="dato2"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="trafico_maritimo.action_window" model="ir.actions.act_window">
+        <field name="name">Control de Combustible</field>
+        <field name="res_model">trafico_maritimo</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_trafico_maritimo_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define un nuevo registro de control de combustible
+            </p>
+        </field>
+    </record>
+  </data>
+</odoo>

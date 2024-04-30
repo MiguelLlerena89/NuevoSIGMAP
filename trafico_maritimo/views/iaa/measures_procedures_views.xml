@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_iaa_measures_procedures_form" model="ir.ui.view">
+        <field name="name">iaa.vessel.voyage.information.measures.procedures.form.inherit</field>
+        <field name="model">iaa.vessel.voyage.information</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_iaa_vessel_voyage_information_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="imo_measures_procedures_info" string="Measures and Procedures">
+                    <separator string="ADDITIONAL MEASURES"/>
+                    <field name="measures_ids"
+                        context="{'default_measures_procedures_type': 'M'}">
+                        <tree string="Additional Measures" editable="bottom">
+                            <field name="vessel_voyage_info_id" invisible="1"/>
+                            <field name="port_id"/>
+                            <field name="notes" string="Additional Measures"/>
+                            <field name="measures_procedures_type" invisible="1"/>
+                        </tree>
+                    </field>
+                    <separator string="PROCEDURES SHIP TO SHIP"/>
+                    <field name="procedures_ids"
+                        context="{'default_measures_procedures_type': 'P'}">
+                        <tree string="Security Procedures Ship to Ship" editable="bottom">
+                            <field name="vessel_voyage_info_id" invisible="1"/>
+                            <field name="port_id"/>
+                            <field name="notes" string="Security Procedures Ship to Ship"/>
+                            <field name="measures_procedures_type" invisible="1"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

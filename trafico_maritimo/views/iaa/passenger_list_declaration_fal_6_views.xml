@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_iaa_passenger_list_form" model="ir.ui.view">
+        <field name="name">iaa.vessel.voyage.information.passenger.list.form.inherit</field>
+        <field name="model">iaa.vessel.voyage.information</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_iaa_vessel_voyage_information_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="imo_passenger_list_info" string="IMO Passenger List FAL 6">
+                    <separator string="IMO PASSENGER LIST FAL 6"/>
+                    <field name="passengers_list_ids">
+                        <tree string="Passenger List" editable="bottom">
+                            <field name="vessel_voyage_info_id" invisible="1"/>
+                            <field name="personal_maritimo_id"/>
+                            <field name="nationality"/>
+                            <field name="birthday"/>
+                            <field name="l10n_latam_identification_type_id"/>
+                            <field name="vat"/>
+                            <field name="port_embarkation_id"/>
+                            <field name="port_disembarkation_id"/>
+                            <field name="passeger_trafic"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

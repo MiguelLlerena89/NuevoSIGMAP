@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_registrar_posicion_coordenada_wizard" model="ir.actions.act_window">
+        <field name="name">Registrar Posición Coordenada</field>
+        <field name="res_model">registrar.posicion.coordenada.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_registrar_posicion_coordenada_wizard_form" model="ir.ui.view">
+        <field name="name">registrar.posicion.coordenada.wizard.form</field>
+        <field name="model">registrar.posicion.coordenada.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="trafico_maritimo_ruta_id" invisible="1"/>
+                    <group name="posicion_coordenada_details" string="Posición Coordenada">
+                        <group name="coordenadas_latitud">
+                            <!-- <label for="latitud_grado" string="Posición coordenada (Latitud)"/> -->
+                            <div class="o_row" colspan="2">
+                                <b><span>Latitud</span></b>
+                                <field name="latitud_grado" class="oe_inline"/>
+                                <b><span>°</span></b>
+                                <field name="latitud_minuto" class="oe_inline ms-3"/>
+                                <b><span>'</span></b>
+                                <field name="latitud_segundo" class="oe_inline ms-9"/>
+                                <b><span>''</span></b>
+                                <field name="punto_cardinal_latitud" class="oe_inline ms-12"/>
+                            </div>
+                        </group>
+                        <group name="coordenadas_longitud">
+                            <!-- <label for="longitud_grado" string="Posición coordenada (Longitud)"/> -->
+                            <div class="o_row" colspan="2">
+                                <b><span>Longitud</span></b>
+                                <field name="longitud_grado" class="oe_inline" style="width: 80px;"/>
+                                <b><span>° </span></b>
+                                <field name="longitud_minuto" class="oe_inline ms-3"/>
+                                <b><span>' </span></b>
+                                <field name="longitud_segundo" class="oe_inline ms-9"/>
+                                <b><span>'' </span></b>
+                                <field name="punto_cardinal_longitud" class="oe_inline ms-12"/>
+                            </div>
+                        </group>
+                    </group>
+                    <group invisible="1">
+                        <group>
+                            <field name="latitud"/>
+                            <field name="latitud_dms"/>
+                        </group>
+                        <group>
+                            <field name="longitud"/>
+                            <field name="longitud_dms"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name='action_registrar_posicion_coordenada_nave' string='Registrar' type='object' class='btn-primary'/>
+                    <button string='Cancelar' class='btn-default' special='cancel'/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Rutas de Geocoordenada -->
+    <record id="view_trafico_maritimo_ruta_form_geocoordenada_inherited" model="ir.ui.view">
+        <field name="name">trafico.maritimo.ruta.geocoordenada.form.inherit</field>
+        <field name="model">trafico.maritimo.ruta</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_trafico_maritimo_ruta_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//field[@name='latitud']" position="after">-->
+            <xpath expr="//notebook/page/field[@name='ruta_geocoordenada_ids']/form/field[@name='orden']" position="after">
+                <!-- <label for="coordenada" string="Adicionar coordenada"/> -->
+                <button name="button_genera_coordenada" string="GMS" type="object" class="oe_highlight" icon="fa-crosshairs" width="5%"
+                    attrs="{'invisible': [('latitud', '=', True),('longitud', '=', True)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

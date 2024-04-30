@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="trafico_maritimo_prearribo_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Tráfico Marítimo Prearribo</field>
+      <field name="code">trafico_maritimo_prearribo_code</field>
+      <field name="prefix">TMPA/%(year)s/%(month)s/</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <record id="trafico_maritimo_prezarpe_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Tráfico Marítimo Prezarpe</field>
+      <field name="code">trafico_maritimo_prezarpe_code</field>
+      <field name="prefix">TMPZ/%(year)s/%(month)s/</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <record id="trafico_maritimo_iaa_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Tráfico Marítimo IAA</field>
+      <field name="code">trafico_maritimo_iaa_code</field>
+      <field name="prefix">%(day)s-%(month)s-%(year)s-</field>
+      <field name="padding">4</field>
+      <field name="number_next">1</field>
+    </record>
+
+  </data>
+</odoo>
