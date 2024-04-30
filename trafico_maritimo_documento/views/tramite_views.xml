@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_tramite_form_nave_navegacion_inherited" model="ir.ui.view">
+        <field name="name">tramite.form.nave.navegacion.inherit</field>
+        <field name="model">tramite</field>
+        <field name="inherit_id" ref="tramite.view_tramite_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="after">
+                <group>
+                    <group>
+                        <field name="tipo_trafico_id"
+                            attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                        <field name="tipo"
+                            attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                        <field name="trb"
+                            attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                    </group>
+                    <group>
+                        <field name="estado_navegacion"
+                            attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                        <field name="ultimo_evento"
+                            attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                        <field name="trafico_maritimo_prenavegacion_id" attrs="{'invisible': ['|',('ultimo_evento', '=', False),('tipo', '=', 'NAC')]}"/>
+                    </group>
+                </group>
+
+                <group>
+                    <group>
+                        <label for="reparto_origen_id" string="Jurisdicción Zarpe" attrs="{'invisible': [('ultimo_evento', '!=', 'Z')]}"/>
+                        <label for="reparto_origen_id" string="Jurisdicción Arribo" attrs="{'invisible': [('ultimo_evento', '!=', 'A')]}"/>
+                        <field name="reparto_origen_id" nolabel="1"
+                            attrs="{'invisible':['|',('ultimo_evento', '=', False),('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                        <!-- <label for="reparto_final_id" string="Puerto Próx." attrs="{'invisible':['|',('ultimo_evento', '=', False),('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/> -->
+                        <label for="reparto_final_id" string="Próxima Jurisdicción" attrs="{'invisible':['|',('ultimo_evento', '=', 'A'),('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                        <field name="reparto_final_id" nolabel="1"
+                            attrs="{'invisible':['|',('ultimo_evento', '=', 'A'),('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                    </group>
+                    <group>
+                        <label for="fecha_origen" string="Fecha y hora de zarpe" attrs="{'invisible': ['|',('fecha_origen', '=', False),('ultimo_evento', '!=', 'Z')]}"/>
+                        <label for="fecha_origen" string="Fecha y hora arribo" attrs="{'invisible': ['|',('fecha_origen', '=', False),('ultimo_evento', '!=', 'A')]}"/>
+                        <field name="fecha_origen" nolabel="1"
+                            attrs="{'invisible':['|','|',('fecha_origen', '=', False),('ultimo_evento', '=', False),('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                        <!-- <label for="fecha_destino" string="Fecha y hora estimada de zarpe" attrs="{'invisible': [('ultimo_evento', '!=', 'Z')]}"/> -->
+                        <!-- <label for="fecha_destino" string="Fecha y hora estimada de arribo" attrs="{'invisible': [('ultimo_evento', '!=', 'A')]}"/> -->
+                        <label for="fecha_destino" string="Fecha y hora estimada de arribo" attrs="{'invisible':['|',('ultimo_evento', '=', 'A'),('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                        <field name="fecha_destino" nolabel="1"
+                            attrs="{'invisible':['|',('ultimo_evento', '=', 'A'),('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                    </group>
+                </group>
+
+                <!-- <field name="periodo_navegacion"
+                    attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                <field name="dias_tiempo_espera" invisible="1"/> -->
+            </xpath>
+            <xpath expr="//field[@name='curso_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

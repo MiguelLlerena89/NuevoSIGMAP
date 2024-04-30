@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tráfico Marítimo Dotacion TreeView -->
+    <record id="view_trafico_maritimo_crews_list_tree" model="ir.ui.view">
+        <field name="name">trafico.maritimo.crews.list.tree</field>
+        <field name="model">trafico.maritimo.crews.list</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Dotación">
+                <field name="trafico_maritimo_navegacion_id"/>
+                <field name="nave_id"/>
+                <field name="jerarquia_plaza_id"/>
+                <field name="personal_maritimo_id"/>
+                <field name="jerarquia_id"/>
+                <field name="reparto_origen_id"/>
+                <!-- <field name="reparto_destino_id" /> -->
+
+                <field name="fecha_origen"/>
+                <field name="fecha_destino"/>
+
+                <!-- <field name="nave_tipo_id"/> -->
+                <field name="ultimo_evento" invisible="1"/>
+                <field name="nationality"/>
+                <field name="birthday"/>
+                <field name="numero_libretin"/>
+                <field name="obligatorio" string="Dotación Mínima?"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

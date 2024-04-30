@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <template id="report_documentobase">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <div align="right" style="font-family:Arial;font-size:14px;font-weight: bold;text-decoration:none;"><!--class="text-center" -->
+                            Documento No. <span t-field="o.name"/>
+                        </div>
+                        <div class="col-xs-12" style="font-size: 14px">
+                            <!-- <table width="100%" border="0" cellpadding="0" cellspacing="0"> -->
+                            <table style="border-collapse: collapse; width: 100%; border: 1px solid #000;" id="cabecera_info">
+                                <tr>
+                                    <td rowspan="4">
+                                        <div class="o_utm_no_data_img">
+                                            <img src="/trafico_maritimo_documento/static/src/img/qr.jpg" alt="QR" style="max-height: 4cm; max-width: 8cm;" class="utm_chart_image image-responsive mt8"/>
+                                        </div>
+                                    </td>
+                                    <td height="30" colspan="4" align="left">
+                                        <div class="o_utm_no_data_img">
+                                            <img src="/trafico_maritimo_documento/static/src/img/escudoEcuador.jpg" alt="Escudo Ecuador" style="max-height: 5cm; max-width: 8cm;" class="utm_chart_image image-responsive mt8"/>
+                                        </div>
+                                        <br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="30" colspan="4" class="text-left"><strong>REPÚBLICA DEL ECUADOR</strong></td><br/>
+                                    <br/>
+                                </tr>
+                                <tr>
+                                    <td height="30px" colspan="2" align="left"><b><span t-field="o.reparto_origen_id.name"/></b><!--valign="top"-->
+                                    </td>
+                                    <td align="left" colspan="2" ><span t-field="o.reparto_origen_id.city_id.name"/></td>
+                                </tr>
+                                <tr id="espacio_cabecera">
+                                    <td colspan="4" height="20px"/>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+
+    </template>
+
+   <template id="custom_report_footer_sumilla_provisional">
+        <br/>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td class="text-uppercase" style="vertical-align:middle;text-align:left;">
+                    <span t-field="o.user_id.name"/>
+                    <span t-field="o.create_date" t-options="{'widget': 'datetime', 'format': 'DD/MM/YYY HH:mm'}"/><br/>
+                </td>
+            </tr>
+        </table>
+    </template>
+
+</odoo>

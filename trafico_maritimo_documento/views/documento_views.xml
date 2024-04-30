@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_tramite_documento_form_tipo_trafico_inherited" model="ir.ui.view">
+        <field name="name">tramite.documento.form.tipo.trafico.inherit</field>
+        <field name="model">tramite.documento</field>
+        <field name="inherit_id" ref="tramite.view_tramite_documento_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tipo_reparto_id']" position="after">
+                <field name="tipo_trafico_id"
+                    attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))],
+                            'required':[('tipo_documento_id','=',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                <field name="tipo"
+                    attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                <field name="ultimo_evento"
+                    attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))],
+                            'required':[('tipo_documento_id','=',(%(base_sigmap.trafico_maritimo)d))]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

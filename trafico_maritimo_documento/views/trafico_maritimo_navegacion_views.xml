@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Tráfico Marítimo Navegación TreeView -->
+        <record id="view_trafico_maritimo_navegacion_tree_inherited" model="ir.ui.view">
+            <field name="name">trafico.maritimo.navegacion.state.tree.inherit</field>
+            <field name="model">trafico.maritimo.navegacion</field>
+            <field name="inherit_id" ref="trafico_maritimo.view_trafico_maritimo_navegacion_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='active']" position="after">
+                    <field name="state" string="Estado"
+                        decoration-info="state == 'pendiente'"
+                        decoration-success="state == 'vigente'"
+                        decoration-warning="state == 'anulado'"
+                        decoration-muted="state == 'cancelado'"
+                        widget="badge" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Tráfico Marítimo Navegación FormView-->
+        <record id="view_trafico_maritimo_navegacion_form_state_inherited" model="ir.ui.view">
+            <field name="name">trafico.maritimo.navegacion.state.form.inherit</field>
+            <field name="model">trafico.maritimo.navegacion</field>
+            <field name="inherit_id" ref="trafico_maritimo.view_trafico_maritimo_navegacion_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <field name="state" widget="statusbar" statusbar_visible="pendiente,vigente,caducado,cancelado"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

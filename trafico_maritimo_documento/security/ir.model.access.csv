@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_trafico_maritimo_zarpe,access_trafico_maritimo_zarpe,model_trafico_maritimo_zarpe,base.group_system,1,1,1,1
+access_control_combustible_nave_wizard,access_control_combustible_nave_wizard,model_control_combustible_nave_wizard,base.group_system,1,1,1,1
+access_trafico_maritimo_arribo,access_trafico_maritimo_arribo,model_trafico_maritimo_arribo,base.group_system,1,1,1,1
+
+access_ruta_geocoordenada_nave_wizard,access_ruta_geocoordenada_nave_wizard,model_ruta_geocoordenada_nave_wizard,base.group_system,1,1,1,1

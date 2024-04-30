@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- <menuitem id="menu_control_nacional" name="Control Nacional" parent="trafico_maritimo.menu_2" sequence="3">
+            <menuitem id="menu_arribo"
+                    name="Permiso de Arribos"
+                    action="trafico_maritimo_documento.action_arribo_nacional"
+                    sequence="1"/>
+            <menuitem id="menu_zarpe"
+                    name="Permiso de Zarpes"
+                    action="trafico_maritimo_documento.action_zarpe_nacional"
+                    sequence="2"/>
+    </menuitem>-->
+    <!-- <menuitem id="menu_control_internacional" name="Control Internacional" parent="trafico_maritimo.menu_2" sequence="3">
+            <menuitem id="menu_señal_arribo_internacional"
+                    name="(SP) Plan de Viaje"
+                    action="trafico_maritimo_documento.action_arribo_internacional"
+                    sequence="1"/>
+            <menuitem id="menu_arribo_int"
+                    name="(PR) Zarpe/Posicion"
+                    action="trafico_maritimo_documento.action_zarpe_internacional"
+                    sequence="2"/>
+            <menuitem id="menu_señal_zarpe_int"
+                    name="(DR) Alteración de Ruta"
+                    action="trafico_maritimo_documento.action_arribo_internacional"
+                    sequence="3"/>
+            <menuitem id="menu_zarpe_imt"
+                    name="(FR) Arribo/Final"
+                    action="trafico_maritimo_documento.action_arribo_internacional"
+                    sequence="4"/>
+    </menuitem> -->
+
+    <menuitem id="menu_trafico_maritimo_servicios" name="Servicios Emitidos" parent="trafico_maritimo.menu_root" sequence="3">
+        <menuitem id="menu_trafico_maritimo_documentos_nacionales" name="Documentos Nacionales" sequence="1">
+                <menuitem id="menu_permiso_arribo_nacional" name="Permiso de Arribo" action="action_arribo_nacional" sequence="1"/>
+                <menuitem id="menu_permiso_zarpe_nacional" name="Permiso de Zarpe" action="action_zarpe_nacional" sequence="2"/>
+        </menuitem>
+        <menuitem id="menu_trafico_maritimo_documentos_internacionales" name="Documentos Internacionales" sequence="2">
+                <menuitem id="menu_permiso_arribo_internacional" name="Permiso de Arribo" action="action_arribo_internacional" sequence="1"/>
+                <menuitem id="menu_permiso_zarpe_internacional" name="Permiso de Zarpe" action="action_zarpe_internacional" sequence="2"/>
+        </menuitem>
+    </menuitem>
+
+</odoo>

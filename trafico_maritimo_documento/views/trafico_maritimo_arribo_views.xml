@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_personal_maritimo_form_arribos" model="ir.ui.view">
+            <field name="name">personal.maritimo.form.arribos</field>
+            <field name="model">personal.maritimo</field>
+            <field name="inherit_id" ref="personal_maritimo.view_personal_maritimo_form"/>
+            <field name="groups_id" eval="[(5,)]"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button name="action_open_arribos" type="object" class="oe_stat_button" icon="fa-id-card-o" attrs="{'invisible': [('arribo_count', '=', 0)]}">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value"><field name="arribo_count"/></span>
+                            <span class="o_stat_text">Arribos</span>
+                        </div>
+                    </button>
+                </div>
+            </field>
+        </record>
+
+        <!-- Tráfico Marítimo Arribo TreeView -->
+        <record id="view_trafico_maritimo_arribo_tree" model="ir.ui.view">
+            <field name="name">trafico.maritimo.arribo.tree</field>
+            <field name="model">trafico.maritimo.arribo</field>
+            <field name="inherit_id" ref="trafico_maritimo.view_trafico_maritimo_navegacion_tree"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='nave_id']" position="after">
+                    <field name="remanente"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Tráfico Marítimo Arribo FormView -->
+        <record id="view_trafico_maritimo_arribo_form" model="ir.ui.view">
+            <field name="name">trafico.maritimo.arribo.form</field>
+            <field name="model">trafico.maritimo.arribo</field>
+            <field name="inherit_id" ref="trafico_maritimo.view_trafico_maritimo_navegacion_form"/>
+            <field name="groups_id" eval="[(5,)]"/>
+            <field name="mode">primary</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_generar_documento" type="object" class="btn-primary"
+                        string="Imprimir" data-hotkey="k"
+                        states="en_tramite"/><!--attrs="{'invisible': [('state', '!=','por_supervisar')]}"-->
+                    <!-- <button name="action_validar" type="object" states="en_tramite" string="Validar" class="btn-primary" data-hotkey="o"/> -->
+                    <button name="action_caducar" type="object" string="Caducar" states="vigente" data-hotkey="z"/>
+                    <button name="action_anular" type="object" string="Anular" states="en_tramite,por_firmar,vigente" data-hotkey="z"/>
+                    <field name="state" widget="statusbar" statusbar_visible="en_tramite,vigente,caducado,anulado"/>
+                </xpath>
+                <!-- <xpath expr="//notebook" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath> -->
+                <xpath expr="//group[@name='ship_info_details']" position="after">
+                    <group name="combustible_detalles" string="Informacion de Combustible">
+                        <group>
+                            <field name="remanente"/>
+                        </group>
+                    </group>
+                    <!-- <group name="trafico_maritimo_navegacion_details" string="Información de la Navegación">
+                        <group name="trafico_maritimo_navegacion_info_left">
+                            <field name="reparto_origen_id" string="Jurisdicción Arribo" domain="[('tipo_id', '=', (%(base_sigmap.sigmap_reparto_tipo_capitania)d))]"/>
+                            <field name="puerto_origen_id" string="Puerto de Arribo"/>
+                            <field name="fecha_origen" string="Fecha - Hora de Arribo"/>
+                        </group>
+                        <group name="trafico_maritimo_navegacion_info_right">
+                            <field name="reparto_final_id" string="Próxima Jurisdicción" domain="[('tipo_id', '=', (%(base_sigmap.sigmap_reparto_tipo_capitania)d))]"/>
+                            <field name="puerto_destino_id" string="Próximo Puerto"/>
+                            <field name="fecha_destino" string="Fecha - Hora Estimada de Llegada"/>
+                        </group>
+                    </group> -->
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_arribo_nacional" model="ir.actions.act_window">
+            <field name="name">Arribo Nacionales</field>
+            <field name="res_model">trafico.maritimo.arribo</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="trafico_maritimo_documento.view_trafico_maritimo_arribo_tree"/>
+            <field name="context">{'default_ultimo_evento': 'A', 'default_tipo': 'NAC'}</field>
+            <field name="domain">[('ultimo_evento', '=', 'A'),('tipo', '=', 'NAC')]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No se encuentra arribos nacionales
+                </p>
+            </field>
+        </record>
+
+        <record id="action_arribo_internacional" model="ir.actions.act_window">
+            <field name="name">Arribo Internacionales</field>
+            <field name="res_model">trafico.maritimo.arribo</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="trafico_maritimo_documento.view_trafico_maritimo_arribo_tree"/>
+            <field name="context">{'default_ultimo_evento': 'A', 'default_tipo': 'INT'}</field>
+            <field name="domain">[('ultimo_evento', '=', 'A'),('tipo', '=', 'INT')]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No se encuentra arribos internacionales
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

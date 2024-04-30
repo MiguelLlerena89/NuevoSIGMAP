@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_tramite_documento_emitido_form_nave_inherited" model="ir.ui.view">
+        <field name="name">tramite.documento.emitido.form.nave.inherit</field>
+        <field name="model">tramite.documento.emitido</field>
+        <field name="inherit_id" ref="tramite.view_tramite_documento_emitido_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fecha_inicio']" position="before">
+                <!-- <field name="beneficiario_nave_id"
+                    attrs="{'invisible':[('tipo_documento_id','in',(%(base_sigmap.nave)d))]}"/> -->
+                <!-- <field name="nave_id"
+                    attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/> -->
+                <field name="reparto_origen_id"
+                    attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                <field name="reparto_final_id"
+                    attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                <field name="fecha_origen"
+                    attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+                <field name="fecha_destino"
+                    attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.trafico_maritimo)d))]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

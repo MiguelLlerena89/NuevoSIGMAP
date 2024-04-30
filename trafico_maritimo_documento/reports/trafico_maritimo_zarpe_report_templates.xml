@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_documento_zarpe" model="ir.actions.report">
+        <field name="name">Documento Zarpe</field>
+        <field name="model">trafico.maritimo.zarpe</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">trafico_maritimo_documento.report_documentozarpe</field>
+        <field name="report_file">trafico_maritimo_documento.report_documentozarpe</field>
+        <field name="print_report_name">'Documento Permiso de Zarpe Nacional - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_permiso"/>
+        <!-- <field name="binding_model_id" ref="model_trafico_maritimo_zarpe"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Documento Zarpe -->
+    <template inherit_id="trafico_maritimo_documento.report_documentobase" id="report_documentozarpe" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[@id='espacio_cabecera']" position="inside">
+            <tr>
+                <td style="border-right: 1px solid black;" height="50px" colspan="4" align="center"><b>SOLICITUD DE ZARPE Y ROL DE TRIPULACION</b><br/>
+                    <span align="center" class="text-center">Tráfico de Cabotaje</span><br/>
+                    <span align="center" class="text-center">(Para naves de 10 T.R.B. en adelante)</span><br/>
+                </td>
+            </tr>
+            <!-- <tr>
+                <td colspan="4" height="20px"/>
+            </tr> -->
+            <!-- <table class="table table-bordered" width="100%" style="border-collapse: collapse;"> -->
+            <!-- <table style="border-collapse: collapse; width: 100%; border: 1px solid #000;"> -->
+            <tr>
+                <td style="border-right: 1px solid black;" colspan="4" align="left">
+                    Señor
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="left" width="58%">
+                    CAPITAN DEL PUERTO
+                </td>
+                <td style="border-right: 1px solid black;" colspan="2" align="left">
+                    <span t-field="o.nave_tipo_id.name"/><br/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="left" width="58%">
+                    <span t-field="o.reparto_origen_id.city_id.name"/>
+                </td>
+                <td style="border-right: 1px solid black;" colspan="2" align="left">
+                    <span t-field="o.nave_servicio_id.name"/>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-right: 1px solid black;" colspan="4" align="left">
+                        Cúmpleme informar a usted que el:
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="left">
+                    <table class="table table-condensed" border="0">
+                        <tbody>
+                            <tr>
+                                <td>BUQUE: </td>
+                                <td><span t-field="o.nave_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">ARMADOR: </td>
+                                <td><span t-field="o.shipowner_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">COMPAÑIA: </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td style="border-right: 1px solid black;"  colspan="2" align="left">
+                    <table class="table table-condensed" border="0">
+                        <tbody>
+                            <tr>
+                                <td colspan="2" align="justify">
+                                    MATRICULA: <span class="text-left" t-field="o.matricula"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>TRB: </td>
+                                <td><span t-field="o.trb"/></td>
+                                <td>TRN: </td>
+                                <td><span t-field="o.trn"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="left">
+                    <table class="table table-condensed" border="0">
+                        <tbody>
+                            <tr>
+                                <td>Zarpará del puerto de: </td>
+                                <td width="60%"><span t-field="o.puerto_origen_id.name"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td style="border-right: 1px solid black;"  colspan="2" align="left">
+                    <table class="table table-condensed" border="0">
+                        <tbody>
+                            <tr>
+                                <td>Con destino a: </td>
+                                <td width="60%"><span t-field="o.puerto_destino_id.name"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 1px solid black;" colspan="2" align="left">
+                    Fecha y hora de despacho: <span t-field="o.fecha_despacho"/><br/>
+                </td>
+                <td style="border-top: 1px solid #000; border-right: 1px solid #000;" colspan="2" align="left">
+                    Fecha y hora de zarpe: <span t-field="o.fecha_origen"/><br/>
+                    Fecha y hora de estimada de arribo: <span t-field="o.fecha_destino"/>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;" align="center">
+                    MOTOR FUERA DE BORDA <br/>
+                    CODIDO TROQUELADO
+                </td>
+                <td style="border: 1px solid black;" colspan="2" align="center">
+                    MARCA - TIPO MAQUINA - SERIE - MODELO - <br/>
+                    VELOCIDAD - POTENCIA
+                </td>
+                <td style="border: 1px solid black;" align="center">
+                    PROPIETARIO
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="border: 1px solid black;">
+                    <table class="table table-sm mt-4">
+                        <thead><!--style="display: table-row-group"-->
+                            <tr>
+                                <th style="border: 1px solid black;" class="text-center">No</th>
+                                <th style="border: 1px solid black;" class="text-center">TITULO</th>
+                                <th style="border: 1px solid black;" class="text-center">PLAZA</th>
+                                <th style="border: 1px solid black;" class="text-center">NOMBRE</th>
+                                <th style="border: 1px solid black;" class="text-center">NAC.</th>
+                                <th style="border: 1px solid black;" class="text-center">MATRICULA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="i" t-value="1" />
+                            <t t-foreach="o.crew_list_ids" t-as="line">
+                                <tr>
+                                    <td style="border: 1px solid black;" class="text-center"><span t-esc="i"/><t t-set="i" t-value="i+1"/></td>
+                                    <td style="border: 1px solid black;"><span t-field="line.jerarquia_id.name"/></td>
+                                    <td style="border: 1px solid black;"><span t-field="line.jerarquia_plaza_id.name"/></td>
+                                    <td style="border: 1px solid black;"><span t-field="line.personal_maritimo_id.name"/></td>
+                                    <td style="border: 1px solid black;"><span t-field="line.nationality"/></td>
+                                    <td style="border: 1px solid black;"><span t-field="line.numero_libretin"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <!-- </table> -->
+        </xpath>
+
+        <xpath expr="//table[@id='cabecera_info']" position="after">
+            <p style="page-break-before:always;"></p>
+
+            <table style="border-collapse: collapse; width: 100%; border: 1px solid #000;">
+                <tr>
+                    <th colspan="4" class="text-center">Certificado que la información aquí contenida es exacta, veraz y completa</th> <!--style="padding:10px;border:1px solid black"-->
+                </tr>
+                <tr>
+                    <td colspan="4" height="100px"/>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-center">EL CAPITAN DEL BUQUE</th>
+                </tr>
+                <tr>
+                    <td colspan="4" height="80px"/>
+                </tr>
+                <tr>
+                    <td align="left" width="28%">Vista la solicitud que antecede se  </td>
+                    <td colspan="2" align="center">----------------------------------------------------------<br/>( Autoriza / niega ) </td>
+                    <td style="border-right: 1px solid black;" align="left"> el zarpe</td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="60px"/>
+                </tr>
+                <tr>
+                    <td colspan="4" align="center">-------------------------------------------<br/> EL CAPITAN DEL PUERTO <br/><b>CPNV-EM/Omar LLERENA Villa</b></td>
+                </tr>
+
+                <!-- <t t-call="trafico_maritimo_documento.custom_report_footer_sumilla_provisional"/> -->
+            </table>
+
+            <t t-call="trafico_maritimo_documento.custom_report_footer_sumilla_provisional"/>
+        </xpath>
+
+    </template>
+
+</odoo>

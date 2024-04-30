@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_ruta_geocoordenada_nave_wizard_form" model="ir.ui.view">
+        <field name="name">ruta.geocoordenada.nave.wizard.form</field>
+        <field name="model">ruta.geocoordenada.nave.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="trafico_maritimo_arribo_id" invisible="1"/>
+                        <field name="trafico_maritimo_zarpe_id" invisible="1"/>
+                        <group>
+                            <field name="trafico_maritimo_ruta_id"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name='action_ruta_geocoordenada_nave' string='Grabar' type='object' class='btn-primary'/>
+                    <button string='Cancelar' class='btn-default' special='cancel' />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ruta_geocoordenada_nave_wizard" model="ir.actions.act_window">
+        <field name="name">Ruta Geocoordenada</field>
+        <field name="res_model">ruta.geocoordenada.nave.wizard</field>
+        <field name="view_mode">form</field>
+        <!-- <field name="view_id" ref="view_ruta_geocoordenada_nave_wizard_form"/> -->
+        <field name="target">new</field>
+    </record>
+
+    <!--  Tráfico Marítimo Internacional Costera -->
+    <record id="view_trafico_maritimo_internacional_costera_form_ruta_geocoordenada_inherited" model="ir.ui.view">
+        <field name="name">trafico.maritimo.internacional.costera.form.ruta.geocoordenada.inherit</field>
+        <field name="model">trafico.maritimo.internacional.costera</field>
+        <field name="inherit_id" ref="trafico_maritimo.view_trafico_maritimo_internacional_costera_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='ruta_info']/field[@name='ruta_ids']" position="before">
+                <button name="button_ruta_geocoordenada_nave" type="object" class="oe_highlight"
+                    string="Buscar Ruta" data-hotkey="p"
+                    /><!--attrs="{'invisible': [('ruta_ids', '!=', False)]}"-->
+            </xpath>
+        </field>
+    </record>
+
+    <!--  Tráfico Marítimo Arribo -->
+    <record id="view_trafico_maritimo_arribo_form_ruta_geocoordenada_inherited" model="ir.ui.view">
+        <field name="name">trafico.maritimo.arribo.form.ruta.geocoordenada.inherit</field>
+        <field name="model">trafico.maritimo.arribo</field>
+        <field name="inherit_id" ref="trafico_maritimo_documento.view_trafico_maritimo_arribo_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='ruta_info']/field[@name='ruta_ids']" position="before">
+                <button name="button_ruta_geocoordenada_nave" type="object" class="oe_highlight"
+                    string="Buscar Ruta" data-hotkey="p"
+                    attrs="{'invisible': [('ruta_ids', '=', True)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--  Tráfico Marítimo Zarpe -->
+    <record id="view_trafico_maritimo_zarpe_form_ruta_geocoordenada_inherited" model="ir.ui.view">
+        <field name="name">trafico.maritimo.zarpe.form.ruta.geocoordenada.inherit</field>
+        <field name="model">trafico.maritimo.zarpe</field>
+        <field name="inherit_id" ref="trafico_maritimo_documento.view_trafico_maritimo_zarpe_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='ruta_info']/field[@name='ruta_ids']" position="before">
+                <button name="button_ruta_geocoordenada_nave" type="object" class="oe_highlight"
+                    string="Buscar Ruta" data-hotkey="p"
+                    attrs="{'invisible': [('ruta_ids', '=', True)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

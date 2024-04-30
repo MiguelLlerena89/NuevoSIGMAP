@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_centro_formacion_user,access_centro_formacion_user,model_centro_formacion,base.group_system,1,1,1,1
+access_lugar_formacion_user,access_lugar_formacion_user,model_lugar_formacion,base.group_system,1,1,1,1
+access_centro_medico_user,access_centro_medico_user,model_centro_medico,base.group_system,1,1,1,1

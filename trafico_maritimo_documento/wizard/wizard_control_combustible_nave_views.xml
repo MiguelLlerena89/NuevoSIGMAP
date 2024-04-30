@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_control_combustible_nave_wizard_form" model="ir.ui.view">
+        <field name="name">control.combustible.nave.wizard.form</field>
+        <field name="model">control.combustible.nave.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="trafico_maritimo_zarpe_id" invisible="1"/>
+                        <group>
+                            <field name="numero_documento_control"/>
+                        </group>
+                        <group>
+                            <field name="distribuidora_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name='action_control_combustible_nave' string='Grabar' type='object' class='btn-primary'/>
+                    <button string='Cancelar' class='btn-default' special='cancel' />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_control_combustible_nave_wizard" model="ir.actions.act_window">
+        <field name="name">Consulta de documento de control de combustible</field>
+        <field name="res_model">control.combustible.nave.wizard</field>
+        <field name="view_mode">form</field>
+        <!-- <field name="view_id" ref="view_control_combustible_nave_wizard_form"/> -->
+        <field name="target">new</field>
+    </record>
+
+    <!--  Tráfico Marítimo Zarpe -->
+    <record id="view_trafico_maritimo_navegacion_wizard_form_inherited" model="ir.ui.view">
+        <field name="name">trafico.maritimo.zarpe.inherit.combustible</field>
+        <field name="model">trafico.maritimo.zarpe</field>
+        <field name="inherit_id" ref="trafico_maritimo_documento.view_trafico_maritimo_zarpe_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='guia_remision']" position="after">
+                <button name="button_control_combustible_nave_wizard" type="object" class="oe_highlight"
+                    string="Buscar" id="button_control_combustible_nave_wizard" data-hotkey="p"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
