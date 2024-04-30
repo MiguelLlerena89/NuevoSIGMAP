@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_personal_maritimo_form_libretin" model="ir.ui.view">
+        <field name="name">personal.maritimo.form.libretin</field>
+        <field name="model">personal.maritimo</field>
+        <field name="inherit_id" ref="personal_maritimo.view_personal_maritimo_form"/>
+        <field name="groups_id" eval="[(5,)]"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_open_libretin_enrollment" type="object" class="oe_stat_button" icon="fa-id-card-o" attrs="{'invisible': [('libretin_count', '=', 0)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="libretin_count"/></span>
+                        <span class="o_stat_text">Libretines</span>
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <record id="view_personal_maritimo_documento_libretin_search" model="ir.ui.view">
+        <field name="name">permar.documento.libretin.search</field>
+        <field name="model">permar.documento.libretin</field>
+        <field name="arch" type="xml">
+            <search string="Search Matricula">
+                <field name="personal_maritimo_id" string="Número Cédula" filter_domain="[('personal_maritimo_id.vat', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Estado Iniciado" name="state_iniciado" domain="[('state', '=', 'en_tramite')]"/>
+                <separator/>
+                <filter string="Estado Vigente" name="state_vigente" domain="[('state', '=', 'vigente')]"/>
+                <separator/>
+                <filter string="Estado Caducado" name="state_caducado" domain="[('state', '=', 'caducado')]"/>
+                <separator/>
+                <filter string="Estado Anulado" name="state_anulado" domain="[('state', '=', 'anulado')]"/>
+                <separator/>
+                <filter string="Reimprimir" name="reimprimir" domain="[('reimprimir', '=', True)]"/>
+                <separator/>
+                <filter string="Hoy" name="documento_libretin_book_today"
+                    domain="[('fecha_inicio', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_persona" string="Persona" domain="[]" context="{'group_by': 'personal_maritimo_id'}"/>
+                    <filter name="group_state" string="Estado" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter name="group_fecha_inicio" string="Fecha Inicio" domain="[]" context="{'group_by': 'fecha_inicio'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_personal_maritimo_documento_libretin_form" model="ir.ui.view">
+        <field name="name">permar.documento.libretin.form</field>
+        <field name="model">permar.documento.libretin</field>
+        <field name="arch" type="xml">
+            <form string="Libretin">
+                <header>
+                    <button name="action_generar_documento" type="object" class="btn-primary"
+                            string="Enviar a supervisión" data-hotkey="k"
+                            states="en_tramite" />
+                    <button name="button_imprimir_provisional" type="object" class="oe_highlight"
+                            string="Imprimir Provisional" data-hotkey="k"
+                            attrs="{'invisible': ['|','|','|',('es_provisional', '=',False),('reimprimir', '=', True),('imprimir','=', False),('state', 'in', ['vigente','anulado'])]}"/>
+                    <button name="button_reimprimir" type="object" class="oe_highlight"
+                            string="Re-imprimir" id="button_reimprimir" data-hotkey="p"
+                            confirm="¿Está seguro de que desea reimprimir la matrícula?"
+                            attrs="{'invisible': ['|',('reimprimir', '=', False),('state', '!=','vigente')]}"/>
+                    <button name="button_imprimir_adicional" type="object" class="oe_highlight"
+                            string="Imprimir adicional" id="button_imprimir_adicional" data-hotkey="p"
+                            attrs="{'invisible': ['|','|',('reimprimir', '=', False),('imprimir','=', False),('state', 'not in', ['vigente'])]}"/>
+                    <button name="action_previsualizar_libretin" type="object" class="oe_highlight"
+                            string="Vista Previa" id="vista_previa_libretin" data-hotkey="p"
+                            attrs="{'invisible': ['|',('state', '!=','vigente'),('state_impresion', '=', True)]}"/>
+                    <button name="action_imprimir_libretin" type="object" class="oe_highlight"
+                            string="Imprimir" id="imprimir_libretin" data-hotkey="p"
+                            attrs="{'invisible': ['|',('state', '!=','vigente'),('state_impresion', '=', True)]}"/>
+                    <button name="action_imprimir_curso_libretin" type="object" class="oe_highlight"
+                            string="Imprimir Sticker Curso" id="imprimir_curso_libretin" data-hotkey="p"
+                            attrs="{'invisible': ['|',('state', '!=','vigente'),('state_impresion_sticker', '=', True)]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="en_tramite,vigente,caducado,anulado"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group name="header_details">
+                        <group name="header_left_group">
+                            <field name="es_provisional" string="¿Matrícula Provisional de Tráfico Internacional?"
+                                attrs="{'readonly': 1}"/>
+                            <field name="foto_carnet" widget="image" class="oe_avatar"
+                                attrs="{'readonly': [('state', 'not in', ['en_tramite','por_supervisar'])]}"/>
+                            <field name="image_firma" widget="image" class="oe_avatar"
+                                attrs="{'readonly': [('state', 'not in', ['en_tramite','por_supervisar'])]}"/>
+                            <field name="documento_emitido_id" readonly="1"/>
+                            <field name="personal_maritimo_id"/>
+                            <field name="matricula" string="No. Matrícula"/>
+                            <field name="numero_formato" attrs="{'invisible': [('numero_formato', '!=', False)]}"/>
+                            <field name="jerarquia_id"/>
+                            <field name="tipo_sangre"/>
+                            <field name="tipo_trafico"
+                                domain="[('tipo', '=', 'INT')]"
+                                readonly="1"/>
+                            <field name="fecha_inicio" readonly="1"/>
+                            <field name="fecha_caducidad"/>
+                            <field name="fecha_impresion"/>
+                            <field name="state_impresion" invisible="1"/>
+                            <field name="state_impresion_sticker" invisible="1"/>
+                        </group>
+                        <group name="header_right_group">
+                            <field name="numero_libretin" attrs="{'readonly': [('state', 'not in', ['en_tramite','por_supervisar'])]}"/>
+                            <field name="name_previous" attrs="{'readonly': [('state', 'not in', ['en_tramite','por_supervisar'])]}"/>
+                            <field name="active" widget="boolean_toggle"/>
+                            <field name="imprimir" widget="boolean_toggle" readonly="1"/>
+                            <field name="reimprimir" widget="boolean_toggle"
+                                attrs="{
+                                    'invisible': [('state', 'not in', ['vigente'])],
+                                    'readonly': [('state', 'in', ('anulado','cancelado'))]}"
+                                />
+                            <field name="numero_formato"
+                                attrs="{
+                                    'invisible': [('numero_formato', '=', 0)],
+                                    'readonly': True}"
+                                />
+                        </group>
+                    </group>
+                    <notebook invisible="1">
+                        <page name="control_impresion_libretin" string="Control impresión">
+                            <field name="control_ids" attrs="{'readonly': [('state', 'not in', ['en_tramite','por_supervisar'])]}">
+                                <tree string="Control impresión">
+                                    <field name="libretin_id" invisible="1"/>
+                                    <field name="name"/>
+                                    <field name="motivo_id"/>
+                                    <!-- <field name="motivo"/> -->
+                                    <field name="motivo_reimpresion"/>
+                                    <field name="fecha_impresion"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_personal_maritimo_documento_libretin_tree" model="ir.ui.view">
+        <field name="name">permar.documento.libretin.tree</field>
+        <field name="model">permar.documento.libretin</field>
+        <field name="arch" type="xml">
+            <tree string="Matrícula internacional Libretín" create="0">
+                <field name="personal_maritimo_id"/>
+                <field name="name"/>
+                <field name="name_previous"/>
+                <field name="numero_libretin"/>
+                <field name="es_provisional" string="¿Matrícula Provisional?"/>
+                <field name="tipo_trafico"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="state" string="Estado"
+                    decoration-info="state == 'en_tramite'"
+                    decoration-success="state == 'vigente'"
+                    decoration-primary="state == 'por_firmar'"
+                    decoration-muted="state == 'suspendido'"
+                    decoration-warning="state == 'caducado'"
+                    decoration-danger="state == 'anulado'"
+                    widget="badge" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_matricula_trafico_internacional" model="ir.actions.act_window">
+        <field name="name">Matrícula Tráfico Internacional (SEAMAN'S BOOK)</field>
+        <field name="res_model">permar.documento.libretin</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{'search_default_state_en_tramite': 1,}</field>
+        <field name="view_id" ref="view_personal_maritimo_documento_libretin_tree"/>
+        <field name="search_view_id" ref="view_personal_maritimo_documento_libretin_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define una nueva matrícula de tráfico internacional
+            </p>
+        </field>
+    </record>
+
+</odoo>

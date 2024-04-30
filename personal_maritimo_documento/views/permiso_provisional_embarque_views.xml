@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_personal_maritimo_permiso_provisional_inherit_form" model="ir.ui.view">
+        <field name="name">personal.maritimo.personal.maritimo.permiso.provisional.form</field>
+        <field name="model">personal.maritimo</field>
+        <field name="inherit_id" ref="personal_maritimo.view_personal_maritimo_form"/>
+        <field name="groups_id" eval="[(5,)]"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_open_permiso_provisional_enrollment" type="object" class="oe_stat_button" icon="fa-id-card-o" attrs="{'invisible': [('permiso_provisional_count', '=', 0)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="permiso_provisional_count"/></span>
+                        <span class="o_stat_text">Permisos provisionales</span>
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <record id="view_permiso_provisional_embarque_tree" model="ir.ui.view">
+        <field name="name">permar.documento.permiso.provisional.embarque.tree</field>
+        <field name="model">permar.documento.permiso.provisional.embarque</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Permiso Provisional de Embarque" create="0">
+                <field name="name"/>
+                <field name="personal_maritimo_id"/>
+                <field name="jerarquia_id"/>
+                <field name="jerarquia_cargo_id"/>
+                <field name="nave_id"/>
+                <field name="tipo_permiso_id"/>
+                <field name="duracion_dias"/>
+                <field name="fecha_inicio_embarque"/>
+                <field name="fecha_fin_embarque"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="state" string="Estado"
+                    decoration-info="state == 'en_tramite'"
+                    decoration-success="state == 'vigente'"
+                    decoration-primary="state == 'por_firmar'"
+                    decoration-muted="state == 'suspendido'"
+                    decoration-warning="state == 'caducado'"
+                    decoration-danger="state == 'anulado'"
+                    widget="badge" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_permiso_provisional_embarque_form" model="ir.ui.view">
+        <field name="name">permar.documento.permiso.provisional.embarque.form</field>
+        <field name="model">permar.documento.permiso.provisional.embarque</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Permiso Provisional de Embarque">
+                <header>
+                    <button name="action_generar_documento" type="object" string="Enviar a supervisión" class="btn-primary" states='en_tramite' data-hotkey="o"/>
+                    <field name="state" widget="statusbar" statusbar_visible="en_tramite,vigente,caducado,anulado"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group name="header_details">
+                        <group name="header_left_group">
+                            <field name="numero" attrs="{'readonly': [('state', 'in', ('vigente','anulado','cancelado'))]}"/>
+                            <field name="documento_emitido_id"/>
+                            <field name="numero_formato" attrs="{'invisible': [('numero_formato', '!=', False)]}"/>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_caducidad"/>
+                            <field name="jerarquia_id"/>
+                            <field name="armador_id"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group name="header_right_group">
+                            <field name="tipo_permiso_id" attrs="{'readonly': [('state', 'in', ('vigente','anulado','cancelado'))]}"/>
+                            <field name="personal_maritimo_id"/>
+                            <field name="jerarquia_cargo_id" string="Cargo a desempeñar" attrs="{'readonly': [('state', 'in', ('vigente','anulado','cancelado'))]}"/>
+                            <field name="carnet_id" domain="[('personal_maritimo_id','=', personal_maritimo_id),('state','in',['vigente'])]" attrs="{'readonly': [('state', 'in', ('vigente','anulado','cancelado'))]}"/>
+                            <field name="duracion_dias" strig="Días" attrs="{'readonly': [('state', 'in', ('vigente','anulado','cancelado'))]}"/>
+                            <field name="nave_id" attrs="{'readonly': [('state', 'in', ('vigente','anulado','cancelado'))]}"/>
+                            <field name="fecha_inicio_embarque" attrs="{'readonly': [('state', 'in', ('vigente','anulado','cancelado'))]}"/>
+                            <field name="fecha_fin_embarque"/>
+                            <field name="numero_formato"
+                                attrs="{
+                                    'invisible': [('numero_formato', '=', 0)],
+                                    'readonly': True}"
+                                />
+                        </group>
+                    </group>
+                    <group name="observacion" string="Observaciones">
+                        <field name="observacion" nolabel="1" colspan="2" />
+                    </group>
+                    <notebook>
+                        <page name="info_permisos" string="Registro de Permisos">
+                            <field name="permiso_provisional_embarque_line_ids" nolabel="1">
+                                <tree string="Registro de permisos">
+                                    <field name="name"/>
+                                    <field name="nave_id"/>
+                                    <field name="fecha_inicio_embarque"/>
+                                    <field name="fecha_fin_embarque"/>
+                                    <field name="duracion_dias" sum="Total"/>
+                                    <field name="personal_maritimo_id"/>
+                                    <field name="tipo_permiso_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_permiso_provisional_embarque" model="ir.actions.act_window">
+        <field name="name">Permiso Provisional de Embarque</field>
+        <field name="res_model">permar.documento.permiso.provisional.embarque</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_permiso_provisional_embarque_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra permiso provisional de embarque
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Personal Marítimo -->
+    <template inherit_id="personal_maritimo.report_personalmaritimo" id="report_pm_permisoprovisionalembarque">
+        <xpath expr="//table[@name='table_pm_info_cursos']" position="after">
+            <br/>
+            <t t-set="pm_permiso_provisional_embarque" t-value="o.permiso_provisional_ids.filtered(lambda c: c.state == 'vigente')"/>
+            <t t-if="pm_permiso_provisional_embarque">
+                <h5><b>Permisos Provisionales de Embarque</b></h5>
+                <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse" name="table_pm_info_permisoprovisionalembarque">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><strong>Registro</strong></th>
+                            <th class="text-center"><strong>Trámite</strong></th>
+                            <th class="text-center"><strong>Tipo</strong></th>
+                            <th class="text-center"><strong>Especialidad</strong></th>
+                            <th class="text-center"><strong>Nave</strong></th>
+                            <th class="text-center"><strong>Cargo a desempeñar</strong></th>
+                            <th class="text-center"><strong>Duración (días)</strong></th>
+                            <th class="text-center"><strong>Fecha inicio embarque</strong></th>
+                            <th class="text-center"><strong>Fecha fin embarque</strong></th>
+                            <!-- <th class="text-center"><strong>Fecha Inicio</strong></th>
+                            <th class="text-center"><strong>Fecha Caducidad</strong></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="pm_permiso_provisional_embarque" t-as="pmppe">
+                            <td><span t-field="pmppe.name"/></td>
+                            <td><span t-field="pmppe.documento_emitido_id.name"/></td>
+                            <td><span t-field="pmppe.tipo_permiso_id.name"/></td>
+                            <td><span t-field="pmppe.jerarquia_id.name"/></td>
+                            <td><span t-field="pmppe.nave_id"/></td>
+                            <td><span t-field="pmppe.jerarquia_cargo_id.name"/></td>
+                            <td><span t-field="pmppe.duracion_dias"/></td>
+                            <td><span t-field="pmppe.fecha_inicio_embarque"/></td>
+                            <td><span t-field="pmppe.fecha_fin_embarque"/></td>
+                            <!-- <td><span t-field="pmppe.fecha_inicio"/></td>
+                            <td><span t-field="pmppe.fecha_caducidad"/></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Permiso Provisional de Embarque -->
+    <record id="action_report_permiso_provisional_embarque" model="ir.actions.report">
+        <field name="name">Permiso Provisional de Embarque</field>
+        <field name="model">permar.documento.permiso.provisional.embarque</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_permisoprovisionalembarque</field>
+        <field name="report_file">personal_maritimo_documento.report_permisoprovisionalembarque</field>
+        <field name="print_report_name">'Permiso Provisional de Embarque - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_permar"/>
+        <!-- <field name="binding_model_id" ref="model_personal_maritimo_documento_permiso_provisional_embarque"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_permisoprovisionalembarque">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <t t-call="personal_maritimo_documento.custom_report_header"/>
+                        <div class="oe_structure"/>
+
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td height="15" colspan="2" align="right" class="text-center">Certificado No. <span t-field="o.name"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center" class="text-center"><strong>República del Ecuador</strong></td>
+                            </tr>
+                            <!-- <tr>
+                                <td height="30" colspan="2" align="center" class="text-center"><strong>PERMISO PROVISIONAL DE EMBARQUE</strong><br/></td>
+                            </tr> -->
+                            <tr id="titulos_cabecera_info">
+                                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'PERMISO PROVISIONAL DE EMBARQUE'"/></b><br/>
+                                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or ''"/></i>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td colspan="2" class="normal_9" align="justify">
+                                    A solicitud del Sr. <b><span class="text-uppercase" t-field="o.personal_maritimo_id.name"></span></b> Armador del buque <b><span class="text-uppercase" t-field="o.nave"></span></b>
+                                    y bajo responsabilidad del mismo, concede el siguiente <b>PERMISO PROVISIONAL DE EMBARQUE</b>:
+                                </td>
+                                <td><b><span class="text-uppercase" t-field="pmppe.tipo_permiso_id.name"></span></b></td>
+                            </tr>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="text-left"><b>1. Datos Personales</b></td>
+                            </tr>
+                            <tr><td height="15px"/></tr>
+                        </table>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="titulo_seccion" align="left"><b>1. Datos Generales</b></td>
+                        </tr>
+                        </table>
+
+                        <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="border:1px solid black;" class="text-center">Nombre Completo<br/></th>
+                                    <th style="border:1px solid black;" class="text-center">Nacionalidad<br/></th>
+                                    <th style="border:1px solid black;" class="text-center">Matrícula<br/></th>
+                                    <th style="border:1px solid black;" class="text-center">Cédula<br/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.personal_maritimo_id.name"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.personal_maritimo_id.nationality"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.personal_maritimo_id.matricula"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.personal_maritimo_id.vat"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="titulo_seccion" align="left"><b>2. Cargo a desempeñar y duración del permiso</b></td>
+                            </tr>
+                        </table>
+                        <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="border:1px solid black;" class="text-center">Especialidad<br/></th>
+                                    <th style="border:1px solid black;" class="text-center">Días<br/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid black;">
+                                        <span t-field="o.jerarquia_id"/>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.duracion_dias"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="titulo_seccion" align="left"><b>3. Nave a embarcarse</b></td>
+                            </tr>
+                        </table>
+                        <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="border:1px solid black;" class="text-center">Descripción<br/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid black;">
+                                        <span t-field="o.nave_id"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="titulo_seccion" align="left"><b>4. Registro de Permisos</b></td>
+                            </tr>
+                        </table>
+                        <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="border:1px solid black;" class="text-center">Fecha Inicio<br/></th>
+                                    <th style="border:1px solid black;" class="text-center">Fecha Fin<br/></th>
+                                    <th style="border:1px solid black;" class="text-center">Días<br/></th>
+                                    <th style="border:1px solid black;" class="text-center">Armador<br/></th>
+                                    <th style="border:1px solid black;" class="text-center">Nave<br/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.permiso_provisional_embarque_line_ids" t-as="child">
+                                    <tr>
+                                        <td style="border:1px solid black;"><span t-field="child.fecha_inicio_embarque" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></td>
+                                        <td style="border:1px solid black;"><span t-field="child.fecha_fin_embarque" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></td>
+                                        <td style="border:1px solid black;"><span t-field="child.duracion_dias"/></td>
+                                        <td style="border:1px solid black;"><span t-field="child.personal_maritimo_id.name"/></td>
+                                        <td style="border:1px solid black;"><span t-field="child.nave_id"/></td>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.fecha_inicio_embarque" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.fecha_fin_embarque" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.duracion_dias"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.personal_maritimo_id.name"></span>
+                                    </td>
+                                    <td style="border:1px solid black;">
+                                        <span class="text-center" t-field="o.nave_id"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border:1px solid black;" colspan="2">Total</th>
+                                    <td style="border:1px solid black;"><b><t t-esc="sum([i.duracion_dias for i in o.permiso_provisional_embarque_line_ids]) + o.duracion_dias" /></b></td>
+                                    <th style="border:1px solid black;" colspan="2"></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="titulo_seccion" align="left"><b>5. Razón de Emisión</b></td>
+                            </tr>
+                        </table>
+                        <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="border:1px solid black;" class="text-center">Descripción<br/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid black;">
+                                        <span t-field="o.observacion"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="normal">
+                            <tr>
+                                <td style="text-align:left" width="35%">
+                                Expedido en: <span t-field="o.company_id.city"></span> el: <span t-field="o.fecha_inicio_embarque"></span><br/>
+                                Issued at:                                                     on:
+                                </td>
+                                <td style="text-align:left" width="35%">El presente documento es válido hasta:<br/><i>This certificate is valid until:</i><br/>
+                                    <span t-field="o.fecha_fin_embarque"></span>
+                                </td>
+                            </tr>
+                            <tr><td height="10px"/></tr>
+                        </table>
+                        <br/>
+                        <div class="oe_structure"/>
+
+                        <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+
+                    </div>
+
+                    <!-- <t t-call="personal_maritimo_documento.custom_report_footer_supervised_signature_permar"/> -->
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

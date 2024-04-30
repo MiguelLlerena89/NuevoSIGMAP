@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_order_cancel_view_form_motivo" model="ir.ui.view">
+        <field name="name">sale.order.cancel.form.motivo</field>
+        <field name="model">sale.order.cancel</field>
+        <field name="inherit_id" ref="sale.sale_order_cancel_view_form"/>
+        <field name="groups_id" eval="[(5,)]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[1]" position="inside">
+                <br/>
+                <label for="motivo_cancelar_solicitud" string="Motivo por cancelar solicitud"/>
+                <field name="motivo_cancelar_solicitud" required="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_order_form_motivo" model="ir.ui.view">
+        <field name="name">sale.order.form.motivo_cancelar_solicitud</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="groups_id" eval="[(5,)]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tipo']" position="after">
+                <field name="motivo_cancelar_solicitud"
+                    attrs="{'invisible': [('motivo_cancelar_solicitud', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

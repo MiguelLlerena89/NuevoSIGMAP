@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_personal_maritimo_form_convalidacion_competencia" model="ir.ui.view">
+        <field name="name">personal.maritimo.form.permar.documento.convalidacion.competencia</field>
+        <field name="model">personal.maritimo</field>
+        <field name="inherit_id" ref="personal_maritimo.view_personal_maritimo_form"/>
+        <field name="groups_id" eval="[(5,)]"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_open_convalidacion_competencia" type="object" class="oe_stat_button" icon="fa-id-card-o" attrs="{'invisible': [('convalidacion_competencia_count', '=', 0)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="convalidacion_competencia_count"/></span>
+                        <span class="o_stat_text">Convalidaciones</span>
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <record id="view_convalidacion_competencia_search" model="ir.ui.view">
+        <field name="name">permar.documento.convalidacion.competencia.search</field>
+        <field name="model">permar.documento.convalidacion.competencia</field>
+        <field name="arch" type="xml">
+            <search string="Search Convalidacion Competencia">
+                <field name="personal_maritimo_id" string="Número Cédula" filter_domain="[('personal_maritimo_id.vat', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Hoy" name="convalidacion_competencia_today"
+                    domain="[('fecha_inicio', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_persona" string="Persona" domain="[]" context="{'group_by': 'personal_maritimo_id'}"/>
+                    <filter name="group_centro_formacion" string="Centro de Formación" domain="[]" context="{'group_by': 'centro_formacion_id'}"/>
+                    <filter name="group_fecha_inicio" string="Fecha Inicio" domain="[]" context="{'group_by': 'fecha_inicio'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_convalidacion_competencia_tree" model="ir.ui.view">
+        <field name="name">permar.documento.convalidacion.competencia.tree</field>
+        <field name="model">permar.documento.convalidacion.competencia</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Convalidación Competencia" create="0">
+                <field name="name"/>
+                <field name="personal_maritimo_id"/>
+                <field name="documento_emitido_id" invisible="1"/>
+                <field name="documento_evaluacion_id"/>
+                <field name="numero_oficio"/>
+                <field name="fecha_informe"/>
+                <field name="centro_formacion_id"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_caducidad"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="state" string="Estado"
+                    decoration-info="state == 'en_tramite'"
+                    decoration-success="state == 'vigente'"
+                    decoration-primary="state == 'por_firmar'"
+                    decoration-muted="state == 'suspendido'"
+                    decoration-warning="state == 'caducado'"
+                    decoration-danger="state == 'anulado'"
+                    widget="badge" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_convalidacion_competencia_form" model="ir.ui.view">
+        <field name="name">permar.documento.convalidacion.competencia.form</field>
+        <field name="model">permar.documento.convalidacion.competencia</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Convalidación Competencia">
+                <header>
+                    <button name="action_generar_documento" type="object" string="Enviar a supervisión" class="btn-primary" states="en_tramite" data-hotkey="o"/>
+                    <field name="state" widget="statusbar" statusbar_visible="en_tramite,vigente,caducado,anulado"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="user_id" invisible="1"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group id="header_info_group">
+                        <group id="header_left_group">
+                            <field name="personal_maritimo_id"/>
+                            <field name="documento_emitido_id" invisible="1"/>
+                            <field name="numero_oficio"/>
+                            <field name="numero_formato" attrs="{'invisible': [('numero_formato', '!=', False)]}"/>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_caducidad"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group id="header_rigth_group">
+                            <field name="documento_evaluacion_id" attrs="{'readonly': [('state', 'in', ('vigente','anulado','cancelado'))]}"/>
+                            <field name="fecha_informe"/>
+                            <field name="centro_formacion_id"/>
+                            <field name="numero_formato"
+                                attrs="{
+                                    'invisible': [('numero_formato', '=', 0)],
+                                    'readonly': True}"
+                                />
+                        </group>
+                    </group>
+                    <group name="observaciones" string="Observaciones">
+                        <field name="antecedente"  widget="text"/>
+                        <field name="analisis" widget="text"/>
+                        <field name="conclusion" widget="text"/>
+                        <field name="recomendacion" widget="text"/>
+                        <field name="observacion" nolabel="1" colspan="2" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_convalidacion_competencia" model="ir.actions.act_window">
+        <field name="name">Convalidación Competencia </field>
+        <field name="res_model">permar.documento.convalidacion.competencia</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_convalidacion_competencia_tree"/>
+        <field name="search_view_id" ref="view_convalidacion_competencia_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define una nueva convalidación de competencia
+            </p>
+        </field>
+    </record>
+
+</odoo>

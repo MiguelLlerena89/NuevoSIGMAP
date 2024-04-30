@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Personal Marítimo -->
+    <template inherit_id="personal_maritimo.report_personalmaritimo" id="report_pm_reconocimientotitulo">
+        <xpath expr="//table[@name='table_pm_info_cursos']" position="after">
+            <br/>
+            <t t-set="pm_reconocimientos" t-value="o.reconocimiento_ids.filtered(lambda c: c.state == 'vigente')"/>
+            <t t-if="pm_reconocimientos">
+                <h5><b>Reconocimientos de Título</b></h5>
+                <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse" name="table_pm_info_reconocimientotitulo">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><strong>Registro</strong></th>
+                            <th class="text-center"><strong>Trámite</strong></th>
+                            <th class="text-center"><strong>Curso</strong></th>
+                            <th class="text-center"><strong>Tipo Curso</strong></th>
+                            <th class="text-center"><strong>Fecha Emisión Diploma</strong></th>
+                            <th class="text-center"><strong>No. Diploma</strong></th>
+                            <th class="text-center"><strong>Curso Formación</strong></th>
+                            <th class="text-center"><strong>País Realización</strong></th>
+                            <th class="text-center"><strong>Fecha Inicio</strong></th>
+                            <th class="text-center"><strong>Fecha Caducidad</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="pm_reconocimientos" t-as="pmrec">
+                            <td><span t-field="pmrec.name"/></td>
+                            <td><span t-field="pmrec.documento_emitido_id.name"/></td>
+                            <td><span t-field="pmrec.curso_persona_id.name"/></td>
+                            <td><span t-field="pmrec.tipo_curso_id.name"/></td>
+                            <td><span t-field="pmrec.fecha_emision_diploma"/></td>
+                            <td><span t-field="pmrec.numero_diploma"/></td>
+                            <td><span t-field="pmrec.curso_id.name"/></td>
+                            <td><span t-field="pmrec.country_id.name"/></td>
+                            <td><span t-field="pmrec.fecha_inicio"/></td>
+                            <td><span t-field="pmrec.fecha_caducidad"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Reconocimiento de título -->
+    <record id="action_report_reconocimiento_titulo" model="ir.actions.report">
+        <field name="name">Reconocimiento Título</field>
+        <field name="model">permar.documento.reconocimiento.titulo</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_reconocimientotitulo</field>
+        <field name="report_file">personal_maritimo_documento.report_reconocimientotitulo</field>
+        <field name="print_report_name">'Reconocimiento Título - %s' % (object.numero)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document"/>
+        <!-- <field name="binding_model_id" ref="model_reconocimiento_titulo"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="personal_maritimo_documento.base_titulo_template_report" id="report_reconocimientotitulo" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'RECONOCIMIENTO DE TÍTULO'"/></b><br/>
+                    <span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or ''"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[1]" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="center">
+                        REFRENDO QUE DA FE DEL RECONOCIMIENTO DE UN TÍTULO EN VIRTUD DE LO DISPUESTO EN EL CONVENIO DE NORMAS DE
+                        FORMACIÓN, TITULACIÓN Y GUARDIA PARA LA GENTE DE MAR, 1978, EN SU FORMA ENMENDADA
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="center">
+                        <i>Endorsment attesting the recognition of a certificate under the provissions of the Internacional Convention on Standars of Training, Certification
+                        and Watchkeeping for seafares STCW 78, as amended.</i>
+                    </td>
+                </tr>
+                <tr ><td colspan="2" height="15px"/></tr>
+                <tr>
+                    <td colspan="2" class="normal_10">
+                        El Gobierno de la <b>REPÚBLICA DEL ECUADOR </b> certifica que el título No <b><span t-field="o.numero"/></b>
+                        expedido a favor de <b><span t-field="o.personal_maritimo_id.name"/></b> por el Gobierno de <b>ECUADOR</b>
+                        o con su autorización, está debidamente reconocido de conformidad con lo dispuesto en la regla
+                        <t t-if="o.curso_persona_id.curso_id.regla">
+                            <b><span t-field="o.curso_persona_id.curso_id.regla"/></b>
+                        </t>
+                        <t t-else="">
+                            -
+                        </t>
+                        del mencionado Convenio, en su forma enmendada y que su legítimo titular está facultado para desempeñar las siguientes funcienes, al nivel
+                        especificado y sin más limitaciones que las que se indican, hasta
+                        <b><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></b>
+                        o hasta la fecha de expiración de cualquier prórroga de la validez del presente título que figure consignada al dorso:
+                        <br/>
+                        <I>The Govermment of the REPUBLIC OF THE ECUADOR certifies that certificate No
+                        <b><span t-field="o.numero"/></b>
+                        issued to <span t-field="o.personal_maritimo_id.name"/>
+                        by Govemmnet of ECUADOR is duly recognized in accordance with the provisions of regulation
+                        <t t-if="o.curso_persona_id.curso_id.regla">
+                            <b><span t-field="o.curso_persona_id.curso_id.regla"/></b>
+                        </t>
+                        <t t-else="">
+                            -
+                        </t>
+                        of the above Convention, as asmended, and has been found enough to perform the following function, at the level
+                        specified, subject to any
+                        limitations indicated until
+                        <span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/>
+                        or until the date  of expiry of any extension of the validity of this certificate as may be shown ovearlef:</I>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+        </xpath>
+
+        <xpath expr="//table[6]//tr/td" position="inside">
+            Refrendo: <br/><i class="text-align:left">Endorsement: </i>
+        </xpath>
+
+    </template>
+
+</odoo>

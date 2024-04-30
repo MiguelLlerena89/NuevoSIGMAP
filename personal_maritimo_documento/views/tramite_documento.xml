@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tramite_documento_search_inherit_permar_documento" model="ir.ui.view">
+        <field name="name">tramite.search.inherit.permar</field>
+        <field name="model">tramite.documento</field>
+        <field name="inherit_id" ref="tramite.view_tramite_documento_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='emitido_por_dirnea']" position="after">
+                <filter name="tipo_documento_id" string="Gente de Mar" domain="[('tipo_documento_id','=',%(base_sigmap.gente_mar)d)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

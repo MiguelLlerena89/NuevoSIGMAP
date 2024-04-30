@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="custom_report_footer_authorized_signature_permar">
+        <xpath expr="//div[@class='footer o_standard_footer']" position="before">
+            <div class="row">
+                <div class="col-xs-12" style="font-size: 13px">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <!-- <tr><td height="30px"/></tr> -->
+                        <tr t-foreach="o.documento_emitido_id._get_sumilla_documento()" t-as="sumilla_footer">
+                            <td style="vertical-align:top;text-align:left;">
+                                <br/><br/><br/><br/><br/><br/>
+                                <span style="color: rgba(255, 255, 255, 0.0);">QRSUPERVISION</span><br/><br/>
+                                <br/><br/><br/>
+                                <span t-if="sumilla_footer['sumilla']" t-esc="sumilla_footer['sumilla']"/>
+                            </td>
+                            <td width="20%"/>
+                            <t t-if="o.aprueba_id">
+                                <td style="vertical-align:middle;text-align:center;">
+                                    <span style="color: rgba(255, 255, 255, 0.0);">QRAPROBACION</span><br/><br/>
+                                    <br/><br/>
+                                    <span>____________________________________</span><br/>
+                                    <span t-esc="o.aprueba_id.name.upper()"/><br/>
+                                    <span t-esc="o.aprueba_id.rango_id.name.upper()"/><br/>
+                                    <span t-esc="o.aprueba_id.cargo_id.name.upper()"/>
+                                </td>
+                            </t>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="custom_report_footer_supervised_signature_permar">
+        <div class="text-left">
+            <table cellpadding="0" cellspacing="0" width="100%" border="0">
+                <tr t-foreach="o.documento_emitido_id._get_sumilla_documento()" t-as="sumilla_footer">
+                    <td width="20%" style="vertical-align:top;text-align:left;">
+                        <span style="color: rgba(255, 255, 255, 0.0);">QRSUPERVISION</span><br/><br/>
+                        <br/><br/><br/>
+                        <span t-if="sumilla_footer['sumilla']" t-esc="sumilla_footer['sumilla']"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+    <template id="custom_report_footer_permar">
+        <div t-attf-class="footer o_standard_footer">
+            <div class="text-center" style="border-top: 1px solid black;font-size: 13px;">
+                <table cellpadding="0" cellspacing="0" width="100%" border="0">
+                    <tr>
+                        <td class="pie" align="left">Dirección: Elizalde 101 y Malecón, Guayaquil - Ecuador; Teléfono: +593 42320400 EXT 37114</td>
+                    </tr>
+                    <tr>
+                        <td class="pie" align="left">E-mail: dirnea@armada.mil.ec; Portal: www.dirnea.org</td>
+                    </tr>
+                    <tr>
+                        <td class="pie" align="left">Formato No. PERMAR-01 Rev. 16/NOV/2015</td>
+                        <td class="pie" align="right">Página <span class="page" /> de <span class="topage" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <template id="custom_report_footer_sumilla_permar">
+        <div style="font-size: 13px">
+            <table cellpadding="0" cellspacing="0" width="100%" border="0">
+                <tr><td height="50px"/></tr>
+                <tr t-foreach="o.documento_emitido_id._get_sumilla_documento()" t-as="sumilla_footer">
+                    <td class="pie" align="left">
+                        <span t-if="sumilla_footer['sumilla']" t-esc="sumilla_footer['sumilla']"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+</odoo>

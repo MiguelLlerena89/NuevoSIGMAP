@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_personal_maritimo_form_dotacion" model="ir.ui.view">
+        <field name="name">personal.maritimo.form.dotacion</field>
+        <field name="model">personal.maritimo</field>
+        <field name="inherit_id" ref="personal_maritimo.view_personal_maritimo_form"/>
+        <field name="groups_id" eval="[(5,)]"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_open_dotacion" type="object" class="oe_stat_button" icon="fa-id-card-o" attrs="{'invisible': [('dotacion_count', '=', 0)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="dotacion_count"/></span>
+                        <span class="o_stat_text">Dotaciones</span>
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <record id="view_dotacion_tree" model="ir.ui.view">
+        <field name="name">permar.documento.dotacion.tree</field>
+        <field name="model">permar.documento.dotacion</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Dotacion" create="0">
+                <field name="name"/>
+                <field name="personal_maritimo_id"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="state" string="Estado"
+                    decoration-info="state == 'en_tramite'"
+                    decoration-success="state == 'vigente'"
+                    decoration-primary="state == 'por_firmar'"
+                    decoration-muted="state == 'suspendido'"
+                    decoration-warning="state == 'caducado'"
+                    decoration-danger="state == 'anulado'"
+                    widget="badge" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_dotacion_form" model="ir.ui.view">
+        <field name="name">permar.documento.dotacion.form</field>
+        <field name="model">permar.documento.dotacion</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Dotacion">
+                <header>
+                    <button name="action_generar_documento" type="object" string="Enviar a supervisión" class="btn-primary" states="en_tramite" data-hotkey="o"/>
+                    <field name="state" widget="statusbar" statusbar_visible="en_tramite,vigente,caducado,anulado"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="company_id" invisible="1"/>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group name="header_details">
+                        <group name="header_left_group">
+                            <field name="numero"/>
+                            <field name="documento_emitido_id" attrs="{'readonly': [('state', 'in', ('vigente','anulado','cancelado'))]}"/>
+                            <field name="personal_maritimo_id" strimg="Armador"/>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_caducidad"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group name="header_right_group" attrs="{'readonly': [('state', 'in', ('vigente','anulado','cancelado'))]}">
+                            <field name="numero_formato"
+                                attrs="{
+                                    'invisible': [('numero_formato', '=', 0)],
+                                    'readonly': True}"
+                                />
+                        </group>
+                    </group>
+                    <group name="observacion" string="Observaciones">
+                        <field name="observacion" nolabel="1" colspan="2" />
+                    </group>
+                    <notebook>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dotacion" model="ir.actions.act_window">
+        <field name="name">Dotación</field>
+        <field name="res_model">permar.documento.dotacion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_dotacion_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No se encuentra dotacion
+            </p>
+        </field>
+    </record>
+</odoo>

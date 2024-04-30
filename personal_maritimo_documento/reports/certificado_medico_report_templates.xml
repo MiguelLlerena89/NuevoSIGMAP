@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Personal Marítimo -->
+    <template inherit_id="personal_maritimo.report_personalmaritimo" id="report_pm_refrendomedico">
+        <xpath expr="//table[@name='table_pm_info_cursos']" position="after">
+            <br/>
+            <t t-set="pm_refrendo_medico" t-value="o.refrendo_medico_ids.filtered(lambda c: c.state == 'vigente')"/>
+            <t t-if="pm_refrendo_medico">
+                <h5><b>Refrendos Médicos</b></h5>
+                <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse" name="table_pm_info_refrendomedico">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><strong>Registro</strong></th>
+                            <th class="text-center"><strong>Trámite</strong></th>
+                            <th class="text-center"><strong>Ficha Médica</strong></th>
+                            <th class="text-center"><strong>No. Ficha Médica</strong></th>
+                            <th class="text-center"><strong>Fecha Ficha Médica</strong></th>
+                            <th class="text-center"><strong>Fecha Exámen VIH</strong></th>
+                            <th class="text-center"><strong>APTO?</strong></th>
+                            <th class="text-center"><strong>Fecha Inicio</strong></th>
+                            <th class="text-center"><strong>Fecha Caducidad</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="pm_refrendo_medico" t-as="pmrm">
+                            <td><span t-field="pmrm.name"/></td>
+                            <td><span t-field="pmrm.documento_emitido_id.name"/></td>
+                            <td><span t-field="pmrm.ficha_medica_id.name"/></td>
+                            <td><span t-field="pmrm.ficha_medica_id.numero_ficha_aptitud"/></td>
+                            <td><span t-field="pmrm.ficha_medica_id.fecha_emision"/></td>
+                            <td><span t-field="pmrm.ficha_medica_id.fecha_emision_examen_vih"/></td>
+                            <td><t t-if="pmrm.ficha_medica_id.apto == True">SI</t><t t-else="">NO</t></td>
+                            <td><span t-field="pmrm.fecha_inicio"/></td>
+                            <td><span t-field="pmrm.fecha_caducidad"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Refrendo Médico -->
+    <record id="action_report_certificado_medico" model="ir.actions.report">
+        <field name="name">Certificado Médico</field>
+        <field name="model">permar.documento.refrendo.certificado.medico</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_certificadomedico</field>
+        <field name="report_file">personal_maritimo_documento.report_certificadomedico</field>
+        <field name="print_report_name">'Certificado Médico - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_permar"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="personal_maritimo_documento.report_permardocumentobasecabecera" id="report_certificadomedico" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[@id='numero_certificado_en_info']" position="attributes">
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'CERTIFICADO MEDICO'"/></b><br/>
+                    <b><i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Medical Certificate'"/></i></b>
+                </td>
+            </tr>
+            <tr><td colspan="4" height="5px"/></tr>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                    <b>Entidad competente como Autoridad de Policía Marítima, en representación del Gobierno de la REPÚBLICA DEL ECUADOR certifica con el presente documento que el marino mercante abajo indicado ha sido declarado <b style="font-size:11px;">APTO</b> para el servicio a bordo, conforme a lo dispuesto en la Regla 1/9, Sección A-1/9 del Convenio Internacional STCW-78 enmendado.</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                    <i>Competent entity and maritime Port National Authority, in representation of The Govermment of the REPUBLIC OF ECUADOR certifies with this document that the seafarer below has been declared FIT for the Service Onboard in accordance with the provision of Rule 1/9, section A-1/9 of the International Convention STCW amended.</i>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <!-- <tr>
+                    <td align="justify">
+                        <ol>
+                            <li>
+                                <b>Datos Generales</b> / <i>General Information:</i><br/><br/>
+                                <table class="table table-sm table-striped" style="border-bottom: 0px solid white !important;">
+                                    <thead>
+                                        <tr>
+                                            <th style="border:1px solid black;" class="text-center">Nombre Completo<br/><i>Complete Name</i></th>
+                                            <th style="border:1px solid black;" class="text-center">Especialidad<br/><i>Speciality</i></th>
+                                            <th style="border:1px solid black;" class="text-center">Matrícula<br/><i>License</i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="border:1px solid black;" align="center">
+                                                <span class="datos_certificado" t-field="o.ficha_medica_id.personal_maritimo_id.name"></span>
+                                            </td>
+                                            <td style="border:1px solid black;" align="center">
+                                                <span class="datos_certificado" t-field="o.ficha_medica_id.personal_maritimo_id.name"></span>
+                                            </td>
+                                            <td style="border:1px solid black;" align="center">
+                                                <span class="datos_certificado" t-field="o.ficha_medica_id.personal_maritimo_id.matricula"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </ol>
+                    </td>
+                </tr> -->
+                <tr>
+                    <td class="text-left"><b>1. Datos Generales</b> / <I> General Information:</I></td>
+                </tr>
+                <tr><td height="10px"/></tr>
+            </table>
+
+            <table class="table table-sm table-striped" style="border-bottom: 0px solid white !important;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Nombre Completo<br/><i>Complete Name</i></th>
+                        <th style="border:1px solid black;" class="text-center">Especialidad<br/><i>Speciality</i></th>
+                        <th style="border:1px solid black;" class="text-center">Matrícula<br/><i>License</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-if="o.ficha_medica_id.personal_maritimo_id.name" t-esc="o.ficha_medica_id.personal_maritimo_id.name.upper()"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-if="o.ficha_medica_id.personal_maritimo_id.jerarquia_id" t-esc="o.ficha_medica_id.personal_maritimo_id.jerarquia_id.name.upper()"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-if="o.ficha_medica_id.personal_maritimo_id.matricula" t-esc="o.ficha_medica_id.personal_maritimo_id.matricula"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-sm table-striped" style="border-bottom: 0px solid white !important;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Fecha de Nacimiento<br/><i>Date of birth</i></th>
+                        <th style="border:1px solid black;" class="text-center">Sexo<br/><i>Gender</i></th>
+                        <th style="border:1px solid black;" class="text-center">Nacionalidad<br/><i>Nationality</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.ficha_medica_id.personal_maritimo_id.birthday" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.ficha_medica_id.personal_maritimo_id.genero"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-if="o.ficha_medica_id.personal_maritimo_id.nationality" t-esc="o.ficha_medica_id.personal_maritimo_id.nationality.upper()"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-left"><b>2. Datos del Certificado de Aptitud</b> / <i>Certificate Information:</i></td>
+                </tr>
+                <tr><td height="10px"/></tr>
+            </table>
+
+            <table class="table table-sm table-striped" style="border-bottom: 0px solid white !important;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Fecha<br/><i>Date</i></th>
+                        <th style="border:1px solid black;" class="text-center">Centro Médico Autorizado<br/><i>Test Location</i></th>
+                        <th style="border:1px solid black;" class="text-center">Certificado de Aptitud No:<br/><i>Medical Fitness Certification Number</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.ficha_medica_id.fecha_emision" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-if="o.ficha_medica_id.centro_medico_ficha" t-esc="o.ficha_medica_id.centro_medico_ficha.name.upper()"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.ficha_medica_id.numero_ficha_aptitud"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-left"><b>3. Observaciones</b> / <I> Remarks:</I></td>
+                </tr>
+                <tr><td height="10px"/></tr>
+            </table>
+
+            <table class="table table-sm table-striped" style="border-bottom: 0px solid white !important;">
+                <tr>
+                    <td style="border:1px solid black;" align="center" class="datos_certificado">
+                        <span>APTO PARA EL SERVICIO A BORDO</span>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-left"><b>Observaciones Adicionales</b></td>
+                </tr>
+                <tr align="center">
+                    <td><span class="datos_certificado" t-if="o.ficha_medica_id.observacion" t-esc="o.ficha_medica_id.observacion.upper()"></span></td>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_10">
+                        <b><i>El marino ha sido declarado libre de cualquier afección médica que pueda verse agravada por el servicio en el mar, discapacitarlo
+                        para el desempeño de tal servicio o poner en peligro la salud de otras personas a bordo.
+                        </i></b><br/>
+                        <i>The seafarer has been declared free of any medical condition that could be worsened by service at sea, incapacitate him for the
+                        service or represent a hazard to the health of others onboard.
+                        </i>
+                    </td>
+                </tr>
+                <tr><td height="10px"/></tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>4. Firma del Marino</b> / <i> Seafarer Signature:</i></td>
+                </tr>
+                <tr><td height="10px"/></tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_10" align="justify">
+                        <b><i>Confirmo que he sido informado sobre el contenido del presente Certificado Médico, conforme al Certificado de Aptitud aquí señalado y con el derecho a solicitar una revisión del dictamen de acuerdo a lo dispuesto en el párrafo 6 de la sección A-1/9 del Convenio STCW-78 enmendado.
+                        </i></b><br/>
+                        <i>I confirm that I have been informed about the contents of the present Medical Certificate in accordance with the Medical Fitness Certificate here by mentioned, and with the right to request a review of the opinion, according to the provisions in the paragraph 6 of the section A-1/9 of the Convention STCW-78 amended.
+                        </i>
+                    </td>
+                </tr>
+                <tr><td height="10px"/></tr>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                <tr><td height="50px"/></tr>
+                <tr>
+                    <td width="45%"/>
+                    <td class="normal_11" style="vertical-align:bottom;text-align:center;">
+                        <span class="text-center" t-field="o.personal_maritimo_id.name"></span><br/>
+                    </td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                <tr><td height="2px"/></tr>
+                <tr>
+                    <td width="45%"/>
+                    <td class="normal_11" style="vertical-align:bottom;text-align:center;">
+                        <span class="text-center" t-field="o.personal_maritimo_id.jerarquia_id.name"></span><br/>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="text-align:left"><b>5. Datos relativos a la Emisión: </b></td>
+                </tr>
+                <tr><td height="10px"/></tr>
+                <t t-call="personal_maritimo_documento.custom_report_expendido_permar"/>
+            </table>
+
+            <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+
+            <t t-call="personal_maritimo_documento.custom_report_footer_permar"/>
+        </xpath>
+    </template>
+
+</odoo>

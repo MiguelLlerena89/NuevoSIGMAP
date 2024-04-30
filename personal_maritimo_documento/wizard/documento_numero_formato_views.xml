@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_documento_numero_formato_wizard" model="ir.actions.act_window">
+        <field name="name">Número Formato Documento</field>
+        <field name="res_model">documento.numero.formato</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_documento_numero_formato_wizard_form" model="ir.ui.view">
+        <field name="name">documento.numero.formato.wizard.form</field>
+        <field name="model">documento.numero.formato</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="resource_ref" string="Número Formato"/>
+                            <field name="numero_formato" string="Número Formato"/>
+                            <field name="refrendo_titulo_id" string="Refrendo Título" invisible="1"/>
+                            <field name="certificado_competencia_id" string="Certificado Competencia" invisible="1"/>
+                            <field name="certificado_suficiencia_id" string="Certificado Suficiencia" invisible="1"/>
+                            <field name="refrendo_medico_id" string="Refrendo Certificado Médico" invisible="1"/>
+                            <field name="reconocimiento_titulo_id" string="Reconocimiento Titulo" invisible="1"/>
+                            <field name="permiso_provisional_embarque_id" string="Permiso Provisional de Embarque" invisible="1"/>
+                            <field name="evaluacion_competencia_id" string="Evaluación de Competencia" invisible="1"/>
+                            <field name="convalidacion_competencia_id" string="Convalidación de Competencia" invisible="1"/>
+                            <field name="dispensa_id" string="Dispensa" invisible="1"/>
+                            <field name="carnet_id" string="Carnet" invisible="1"/>
+                            <field name="libretin_id" string="Libretin" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name='action_imprimir_documento' string='Grabar' type='object' class='btn-primary'/>
+                    <button string='Cancelar' class='btn-default' special='cancel' />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!--  Refrendo Título -->
+    <record id="view_refrendo_titulo_form_inherited" model="ir.ui.view">
+        <field name="name">permar.documento.refrendo.titulo.formacion.form.inherit</field>
+        <field name="model">permar.documento.refrendo.titulo.formacion</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_refrendo_titulo_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_imprimir" type="object" class="btn-primary"
+                        string="Imprimir" attrs="{'invisible': ['|',('state', '!=', 'vigente'),('numero_formato','>',0)]}" data-hotkey="k"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--  Refrendo Certificado Médico-->
+    <record id="view_certificado_medico_form_inherited" model="ir.ui.view">
+        <field name="name">certificado.medico.form.inherit</field>
+        <field name="model">permar.documento.refrendo.certificado.medico</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_certificado_medico_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_print_certificado_medico" type="object" class="oe_highlight"
+                    string="Imprimir" attrs="{'invisible': ['|',('state', '!=', 'vigente'),('numero_formato', '&gt;', 0)]}" data-hotkey="k"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--  Certificado Competencia -->
+    <record id="view_certificado_competencia_form_inherited" model="ir.ui.view">
+        <field name="name">permar.documento.certificado.competencia.form.inherit</field>
+        <field name="model">permar.documento.certificado.competencia</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_certificado_competencia_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_imprimir" type="object" class="btn-primary"
+                    string="Imprimir" attrs="{'invisible': ['|',('state', '!=', 'vigente'),('numero_formato', '&gt;', 0)]}" data-hotkey="k"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--  Certificado Suficiencia -->
+    <record id="view_certificado_suficiencia_form_inherited" model="ir.ui.view">
+        <field name="name">permar.documento.certificado.suficiencia.form.inherit</field>
+        <field name="model">permar.documento.certificado.suficiencia</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_certificado_suficiencia_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_print_certificado_suficiencia" type="object"
+                    string="Imprimir" class="oe_highlight" id="button_print"
+                    attrs="{'invisible': ['|',('state', '!=', 'vigente'),('numero_formato', '&gt;', 0)]}" data-hotkey="p"/>
+                <button name="action_print_libretin_certificado_suficiencia" type="object"
+                    string="Emitir Cert. Sufic. Libretin" class="oe_highlight" id="button_print"
+                    attrs="{'invisible': ['|',('state', '!=', 'vigente'),('numero_formato', '&gt;', 0)]}" data-hotkey="p" />
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Reconocimiento -->
+    <record id="view_reconocimiento_titulo_form_inherited" model="ir.ui.view">
+        <field name="name">permar.documento.reconocimiento.titulo.form.inherit</field>
+        <field name="model">permar.documento.reconocimiento.titulo</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_reconocimiento_titulo_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_imprimir" type="object" class="btn-primary"
+                    string="Imprimir" attrs="{'invisible': ['|',('state', '!=', 'vigente'),('numero_formato', '&gt;', 0)]}" data-hotkey="k"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--  Permiso Provisional de Embarque -->
+    <record id="view_permiso_provisional_embarque_form_inherited" model="ir.ui.view">
+        <field name="name">permar.documento.permiso.provisional.embarque.form.inherit</field>
+        <field name="model">permar.documento.permiso.provisional.embarque</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_permiso_provisional_embarque_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_imprimir" type="object" class="btn-primary"
+                    string="Imprimir" attrs="{'invisible': ['|',('state', '!=', 'vigente'),('numero_formato', '&gt;', 0)]}" data-hotkey="k"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--  Evaluacion de Competencia -->
+    <record id="view_evaluacion_competencia_form_inherited" model="ir.ui.view">
+        <field name="name">permar.documento.convalidacion.competencia.form.inherit</field>
+        <field name="model">permar.documento.convalidacion.competencia</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_evaluacion_competencia_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_imprimir" type="object" class="btn-primary"
+                    string="Imprimir" attrs="{'invisible': ['|',('state', '!=', 'vigente'),('numero_formato', '&gt;', 0)]}" data-hotkey="k"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--  Convalidacion de Competencia -->
+    <record id="view_convalidacion_competencia_form_inherited" model="ir.ui.view">
+        <field name="name">permar.documento.convalidacion.competencia.form.inherit</field>
+        <field name="model">permar.documento.convalidacion.competencia</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_convalidacion_competencia_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_imprimir" type="object" class="btn-primary"
+                    string="Imprimir" attrs="{'invisible': ['|',('state', '!=', 'vigente'),('numero_formato', '&gt;', 0)]}" data-hotkey="k"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Matriculas -->
+    <!-- <record id="view_personal_maritimo_documento_carnet_form_inherited" model="ir.ui.view">
+        <field name="name">permar.documento.carnet.form.inherit</field>
+        <field name="model">permar.documento.carnet</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_personal_maritimo_documento_carnet_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_imprimir" type="object" class="btn-primary"
+                        string="Imprimir" data-hotkey="k"
+                        attrs="{'invisible': ['|', ('state', 'not in',('autorizado')), ('es_provisional', '=',True)]}"/>
+                <button name="button_imprimir_provisional" type="object" class="oe_highlight"
+                        string="Imprimir Provisional" data-hotkey="k"
+                        attrs="{'invisible': ['|',('es_provisional', '=',False), ('state', 'not in',['autorizado'])]}"/>
+                <button name="button_reimprimir" type="object" class="oe_highlight"
+                        states="vigente" string="Re-imprimir" id="button_reimprimir" data-hotkey="p"
+                        confirm="¿Está seguro de que desea reimprimir la matrícula?"
+                        attrs="{'invisible': ['|', ('reimprimir', '!=', True), ('state', 'not in',['vigente','vigente'])]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_personal_maritimo_documento_libretin_form_inherited" model="ir.ui.view">
+        <field name="name">permar.documento.libretin.form.inherit</field>
+        <field name="model">permar.documento.libretin</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_personal_maritimo_documento_libretin_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_imprimir" type="object" class="btn-primary"
+                        string="Imprimir" data-hotkey="k"
+                        attrs="{'invisible': ['|', ('state', 'not in',('autorizado')), ('es_provisional', '=',True)]}"/>
+                <button name="button_imprimir_provisional" type="object" class="oe_highlight"
+                        string="Imprimir Provisional" data-hotkey="k"
+                        attrs="{'invisible': ['|',('es_provisional', '=',False), ('state', 'not in',['autorizado'])]}"/>
+                <button name="button_reimprimir" type="object" class="oe_highlight"
+                        states="vigente" string="Re-imprimir" id="button_reimprimir" data-hotkey="p"
+                        confirm="¿Está seguro de que desea reimprimir la matrícula?"
+                        attrs="{'invisible': ['|', ('reimprimir', '!=', True), ('state', 'not in', ['vigente','vigente'])]}"/>
+            </xpath>
+        </field>
+    </record> -->
+
+    <!--  Dispensa -->
+    <record id="view_dispensa_form_inherited" model="ir.ui.view">
+        <field name="name">permar.documento.dispensa.form.inherit</field>
+        <field name="model">permar.documento.dispensa</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_dispensa_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_imprimir" type="object" class="btn-primary"
+                    string="Imprimir" attrs="{'invisible': ['|',('state', '!=', 'vigente'),('numero_formato', '&gt;', 0)]}" data-hotkey="k"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--  Dotación -->
+    <record id="view_personal_maritimo_dotacion_form_inherited" model="ir.ui.view">
+        <field name="name">permar.documento.dotacion.form.inherit</field>
+        <field name="model">permar.documento.dotacion</field>
+        <field name="inherit_id" ref="personal_maritimo_documento.view_dotacion_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="button_imprimir" type="object" class="btn-primary"
+                        string="Imprimir" attrs="{'invisible': ['|',('state', '!=', 'vigente'),('numero_formato','>',0)]}" data-hotkey="k"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

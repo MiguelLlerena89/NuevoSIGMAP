@@ -1,0 +1,166 @@
+.hidden {
+  display: none;
+}
+
+ol {
+    list-style-type: none;
+    counter-reset: item;
+    margin: 0;
+    padding: 0;
+}
+
+ol > li {
+  display: table;
+  counter-increment: item;
+  margin-bottom: 0.6em;
+}
+
+ol > li:before {
+  content: counters(item, ".") ". ";
+  display: table-cell;
+  padding-right: 0.6em;
+}
+
+li ol > li {
+  margin: 0;
+}
+
+li ol > li:before {
+  content: counters(item, ".") " ";
+}
+
+/* Table of Contents - Decimal */
+.toc-decimal ol {
+  list-style-type: none;
+  counter-reset: item;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+}
+.toc-decimal ol li {
+  display: table-row;
+  counter-increment: item;
+  margin-bottom: 0.6em;
+}
+.toc-decimal ol li:before {
+  content: counters(item, ".") ". ";
+  display: table-cell;
+  padding-right: 0.6em;
+}
+.toc-decimal ol li li {
+  margin: 0;
+}
+.toc-decimal ol li li:before {
+  content: counters(item, ".") ". ";
+}
+
+/* Table of Contents - Upper Alpha */
+.toc-upper-alpha ol {
+  list-style-type: none;
+  counter-reset: item;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+}
+.toc-upper-alpha ol li {
+  display: table-row;
+  counter-increment: item;
+  margin-bottom: 0.6em;
+}
+.toc-upper-alpha ol li:before {
+  content: "A." counters(item, ".") ". ";
+  display: table-cell;
+  padding-right: 0.6em;
+}
+.toc-upper-alpha ol li li {
+  margin: 0;
+}
+.toc-upper-alpha ol li li:before {
+  content: "A." counters(item, ".") ". ";
+}
+
+.datos_certificado {
+  color: blue;
+  font-weight: bold;
+}
+
+.datosCarnet{
+  font-size: 6px;
+   font-family: Verdana;
+   font-weight: normal;
+}
+
+.tituloDatosCarnet{
+  font-size: 6px;
+   font-family: Verdana;
+   font-weight: bold;
+}
+
+.style1 {
+  font-size: 6px;
+  font-stretch: expanded;
+  font-family: Verdana;
+  font-weight: bold;
+  text-transform:uppercase;
+}
+
+.style3 {
+  font-size: 10px;
+  font-family: Verdana;
+  font-weight: bold;
+  text-transform: uppercase;
+  color:#0033CC;
+}
+
+img.transparent {
+  filter:alpha(opacity=45);
+  opacity:.45;
+}
+
+.style4 {
+  font-size: 8px;
+  font-family: Verdana;
+  font-weight: bold;
+  text-transform:uppercase;
+  text-align:left; /*center*/
+}
+
+.style47 {
+  font-size: 7px;
+  font-family: Verdana;
+  font-weight: bold;
+  text-transform:uppercase;
+  text-align:center;
+}
+
+.style5 {
+  font-size: 21px;
+  font-family: C39T36Nfz;
+  font-weight: normal;
+  text-transform:uppercase;
+  text-align:center;
+  letter-spacing: 0.2em;
+}
+
+.style55 {
+  font-size: 13px;
+  font-family: C39T36Nfz;
+  font-weight: bold;
+  text-transform:uppercase;
+  text-align:center;
+  letter-spacing: 0.2em;
+}
+
+P.breakhere {page-break-before: always}
+
+.normaltexto2{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7px;
+  font-style: normal;
+  color: #000000;
+  text-align:left;
+}
+
+.centered-content {
+  text-align: center;
+}

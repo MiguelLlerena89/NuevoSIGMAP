@@ -1,0 +1,15 @@
+id,name
+holograma_dañado,Se dañó el holograma
+cita_dañada,Se dañó la cinta
+pvc_cinta_dañada,Se dañó PVC y cinta
+pvc_holograma_dañada,Se dañó PVC y holograma
+cinta_holograma_dañada,Se dañó cinta y holograma
+material_dañado,Se dañó todo el material
+prueba_impresion,Prueba impresión
+ascenso,Ascenso
+cambio_especialidad,Cambio especialidad
+canje,Canje
+especialidad_alternativa,Especialidad alternativa
+primera_vez,Primera vez
+renovacion,Renovación
+reposicion,Reposición

@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Personal Marítimo -->
+    <template inherit_id="personal_maritimo.report_personalmaritimo" id="report_pm_llibretin">
+        <xpath expr="//table[@name='table_pm_info_mercante']/tr[last()]" position="after">
+            <tr t-foreach="o.libretin_ids.filtered(lambda c: c.state == 'vigente')" t-as="pmlibretin">
+                <td style="border:1px solid black"><b>Libretín</b></td>
+                <td colspan="3" style="border: 1px solid black;">
+                    <div>Matrícula Provisional de Tráfico Internacional:
+                        <t t-if="pmlibretin.es_provisional == True">SI</t><t t-else="">NO</t>
+                    </div>
+                    <div t-if="pmlibretin.tipo_trafico">Tipo de Tráfico: <span t-field="pmlibretin.tipo_trafico.name"/></div>
+                    <div t-if="pmlibretin.numero_libretin">Número de libretín: <span t-field="pmlibretin.numero_libretin"/></div>
+                    <div t-if="pmlibretin.name_previous">Matrícula Anterior: <span t-field="pmlibretin.name_previous"/></div>
+                    <div t-if="pmlibretin.fecha_impresion">Fecha Impresión: <span t-field="pmlibretin.fecha_impresion"/></div>
+                    <div t-if="pmlibretin.fecha_inicio">Fecha Inicio: <span t-field="pmlibretin.fecha_inicio"/></div>
+                    <div t-if="pmlibretin.fecha_caducidad">Fecha Caducidad: <span t-field="pmlibretin.fecha_caducidad"/></div>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+
+    <!-- Matrícula Tráfico Internacional (Libretín) -->
+    <record id="action_report_documento_previo_libretin" model="ir.actions.report">
+        <field name="name">Matrícula Previa de Tráfico Internacional (SEAMAN'S BOOK)</field>
+        <field name="model">permar.documento.libretin</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_documentopreviolibretin</field>
+        <field name="report_file">personal_maritimo_documento.report_documentopreviolibretin</field>
+        <field name="print_report_name">'Matrícula Previa de Tráfico Internacional (SEAMAN'S BOOK) - %s' % (object.name)</field>
+        <!-- <field name="paperformat_id" ref="paperformat_matricula_libretin"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_documentopreviolibretin">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <div class="row" style="font-size: 10px">
+                            <div class="col-xs-12" style="height: 16cm;">
+                                <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse" name="table_libretin_adicional">
+                                    <tr>
+                                        <td colspan="4" align="center">
+                                            <b><i>DIRECCIÓN NACIONAL DE LOS ESPACIOS ACUÁTICOS</i></b><br/>
+                                            <i>NATIONAL DIRECTORATE OF AQUATIC SPACES</i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <b><i>NÚMERO DE LIBRETÍN / BOOK:</i></b><br/>
+                                            <div align="center"><span t-field="o.numero_libretin"/></div>
+                                        </td>
+                                        <td colspan="2">
+                                            <b><i>MATRÍCULA / REGISTRATION NUMBER:</i></b><br/>
+                                            <div align="center"><span t-field="o.matricula"/></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="white-space: nowrap"><b><i>APELLIDOS:</i></b><br/><b><i>LAST:</i></b>
+                                            <div align="center"><span t-if="o.personal_maritimo_id.last_name" t-esc="o.personal_maritimo_id.last_name.upper()"/></div>
+                                        </td>
+                                        <td colspan="2" style="white-space: nowrap"><b><i>CÉDULA DE IDENTIDAD / I.D. CARD:</i></b><br/><b><i>FIRST M.I.:</i></b>
+                                            <div align="center"><span t-field="o.personal_maritimo_id.vat"/></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="white-space: nowrap"><b><i>NOMBRES:</i></b><br/><b><i>FIRST M.I.:</i></b>
+                                            <div align="center"><span t-if="o.personal_maritimo_id.first_name" t-esc="o.personal_maritimo_id.first_name.upper()"/></div>
+                                        </td>
+                                        <td colspan="2" style="white-space: nowrap"><b><i>JERARQUÍA / RANK ON BOARD:</i></b><br/><b><i>FIRST M.I.:</i></b>
+                                            <div align="center"><span t-if="o.jerarquia_id" t-esc="o.jerarquia_id.name.upper()"/></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><b><i>NACIONALIDAD / NATIONALITY:</i></b>
+                                            <div align="center"><span t-if="o.personal_maritimo_id.nationality" t-esc="o.personal_maritimo_id.nationality.upper()"/></div>
+                                        </td>
+                                        <td colspan="2"><b><i>SEXO / SEX:</i></b>
+                                            <div align="center"><span t-field="o.personal_maritimo_id.genero"/></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"><b><i>LUGAR Y FECHA DE NACIMIENTO / BIRTH PLACE AND DATE:</i></b>
+                                            <div align="center"><span t-if="o.personal_maritimo_id.state_of_birth_id" t-esc="o.personal_maritimo_id.state_of_birth_id.name.upper()"/> / <span t-field="o.personal_maritimo_id.city_of_birth_id.name"/>  <span t-esc="o.personal_maritimo_id.birthday.strftime('%d de %B de %Y')"/></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><b><i>LUGAR Y FECHA DE EXPEDICIÓN / ISSUE DATE:</i></b>
+                                            <div align="center"><span t-if="o.reparto_id.city_id" t-esc="o.reparto_id.city_id.name.upper()"/> <span t-esc="o.fecha_inicio.strftime('%d de %B de %Y')"/></div>
+                                        </td>
+                                        <td colspan="2"><b><i>FECHA DE EXPIRACION / EXPIRATION DATE:</i></b>
+                                            <div align="center"><span t-esc="o.fecha_caducidad.strftime('%d de %B de %Y')"/></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">FOTO PERSONA</th>
+                                        <td>
+                                            <img t-att-src="image_data_uri(o.foto_carnet)" style="max-height:80pt;max-width:80pt;"/>
+                                        </td>
+                                        <th scope="row">FOTO FIRMA DEL TITULAR (HOLDER SIGNATURE)</th>
+                                        <td>
+                                            <img t-att-src="image_data_uri(o.image_firma)" style="max-height:30pt;max-width:70pt;"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_documento_libretin" model="ir.actions.report">
+        <field name="name">Matrícula Tráfico Internacional (SEAMAN'S BOOK)</field>
+        <field name="model">permar.documento.libretin</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_documentolibretin</field>
+        <field name="report_file">personal_maritimo_documento.report_documentolibretin</field>
+        <field name="print_report_name">'Matrícula Tráfico Internacional - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_matricula_libretin"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_documentolibretin">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page"><!--style="width: 15cm; height: 21cm;"-->
+                        <div class="centered-content">
+                            <table width="390" border="0" cellspacing="0" height="350">
+                            <tr>
+                                <th scope="col" width="10%"></th>
+                                <th scope="col" width="32%"></th>
+                                <th scope="col" width="15%"></th>
+                                <th scope="col" width="15%"></th>
+                                <th scope="col" width="15%"></th>
+                                <th scope="col"> </th>
+                            </tr>
+                            <tr>
+                                <th scope="col" width="10%"></th>
+                                <th scope="col" width="32%"></th>
+                                <th scope="col" width="15%"></th>
+                                <th scope="col" width="15%"></th>
+                                <th scope="col" width="15%"></th>
+                                <th scope="col"> </th>
+                            </tr>
+                            <tr>
+                                <td colspan="2" height="25" class="normaltexto" style="font-size:10px"><span t-esc="o.numero_libretin"/></td>
+                                <td colspan="3" class="normaltexto" style="font-size:10px"><span t-esc="o.personal_maritimo_id.vat"/></td>
+                                <th scope="col"> </th>
+                            </tr>
+                            <tr>
+                                <th scope="col" height="25"> </th>
+                                <th scope="col" class="normaltexto" style="font-size:10px"><span t-if="o.personal_maritimo_id.last_name" t-esc="o.personal_maritimo_id.last_name.upper()"/></th>
+                                <th scope="col"> </th>
+                                <th scope="col"> </th>
+                                <th colspan="2" class="normaltexto" style="font-size:10px" scope="col"><span t-esc="o.personal_maritimo_id.vat"/></th>
+                            </tr>
+                            <tr>
+                                <th scope="col" height="30"> </th>
+                                <th scope="col" class="normaltexto" style="font-size:10px"><span t-if="o.personal_maritimo_id.first_name" t-esc="o.personal_maritimo_id.first_name.upper()"/></th>
+                                <td colspan="4" class="normaltexto" style="font-size:8px"><span t-if="o.jerarquia_id" t-esc="o.jerarquia_id.name.upper()"/> / <span t-if="o.jerarquia_id.descripcion_en" t-esc="o.jerarquia_id.descripcion_en.upper()"/></td>
+                            </tr>
+                            <tr>
+                                <th colspan="5" scope="col" height="1"></th>
+                                <th rowspan="5" scope="col">
+                                    <div class="col-auto" t-if="o.foto_carnet">
+                                        <img t-att-src="image_data_uri(o.foto_carnet)" style="padding: 0px; margin: 0px; height: 80px; width: 80px;"/>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th colspan="5" scope="col" height="5"></th>
+                            </tr>
+                            <tr>
+                                <td colspan="2" height="30" class="normaltexto2" style="font-size:10px"><span t-if="o.personal_maritimo_id.nationality" t-esc="o.personal_maritimo_id.nationality.upper()"/></td>
+                                <td colspan="2" class="normaltexto2" style="font-size:10px"><span t-field="o.personal_maritimo_id.genero"/></td>
+                                <th scope="col"> </th>
+                            </tr>
+                            <tr>
+                                <td colspan="4" height="25" class="normaltexto2" style="font-size:9px"><span t-if="o.personal_maritimo_id.state_of_birth_id" t-esc="o.personal_maritimo_id.state_of_birth_id.name.upper()"/>/<span t-field="o.personal_maritimo_id.city_of_birth_id.name"/>   <span t-esc="o.personal_maritimo_id.birthday.strftime('%d de %B de %Y')"/></td>
+                                <th scope="col"> </th>
+                            </tr>
+                            <tr>
+                                <th colspan="5" scope="col" height="25"></th>
+                            </tr>
+                            <tr>
+                                <td colspan="2" height="9" align="top" border="0" class="normaltexto2" style="font-size:7px"><span t-if="o.reparto_id.city_id" t-esc="o.reparto_id.city_id.name.upper()"/>  <span t-esc="o.fecha_inicio.strftime('%d de %B de %Y')"/></td>
+                                <td colspan="3" class="normaltexto" style="font-size:7px"><span t-esc="o.fecha_caducidad.strftime('%d de %B de %Y')"/></td>
+                            </tr>
+                            <tr>
+                                <th colspan="6" scope="col" syte="vertical-align:top" height="1">
+                                    <div class="col-auto" t-if="o.image_firma">
+                                        <img t-att-src="image_data_uri(o.image_firma)" style="padding: 0px; margin: 0px; height: 30px; width: 70px;"/>
+                                    </div>
+                                </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="5" scope="col" height="45">
+                                </th>
+                            </tr>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_documento_curso_libretin" model="ir.actions.report">
+        <field name="name">Matrícula Tráfico Internacional Sticker Curso</field>
+        <field name="model">permar.documento.libretin</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_documentocursolibretin</field>
+        <field name="report_file">personal_maritimo_documento.report_documentocursolibretin</field>
+        <field name="print_report_name">'Matrícula Tráfico Internacional Sticker Curso - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_matricula_libretin_sticker"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_documentocursolibretin">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page"><!--style="width: 15cm; height: 21cm;"-->
+                        <div class="row">
+                            <div class="col-xs-12" style="font-size: 12px">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                    <tr><td height="30px"/></tr>
+                                    <tr>
+                                        <td colspan="4" align="justify">
+                                            <span t-if="o.personal_maritimo_id.genero == 'M'"><b>Sr.(MR): </b></span>
+                                            <span t-elif="o.personal_maritimo_id.genero == 'F'"><b>Sra.(MRA): </b></span>
+                                            <span t-else=""></span>
+                                            <span t-if="o.personal_maritimo_id.last_name" t-esc="o.personal_maritimo_id.last_name.upper()"/>, <span t-if="o.personal_maritimo_id.first_name" t-esc="o.personal_maritimo_id.first_name.upper()"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left"><b>RANGO/RANK: </b></td>
+                                        <td align="justify">
+                                            <span t-if="o.jerarquia_id.name" t-esc="o.jerarquia_id.name.upper()"/><br/>
+                                            <span t-if="o.jerarquia_id.descripcion_en" t-esc="o.jerarquia_id.descripcion_en.upper()"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" align="justify">
+                                            <b>CURSO/COURSE: </b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" align="justify">
+                                            <b>VALIDO HASTA: </b><b><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></b>
+                                        </td>
+                                    </tr>
+                                    <tr><td height="40px"/></tr>
+                                    <tr>
+                                        <td colspan="4" align="center">
+                                            <b><span t-if="o.reparto_id.name" t-esc="o.reparto_id.name.upper()"/></b>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Matrícula Adicional de Tráfico Internacional (SEAMAN'S BOOK) -->
+    <record id="action_report_documento_libretin_adicional" model="ir.actions.report">
+        <field name="name">Matrícula Adicional de Tráfico Internacional</field>
+        <field name="model">permar.documento.libretin</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_matricula_adicional</field>
+        <field name="report_file">personal_maritimo_documento.report_matricula_adicional</field>
+        <field name="print_report_name">'Matrícula Adicional de Tráfico Internacional - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_permar"/><!--paperformat_additional_document_permar-->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- <template inherit_id="personal_maritimo_documento.report_permardocumentobasecabecera" id="report_libretinadicional" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or ''"/></b><br/>
+                    <span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or ''"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']" position="attributes">
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[1]" position="after">
+            <h4 align="center">Registro Adicional de Matrícula de Tráfico Internacional</h4>
+            <br/>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Se emite la matrícula de tráfico internacional (libretín) a la persona <b><span t-field="o.personal_maritimo_id.name"/></b>
+                        en el reparto <b><span t-field="o.reparto_id.name"/></b>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                <tr>
+                    <td width="45%" height="200px"/>
+                    <td class="normal_11" style="vertical-align:bottom;text-align:center;">
+                        <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+                    </td>
+                </tr>
+            </table>
+
+            <t t-call="personal_maritimo_documento.custom_report_footer_sumilla_permar"/>
+        </xpath>
+    </template> -->
+
+    <!-- Matrícula Provisional de Tráfico Internacional -->
+    <record id="action_report_documento_libretin_provisional" model="ir.actions.report">
+        <field name="name">Matrícula Provisional de Tráfico Internacional</field>
+        <field name="model">permar.documento.libretin</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_documentolibretinprovisional</field>
+        <field name="report_file">personal_maritimo_documento.report_documentolibretinprovisional</field>
+        <field name="print_report_name">'Matrícula Provisional de Tráfico Internacional - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_documentolibretinprovisional">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <t t-call="personal_maritimo_documento.custom_report_header"/>
+                        <div class="oe_structure"/>
+                        <table width="100%"  border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td height="15" colspan="2" align="right" class="encabezado">
+                                Certificado No. <span class="text-uppercase" t-field="o.name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <br/><br/><br/><br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="30" colspan="2" align="center" class="text-center"><b>República del Ecuador</b><br/></td>
+                            </tr>
+                            <tr>
+                                <td height="15" colspan="2" align="center" class="text-center">MATRÍCULA PROVISIONAL DE TRÁFICO INTERNACIONAL<br/>
+                                <I>Provisional Registration Certificate for International Traffic</I></td>
+                            </tr>
+                            <tr><td height="5px"/></tr>
+                            <tr>
+                                <td colspan="2" class="normal_10">
+                                    <p align="justify">
+                                    <b>La <span class="text-uppercase" t-field="o.company_id.name"/> emite la presente Matrícula Provisional de Tráfico Internacional
+                                    al siguiente Tripulante de la Marina Mercante Nacional:</b><br/>
+                                    <I>The <span class="text-uppercase" t-field="o.company_id.name"/> issues this Provisional Registration Certificate for International Traffic 
+                                    to the following seamen of the National Merchant Marine.</I>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ><td height="10px"/></tr>
+                            </table>
+
+                            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="titulo_seccion" align="left"><b>1. Datos Generales</b> / <I> General Information:</I></td>
+                            </tr>
+                                <tr><td height="10px"/></tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="10px"></td>
+                                <td>
+                                    <table width="100%" cellpadding="0" cellspacing="0" class="cert">
+                                        <tr>
+                                            <th style="border:1px solid black;" class="text-center">Nombre Completo<br/><i>Complete Name</i></th>
+                                            <th style="border:1px solid black;" class="text-center">Especialidad<br/><i>Speciality</i></th>
+                                            <th style="border:1px solid black;" class="text-center">Matrícula<br/><i>Certificate</i></th>
+                                        </tr>
+                                        <tr>
+                                            <td style="border:1px solid black;" align="center">
+                                                <span class="text-uppercase" t-field="o.personal_maritimo_id.name"></span>
+                                            </td>
+                                            <td style="border:1px solid black;" align="center">
+                                                <table cellspacing="0" cellpadding="0" border="0" style="width: 100%" class="no_border">
+                                                    <tr><td height="3px"></td></tr>
+                                                    <tr><td>
+                                                        <span class="text-uppercase" t-field="o.jerarquia_id.name"></span><br/>
+                                                        <i>
+                                                        <span class="text-uppercase" t-field="o.jerarquia_id.descripcion_en"></span>
+                                                        </i>
+                                                    </td></tr>
+                                                    <tr><td height="2px"></td></tr>
+                                                </table>
+                                            </td>
+                                            <td style="border:1px solid black;" align="center">
+                                                <span class="text-center" t-field="o.matricula"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr ><td height="10px"/></tr>
+                        </table>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="titulo_seccion" align="left"><b>2. Cursos OMI</b> / <I> OMI Courses Information:</I></td>
+                            </tr>
+                                <tr ><td height="10px"/></tr>
+                        </table>
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="10px"></td>
+                                <td>
+                                    <table width="100%" cellpadding="0" cellspacing="0" class="cert">
+                                        <tr>
+                                            <th style="border:1px solid black;" class="text-center">Nombre Completo<br/><i>Full Name</i></th>
+                                            <th style="border:1px solid black;" class="text-center">Código OMI<br/><i>OMI Code</i></th>
+                                            <th style="border:1px solid black;" class="text-center">Caducidad<br/><i>End Date</i></th>
+                                        </tr>
+                                        <tr>
+                                            <td style="border:1px solid black;" align="center">
+                                                <span class="text-center" t-field="o.jerarquia_id.curso_id.name"></span><br/>
+                                                <i>
+                                                    <span class="text-center" t-field="o.jerarquia_id.curso_id.name"></span><!--curso_id.descripcion_en-->
+                                                </i>
+                                            </td>
+                                            <td style="border:1px solid black;" align="center">
+                                                <span class="text-center" t-field="o.jerarquia_id.curso_id.name"></span>
+                                            </td>
+                                            <td width="15%" style="border:1px solid black;" align="center">
+                                                <span class="text-center" t-field="o.fecha_caducidad"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr ><td height="10px"/></tr>
+                        </table>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="titulo_seccion" align="left"><b>3. Razón de Emisión</b> / <I> Issuring reason:</I></td>
+                            </tr>
+                                <tr ><td height="10px"/></tr>
+                        </table>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="10px"></td>
+                                <td>
+                                    <span class="datos_certificado">
+                                        Esta Matrícula Provisional de Tráfico Internacional se emite en razón de que al momento no existen los libretines "SEAMAN'S BOOK" 
+                                        en stock para su emisión y deberá ser canjeada una vez que se normalice la emisión de los mismos.
+                                    </span>
+                                    <br/>
+                                    <span colspan="2" class="normal_10">
+                                        <I>This Provisional Registration Certificate for International Traffic is issued on the merit that now there are currently no
+                                        "SEAMAN'S BOOK" in stock for issuance and must be exchanged once is normalized the issuance of such</I>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr ><td height="10px"/></tr>
+                        </table>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="titulo_seccion" align="left"><b>4. Ficha Médica</b> / <I> Medical record:</I></td>
+                            </tr>
+                                <tr ><td height="10px"/></tr>
+                        </table>
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th style="border:1px solid black;" class="titulo_seccion" align="left"><b>Ficha</b><br/><i> Record</i></th>
+                                <th style="border:1px solid black;" class="titulo_seccion" align="left"><b>Fecha Caducidad</b><br/><i> Expiry date</i></th>
+                            </tr>
+                            <tr t-foreach="o._default_ficha_medica()" t-as="fm">
+                                <td style="border:1px solid black;" align="center">
+                                    <span t-if="fm['name']" t-esc="fm['name']"/>
+                                </td>
+                                <td style="border:1px solid black;" align="center">
+                                    <span t-if="fm['fecha_caducidad']" t-esc="fm['fecha_caducidad']"/>
+                                </td>
+                            </tr>
+                            <tr ><td height="10px"/></tr>
+                        </table>
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                            <tr>
+                                <td class="letras_chicas" style="white-space: nowrap"> Expedido en:<br/><i class="letras_chicas">Issued at:</i></td>
+                                <td class="letras_chicas" width="15%" style="vertical-align:top;text-align:center;"><span class="text-center" t-field="o.user_id.name"/></td>
+                                <td class="letras_chicas">el:<br/><i class="letras_chicas">on:</i></td>
+                                <td class="letras_chicas" width="15%" style="vertical-align:top;text-align:center;"><span class="text-center" t-field="o.fecha_inicio"/></td>
+                                <td class="letras_chicas" width="90%" > </td>
+                            </tr>
+                        </table>
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="normal">
+                            <tr>
+                                <td class="letras_chicas">El presente documento será válido hasta:<br/><i>This document is valid until:</i></td>
+                                <td class="letras_chicas" width="71%" style="vertical-align:top;text-align:left;">
+                                    <span class="text-center" t-field="o.fecha_caducidad"/>
+                                </td>
+                            </tr>
+                        </table>
+                            <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="normal">
+                                <tr><td height="10px"/></tr>
+                            </table>
+                            <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="normal">
+                                <tr>
+                                    <td  style="text-align:left; vertical-align:top;">
+                                        <div class="col-auto" t-if="o.foto_carnet">
+                                            <img t-att-src="image_data_uri(o.foto_carnet)" style="max-height: 4cm; max-width: 8cm;"/>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align: top;">
+                                    <div style="padding-top: 30px; text-align: center;">
+                                        <span class="text-uppercase">Firma del portador</span>
+                                        <span class="text-uppercase">Holder Signature</span>
+                                    </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        <div class="oe_structure"/>
+
+                        <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+
+                    </div>
+
+                    <!-- <t t-call="personal_maritimo_documento.custom_report_footer_supervised_signature_permar"/> -->
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- <template id="report_documentolibretinprovisional">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <table width="475" border="0" cellspacing="0" >
+                            <tr>
+                                <td height="3" width="19%"></td>
+                                <td  width="5%"></td>
+                                <td  width="25%"></td>
+                                <td  width="10%"></td>
+                                <td  width="10%"></td>
+                                <td  width="5%"></td>
+                                <td  width="26%"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <table width="100%" border="0">
+                                    <tr>
+                                    <td height="7" class="normal" > </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="normaltexto" style="font-size:10px"><span t-field="o.numero_libretin"/></td>
+                                    </tr>
+                                </table>
+                                </td>
+                                <td colspan="3">
+                                <table width="100%">
+                                    <tr>
+                                    <td height="7" class="normal"> </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="normaltexto" style="font-size:10px"><span t-field="o.personal_maritimo_id.vat"/></td>
+                                    </tr>
+                                </table>
+                                </td>
+                                <td colspan="3" >
+                                <table width="100%">
+                                    <tr>
+                                    <td height="7" class="normal" > </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="normaltexto" style="font-size:10px"><span t-field="o.personal_maritimo_id.vat"/>
+                                    </td>
+                                    </tr>
+                                </table>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                <table border="0" cellspacing="0" width="100%">
+                                    <tr>
+                                    <td width="20%" class="normal" > </td>
+                                    <td  valign="bottom" width="80%" class="normaltexto" style="font-size:10px" rowspan="2"><span t-field="o.personal_maritimo_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                    <td class="normal"> </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="normal"> </td>
+                                    <td class="normaltexto" rowspan="2" style="font-size:10px"><span t-field="o.personal_maritimo_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                    <td class="normal"> </td>
+                                    </tr>
+                                </table>
+                                </td>
+                                <td valign="top" colspan="4">
+                                <table border="0" width="100%">
+                                    <tr height="7"><td class="normal"></td> </tr>
+                                    <tr>
+                                    <td class="normaltexto" valign="top" style="font-size:10px"><span t-field="o.jerarquia_id.name"/> / <span t-field="o.jerarquia_id.descripcion_en"/>
+                                    </td>
+                                    </tr>
+                                </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="140" class="normaltexto" colspan="5" >
+                                </td>
+                                <td  class="normaltexto"  colspan="2" >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                <table border="0" width="100%">
+                                    <tr>
+                                    <td class="normal">
+                                    </td>
+                                    </tr>
+                                    <tr t-foreach="o.personal_maritimo_id.rasgo_particular_ids" t-as="cp">
+                                        <t t-if="cp.particularidad == 'color_ojo'">
+                                            <td>
+                                                <span t-field="cp.descripcion"/>/<span t-field="cp.descripcion_en"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </table>
+                                </td>
+                                <td>
+                                <table  border="0" width="100%">
+                                    <tr>
+                                    <td class="normal">
+                                    </td>
+                                    </tr>
+                                    <tr t-foreach="o.personal_maritimo_id.rasgo_particular_ids" t-as="cc">
+                                        <t t-if="cc.particularidad == 'color_cabello'">
+                                            <td>
+                                                <span t-field="cc.descripcion"/>/<span t-field="cc.descripcion_en"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </table>
+                                </td>
+                                <td colspan="3">
+                                <table border="0" width="100%">
+                                    <tr>
+                                    <td class="normal">
+                                    </td>
+                                    </tr>
+                                    <tr t-foreach="o.personal_maritimo_id.rasgo_particular_ids" t-as="e">
+                                        <t t-if="e.particularidad == 'estatura'">
+                                            <td>
+                                                <span t-field="e.descripcion"/> ft.
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </table>
+                                </td>
+                                <td>
+                                <table border="0" width="100%">
+                                    <tr>
+                                    <td class="normal">
+                                    </td>
+                                    </tr>
+                                    <tr t-foreach="o.personal_maritimo_id.rasgo_particular_ids" t-as="p">
+                                        <t t-if="p.particularidad == 'peso'">
+                                            <td>
+                                                <span t-field="p.descripcion"/> kg.
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                <table border="0" width="100%">
+                                    <tr>
+                                    <td height="20" class="normalf">
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="normaltexto" style="font-size:10px"><span t-field="o.personal_maritimo_id.state_of_birth_id.name"/>/<span t-field="o.personal_maritimo_id.city_of_birth_id.name"/>   <span t-field="o.personal_maritimo_id.birthday" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/>
+                                    </td>
+                                    </tr>
+                                </table>
+                                </td>
+                                <td colspan="4" >
+                                <table border="0" width="100%">
+                                    <tr>
+                                    <td class="normal">
+                                    </td>
+                                    </tr>
+                                    <tr t-foreach="o.personal_maritimo_id.rasgo_particular_ids" t-as="t">
+                                        <t t-if="t.particularidad == 'tatuaje'">
+                                            <td>
+                                                <span t-field="t.descripcion"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                <table border="0" width="100%">
+                                    <tr>
+                                    <td height="15" class="normal">
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="normaltexto" style="font-size:10px"><span t-field="o.company_id.partner_id.city_id.name"/>  <span t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/>
+                                    </td>
+                                    </tr>
+                                </table>
+                                </td>
+                                <td colspan="4" >
+                                <table border="0" width="100%">
+                                    <tr>
+                                    <td class="normalf">
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="normaltexto" style="font-size:10px"><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/>
+                                    </td>
+                                    </tr>
+                                </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template> -->
+
+</odoo>

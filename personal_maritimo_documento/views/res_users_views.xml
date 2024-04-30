@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_res_users_firma_form" model="ir.ui.view">
+        <field name="name">res.users.view.form.inherit.firma</field>
+        <field name="model">res.users</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//h2/field[@name='login']" position="after">
+                <label for="sumilla" string="Sumilla"/>
+                <field name="sumilla" placeholder="e.g. ABC"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

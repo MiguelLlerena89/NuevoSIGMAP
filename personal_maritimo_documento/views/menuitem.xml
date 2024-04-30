@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+
+    <menuitem id="menu_servicios_realizados" name="Servicios realizados" sequence="2"
+            parent="personal_maritimo.menu_persona_mar">
+        <menuitem id="menu_action_tramite_permar"
+            name="Trámites"
+            action="tramite.action_tramite"
+            sequence="1"/>
+        <menuitem id="menu_action_tramite_documento_emitido_permar"
+            name="Documentos emitidos"
+            action="tramite.action_tramite_documento_emitido" sequence="1"/>
+        <menuitem id="menu_carnet_libretin" name="Carnets y libretines" sequence="1">
+            <menuitem id="menu_matricula_trafico_internacional"
+                action="action_matricula_trafico_internacional"
+                sequence="1"/>
+            <menuitem id="menu_matricula_trafico_nacional"
+                action="action_matricula_trafico_nacional"
+                sequence="2"/>
+            <menuitem id="menu_matricula_control"
+                action="action_matricula_control"
+                sequence="3"/>
+            <menuitem id="menu_matricula_control_suministro"
+                action="action_matricula_control_suministro"
+                sequence="4"/>
+        </menuitem>
+        <menuitem id="menu_refrendos" name="Refrendos y certificados" sequence="2">
+            <menuitem id="menu_action_refrendo_titulo_formacion"
+                action="action_refrendo_titulo_formacion" sequence="1"/>
+            <menuitem id="menu_certificado_competencia"
+                action="action_certificado_competencia"
+                sequence="2"/>
+            <menuitem id="menu_certificado_suficiencia"
+                action="action_certificado_suficiencia"
+                sequence="3"/>
+            <menuitem id="menu_action_reconocimiento_titulo"
+                action="action_reconocimiento_titulo" sequence="4"/>
+            <menuitem id="menu_action_certificado_medico"
+                action="action_certificado_medico" sequence="5"/>
+            <menuitem id="menu_action_reconocimiento_certificado_medico"
+                action="action_reconocimiento_certificado_medico" sequence="6"/>
+        </menuitem>
+        <menuitem id="menu_evaluacion_convalidacion" name="Evaluaciones y convalidaciones" sequence="3">
+            <menuitem id="menu_evaluacion_competencia"
+                action="action_evaluacion_competencia"
+                sequence="1"/>
+            <menuitem id="menu_convalidacion_competencia"
+                action="action_convalidacion_competencia"
+                sequence="2"/>
+        </menuitem>
+        <menuitem id="menu_permisos_dispensa" name="Permisos y dispensas" sequence="4">
+            <menuitem id="menu_permiso_provisional_embarque"
+                action="action_permiso_provisional_embarque"
+                sequence="1"/>
+            <menuitem id="menu_dispensa"
+                action="action_dispensa"
+                sequence="2"/>
+        </menuitem>
+        <menuitem id="menu_navegacion_dotacion" name="Navegación personal mar" sequence="4">
+            <menuitem id="menu_dotacion"
+                action="action_dotacion"
+                sequence="3"/>
+        </menuitem>
+    </menuitem>
+    <!--menuitem id="menu_documento_evaluacion"
+        parent="personal_maritimo.menu_persona_mar_gente_mar"
+        action="action_documento_evaluacion"
+        sequence="7"/-->
+    <menuitem id="menu_tipo_trafico"
+        parent="tramite.menu_persona_mar_1_config"
+        action="action_tipo_trafico"
+        sequence="6"/>
+
+    <menuitem id="menu_action_persona_autoridad"
+        parent="tramite.menu_persona_mar_1_config"
+        action="action_persona_autoridad"
+        sequence="5"/>
+
+    <menuitem id="menu_action_sumilla"
+        parent="tramite.menu_persona_mar_1_config"
+        action="action_sumilla_usuario"
+        sequence="6"/>
+
+    <menuitem id="menu_action_matricula_motivo"
+        parent="tramite.menu_persona_mar_1_config"
+        action="action_matricula_motivo"
+        sequence="6"/>
+
+</odoo>

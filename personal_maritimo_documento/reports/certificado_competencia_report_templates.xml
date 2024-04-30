@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Personal Marítimo -->
+    <template inherit_id="personal_maritimo.report_personalmaritimo" id="report_pm_competencia">
+        <xpath expr="//table[@name='table_pm_info_cursos']" position="after">
+            <br/>
+            <t t-set="pm_certificados_competencia" t-value="o.certificado_competencia_ids.filtered(lambda c: c.state == 'vigente')"/>
+            <t t-if="pm_certificados_competencia">
+                <h5><b>Certificados de Competencia</b></h5>
+                <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse" name="table_pm_info_certificadocompetencia">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><strong>Registro</strong></th>
+                            <th class="text-center"><strong>Trámite</strong></th>
+                            <th class="text-center"><strong>Tipo de Formación</strong></th>
+                            <th class="text-center"><strong>Fecha Inicio</strong></th>
+                            <th class="text-center"><strong>Fecha Caducidad</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="pm_certificados_competencia" t-as="pmcc">
+                            <td><span t-field="pmcc.name"/></td>
+                            <td><span t-field="pmcc.documento_emitido_id.name"/></td>
+                            <td><span t-field="pmcc.tipo_formacion"/></td>
+                            <td><span t-field="pmcc.fecha_inicio"/></td>
+                            <td><span t-field="pmcc.fecha_caducidad"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Título de Competencia -->
+    <record id="action_report_titulocompetencia" model="ir.actions.report">
+        <field name="name">Título de Competenia</field>
+        <field name="model">permar.documento.certificado.competencia</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_titulocompetencia</field>
+        <field name="report_file">personal_maritimo_documento.report_titulocompetencia</field>
+        <field name="print_report_name">'Título de Competencia - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_permar"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="personal_maritimo_documento.base_titulo_template_report" id="report_titulocompetencia" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[@id='numero_certificado_en_info']" position="attributes">
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'TITULO DE COMPETENCIA'"/></b><br/>
+                    <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Certificate of Sufficiency'"/></i>
+                </td>
+            </tr>
+            <tr><td height="25px"/></tr>
+        </xpath>
+
+        <xpath expr="//table[1]" position="after">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="center">
+                        TITULO EXPEDIDO EN VIRTUD DE LO DISPUESTO EN EL CONVENIO INTERNACIONAL SOBRE NORMAS DE FORMACIÓN,
+                        TITULACIÓN Y GUARDIA PARA LA GENTE DE MAR, STCW 78 EN SU FORMA ENMENDADA
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="center">
+                        <i>CERTIFICATE ISSUED UNDER THE PROVISIONS OF THE INTERNATIONAL CONVENTION ON STANDARDS OF TRAINING,
+                        CERTIFICATION AND WATCHKEEPING FOR SEAFARERS, STCW 78 AS AMENDED.</i>
+                    </td>
+                </tr>
+                <tr ><td colspan="2" height="15px"/></tr>
+                <tr>
+                    <td colspan="2" class="normal_10">
+                        El Gobierno de la <b>REPÚBLICA DEL ECUADOR </b> certifica que
+                        <span t-if="o.personal_maritimo_id.genero == 'M'"> el señor </span>
+                        <span t-elif="o.personal_maritimo_id.genero == 'F'"> la señora </span>
+                        <span t-else=""></span>
+                        <b><span t-field="o.personal_maritimo_id.name"/></b>
+                        , se le considera plenamente cualificado de conformidad con lo dispuesto en la regla
+                        <t t-if="o.curso_persona_id.curso_id.regla">
+                            <b><span t-field="o.curso_persona_id.curso_id.regla"/></b>
+                        </t>
+                        <t t-else="">
+                            -
+                        </t>
+                        del mencionado Convenio en su forma enmendada y competente para desempeñar las siguientes funciones, al nivel
+                        especificado y sin más limitaciones que las que se indican, hasta
+                        <b><span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></b>
+                        o hasta la fecha de expiración de cualquier prórroga de la validez del presente título que figure consignada al dorso:
+                        <br/>
+                        <I>The Govermment of the REPUBLIC OF ECUADOR certifies that
+                        <span t-if="o.personal_maritimo_id.genero == 'M'"> Mr. </span>
+                        <span t-elif="o.personal_maritimo_id.genero == 'F'"> Mra. </span>
+                        <span t-else=""></span>
+                        <span t-field="o.personal_maritimo_id.name"/>
+                        has been found duly qualified in accordance with the provisions of regulation
+                        <t t-if="o.curso_persona_id.curso_id.regla">
+                            <b><span t-field="o.curso_persona_id.curso_id.regla"/></b>
+                        </t>
+                        <t t-else="">
+                            -
+                        </t>
+                        of the above Convention, as amended, and has been found competent to perform the following function, at the
+                        level specified, subject to any
+                        limitations indicated until the
+                        <span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/>
+                        or until the date  of expiry of any extension of the validity of this certificate as may be shown ovearlef:</I>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+        </xpath>
+
+        <xpath expr="//table[6]//tr/td" position="inside">
+            Título: <br/><i class="text-align:left">Certificate: </i>
+        </xpath>
+    </template>
+
+    <!-- Certificado de Competencia -->
+    <record id="action_report_certificado_competencia" model="ir.actions.report">
+        <field name="name">Certificado Competenia</field>
+        <field name="model">permar.documento.certificado.competencia</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_certificadocompetencia</field>
+        <field name="report_file">personal_maritimo_documento.report_certificadocompetencia</field>
+        <field name="print_report_name">'Certificado Competencia - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_permar"/>
+        <!-- <field name="binding_model_id" ref="model_certificado_competencia"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="personal_maritimo_documento.report_permardocumentobasecabecera" id="report_certificadocompetencia" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[@id='numero_certificado_en_info']" position="attributes">
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'CERTIFICADO DE COMPETENCIA'"/></b><br/>
+                    <b><i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Competence Certificate'"/></i></b>
+                </td>
+            </tr>
+            <tr><td height="25px"/></tr>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']" position="before">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Expedido en virtud de lo dispuesto en el "Convenio Internacional sobre normas de formación, titulación y guardia para la gente de mar 1978, enmendado".
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>Issued under the provision of the "Internacional Convention in Standars of training, certification and watchkeeping for seafarers 1978, as amended".</i>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']" position="after">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td colspan="2" class="normal_10">
+                        <b>El Gobierno de la REPÚBLICA DEL ECUADOR certifica con el presente documento que la persona abajo indicada ha aprobado el curso OMI
+                        conforme a lo dispuesto en el Capítulo
+                        <t t-if="o.curso_persona_id.curso_id.capitulo">
+                            <span t-field="o.curso_persona_id.curso_id.capitulo"/>
+                        </t>
+                        <t t-else="">
+                            -
+                        </t>, Regla
+                        <t t-if="o.curso_persona_id.curso_id.regla">
+                            <span t-field="o.curso_persona_id.curso_id.regla"/>
+                        </t>
+                        <t t-else="">
+                            -
+                        </t>
+                            del Convenio Internacional STCW-78 enmendado.</b><br/>
+                        <I>The Govermment of the REPUBLIC OF ECUADOR certifies with this document that the person bellow has successfully completed
+                        the course OMI in accordance with the provision of Chapter
+                        <t t-if="o.curso_persona_id.curso_id.capitulo">
+                            <span t-field="o.curso_persona_id.curso_id.capitulo"/>
+                        </t>
+                        <t t-else="">
+                            -
+                        </t>, Regulation
+                        <t t-if="o.curso_persona_id.curso_id.regla">
+                            <span t-field="o.curso_persona_id.curso_id.regla"/>
+                        </t>
+                        <t t-else="">
+                            -
+                        </t>
+                            of the Internacional Convention STCW-78 as amended.</I>
+                    </td>
+                </tr>
+                <tr ><td height="15px"/></tr>
+            </table>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-left"><b>1. Datos Generales</b> / <I>General Information:</I></td>
+                </tr>
+                <tr><td height="10px"/></tr>
+            </table>
+
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Foto<br/><i>Photo</i></th>
+                        <th style="border:1px solid black;" class="text-center">Nombre Completo<br/><i>Complete Name</i></th>
+                        <th style="border:1px solid black;" class="text-center">Fecha de Nacimiento<br/><i>Birth Date</i></th>
+                        <th style="border:1px solid black;" class="text-center">Matrícula<br/><i>License</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <div class="col-auto" t-if="o.personal_maritimo_id.image_1920">
+                                <img t-att-src="image_data_uri(o.personal_maritimo_id.image_1920)" style="padding: 0px; margin: 0px; height: 128px; width: 136px;"/>
+                            </div>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-if="o.personal_maritimo_id.name" t-esc="o.personal_maritimo_id.name.upper()"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-if="o.personal_maritimo_id.birthday" t-esc="o.personal_maritimo_id.birthday" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-if="o.personal_maritimo_id.matricula" t-esc="o.personal_maritimo_id.matricula"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-left" align="left"><b>2. Datos del Curso</b> / <I>Course:</I></td>
+                </tr>
+                <tr><td height="10px"/></tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Nombre Curso<br/><i>Course Name</i></th>
+                        <th style="border:1px solid black;" class="text-center">Fecha Inicio<br/><i>Start Date</i></th>
+                        <th style="border:1px solid black;" class="text-center">Fecha de Término<br/><i>End Date</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-esc="o.curso_persona_id.curso_id.name.upper()"/>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.fecha_termino" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br/><br/>
+            <t t-call="personal_maritimo_documento.custom_report_expendido_permar"/>
+
+            <br/><br/>
+            <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+
+            <t t-call="personal_maritimo_documento.custom_report_footer_permar"/>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Personal Marítimo -->
+    <template inherit_id="personal_maritimo.report_personalmaritimo" id="report_pm_carnet">
+        <xpath expr="//table[@name='table_pm_info_mercante']/tr[last()]" position="after">
+            <tr t-foreach="o.carnet_ids.filtered(lambda c: c.state == 'vigente')" t-as="pmcarnet">
+                <td style="border:1px solid black"><strong>Carnet</strong></td>
+                <td colspan="3" style="border: 1px solid black;">
+                    <div>Matrícula Provisional de Tráfico Nacional:
+                        <t t-if="pmcarnet.es_provisional == True">SI</t><t t-else="">NO</t>
+                    </div>
+                    <div t-if="pmcarnet.tipo_trafico">Tipo de Tráfico: <span t-field="pmcarnet.tipo_trafico.name"/></div>
+                    <div t-if="pmcarnet.fecha_impresion">Fecha Impresión: <span t-field="pmcarnet.fecha_impresion"/></div>
+                    <div t-if="pmcarnet.fecha_inicio">Fecha Inicio: <span t-field="pmcarnet.fecha_inicio"/></div>
+                    <div t-if="pmcarnet.fecha_caducidad">Fecha Caducidad: <span t-field="pmcarnet.fecha_caducidad"/></div>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+
+    <!-- Carnet -->
+    <record id="action_report_documento_carnet" model="ir.actions.report">
+        <field name="name">Matrícula Tráfico Nacional (Carnet)</field>
+        <field name="model">permar.documento.carnet</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_documentocarnet</field>
+        <field name="report_file">personal_maritimo_documento.report_documentocarnet</field>
+        <field name="print_report_name">'Matrícula Tráfico Nacional - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_matricula"/>
+        <!-- <field name="binding_model_id" ref="model_permar_documento_carnet"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_documentocarnet">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <!-- <link rel="stylesheet" type="text/css" href="/personal_maritimo_documento/static/src/css/styles.css" /> -->
+                        <link rel="stylesheet" href="/personal_maritimo_documento/static/src/css/styles.css"></link>
+                        <div class="row" style="font-size: 8px">
+                            <div class="col-xs-12" style="height: 10cm;">
+                                <!-- <div t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % o.imagen_fondo_matricula.decode('utf-8') }});background-size: contain;"> -->
+                                <!-- <div t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % o._get_imagen_fondo_matricula() }});background-size: cover;background-position: center;margin: 0;padding: 0;">background-size: contain;background-repeat: no-repeat; -->
+                                <table width="100%" > <!-- border-collapse="collapse" class="table table-bordered" style="border-collapse: collapse;"-->
+                                    <tr>
+                                        <td colspan="6" height="30px"/>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" align="center">
+                                            <span class="style3" t-esc="o.reparto_id.name.upper()"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="7" style="text-align: left;width:70pt;"><img t-if="o.foto_carnet" t-att-src="image_data_uri(o.foto_carnet)" style="max-height:85pt;max-width:90%"/></td><!-- style="max-height: 4cm; max-width: 4cm;"-->
+                                        <td class="style1" style="width:50pt; height:10pt">NOMBRES:</td>
+                                        <td class="style4" style="width:50pt; height:10pt" colspan="4"><span t-esc="o.personal_maritimo_id.name.upper()"/></td>
+                                    </tr>
+                                    <tr style="width:50pt; height:15pt">
+                                        <td class="style1">APELLIDOS:</td>
+                                        <td class="style4" colspan="4"><span t-esc="o.personal_maritimo_id.last_name.upper()"/></td>
+                                    </tr>
+                                    <tr style="width:60pt; height:15pt">
+                                        <td class="style1">CARGO:</td>
+                                        <td class="style4" colspan="4"><span t-esc="o.jerarquia_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="style1">NACIONALIDAD:</td>
+                                        <td class="style4" colspan="4"><span t-esc="o.personal_maritimo_id.nationality.upper()"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="style1">MATRICULA:</td>
+                                        <td>
+                                            <span class="style4" t-field="o.matricula"/>
+                                        </td>
+                                        <td>
+                                            <span class="style1">CÉDULA: </span>
+                                        </td>
+                                        <td align="left">
+                                            <span class="style4" t-field="o.personal_maritimo_id.vat"/>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:1pt">
+                                        <td colspan="2" scope="row" align="left">
+                                            <span class="style47" t-esc="o.reparto_id.city_id.name.upper()"/>, <span t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/><br/>
+                                            <span class="style1"> LUGAR Y FECHA DE EMISION: </span>
+                                        </td>
+                                        <td colspan="2" scope="row" align="center">
+                                            <span t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/><br/>
+                                            <span><strong> EXPIRA </strong></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" scope="row">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2" scope="row" align="center">
+                                            <img t-att-src="image_data_uri(o.image_firma)" style="max-height:50pt;max-width:45%"/><br/>
+                                            <span class="style1"> FIRMA DEL PORTADOR: </span>
+                                        </td>
+                                        <td rowspan="2" colspan="2" scope="row">
+                                        </td>
+                                        <t t-if="o.aprueba_id">
+                                            <td rowspan="2" colspan="2" scope="row" align="center">
+                                                <img t-if="o.aprueba_id.imagen_firma" t-att-src="image_data_uri(o.aprueba_id.imagen_firma)" style="max-height:40pt;max-width:30%"/><br/>
+                                                <span class="style1"> FIRMA AUTORIDAD MARITIMA </span>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </table>
+                                <table width="100%">
+                                    <tr>
+                                        <td colspan="4">
+                                            <center>
+                                            <span class="style1"> EXPEDIENTE: </span>
+                                            <span class="style4" t-field="o.documento_emitido_id.name"/> - <span class="style4" t-esc="o.reparto_id.siglas.upper()"/>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- </div> -->
+
+                                <div style="page-break-after: always;"><span style="display: none;"> </span></div>
+                                <table  width="100%" border-collapse="collapse">
+                                    <tr style="font-size: 8px !important;width:60pt; height:15pt">
+                                        <t t-if="o.personal_maritimo_id.country_id.code != 'EC'">
+                                            <td colspan="4"><b>MATRÍCULA PROVISIONAL DE EXTRANJERO EN TRÁFICO NACIONAL</b></td>
+                                        </t>
+                                        <t t-else="">
+                                            <td><b>MATRÍCULA DE TRÁFICO <span class="text-uppercase" t-field="o.tipo_trafico"/></b></td>
+                                        </t>
+                                    </tr>
+                                    <tr style="font-size: 8px !important;width:60pt; height:15pt">
+                                        <td colspan="2" ><b>TIPO DE SANGRE: <span class="style4" t-field="o.tipo_sangre"/></b></td>
+                                        <td colspan="2"><b>
+                                            PASAPORTE:
+                                            <t t-if="o.personal_maritimo_id.l10n_latam_identification_type_id == (%(l10n_latam_base.it_pass)d)">
+                                                <span class="text-uppercase" t-field="o.personal_maritimo_id.vat"/><br/>
+                                            </t></b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="30" colspan="4" align="center">
+                                            <div class="o_utm_no_data_img">
+                                                <img src="/base_sigmap/static/src/img/retiro.jpg" alt="Escudo Ecuador" style="max-height: 2cm; max-width: 2cm;" class="utm_chart_image image-responsive mt8"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size: 8px !important;width:60pt; height:15pt" align="center">
+                                        <td colspan="4">
+                                            <span class="style1" t-field="o.personal_maritimo_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="style1">
+                                            <center>
+                                            EN CASO DE PERDIDA, FAVOR DEVOLVER A LAS OFICINAS<br/>
+                                            UBICADAS EN ELIZALDE No. 101 Y MALECON SIMON BOLIVAR<br/>
+                                            PBX: 2320400<br/>
+                                            <span class="style1" t-field="o.reparto_id.city_id.name"/> - <span class="style1" t-field="o.reparto_id.city_id.country_id.name"/>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <center style="font-size: 18px !important">
+                                                <span class="style5" t-field="o.personal_maritimo_id.vat"></span>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Matrícula Tráfico Nacional Adicional -->
+    <record id="action_report_documento_carnet_adicional" model="ir.actions.report">
+        <field name="name">Matrícula Adicional de Tráfico Nacional</field>
+        <field name="model">permar.documento.carnet</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_matricula_adicional</field>
+        <field name="report_file">personal_maritimo_documento.report_matricula_adicional</field>
+        <field name="print_report_name">'Matrícula Provisional de Tráfico Nacional Adicional - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_additional_document_permar"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- <template inherit_id="personal_maritimo_documento.report_permardocumentobasecabecera" id="report_carnetadicional" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or ''"/></b><br/>
+                    <span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or ''"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="5px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']" position="attributes">
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[1]" position="after">
+            <h4 align="center">Registro Adicional de Matrícula de Tráfico Nacional</h4>
+            <br/>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="4" height="20px"/>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        Se emite la matrícula de tráfico nacional (carnet) a la persona <b><span t-field="o.personal_maritimo_id.name"/></b>
+                        en el reparto <b><span t-field="o.reparto_id.name"/></b>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                <tr>
+                    <td width="45%" height="200px"/>
+                    <td class="normal_11" style="vertical-align:bottom;text-align:center;">
+                        <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+                    </td>
+                </tr>
+            </table>
+
+            <t t-call="personal_maritimo_documento.custom_report_footer_sumilla_permar"/>
+        </xpath>
+    </template> -->
+
+    <!-- Matrícula Provisional Tráfico Nacional -->
+    <record id="action_report_documento_carnet_provisional" model="ir.actions.report">
+        <field name="name">Matrícula Provisional Tráfico Nacional</field>
+        <field name="model">permar.documento.carnet</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_documentocarnetprovisional</field>
+        <field name="report_file">personal_maritimo_documento.report_documentocarnetprovisional</field>
+        <field name="print_report_name">'Matrícula Provisional de Tráfico Nacional - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document"/>
+        <!-- <field name="binding_model_id" ref="model_personal_maritimo_documento_carnet"/> -->
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_documentocarnetprovisional">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <t t-call="personal_maritimo_documento.custom_report_header"/>
+                        <div class="oe_structure"/>
+                        <table width="100%">
+                            <tr>
+                                <td  align="right">
+                                    Certificado No. <span class="text-uppercase" t-field="o.name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <br/><br/><br/><br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <h4>
+                                    MATRÍCULA PROVISIONAL
+                                    <t t-if="o.company_id.partner_id.city_id.name != 'GUAYAQUIL'">
+                                        MARÍTIMO PORTUARIO
+                                    </t>
+                                    <t t-else="">
+                                        DE TRÁFICO NACIONAL
+                                    </t>
+                                    <br/>
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr>
+                            <td class="cab_tab_reporte">
+                                <br/>
+                                La <span class="text-uppercase" t-field="o.company_id.name"/> emite la presente Matrícula Provisional 
+                                <t t-if="o.company_id.partner_id.city_id.name != 'GUAYAQUIL'">
+                                    Marítimo Portuario
+                                </t>
+                                <t t-else="">
+                                    de Tráfico Nacional
+                                </t>
+                                al siguiente titular
+                                <br/>
+                                <br/>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td  class="cab_tab_reporte">
+                                    1. Datos Generales
+                                    <br/>
+
+                                    <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="separate">
+                                        <tr>
+                                            <td class="normal_9">Nombre Completo</td>
+
+                                            <td class="normal_10">Matrícula</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="det_tab_reporte">
+                                                <span class="text-uppercase" t-field="o.personal_maritimo_id.name"/>
+                                            </td>
+
+                                            <td class="det_tab_reporte">
+                                                <span class="text-uppercase" t-field="o.matricula"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    2. Especialidad:
+                                    <br/>
+
+                                    <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="separate">
+                                        <tr>
+                                            <td>
+                                                <table cellspacing="3" cellpadding="2" border="0" width="100%">
+                                                    <tr>
+                                                        <td class="det_tab_reporte" style="text-align:left;">
+                                                            <span class="text-uppercase" t-field="o.jerarquia_id.name"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cab_tab_reporte">
+                                    3. Cursos de Capacitación:
+                                    <br/>
+                                    <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="separate" cellspacing="3" cellpadding="2">
+                                        <tr>
+                                            <td class="cab_tab_reporte" style="text-align:left;">Nombre Completo</td>
+                                            <td class="cab_tab_reporte" style="text-align:left;">Caducidad</td>
+                                        </tr>
+                                        <tr>
+                                            <td  class="det_tab_reporte" style="text-align:left;">
+                                                <span class="text-center" t-field="o.jerarquia_id.curso_id.name"></span>
+                                            </td>
+                                            <td>
+                                                <span class="text-center" t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cab_tab_reporte">
+                                    4. Razón de Emisión
+                                    <br/>
+                                    <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="separate">
+                                        <tr>
+                                            <td>
+                                                La presente Matrícula Provisional
+                                                <t t-if="o.company_id.partner_id.city_id.name != 'GUAYAQUIL'">
+                                                    Marítimo Portuario
+                                                </t>
+                                                <t t-else="">
+                                                    de Tráfico Nacional
+                                                </t>
+                                                se la emite en caso excepcional por falta de insumos para la emisión del Carné correspondiente, tendrá una vigencia de 1 año y deberá ser canjeada una vez que se normalice la emisión de los mismos.
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <br/>
+                            </tr>
+                            <tr>
+                                <td  class="cab_tab_reporte">
+                                    5. Ficha Médica
+                                    <br/>
+
+                                    <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="separate">
+                                        <tr>
+                                            <td class="normal_9">Ficha</td>
+
+                                            <td class="normal_10">Fecha Caducidad</td>
+                                        </tr>
+                                        <tr t-foreach="o._default_ficha_medica()" t-as="fm">
+                                            <td>
+                                                <span t-if="fm['name']" t-esc="fm['name']"/>
+                                            </td>
+                                            <td>
+                                                <span t-if="fm['fecha_caducidad']" t-esc="fm['fecha_caducidad']"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <br/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    Expedido en: <span class="text-uppercase" t-field="o.company_id.name"/>
+                                    el: <span class="text-uppercase" t-field="o.fecha_impresion" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/>
+                                    <br/>
+                                    El presente documento será válido hasta: <span class="text-center" t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span>
+                                </td>
+                                <br/>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table width="100%">
+                                        <tr>
+                                            <td class="det_tab_reporte">
+                                            <br/>
+                                                <img t-att-src="image_data_uri(o.foto_carnet)" style="max-height:85pt;max-width:90%"/>
+                                            </td>
+                                            <td align="center" class="det_tab_reporte">
+                                                <img t-att-src="image_data_uri(o.image_firma)" style="max-height:75pt;max-width:80%"/>
+                                            <br/>
+                                            FIRMA DEL PORTADOR
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div class="oe_structure"/>
+
+                        <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

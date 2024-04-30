@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_permardocumentobasecabecera">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                <t t-set="o" t-value="o.with_context(lang='es_ES')"/>
+                    <div class="page">
+                        <!-- <link rel="stylesheet" type="text/css" href="/base_sigmap/static/src/css/styles.css" /> -->
+                        <link rel="stylesheet" href="/base_sigmap/static/src/css/styles.css"></link>
+                        <div class="col-xs-12" style="font-size: 13px">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" id="cabecera_info">
+                                <tr id="numero_certificado_es_info">
+                                    <td height="15" colspan="2" align="right" style="font-size: 14px"><b>Certificado No. <span t-field="o.name"/></b></td>
+                                </tr>
+                                <tr id="numero_certificado_en_info">
+                                    <td colspan="2" align="right" style="font-size: 14px"><i>Certificate No. <span t-field="o.name"/></i></td><br/>
+                                </tr>
+                                <tr id="qr_code_certificado">
+                                    <t t-if="o.qr_code">
+                                        <td colspan="2" scope="row" align="right">
+                                            <img t-if="o.qr_code" t-att-src="image_data_uri(o.qr_code)" class="qr_code_certificado_posicionado"/>
+                                        </td>
+                                    </t>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="10px"/>
+                                </tr>
+                                <!-- <tr id="lugar_fecha_emision_info">
+                                    <td colspan="2" align="right" style="font-size: 14px" class="text-right"><b><span t-field="o.reparto_id.city_id.name"/> , <span t-esc="datetime.datetime.now().strftime('%d de %B de %Y')"/></b></td><br/>
+                                </tr> -->
+                                <!-- <tr>
+                                    <td height="30" colspan="4" align="center">
+                                        <div class="o_utm_no_data_img">
+                                            <img src="/base_sigmap/static/src/img/escudoEcuador.jpg" alt="Escudo Ecuador" style="max-height: 5cm; max-width: 8cm;" class="utm_chart_image image-responsive mt8"/>
+                                        </div>
+                                        <br/>
+                                    </td>
+                                </tr> -->
+                                <tr id="pais_cabecera_info">
+                                    <td colspan="4" class="text-center" style="font-size: 18px"><b>República del Ecuador</b></td><br/>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="15px"/>
+                                </tr>
+                                <!-- <tr id="titulos_cabecera_info">
+                                    <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                                        <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or ''"/></b><br/>
+                                        <span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or ''"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" height="5px"/>
+                                </tr> -->
+                            </table>
+
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="entidad_autorizada_info">
+                                <tr id="texto_por_autoridad_es">
+                                    <td width="5%" class="normal" align="left">Por:</td>
+                                    <td class="normal" align="justify"><b><span class="datos_certificado" t-if="o.reparto_id.name" t-esc="o.reparto_id.name.upper()"></span></b></td><br/>
+                                </tr>
+                                <tr id="texto_por_autoridad_en">
+                                    <td align="left"><i>By:</i></td>
+                                    <td class="normal_9" align="justify"><i>(Authorized person or organization) </i></td>
+                                </tr>
+                                <tr><td height="10px"/></tr>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template inherit_id="personal_maritimo_documento.report_permardocumentobasecabecera" id="report_permarcertificadobase" primary="True">
+        <xpath expr="//table[1]" position="after">
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Función<br/><i>Function</i></th>
+                        <th style="border:1px solid black;" class="text-center">Nivel<br/><i>Level</i></th>
+                        <th style="border:1px solid black;" class="text-center">Limitaciones<br/><i>Limitations Applying</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span t-field="o.jerarquia_id.funcion_es"/>
+                            <br/>
+                            <i><span t-field="o.jerarquia_id.funcion_en"/></i>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span t-field="o.jerarquia_id.nivel_es"/>
+                            <br/>
+                            <i><span t-field="o.jerarquia_id.nivel_en"/></i>
+                        </td>
+                        <td colspan="2" style="border: 1px solid black;" align="center">
+                            <table border="0">
+                                <!--tr t-foreach="o.limitacion_ids" t-as="l"-->
+                                    <t t-if="o.limitacion_id">
+                                        <td align="center">
+                                            <span t-field="o.limitacion_id.name" />
+                                            <br/>
+                                            <i><span t-field="o.limitacion_id.descripcion_en"/></i>
+                                        </td>
+                                    </t>
+                                <!--/tr-->
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="normal_10">
+                        <b>Su legitimo titular puede ejercer el siguiente cargo con las limitaciones establecidas por esta Administración, aplicables a la Dotación Mínima de Seguridad.</b><br/>
+                        <I>The lawful holder may serve in the following capacity with the limitations established by this Administration, applicable to minimun security staffing.</I>
+                    </td>
+                </tr>
+                <tr><td height="15px"/></tr>
+            </table>
+            <br/>
+
+            <table width="98%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th colspan="2" style="border:1px solid black;" class="text-center">Cargo<br/><i>Capacity</i></th>
+                        <th colspan="2" style="border:1px solid black;" class="text-center">Limitaciones<br/><i>Limitations Applying</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="border:1px solid black;" align="center">
+                            <span t-field="o.jerarquia_id.name"/>
+                            <br/>
+                            <i><span t-field="o.jerarquia_id.descripcion_en"/></i>
+                        </td>
+                        <td colspan="2" style="border: 1px solid black;" align="center">
+                            <table border="0">
+                                <!--tr t-foreach="o.limitacion_ids" t-as="l"-->
+                                    <t t-if="o.limitacion_id">
+                                        <td>
+                                            <span t-field="o.limitacion_id.name" />
+                                            <br/>
+                                            <i><span t-field="o.limitacion_id.descripcion_en"/></i>
+                                        </td>
+                                    </t>
+                                <!--/tr-->
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-align:left" width="30">
+                    </td>
+                    <td class="letras_chicas" >
+                        <span t-field="o.numero"/>
+                    </td>
+                    <td class="letras_chicas" style="white-space: nowrap"> Expedido en:<br/><i class="letras_chicas">Issued at:</i></td>
+                    <td class="letras_chicas" width="15%" style="vertical-align:top;text-align:center;"><span t-field="o.company_id.partner_id.city_id"></span></td>
+                    <td class="letras_chicas">el:<br/><i class="letras_chicas">on:</i></td>
+                    <td class="letras_chicas" width="15%" style="vertical-align:top;text-align:center;"><span t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="6" height="60px"></td>
+                </tr>
+                <!-- <tr>
+                    <td colspan="1" class="normal_10" align="center"></td>
+                    <td colspan="5" class="normal_10" align="center">
+                        <span t-field="o.company_id.name"></span>
+                    </td>
+                </tr> -->
+                <!-- <tr>
+                    <td colspan="6" height="15px"></td>
+                </tr> -->
+
+                <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+                <br/>
+
+                <tr>
+                    <td colspan="6" class="normal_10">
+                        <b>De conformidad con el párrafo 11 de la regla I/2 del Convenio, el original del presente título deberá estar disponible mientras el titular presta servicio a bordo de un buque.</b><br/>
+                        <I>The original of this certificate must be kept available in acordance with regulation I/2 paragraph 11 of the Convention while serving on a ship.</I>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="normal_10">
+                        <br/>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-align:left" width="30">
+                        Fecha de Nacimiento: <br/><i class="text-align:left">Birth Date: </i>
+                    </td>
+                    <td class="letras_chicas">
+                        <b><span t-field="o.personal_maritimo_id.birthday" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></b>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <table border="0" style="border-collapse:collapse;color:000000;width:100%" cellpadding="3" cellspacing="3">
+                <tr>
+                    <td class="text-uppercase" style="vertical-align:middle;text-align:center;">
+                        FIRMA DEL PORTADOR DEL TITULO: <br/><i class="text-align:center">signature of the holder of the certifiate</i>
+                    </td>
+                    <!-- <td class="text-align:right">
+                        <div class="col-auto" t-if="o.personal_maritimo_id.image_1920">
+                            <img t-att-src="image_data_uri(o.personal_maritimo_id.image_1920)" style="max-height: 4cm; max-width: 8cm;"/>
+                        </div>
+                    </td> -->
+                    <td align="right" valign="right">
+                        <img t-att-src="image_data_uri(o.personal_maritimo_id.image_1920)" style="max-height:85pt;max-width:90%"/>
+                    </td>
+                </tr>
+            </table>
+        </xpath>
+    </template>
+
+    <template inherit_id="personal_maritimo_documento.report_permardocumentobasecabecera" id="report_matricula_adicional" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <t t-if="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte">
+                        <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte"/></b><br/>
+                    </t>
+                    <t t-else="">
+                        <t t-if="o.tipo_trafico.tipo == 'NAC'">
+                            MATRÍCULA DE TRÁFICO NACIONAL<br/>
+                        </t>
+                        <t t-else="">
+                            MATRÍCULA DE TRÁFICO INTERNACIONAL<br/>
+                        </t>
+                    </t>
+                    <t t-if="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en">
+                        <i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en"/></i><br/>
+                    </t>
+                    <t t-else="">
+                        <t t-if="o.tipo_trafico.tipo == 'NAC'">
+                            <i>NATIONAL TRAFFIC REGISTRATION</i><br/>
+                        </t>
+                        <t t-else="">
+                            <i>INTERNATIONAL TRAFFIC REGISTRATION</i><br/>
+                        </t>
+                    </t>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" height="20px"/>
+            </tr>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']" position="attributes">
+            <attribute name="t-if">hide_table</attribute>
+        </xpath>
+
+        <xpath expr="//table[1]" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <!--Dirección Nacional de los Espacios Acuáticos-->
+                        La <span t-if="o.reparto_id.name" t-esc="o.reparto_id.name.upper()"/> emite la presente Matrícula de Tráfico 
+                        <t t-if="o.tipo_trafico.tipo == 'NAC'">
+                            Nacional 
+                        </t>
+                        <t t-else="">
+                            Internacional 
+                        </t>
+                        al siguiente Tripulante
+                        de la Marina Mercante Nacional.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        <i>
+                        The <span t-esc="o.reparto_id.name"/> issues this Registration Certificate for  
+                        <t t-if="o.tipo_trafico.tipo == 'NAC'">
+                            National 
+                        </t>
+                        <t t-else="">
+                            Internacional 
+                        </t>
+                        Traffic to the following seamen of
+                        the National Merchant Marine.
+                        </i>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>1. Datos Generales </b> / <i> General Information:</i></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Nombre Completo<br/><i>Complete Name</i></th>
+                        <th style="border:1px solid black;" class="text-center">Especialidad<br/><i>Speciality</i></th>
+                        <th style="border:1px solid black;" class="text-center">Matrícula<br/><i>Certificate</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-if="o.personal_maritimo_id.name" t-esc="o.personal_maritimo_id.name.upper()"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <table cellspacing="0" cellpadding="0" border="0" style="width: 100%">
+                                <tr>
+                                    <td align="center">
+                                        <span class="datos_certificado" t-if="o.jerarquia_id.name" t-esc="o.jerarquia_id.name.upper()"></span><br/>
+                                        <i>
+                                        <span class="datos_certificado" t-if="o.jerarquia_id.descripcion_en" t-esc="o.jerarquia_id.descripcion_en"></span>
+                                        </i>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.matricula"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>2. Cursos OMI </b> / <i> OMI Courses Information:</i></td>
+                </tr>
+                <tr>
+                    <td colspan="4" height="10px"/>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Nombre Completo<br/><i>Full Name</i></th>
+                        <th style="border:1px solid black;" class="text-center">Código OMI<br/><i>OMI Code</i></th>
+                        <th style="border:1px solid black;" class="text-center">Caducidad<br/><i>End Date</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.jerarquia_id.curso_id.name"></span><br/>
+                            <i>
+                                <span class="datos_certificado" t-field="o.jerarquia_id.curso_id.name"></span>
+                            </i>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.jerarquia_id.curso_id.name"></span>
+                        </td>
+                        <td width="15%" style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.fecha_caducidad"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="justify">
+                        <ol>
+                            <li>
+                                <b>Datos Generales</b> / <i> General Information</i><br/><br/>
+                                <table class="table table-sm" style="width: 200%;">
+                                    <thead>
+                                        <tr>
+                                            <th style="border:1px solid black;" class="text-center">Nombre Completo<br/><i>Complete Name</i></th>
+                                            <th style="border:1px solid black;" class="text-center">Especialidad<br/><i>Speciality</i></th>
+                                            <th style="border:1px solid black;" class="text-center">Matrícula<br/><i>Certificate</i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="border:1px solid black;" align="center">
+                                                <span class="datos_certificado" t-if="o.personal_maritimo_id.name" t-esc="o.personal_maritimo_id.name.upper()"></span>
+                                            </td>
+                                            <td style="border:1px solid black;" align="center">
+                                                <table cellspacing="0" cellpadding="0" border="0" style="width: 100%">
+                                                    <tr>
+                                                        <td align="center">
+                                                            <span class="datos_certificado" t-if="o.jerarquia_id.name" t-esc="o.jerarquia_id.name.upper()"></span><br/>
+                                                            <i>
+                                                            <span class="datos_certificado" t-if="o.jerarquia_id.descripcion_en" t-esc="o.jerarquia_id.descripcion_en"></span>
+                                                            </i>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td style="border:1px solid black;" align="center">
+                                                <span class="datos_certificado" t-field="o.matricula"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <br/>
+                            <li>
+                                <b>Cursos OMI </b> / <i> OMI Courses Information:</i><br/><br/>
+                                <table class="table table-sm" style="width: 300%;">
+                                    <thead>
+                                        <tr>
+                                            <th style="border:1px solid black;" class="text-center">Nombre Completo<br/><i>Full Name</i></th>
+                                            <th style="border:1px solid black;" class="text-center">Código OMI<br/><i>OMI Code</i></th>
+                                            <th style="border:1px solid black;" class="text-center">Caducidad<br/><i>End Date</i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="border:1px solid black;" align="center">
+                                                <span class="datos_certificado" t-field="o.jerarquia_id.curso_id.name"></span><br/>
+                                                <i>
+                                                    <span class="datos_certificado" t-field="o.jerarquia_id.curso_id.descripcion_en"></span>
+                                                </i>
+                                            </td>
+                                            <td style="border:1px solid black;" align="center">
+                                                <span class="datos_certificado" t-field="o.jerarquia_id.curso_id.name"></span>
+                                            </td>
+                                            <td width="15%" style="border:1px solid black;" align="center">
+                                                <span class="datos_certificado" t-field="o.fecha_caducidad"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <br/>
+                        </ol>
+                    </td>
+                </tr>
+            </table> -->
+            <br/>
+            <br/>
+            <t t-call="personal_maritimo_documento.custom_report_expendido_permar"/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="normal">
+                <tr>
+                    <td colspan="4" height="40px"/>
+                </tr>
+                <tr>
+                    <td  style="text-align:left; vertical-align:top;">
+                        <div class="col-auto" t-if="o.foto_carnet">
+                            <img t-att-src="image_data_uri(o.foto_carnet)" style="max-height: 4cm; max-width: 8cm;"/>
+                        </div>
+                    </td>
+                    <td style="vertical-align: top;">
+                    <div style="padding-top: 30px; text-align: center;">
+                        <span class="text-uppercase">FIRMA DEL PORTADOR</span><br/>
+                        <i><span class="text-uppercase">holder signature</span></i>
+                    </div>
+                    </td>
+                </tr>
+            </table>
+
+            <br/><br/>
+            <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+
+            <t t-call="personal_maritimo_documento.custom_report_footer_permar"/>
+        </xpath>
+    </template>
+
+   <template id="custom_report_expendido_permar">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="letras_chicas">Expedido en:<br/><i class="letras_chicas">Issued at:</i></td>
+                <td class="letras_chicas" width="15%" style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.reparto_id.city_id.name"></span></td>
+                <td class="letras_chicas">el:<br/><i class="letras_chicas">on:</i></td>
+                <td class="letras_chicas" width="60%" style="vertical-align:top;text-align:left;"><span class="datos_certificado" t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></td>
+            </tr>
+        </table>
+        <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="normal">
+            <tr>
+                <td style="text-align:left" width="40%">El presente certificado es válido hasta el:<br/><i>This document is valid until:</i></td>
+                <td style="text-align:left"><span class="datos_certificado" t-field="o.fecha_caducidad" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span></td>
+            </tr>
+            <tr><td height="10px"/></tr>
+        </table>
+    </template>
+
+    <template inherit_id="personal_maritimo_documento.report_permardocumentobasecabecera" id="base_titulo_template_report" primary="True">
+        <xpath expr="//table[1]" position="after">
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Función<br/><i>Function</i></th>
+                        <th style="border:1px solid black;" class="text-center">Nivel<br/><i>Level</i></th>
+                        <th style="border:1px solid black;" class="text-center">Limitaciones<br/><i>Limitations Applying</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span t-field="o.jerarquia_id.funcion_es"/>
+                            <br/>
+                            <i><span t-field="o.jerarquia_id.funcion_en"/></i>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span t-field="o.jerarquia_id.nivel_es"/>
+                            <br/>
+                            <i><span t-field="o.jerarquia_id.nivel_en"/></i>
+                        </td>
+                        <td colspan="2" style="border: 1px solid black;" align="center">
+                            <table border="0">
+                                <!--tr t-foreach="o.limitacion_ids" t-as="l"-->
+                                    <t t-if="o.limitacion_id">
+                                        <td align="center">
+                                            <span t-field="o.limitacion_id.name" />
+                                            <br/>
+                                            <i><span t-field="o.limitacion_id.descripcion_en"/></i>
+                                        </td>
+                                    </t>
+                                <!--/tr-->
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="normal_10">
+                        <b>Su legitimo titular puede ejercer el siguiente cargo con las limitaciones establecidas por esta Administración, aplicables a la Dotación Mínima de Seguridad.</b><br/>
+                        <I>The lawful holder may serve in the following capacity with the limitations established by this Administration, applicable to minimun security staffing.</I>
+                    </td>
+                </tr>
+                <tr><td height="15px"/></tr>
+            </table>
+            <br/>
+
+            <table width="98%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th colspan="2" style="border:1px solid black;" class="text-center">Cargo<br/><i>Capacity</i></th>
+                        <th colspan="2" style="border:1px solid black;" class="text-center">Limitaciones<br/><i>Limitations Applying</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2" style="border:1px solid black;" align="center">
+                            <span t-field="o.jerarquia_id.name"/>
+                            <br/>
+                            <i><span t-field="o.jerarquia_id.descripcion_en"/></i>
+                        </td>
+                        <td colspan="2" style="border: 1px solid black;" align="center">
+                            <table border="0">
+                                <!--tr t-foreach="o.limitacion_ids" t-as="l"-->
+                                    <t t-if="o.limitacion_id">
+                                        <td>
+                                            <span t-field="o.limitacion_id.name" />
+                                            <br/>
+                                            <i><span t-field="o.limitacion_id.descripcion_en"/></i>
+                                        </td>
+                                    </t>
+                                <!--/tr-->
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-align:left" width="30">
+                    </td>
+                    <td class="letras_chicas" >
+                        <span t-field="o.numero"/>
+                    </td>
+                    <td class="letras_chicas" style="white-space: nowrap"> Expedido en:<br/><i class="letras_chicas">Issued at:</i></td>
+                    <td class="letras_chicas" width="15%" style="vertical-align:top;text-align:center;"><span t-field="o.company_id.partner_id.city_id"></span></td>
+                    <td class="letras_chicas">el:<br/><i class="letras_chicas">on:</i></td>
+                    <td class="letras_chicas" width="15%" style="vertical-align:top;text-align:center;"><span t-field="o.fecha_inicio" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="6" height="60px"></td>
+                </tr>
+                <!-- <tr>
+                    <td colspan="1" class="normal_10" align="center"></td>
+                    <td colspan="5" class="normal_10" align="center">
+                        <span t-field="o.company_id.name"></span>
+                    </td>
+                </tr> -->
+                <!-- <tr>
+                    <td colspan="6" height="15px"></td>
+                </tr> -->
+
+                <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+                <br/>
+
+                <tr>
+                    <td colspan="6" class="normal_10">
+                        <b>De conformidad con el párrafo 11 de la regla I/2 del Convenio, el original del presente título deberá estar disponible mientras el titular presta servicio a bordo de un buque.</b><br/>
+                        <I>The original of this certificate must be kept available in acordance with regulation I/2 paragraph 11 of the Convention while serving on a ship.</I>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="normal_10">
+                        <br/>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-align:left" width="30">
+                        Fecha de Nacimiento: <br/><i class="text-align:left">Birth Date: </i>
+                    </td>
+                    <td class="letras_chicas">
+                        <b><span t-field="o.personal_maritimo_id.birthday" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></b>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <table border="0" style="border-collapse:collapse;color:000000;width:100%" cellpadding="3" cellspacing="3">
+                <tr>
+                    <td class="text-uppercase" style="vertical-align:middle;text-align:center;">
+                        FIRMA DEL PORTADOR DEL TITULO: <br/><i class="text-align:center">signature of the holder of the certifiate</i>
+                    </td>
+                    <!-- <td class="text-align:right">
+                        <div class="col-auto" t-if="o.personal_maritimo_id.image_1920">
+                            <img t-att-src="image_data_uri(o.personal_maritimo_id.image_1920)" style="max-height: 4cm; max-width: 8cm;"/>
+                        </div>
+                    </td> -->
+                    <td align="right" valign="right">
+                        <img t-att-src="image_data_uri(o.personal_maritimo_id.image_1920)" style="max-height:85pt;max-width:90%"/>
+                    </td>
+                </tr>
+            </table>
+
+            <t t-call="personal_maritimo_documento.custom_report_footer_supervised_signature_permar"/>
+        </xpath>
+    </template>
+
+</odoo>

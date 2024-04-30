@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Personal Marítimo -->
+    <template inherit_id="personal_maritimo.report_personalmaritimo" id="report_pm_convalidacion">
+        <xpath expr="//table[@name='table_pm_info_cursos']" position="after">
+            <br/>
+            <t t-set="pm_convalidaciones_competencia" t-value="o.convalidacion_competencia_ids.filtered(lambda c: c.state == 'vigente')"/>
+            <t t-if="pm_convalidaciones_competencia">
+                <h5><b>Convalidación de Competencia</b></h5>
+                <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse" name="table_pm_info_convalidacioncompetencia">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><strong>Registro</strong></th>
+                            <th class="text-center"><strong>Trámite</strong></th>
+                            <th class="text-center"><strong>Fecha Informe</strong></th>
+                            <th class="text-center"><strong>No. Oficio</strong></th>
+                            <th class="text-center"><strong>Fecha Inicio</strong></th>
+                            <th class="text-center"><strong>Fecha Caducidad</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="pm_convalidaciones_competencia" t-as="pmconvc">
+                            <td><span t-field="pmconvc.name"/></td>
+                            <td><span t-field="pmconvc.documento_emitido_id.name"/></td>
+                            <td><span t-field="pmconvc.fecha_informe"/></td>
+                            <td><span t-field="pmconvc.numero_oficio"/></td>
+                            <td><span t-field="pmconvc.fecha_inicio"/></td>
+                            <td><span t-field="pmconvc.fecha_caducidad"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Convalidación de Competencia -->
+    <record id="action_report_convalidacion" model="ir.actions.report">
+        <field name="name">Convalidación de Competencia</field>
+        <field name="model">permar.documento.convalidacion.competencia</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_convalidacioncompetencia</field>
+        <field name="report_file">personal_maritimo_documento.report_convalidacioncompetencia</field>
+        <field name="print_report_name">'Convalidacióm Competencia - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="personal_maritimo_documento.report_permardocumentobasecabecera" id="report_convalidacioncompetencia" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[@id='numero_certificado_es_info']" position="replace">
+            <td colspan="2" align="right" style="font-size: 14px" class="text-right"><b>Convalidación de competencia No. <span t-field="o.name"/></b></td>
+        </xpath>
+        <xpath expr="//table[@id='cabecera_info']/tr[@id='numero_certificado_en_info']" position="attributes">
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'CERTIFICADO MEDICO'"/></b><br/>
+                    <b><i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Medical Certificate'"/></i></b>
+                </td>
+            </tr>
+            <tr><td colspan="4" height="25px"/></tr>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                    Persona:
+                    <span class="text-uppercase" t-field="o.personal_maritimo_id.name"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                    Fecha Informe:
+                    <span class="text-uppercase" t-field="o.fecha_informe" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                    Centro Realización:
+                    <span class="text-uppercase" t-field="o.centro_formacion_id.name"></span>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-left"><b>Antecedente</b></td>
+                </tr>
+            </table>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><span class="text-left" t-field="o.documento_evaluacion_id.antecedente"></span></td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-left"><b>Analisis</b></td>
+                </tr>
+            </table>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><span class="text-left" t-field="o.documento_evaluacion_id.analisis"></span></td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-left"><b>Conclusión</b></td>
+                </tr>
+            </table>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><span class="text-left" t-field="o.documento_evaluacion_id.conclusion"></span></td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="text-left"><b>Recomendación</b></td>
+                </tr>
+            </table>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><span class="text-left" t-field="o.documento_evaluacion_id.recomendacion"></span></td>
+                </tr>
+            </table>
+            <br/>
+
+            <table border="0" style="border-collapse:collapse;color:000000;width:100%" cellpadding="3" cellspacing="3">
+                <tr>
+                    <td  class="text-center">Firma autorizada</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="col-auto" t-if="o.documento_evaluacion_id.personal_maritimo_id.image_firma">
+                            <img t-att-src="image_data_uri(o.documento_evaluacion_id.personal_maritimo_id.image_firma)" style="max-height: 4cm; max-width: 8cm;"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <t t-call="personal_maritimo_documento.custom_report_expendido_permar"/>
+
+            <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+
+            <t t-call="personal_maritimo_documento.custom_report_footer_permar"/>
+        </xpath>
+    </template>
+
+    <!-- <template id="report_convalidacioncompetencia">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <t t-call="personal_maritimo_documento.custom_report_header"/>
+                        <div class="oe_structure"/>
+
+                        <h2 style="text-align:center">Convalidación de competencia No. <span t-field="o.name"/></h2>
+
+                        <h3 style="text-align:center">República del Ecuador</h3>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td colspan="2" class="normal_9" align="justify">
+                                Persona:
+                                <span class="text-uppercase" t-field="o.personal_maritimo_id.name"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="normal_9" align="justify">
+                                Fecha Informe:
+                                <span class="text-uppercase" t-field="o.fecha_informe" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="normal_9" align="justify">
+                                Centro Realización:
+                                <span class="text-uppercase" t-field="o.centro_formacion_id.name"></span>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="text-left"><b>Antecedente</b></td>
+                            </tr>
+                        </table>
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td><span class="text-left" t-field="o.documento_evaluacion_id.antecedente"></span></td>
+                            </tr>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="text-left"><b>Analisis</b></td>
+                            </tr>
+                        </table>
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td><span class="text-left" t-field="o.documento_evaluacion_id.analisis"></span></td>
+                            </tr>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="text-left"><b>Conclusión</b></td>
+                            </tr>
+                        </table>
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td><span class="text-left" t-field="o.documento_evaluacion_id.conclusion"></span></td>
+                            </tr>
+                        </table>
+                        <br/>
+
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="text-left"><b>Recomendación</b></td>
+                            </tr>
+                        </table>
+                        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td><span class="text-left" t-field="o.documento_evaluacion_id.recomendacion"></span></td>
+                            </tr>
+                        </table>
+                        <br/>
+
+                        <table border="0" style="border-collapse:collapse;color:000000;width:100%" cellpadding="3" cellspacing="3">
+                            <tr>
+                                <td  class="text-center">Firma autorizada</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="col-auto" t-if="o.documento_evaluacion_id.personal_maritimo_id.image_firma">
+                                        <img t-att-src="image_data_uri(o.documento_evaluacion_id.personal_maritimo_id.image_firma)" style="max-height: 4cm; max-width: 8cm;"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template> -->
+
+</odoo>

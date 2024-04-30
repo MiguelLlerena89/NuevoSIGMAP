@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_persona_autoridad_tree" model="ir.ui.view">
+        <field name="name">Autoridad</field>
+        <field name="model">persona.autoridad</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Autoridad">
+                <field name="company_id" invisible="1"/>
+                <field name="autoridad_user_id"/>
+                <field name="rango_id"/>
+                <field name="rango_abreviatura"/>
+                <field name="texto_firma"/>
+                <field name="texto_cargo"/>
+                <field name="sumilla_id"/>
+                <field name="certificate" filename="certificate_filename" />
+                <field name="certificate_filename" invisible="1" />
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_persona_autoridad_form" model="ir.ui.view">
+        <field name="name">persona autoridad formulario</field>
+        <field name="model">persona.autoridad</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Autoridad">
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="company_id" invisible="1"/>
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <group>
+                    <group id="header_left_group">
+                        <field name="autoridad_user_id"/>
+                        <field name="rango_id"/>
+                        <field name="rango_abreviatura"/>
+                        <field name="texto_firma"/>
+                        <field name="texto_cargo"/>
+                        <field name="sumilla_id"/>
+                        <field name="user_id" invisible="1"/>
+                        <field name="active" widget="boolean_toggle"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="image_firma" widget="image" class="oe_avatar"/>
+                        <field name="certificate" filename="certificate_filename" />
+                        <field name="certificate_filename" invisible="1" />
+                    </group>
+                </group>
+                <!-- <group>
+                    <group id="header_left_group">
+                        <field name="certificate" filename="certificate_filename" />
+                        <field name="certificate_filename" invisible="1" />
+                    </group>
+                </group> -->
+                <!-- <group name="observacion_firma_formato" string="Firma Formato">
+                    <field name="observacion_firma"/>
+                </group> -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="action_persona_autoridad" model="ir.actions.act_window">
+        <field name="name">Autoridad</field>
+        <field name="res_model">persona.autoridad</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_persona_autoridad_tree"/>
+        <field name="help" type="html">
+            <p>
+                No autoridad found.
+            </p>
+        </field>
+    </record>
+</odoo>
+

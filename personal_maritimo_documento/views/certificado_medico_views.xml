@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_personal_maritimo_form_refrendo_medico" model="ir.ui.view">
+        <field name="name">personal.maritimo.form.permar.documento.refrendo.certificado.medico</field>
+        <field name="model">personal.maritimo</field>
+        <field name="inherit_id" ref="personal_maritimo.view_personal_maritimo_form"/>
+        <field name="groups_id" eval="[(5,)]"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_open_refrendo_medico" type="object" class="oe_stat_button" icon="fa-id-card-o" attrs="{'invisible': [('refrendo_medico_count', '=', 0)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="refrendo_medico_count"/></span>
+                        <span class="o_stat_text">Refrendos Médicos</span>
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <record id="view_refrendo_certificado_medico_search" model="ir.ui.view">
+        <field name="name">certificado.medico.search</field>
+        <field name="model">permar.documento.refrendo.certificado.medico</field>
+        <field name="arch" type="xml">
+            <search string="Search Refrendo Certificado Médico">
+                <field name="personal_maritimo_id" string="Número Cédula" filter_domain="[('personal_maritimo_id.vat', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Hoy" name="refrendo_certificado_medico_today"
+                    domain="[('fecha_inicio', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_persona" string="Persona" domain="[]" context="{'group_by': 'personal_maritimo_id'}"/>
+                    <filter name="group_ficha_medica" string="Ficha Médica" domain="[]" context="{'group_by': 'ficha_medica_id'}"/>
+                    <filter name="group_fecha_inicio" string="Fecha Inicio" domain="[]" context="{'group_by': 'fecha_inicio'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_certificado_medico_tree" model="ir.ui.view">
+        <field name="name">certificado.medico.tree</field>
+        <field name="model">permar.documento.refrendo.certificado.medico</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Ficha médica" create="0">
+                <field name="name"/>
+                <field name="personal_maritimo_id"/>
+                <field name="ficha_medica_id"/>
+                <field name="fecha_inicio" string="Fecha Emisión"/>
+                <field name="fecha_caducidad" string="Fecha Caducidad"/>
+                <field name="user_id"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="state" string="Estado"
+                    decoration-info="state == 'en_tramite'"
+                    decoration-success="state == 'vigente'"
+                    decoration-primary="state == 'por_firmar'"
+                    decoration-muted="state == 'suspendido'"
+                    decoration-warning="state == 'caducado'"
+                    decoration-danger="state == 'anulado'"
+                    widget="badge" optional="show"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_certificado_medico_form" model="ir.ui.view">
+        <field name="name">certificado.medico.form</field>
+        <field name="model">permar.documento.refrendo.certificado.medico</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Refrendo Certificado Médico">
+                <header>
+                    <button name="action_generar_documento" type="object" string="Enviar a supervisión" class="btn-primary" states="en_tramite" data-hotkey="o"/>
+                    <field name="state" widget="statusbar" statusbar_visible="en_tramite,vigente,caducado,anulado"/>
+                </header>
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="company_id" invisible="1"/>
+                        <field name="user_id" invisible="1"/>
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <group>
+                    <group id="header_left_group">
+                        <field name="documento_emitido_id" invisible="1"/>
+                        <field name="ficha_medica_id" attrs="{'readonly': [('state', 'in', ('vigente','anulado','cancelado'))]}"/>
+                        <field name="personal_maritimo_id"/>
+                        <field name="numero_formato" attrs="{'invisible': [('numero_formato', '!=', False)]}"/>
+                    </group>
+                    <group id="header_right_group">
+                    </group>
+                </group>
+                <group>
+                    <group id="header_left_group">
+                        <field name="fecha_inicio"/>
+                        <field name="fecha_caducidad"/>
+                        <field name="active" widget="boolean_toggle"/>
+                        <field name="numero_formato"
+                            attrs="{
+                                'invisible': [('numero_formato', '=', 0)],
+                                'readonly': True}"
+                            />
+                    </group>
+                </group>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="action_certificado_medico" model="ir.actions.act_window">
+        <field name="name">Refrendo Certificado médico</field>
+        <field name="res_model">permar.documento.refrendo.certificado.medico</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_certificado_medico_tree"/>
+        <field name="search_view_id" ref="view_refrendo_certificado_medico_search"/>
+        <field name="help" type="html">
+            <p>
+                No refrendo certificado médico found.
+            </p>
+        </field>
+    </record>
+</odoo>

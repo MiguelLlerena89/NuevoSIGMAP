@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="certificado_medico_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia medico</field>
+      <field name="code">certificado_medico_code</field>
+      <field name="prefix">CM-</field><!-- DIRNEA-CM- -->
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">59305</field>
+    </record>
+    <record id="reconocimiento_certificado_medico_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia medico</field>
+      <field name="code">reconocimiento_certificado_medico_code</field>
+      <field name="prefix">RCM-</field><!-- DIRNEA-CM- -->
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">59305</field>
+    </record>
+    <record id="refrendo_titulo_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia refrendo titulo</field>
+      <field name="code">refrendo_titulo_code</field>
+      <field name="prefix">RFD-</field><!-- DIRNEA-RFD- -->
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">59305</field>
+    </record>
+    <record id="refrendo_curso_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia refrendo curso</field>
+      <field name="code">refrendo_curso_code</field>
+      <field name="prefix">CURS-</field><!-- DIRNEA-CURS- -->
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">59305</field>
+    </record>
+    <record id="titulo_folio_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Folio</field>
+      <field name="code">titulo_folio_code</field>
+      <field name="prefix">FOLIO/%(year)s/</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+    <record id="titulo_acta_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Acta</field>
+      <field name="code">titulo_acta_code</field>
+      <field name="prefix">/</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+    <record id="evaluacion_competencia_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Evaluación Competencia</field>
+      <field name="code">evaluacion_competencia_code</field>
+      <field name="prefix">EVA-</field><!-- DIRNEA-EVA- -->
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+    <record id="convalidacion_competencia_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Convalidación Competencia</field>
+      <field name="code">convalidacion_competencia_code</field>
+      <field name="prefix">CVA-</field><!-- DIRNEA-CVA- -->
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+    <record id="certificado_competencia_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado Competencia</field>
+      <field name="code">certificado_competencia_code</field>
+      <field name="prefix">CCE-</field><!-- DIRNEA-CCE- -->
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+    <record id="certificado_suficiencia_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Certificado Suficiencia</field>
+      <field name="code">certificado_suficiencia_code</field>
+      <field name="prefix">CCI-</field><!-- DIRNEA-CCI- -->
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+    <record id="permiso_provisional_embarque_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Permiso Provisional de Embarque</field>
+      <field name="code">permiso_provisional_embarque_code</field>
+      <field name="prefix">PPE-</field><!-- DIRNEA-PPE- -->
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+    <record id="dispensa_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Dispensa</field>
+      <field name="code">dispensa_code</field>
+      <field name="prefix">DIS-</field><!-- DIRNEA-DIS- -->
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+    <record id="dotacion_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Dotacion</field>
+      <field name="code">dotacion_code</field>
+      <field name="prefix">DOTA-</field><!-- DIRNEA-DOTA- -->
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+    <record id="reconocimiento_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia reconocimiento</field>
+      <field name="code">reconocimiento_titulo_code</field>
+      <field name="prefix">REC-TI-</field><!-- DIRNEA-REC-TI- -->
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">59305</field>
+    </record>
+    <record id="documento_evaluacion_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia doc evaluacion</field>
+      <field name="code">documento_evaluacion_code</field>
+      <field name="prefix">DOC-EVA-</field><!-- DIRNEA-DOC-EVA- -->
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">59305</field>
+    </record>
+    <record id="documento_carnet_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Carnet</field>
+      <field name="code">documento_carnet_code</field>
+      <field name="prefix">MAN-MIP-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+    <record id="documento_libretin_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia Documento Libretin</field>
+      <field name="code">documento_libretin_code</field>
+      <field name="prefix">MIP-</field>
+      <field name="suffix">-%(year)s</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sumilla_usuario_form" model="ir.ui.view">
+        <field name="name">sumilla.usuario.form</field>
+        <field name="model">sumilla.usuario</field>
+        <field name="arch" type="xml">
+            <form string="Rango">
+                <sheet>
+                    <group col="4">
+                        <field name="sumilla_user_id"/>
+                        <field name="sumilla"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sumilla_usuario_tree" model="ir.ui.view">
+        <field name="name">sumilla.usuario.tree</field>
+        <field name="model">sumilla.usuario</field>
+        <field name="arch" type="xml">
+            <tree string="Sumilla" editable="bottom">
+                <field name="sumilla_user_id"/>
+                <field name="sumilla"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_sumilla_usuario" model="ir.actions.act_window">
+        <field name="name">Sumilla Usuario</field>
+        <field name="res_model">sumilla.usuario</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_sumilla_usuario_tree"/>
+        <field name="help" type="html">
+            <p>
+                Defina nueva sumilla
+            </p>
+        </field>
+    </record>
+
+</odoo>

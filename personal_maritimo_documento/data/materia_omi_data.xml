@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Categoria de CURSOS OMI -->
+        <record id="categoria_materia_omi_basico" model="categoria.materia">
+            <field name="name">CURSOS MODELO OMI BÁSICOS</field>
+        </record>
+        <record id="categoria_materia_omi_buques" model="categoria.materia">
+            <field name="name">CURSOS MODELO OMI PARA EL PERSONAL DE DETERMINA DOS TIPOS DE BUQUES</field>
+        </record>
+        <record id="categoria_materia_omi_ESAS" model="categoria.materia">
+            <field name="name">CURSOS MODELO OMI DE EMERGENCIA, SEGURIDAD EN EL TRABAJO, ATENCIÓN MEDICA Y SUPERVIVENCIA</field>
+        </record>
+        <record id="categoria_materia_omi_proteccion_buque_portuaria" model="categoria.materia">
+            <field name="name">CURSOS MODELO OMI SOBRE LA PROTECCIÓN DEL BUQUE, LA COMPAÑÍA E INSTALACIONES PORTUARIAS</field>
+        </record>
+        <record id="categoria_materia_omi_radioperadores" model="categoria.materia">
+            <field name="name">CURSOS MODELO OMI PARA RADIOPERADORES</field>
+        </record>
+        <record id="categoria_materia_omi_oficiales_navegacion" model="categoria.materia">
+            <field name="name">CURSOS MODELO OMI PARA OFICIALES DE NAVEGACIÓN</field>
+        </record>
+        <record id="categoria_materia_omi_personal_operaciones" model="categoria.materia">
+            <field name="name">CURSOS MODELO OMI PARA PERSONAL DE OPERACIONES</field>
+        </record>
+        <record id="categoria_materia_omi_instructor" model="categoria.materia">
+            <field name="name">CURSOS MODELO OMI PARA INSTRUCTOR</field>
+        </record>
+
+
+        <!-- Materias de CURSOS OMI -->
+        <record id="materia_omi_101" model="materia.omi">
+            <field name="name">Formación básica en operaciones de carga de petroleros y quimiqueros</field>
+            <field name="code">1.01</field>
+            <field name="category_id" ref="categoria_materia_omi_buques"/>
+        </record>
+        <record id="materia_omi_102" model="materia.omi">
+            <field name="name">Formación avanzada en operaciones de carga de petroleros</field>
+            <field name="code">1.02</field>
+            <field name="category_id" ref="categoria_materia_omi_buques"/>
+        </record>
+        <record id="materia_omi_103" model="materia.omi">
+            <field name="name">Formación avanzada en operaciones de carga de quimiqueros</field>
+            <field name="code">1.03</field>
+            <field name="category_id" ref="categoria_materia_omi_buques"/>
+        </record>
+        <record id="materia_omi_104" model="materia.omi">
+            <field name="name">Formación básica en operaciones de carga de buques tanque para el transporte de gas licuado</field>
+            <field name="code">1.04</field>
+            <field name="category_id" ref="categoria_materia_omi_buques"/>
+        </record>
+        <record id="materia_omi_105" model="materia.omi">
+            <field name="name">Formación avanzada en operaciones de carga de buques tanque para el transporte de gas licuado</field>
+            <field name="code">1.05</field>
+            <field name="category_id" ref="categoria_materia_omi_buques"/>
+        </record>
+        <record id="materia_omi_106" model="materia.omi">
+            <field name="name">Formación especializada en Operaciones de Gaseros</field>
+            <field name="code">1.06</field>
+        </record>
+        <record id="materia_omi_107" model="materia.omi">
+            <field name="name">Navegación por radar a nivel operativo</field>
+            <field name="code">1.07</field>
+            <field name="category_id" ref="categoria_materia_omi_oficiales_navegacion"/>
+        </record>
+        <record id="materia_omi_108" model="materia.omi">
+            <field name="name">Radar de Navegación a nivel Gerencial</field>
+            <field name="code">1.08</field>
+            <field name="category_id" ref="categoria_materia_omi_oficiales_navegacion"/>
+        </record>
+        <!--<record id="materia_omi_110" model="materia.omi">
+            <field name="name">Cargas peligrosas, potencialmente e peligrosas y perjudiciales</field>
+            <field name="code">1.10</field>
+            <field name="category_id" ref="categoria_materia_omi_buques"/>
+        </record>-->
+        <record id="materia_omi_113" model="materia.omi">
+            <field name="name">Primeros auxilios – Conocimientos básicos</field>
+            <field name="code">1.13</field>
+            <field name="category_id" ref="categoria_materia_omi_basico"/>
+        </record>
+        <record id="materia_omi_114" model="materia.omi">
+            <field name="name">Primeros auxilios sanitarios</field>
+            <field name="code">1.14</field>
+            <field name="category_id" ref="categoria_materia_omi_ESAS"/>
+        </record>
+        <record id="materia_omi_115" model="materia.omi">
+            <field name="name">Cuidados médicos</field>
+            <field name="code">1.15</field>
+            <field name="category_id" ref="categoria_materia_omi_ESAS"/>
+        </record>
+        <record id="materia_omi_119" model="materia.omi">
+            <field name="name">Técnicas de supervivencia personal</field>
+            <field name="code">1.19</field>
+            <field name="category_id" ref="categoria_materia_omi_basico"/>
+        </record>
+        <record id="materia_omi_120" model="materia.omi">
+            <field name="name">Prevención y lucha contra incendios</field>
+            <field name="code">1.20</field>
+            <field name="category_id" ref="categoria_materia_omi_basico"/>
+        </record>
+        <record id="materia_omi_121" model="materia.omi">
+            <field name="name">Seguridad personal y responsabilidades sociales</field>
+            <field name="code">1.21</field>
+            <field name="category_id" ref="categoria_materia_omi_basico"/>
+        </record>
+        <record id="materia_omi_122" model="materia.omi">
+            <field name="name">Simulador de maniobra y trabajo de equipo en el puente</field>
+            <field name="code">1.22</field>
+            <field name="category_id" ref="categoria_materia_omi_oficiales_navegacion"/>
+        </record>
+        <record id="materia_omi_123" model="materia.omi">
+            <field name="name">Suficiencia en el manejo de embarcaciones de supervivencia y botes de rescate (que no sean botes de rescate rápidos)</field>
+            <field name="code">1.23</field>
+            <field name="category_id" ref="categoria_materia_omi_ESAS"/>
+        </record>
+        <record id="materia_omi_124" model="materia.omi">
+            <field name="name">Suficiencia en el manejo de botes de rescate rápidos</field>
+            <field name="code">1.24</field>
+            <field name="category_id" ref="categoria_materia_omi_ESAS"/>
+        </record>
+        <record id="materia_omi_125" model="materia.omi">
+            <field name="name">Título de operador general del sistema mundial de socorro y seguridad marítima (SMSSM)</field>
+            <field name="code">1.25</field>
+            <field name="category_id" ref="categoria_materia_omi_radioperadores"/>
+        </record>
+        <record id="materia_omi_126" model="materia.omi">
+            <field name="name">Título de operador restringido del sistema mundial de socorro y seguridad marítima (SMSSM)</field>
+            <field name="code">1.26</field>
+            <field name="category_id" ref="categoria_materia_omi_radioperadores"/>
+        </record>
+        <record id="materia_omi_127" model="materia.omi">
+            <field name="name">Uso operacional de los sistemas de información y visualización de cartas electrónicas (SIVCE)</field>
+            <field name="code">1.27</field>
+            <field name="category_id" ref="categoria_materia_omi_oficiales_navegacion"/>
+        </record>
+        <record id="materia_omi_127" model="materia.omi">
+            <field name="name">Uso operacional de los sistemas de información y visualización de cartas electrónicas (SIVCE)</field>
+            <field name="code">1.27</field>
+        </record>
+        <record id="materia_omi_128" model="materia.omi">
+            <field name="name">Control de multitudes, seguridad de los pasajeros y formación en seguridad para el personal que facilita directamente servicios a los pasajeros a bordo de buques de pasaje</field>
+            <field name="code">1.28</field>
+            <field name="category_id" ref="categoria_materia_omi_buques"/>
+        </record>
+        <record id="materia_omi_129" model="materia.omi">
+            <field name="name">Suficiencia en gestión de crisis y comportamiento humano, incluida la seguridad de los pasajeros y la carga y la integridad del casco</field>
+            <field name="code">1.29</field>
+            <field name="category_id" ref="categoria_materia_omi_buques"/>
+        </record>
+        <!--<record id="materia_omi_130" model="materia.omi">
+            <field name="name">Evaluación a bordo</field>
+            <field name="code">1.30</field>
+        </record>-->
+        <record id="materia_omi_134" model="materia.omi">
+            <field name="name">Sistema de identificación automática</field>
+            <field name="code">1.34</field>
+            <field name="category_id" ref="categoria_materia_omi_personal_operaciones"/>
+        </record>
+        <record id="materia_omi_138" model="materia.omi">
+            <field name="name">Sensibilización respecto al medio marino</field>
+            <field name="code">1.38</field>
+            <field name="category_id" ref="categoria_materia_omi_personal_operaciones"/>
+        </record>
+        <record id="materia_omi_139" model="materia.omi">
+            <field name="name">Liderazgo y trabajo en equipo</field>
+            <field name="code">1.39</field>
+            <field name="category_id" ref="categoria_materia_omi_personal_operaciones"/>
+        </record>
+        <record id="materia_omi_203" model="materia.omi">
+            <field name="name">Formación avanzada en la lucha contra incendios</field>
+            <field name="code">2.03</field>
+            <field name="category_id" ref="categoria_materia_omi_ESAS"/>
+        </record>
+        <record id="materia_omi_309" model="materia.omi">
+            <field name="name">Supervisor por el Estado rector del puerto</field>
+            <field name="code">3.09</field>
+            <field name="category_id" ref="categoria_materia_omi_proteccion_buque_portuaria"/>
+        </record>
+        <record id="materia_omi_311" model="materia.omi">
+            <field name="name">Investigación de sucesos y accidentes marítimos</field>
+            <field name="code">3.11</field>
+            <field name="category_id" ref="categoria_materia_omi_proteccion_buque_portuaria"/>
+        </record>
+        <record id="materia_omi_317" model="materia.omi">
+            <field name="name">Inglés marítimo general</field>
+            <field name="code">3.17</field>
+            <field name="category_id" ref="categoria_materia_omi_personal_operaciones"/>
+        </record>
+        <record id="materia_omi_319" model="materia.omi">
+            <field name="name">Oficial de protección del buque</field>
+            <field name="code">3.19</field>
+            <field name="category_id" ref="categoria_materia_omi_proteccion_buque_portuaria"/>
+        </record>
+        <record id="materia_omi_320" model="materia.omi">
+            <field name="name">Oficial de la compañía para la protección marítima</field>
+            <field name="code">3.20</field>
+            <field name="category_id" ref="categoria_materia_omi_proteccion_buque_portuaria"/>
+        </record>
+        <record id="materia_omi_321" model="materia.omi">
+            <field name="name">Oficial de protección de la instalación portuaria</field>
+            <field name="code">3.21</field>
+            <field name="category_id" ref="categoria_materia_omi_proteccion_buque_portuaria"/>
+        </record>
+        <record id="materia_omi_324" model="materia.omi">
+            <field name="name">Formación en sensibilización sobre protección para el personal de la instalación portuaria que tenga asignadas tareas de protección</field>
+            <field name="code">3.24</field>
+            <field name="category_id" ref="categoria_materia_omi_proteccion_buque_portuaria"/>
+        </record>
+        <record id="materia_omi_325" model="materia.omi">
+            <field name="name">Formación en sensibilización sobre protección para todo el personal de la instalación portuaria</field>
+            <field name="code">3.25</field>
+            <field name="category_id" ref="categoria_materia_omi_proteccion_buque_portuaria"/>
+        </record>
+        <record id="materia_omi_326" model="materia.omi">
+            <field name="name">Formación sobre protección para la gente de mar que tenga asignadas tareas de protección</field>
+            <field name="code">3.26</field>
+            <field name="category_id" ref="categoria_materia_omi_proteccion_buque_portuaria"/>
+        </record>
+        <record id="materia_omi_376" model="materia.omi">
+            <field name="name">Formación en sensibilización sobre para toda la gente de mar</field>
+            <field name="code">3.27</field>
+            <field name="category_id" ref="categoria_materia_omi_proteccion_buque_portuaria"/>
+        </record>
+        <record id="materia_omi_609" model="materia.omi">
+            <field name="name">Curso de formación para instructores</field>
+            <field name="code">6.09</field>
+            <field name="category_id" ref="categoria_materia_omi_instructor"/>
+        </record>
+        <record id="materia_omi_703" model="materia.omi">
+            <field name="name">Marino preferente de Guardia de Navegación</field>
+            <field name="code">7.03</field>
+        </record>
+        <record id="materia_omi_704" model="materia.omi">
+            <field name="name">Marino preferente de Guardia Máquinas</field>
+            <field name="code">7.04</field>
+        </record>
+
+    </data>
+</odoo>

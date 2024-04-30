@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Personal Marítimo -->
+    <template inherit_id="personal_maritimo.report_personalmaritimo" id="report_pm_dispensa">
+        <xpath expr="//table[@name='table_pm_info_cursos']" position="after">
+            <br/>
+            <t t-set="pm_dispensas" t-value="o.dispensa_ids.filtered(lambda c: c.state == 'vigente')"/>
+            <t t-if="pm_dispensas">
+                <h5><b>Dispensa</b></h5>
+                <table class="table table-condensed table-bordered" border="1" width="100%" border-collapse="collapse" name="table_pm_info_dispensa">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><strong>Registro</strong></th>
+                            <th class="text-center"><strong>Trámite</strong></th>
+                            <th class="text-center"><strong>Especialidad</strong></th>
+                            <th class="text-center"><strong>Nave</strong></th>
+                            <th class="text-center"><strong>Cargo a desempeñar</strong></th>
+                            <th class="text-center"><strong>Duración (días)</strong></th>
+                            <th class="text-center"><strong>Fecha inicio embarque</strong></th>
+                            <th class="text-center"><strong>Fecha fin embarque</strong></th>
+                            <!-- <th class="text-center"><strong>Fecha Inicio</strong></th>
+                            <th class="text-center"><strong>Fecha Caducidad</strong></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="pm_dispensas" t-as="pmd">
+                            <td><span t-field="pmd.name"/></td>
+                            <td><span t-field="pmd.documento_emitido_id.name"/></td>
+                            <td><span t-field="pmd.jerarquia_id.name"/></td>
+                            <td><span t-field="pmd.nave_id"/></td>
+                            <td><span t-field="pmd.jerarquia_cargo_id.name"/></td>
+                            <td><span t-field="pmd.duracion_dias"/></td>
+                            <td><span t-field="pmd.fecha_inicio_embarque"/></td>
+                            <td><span t-field="pmd.fecha_fin_embarque"/></td>
+                            <!-- <td><span t-field="pmd.fecha_inicio"/></td>
+                            <td><span t-field="pmd.fecha_caducidad"/></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Dispensa -->
+    <record id="action_report_dispensa" model="ir.actions.report">
+        <field name="name">Dispensa</field>
+        <field name="model">permar.documento.dispensa</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_maritimo_documento.report_dispensa</field>
+        <field name="report_file">personal_maritimo_documento.report_dispensa</field>
+        <field name="print_report_name">'Dispensa - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_no_header_document_permar"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template inherit_id="personal_maritimo_documento.report_permardocumentobasecabecera" id="report_dispensa" primary="True">
+        <xpath expr="//table[@id='cabecera_info']/tr[@id='numero_certificado_en_info']" position="attributes">
+            <attribute name="t-if">hide_cell</attribute>
+        </xpath>
+        <xpath expr="//table[@id='cabecera_info']/tr[last()]" position="after">
+            <tr id="titulos_cabecera_info">
+                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                    <b><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte or 'DISPENSA'"/></b><br/>
+                    <b><i><span t-esc="o.documento_emitido_id.tramite_id.servicio_id.titulo_reporte_en or 'Dispensation'"/></i></b>
+                </td>
+            </tr>
+            <tr><td colspan="4" height="25px"/></tr>
+        </xpath>
+
+        <xpath expr="//table[@id='entidad_autorizada_info']" position="after">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="normal_9" align="justify">
+                        La <span t-if="o.reparto_id.name" t-esc="o.reparto_id.name.upper()"/> a solicitud del Sr.
+                        <b><span t-if="o.personal_maritimo_id.name" t-esc="o.personal_maritimo_id.name.upper()"></span></b> Armador del buque <b><span class="text-uppercase" t-field="o.nave_id"></span></b>
+                        y bajo responsabilidad del mismo, concede el siguiente dispensa en virtud de los dispuesto en el Art. VIII del convenio STCW 78 al Señor.
+                        <br/>
+                        <I>The <span class="text-uppercase" t-field="o.company_id.name"></span> at the request of Mr. <span class="text-uppercase" t-field="o.personal_maritimo_id.name"></span>
+                        owner of the vessel <span class="text-uppercase" t-field="o.nave_id"></span>
+                        and under his responsibility, issues the next dispensation granted under Art. VIII of the STCW 78 Convention to Mr.</I>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="titulo_seccion" align="left"><b>1. Datos Generales</b> / <I> General Information:</I></td>
+            </tr>
+            </table>
+
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Nombre Completo<br/><i>Complete Name</i></th>
+                        <th style="border:1px solid black;" class="text-center">Nacionalidad<br/><i>Nationality</i></th>
+                        <th style="border:1px solid black;" class="text-center">Matrícula<br/><i>License</i></th>
+                        <th style="border:1px solid black;" class="text-center">Especialidad<br/><i>Speciality</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-if="o.personal_maritimo_id.name" t-esc="o.personal_maritimo_id.name.upper()"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.personal_maritimo_id.nationality"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.personal_maritimo_id.matricula"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.personal_maritimo_id.jerarquia_id.name"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>2. Cargo </b> / <i> Speciality of the Dispensation</i></td>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Especialidad<br/><i>Speciality</i></th>
+                        <th style="border:1px solid black;" class="text-center">Días<br/><i>Days</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.jerarquia_cargo_id.name"/>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.duracion_dias"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>3. Información de la Nave</b>  / <i> Navy information</i></td>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Descripción<br/><i>Description</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.nave_id"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>4. Registro de dispensas</b>  / <i> Registry of dispensations</i></td>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Fecha Inicio<br/><i>Start Date</i></th>
+                        <th style="border:1px solid black;" class="text-center">Fecha Fin<br/><i>End Date</i></th>
+                        <th style="border:1px solid black;" class="text-center">Días<br/><i>Days</i></th>
+                        <th style="border:1px solid black;" class="text-center">Armador<br/><i>Owner</i></th>
+                        <th style="border:1px solid black;" class="text-center">Nave<br/><i>Navy</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="o.dispensa_line_ids" t-as="child">
+                        <tr>
+                            <td style="border:1px solid black;"><span t-field="child.fecha_inicio_embarque" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></td>
+                            <td style="border:1px solid black;"><span t-field="child.fecha_fin_embarque" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"/></td>
+                            <td style="border:1px solid black;"><span t-field="child.duracion_dias"/></td>
+                            <td style="border:1px solid black;"><span t-field="child.personal_maritimo_id.name"/></td>
+                            <td style="border:1px solid black;"><span t-field="child.nave_id"/></td>
+                        </tr>
+                    </t>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.fecha_inicio_embarque" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.fecha_fin_embarque" t-options="{'widget': 'date', 'format': 'd-MMM-y'}"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.duracion_dias"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.personal_maritimo_id.name"></span>
+                        </td>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.nave"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="border:1px solid black;" colspan="2">Total</th>
+                        <td class="datos_certificado" style="border:1px solid black;"><b><t t-esc="sum([i.duracion_dias for i in o.dispensa_line_ids]) + o.duracion_dias" /></b></td>
+                        <th style="border:1px solid black;" colspan="2"></th>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="titulo_seccion" align="left"><b>5. Razón de Emisión</b>  / <i> emission rate</i></td>
+                </tr>
+            </table>
+            <table class="table table-condensed" width="100%" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid black;" class="text-center">Descripción<br/><i>Description</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black;" align="center">
+                            <span class="datos_certificado" t-field="o.observacion"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+
+            <t t-call="personal_maritimo_documento.custom_report_expendido_permar"/>
+
+            <t t-call="personal_maritimo_documento.custom_report_footer_authorized_signature_permar"/>
+
+            <t t-call="personal_maritimo_documento.custom_report_footer_permar"/>
+        </xpath>
+    </template>
+
+</odoo>

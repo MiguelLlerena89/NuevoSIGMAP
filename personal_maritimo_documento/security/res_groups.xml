@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.module.category" id="security_inventario_groups">
+        <field name="name">Inventario</field>
+    </record>
+
+    <record id="group_inventario_operador" model="res.groups">
+        <field name="name">Manejo de suministros</field>
+        <field name="category_id" ref="personal_maritimo_documento.security_inventario_groups"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record model="ir.module.category" id="security_pm_documentos_groups">
+        <field name="name">Documentos Gente de Mar</field>
+    </record>
+
+    <record model="ir.module.category" id="security_pm_documento_carnet_groups">
+        <field name="name">Carnet Gente de Mar</field>
+    </record>
+
+    <record id="group_gente_mar_documentos" model="res.groups">
+        <field name="name">Edición documentos Gente de Mar</field>
+        <field name="category_id" ref="personal_maritimo_documento.security_pm_documentos_groups"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_gente_mar_administracion_documentos" model="res.groups">
+        <field name="name">Supervisión y emisión de documentos Gente de Mar</field>
+        <field name="category_id" ref="personal_maritimo_documento.security_pm_documentos_groups"/>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo_documento.group_gente_mar_documentos'))]"/>
+    </record>
+
+    <record id="group_gente_mar_carnet_registro" model="res.groups">
+        <field name="name">Registro carnet Gente de Mar</field>
+        <field name="category_id" ref="personal_maritimo_documento.security_pm_documento_carnet_groups"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_gente_mar_carnet_autorizacion" model="res.groups">
+        <field name="name">Autorización emisión carnet Gente de Mar</field>
+        <field name="category_id" ref="personal_maritimo_documento.security_pm_documento_carnet_groups"/>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo_documento.group_gente_mar_documentos'))]"/>
+    </record>
+
+    <record id="group_gente_mar_carnet_emision" model="res.groups">
+        <field name="name">Emisión carnet Gente de Mar</field>
+        <field name="category_id" ref="personal_maritimo_documento.security_pm_documento_carnet_groups"/>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo_documento.group_gente_mar_carnet_registro'))]"/>
+    </record>
+
+    <record id="group_gente_mar_carnet_autorizacion_reimpresion" model="res.groups">
+        <field name="name">Autorización reimpresión carnet Gente de Mar</field>
+        <field name="category_id" ref="personal_maritimo_documento.security_pm_documento_carnet_groups"/>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo_documento.group_gente_mar_carnet_autorizacion'))]"/>
+    </record>
+
+    <record id="group_gente_mar_carnet_emision_reimpresion" model="res.groups">
+        <field name="name">Reimpresión carnet Gente de Mar</field>
+        <field name="category_id" ref="personal_maritimo_documento.security_pm_documento_carnet_groups"/>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo_documento.group_gente_mar_carnet_emision'))]"/>
+        <!--field name="implied_ids" eval="[(4, ref('personal_maritimo_documento.group_gente_mar_matricula_registro'))]"/-->
+    </record>
+
+</odoo>
