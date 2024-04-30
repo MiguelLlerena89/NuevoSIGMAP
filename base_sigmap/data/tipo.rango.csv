@@ -1,6 +1,6 @@
 id,name,descripcion,abreviatura,fuerza,active
-rango_01,ALFEREZ DE FRAGATA,,ALFG.,N,True
-rango_02,TENIENTE DE FRAGATA,,TNFG.,N,True
+rango_01,ALFEREZ DE FRAGATA,,ALFG,N,True
+rango_02,TENIENTE DE FRAGATA,,TNFG,N,True
 rango_03,TENIENTE DE NAVÍO,,TNNV.,N,True
 rango_04,CAPITÁN DE CORBETA,,CPCB.,N,True
 rango_05,CAPITÁN DE FRAGATA,,CPFG.,N,True
