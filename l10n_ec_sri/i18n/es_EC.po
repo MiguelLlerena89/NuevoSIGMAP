@@ -1,0 +1,1548 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_ec_sri
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20220506\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-11 05:37+0000\n"
+"PO-Revision-Date: 2022-11-11 05:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_autorizacion.py:0
+#, python-format
+msgid " ELECTRONICA "
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_autorizacion.py:0
+#, python-format
+msgid " FISICA "
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_establecimiento_form
+msgid "001"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:mail.template,body_html:l10n_ec_sri.email_template_comprobante
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Estimad@ ${object.partner_id.name},<br/>\n"
+"                        Se le informa que ${object.company_id.name} ha emitido un comprobante ${ctx.get('tipo_facturacion')} de \n"
+"                        ${ctx.get('tipo_comprobante_name_mail')} No. <strong>${object.numero}</strong> a su nombre con RUC No.                        \n"
+"                        ${object.partner_id.vat}\n"
+"                        % if object.l10n_latam_document_type_id.code != '06':\n"
+"                            por el monto de ${object.company_id.currency_id.name} <strong>${format_amount(object.move_id.amount_total, object.company_id.currency_id)}</strong>\n"
+"                            con fecha <strong>${format_date(object.fecha_emision)}</strong>.\n"
+"                        % else:\n"
+"                            con fecha <strong>${format_date(object.fecha_emision)}</strong>.\n"
+"                        % endif\n"
+"                        % if object.is_electronic:\n"
+"                            <br/><br/>\n"
+"                            Adjunto a este correo encontrará su comprobante ${ctx.get('tipo_facturacion')} emitido en formato PDF y XML válido \n"
+"                            tributariamente para su declaración de impuestos y vigente de acuerdo a las últimas resoluciones emitidas\n"
+"                            por el SRI.\n"
+"                        % endif\n"
+"                        <br/><br/>\n"
+"\n"
+"                        ----<br/>\n"
+"                        <strong>${object.company_id.name}</strong><br/>\n"
+"                        ${object.company_id.street}\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__active
+msgid "Active?"
+msgstr "Activo?"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__activity_state
+msgid "Activity State"
+msgstr "Estado actividad"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__address
+msgid "Address"
+msgstr "Dirección"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_autorizacion__sequence_id
+msgid "Alphanumeric sequence for auths"
+msgstr "Secuencia alfanumerica para autorizaciones"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__state__nul
+msgid "Anulado"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__type
+#, python-format
+msgid "Auth Type"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__sri_autorizacion_id
+#, python-format
+msgid "Authorisation"
+msgstr "Autorización"
+
+#. module: l10n_ec_sri
+#: model:ir.model.constraint,message:l10n_ec_sri.constraint_sri_autorizacion_numero_unique
+msgid "Authorisation number could be define only once time on same partner!"
+msgstr "El número de autorización puede ser definido sólo una vez para la misma empresa"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_partner__autorizacion_ids
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_users__autorizacion_ids
+msgid "Autorizacion"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__autorizacion_tipo
+msgid "Autorizacion Tipo"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_res_partner_form
+msgid "Autorizaciones"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_autorizacion_form
+msgid "Autorizaciones físicas"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__state__aut
+msgid "Autorizado"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_form
+msgid "Autorizar comprobante"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__code
+msgid "Branch"
+msgstr "Establecimiento"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/sri_comprobante_import_txt.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__clave_acceso
+#, python-format
+msgid "CLAVE_ACCESO"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/sri_comprobante_import_txt.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__document_type_id
+#, python-format
+msgid "COMPROBANTE"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.sri_comprobante_import_form
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_wizard_sri_file_import_txt_form
+msgid "Cancelar"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_wizard_sri_file_import_txt
+msgid "Carga de archivo para comparacion de documento electronico SRI"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__clave_acceso
+#, python-format
+msgid "Clave Acceso"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__code
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_sustento_tributario__code
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_tarjeta_credito__code
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion__code
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion_tipo__code
+msgid "Code"
+msgstr "Código"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_autorizacion__code
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__l10n_latam_document_type_code
+msgid "Code used by different localizations"
+msgstr "Código usado para diferentes ubicaciones"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__codigo_numerico
+#, python-format
+msgid "Codigo Numerico"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_autorizacion.py:0
+#: code:addons/l10n_ec_sri/models/sri_autorizacion.py:0
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__company_id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__company_id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__company_id
+#, python-format
+msgid "Company"
+msgstr "Compañía"
+
+#. module: l10n_ec_sri
+#: model:ir.ui.menu,name:l10n_ec_sri.menu_action_comparacion_sri_comprobante
+msgid "Comparación de comprobantes recibidos vs reporte SRI"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import__company_id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__company_id
+msgid "Compañia"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#, python-format
+msgid "Compose Email"
+msgstr "Redactar correo"
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_import_txt_tree
+msgid "Comprobante"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import__xml_sri_comprobante_ids
+msgid "Comprobante(s) Electronico(s)"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_sri_comprobante_import_txt
+msgid "Comprobantes de Reporte TXT del SRI"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_sri_comprobante
+msgid "Comprobantes del SRI"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.ui.menu,name:l10n_ec_sri.menu_action_sri_comprobante
+msgid "Comprobantes emitidos SRI"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#, python-format
+msgid ""
+"Compruebe la extensión del archivo. \n"
+"Se espera .txt"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.ui.menu,name:l10n_ec_sri.menu_sri_entries
+msgid "Configuración SRI"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_form
+msgid "Consultar comprobante"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__state__cont
+msgid "Contabilizado"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#, python-format
+msgid "Contacte al administrador"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__certificate_password
+msgid "Contraseña certificado"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__regimen_microempresas
+msgid "Contribuyente Régimen Microempresas"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__contribuyente_especial
+msgid "Contribuyente especial"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante_import_txt__state__done
+msgid "Existe"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.actions.server,name:l10n_ec_sri.server_action_create_sri_comprobante
+msgid "Crear comprobantes SRI"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__create_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__create_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import__create_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__create_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__create_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_punto_emision__create_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_sustento_tributario__create_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_tarjeta_credito__create_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion__create_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion_tipo__create_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_wizard_sri_file_import_txt__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__create_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__create_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import__create_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__create_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__create_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_punto_emision__create_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_sustento_tributario__create_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_tarjeta_credito__create_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion__create_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion_tipo__create_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_wizard_sri_file_import_txt__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_autorizacion.py:0
+#, python-format
+msgid "Debe ingresar 10 dígitos según el documento."
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.actions.act_window,help:l10n_ec_sri.action_sri_autorizacion_out
+msgid "Define mis autorizaciones."
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__digito_verificador
+#, python-format
+msgid "Digito Verificador"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_l10n_latam_document_type__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_partner__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_punto_emision__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_sustento_tributario__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_tarjeta_credito__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion_tipo__display_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_wizard_sri_file_import_txt__display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__is_electronic
+msgid "Documento Electrónico ?"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante_import_txt__state__not_supported
+msgid "Documento no soportado"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_punto_emision_form
+msgid "Documentos"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_import_txt_tree
+#, python-format
+msgid "Documentos electrónicos SRI"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_form
+msgid "Documentos relacionados"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__expiration_date
+msgid "Due date"
+msgstr "Fecha vencimiento"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#, python-format
+msgid "El archivo importado esta vacio"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#, python-format
+msgid ""
+"El formato de la fecha de autorizacion no es correcto, se espera "
+"\"DD/MM/AAAA HH:MM:SS\" "
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#, python-format
+msgid "El formato de la fecha de emision no es correcto, se espera \"DD/MM/AAAA\""
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#, python-format
+msgid "El sistema actualmente no soporta este tipo de documento"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.search_sri_comprobante
+msgid "Electronicos"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.search_sri_comprobante
+msgid "Electronicos recibidos"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_type_in_tree
+msgid "Emisor"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__certificate_issuer
+msgid "Emisor certificado"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__certificate_subject
+msgid "Emitido certificado"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.search_sri_comprobante
+msgid "Emitidos"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.search_sri_comprobante
+msgid "Empresa"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__state__ppr
+msgid "En Procesamiento"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion__end_date
+msgid "End date"
+msgstr "Fecha final"
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_form
+msgid "Enviar por Correo"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#, python-format
+msgid "Error"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.actions.act_window,name:l10n_ec_sri.action_establecimiento_out
+#: model:ir.model,name:l10n_ec_sri.model_sri_establecimiento
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__establecimiento_id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__establecimiento
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_punto_emision__establecimiento_id
+#, python-format
+msgid "Establecimiento"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__establecimiento
+msgid "Establecimiento código"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: code:addons/l10n_ec_sri/wizard/sri_comprobante_import_txt.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__state
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__state_in
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__state
+#, python-format
+msgid "Estado"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#, python-format
+msgid "Este no es el formato correcto para el documento electronico"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/sri_comprobante_import_txt.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__factura
+#, python-format
+msgid "FACTURA"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/sri_comprobante_import_txt.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__fecha_autorizacion
+#, python-format
+msgid "FECHA_AUTORIZACION"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/sri_comprobante_import_txt.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__fecha_emision
+#, python-format
+msgid "FECHA_EMISION"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_company_form
+msgid "Facturación electrónica"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__fecha_autorizacion
+#, python-format
+msgid "Fecha Autorizacion"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__fecha_emision
+#, python-format
+msgid "Fecha Emision"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_wizard_sri_file_import_txt__data_file
+#, python-format
+msgid "File"
+msgstr "Archivo"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__certificate_filename
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_wizard_sri_file_import_txt__data_file_name
+msgid "File Name"
+msgstr "Nombre archivo"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__certificate
+msgid "Firma electronica"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.search_sri_comprobante
+msgid "Fisicos"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_form
+msgid "Generar XML"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.search_sri_comprobante
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_l10n_latam_document_type__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_partner__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_punto_emision__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_sustento_tributario__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_tarjeta_credito__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion_tipo__id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_wizard_sri_file_import_txt__id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__receptor_identifier
+msgid "IDENTIFICACION_RECEPTOR"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__importe_total
+msgid "IMPORTE_TOTAL"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion__l10n_latam_identification_type_id
+msgid "Identification Type"
+msgstr "Tipo identificación"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__message_needaction
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__message_has_error
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#: model:ir.model.fields,help:l10n_ec_sri.field_wizard_sri_file_import_txt__data_file
+#, python-format
+msgid "Import file"
+msgstr "Importar archivo"
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.sri_comprobante_import_form
+msgid "Importar"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.actions.act_window,name:l10n_ec_sri.action_sri_file_import_txt
+msgid "Importar Reporte TXT SRI"
+msgstr ""
+
+#. module: l10n_ec_sri
+#. openerp-web
+#: code:addons/l10n_ec_sri/static/src/xml/sri_comprobante_tree_import_views.xml:0
+#, python-format
+msgid "Importar XMLs"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_autorizacion__autorizacion_tipo__in
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__type__in
+msgid "In"
+msgstr "Recibido"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante_import_txt__state__inconsistency
+msgid "Inconsistencia"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__res_company__tipo_emision__2
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__tipo_emision__2
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante_import_txt__tipo_emision__2
+msgid "Indisponibilidad"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__is_electronic
+#, python-format
+msgid "Is electronic?"
+msgstr "Electrónico?"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#, python-format
+msgid "La cantidad no tiene el formato correcto"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#, python-format
+msgid ""
+"Las columnas del archivo no estan correctamente definidas para este tipo de "
+"documento"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_l10n_latam_document_type____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_partner____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_punto_emision____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_sustento_tributario____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_tarjeta_credito____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion_tipo____last_update
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_wizard_sri_file_import_txt____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__write_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__write_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import__write_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__write_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__write_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_punto_emision__write_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_sustento_tributario__write_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_tarjeta_credito__write_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion__write_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion_tipo__write_uid
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_wizard_sri_file_import_txt__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__write_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__write_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import__write_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__write_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__write_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_punto_emision__write_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_sustento_tributario__write_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_tarjeta_credito__write_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion__write_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion_tipo__write_date
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_wizard_sri_file_import_txt__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_l10n_latam_document_type
+msgid "Latam Document Type"
+msgstr "Tipo de Documento Latam"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#, python-format
+msgid "Los encabezados del archivo no son correctos"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__error_message
+#, python-format
+msgid "Mensaje Error"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.ui.menu,name:l10n_ec_sri.menu_sri_autorizacion_info
+msgid "Mi SRI"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_autorizacion_form
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_autorizacion_tree
+msgid "Mi autorizacion"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.ui.menu,name:l10n_ec_sri.menu_action_establecimiento_out
+msgid "Mi establecimiento"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.actions.act_window,name:l10n_ec_sri.action_sri_autorizacion_out
+msgid "Mis autorizaciones"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_autorizacion.py:0
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_punto_emision_form
+#, python-format
+msgid "Mis documentos"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_establecimiento_form
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_establecimiento_tree
+msgid "Mis establecimientos"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.ui.menu,name:l10n_ec_sri.menu_action_puntos_emision_out
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_punto_emision_form
+msgid "Mis puntos de emision"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.actions.act_window,name:l10n_ec_sri.action_puntos_emision_out
+#: model:ir.actions.server,name:l10n_ec_sri.action_puntos_emision
+#: model:ir.model,name:l10n_ec_sri.model_sri_autorizacion
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_establecimiento_form
+msgid "Mis puntos de emisión"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_punto_emision_tree
+msgid "Mis puntos emision"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/sri_comprobante_import_txt.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__numero_autorizacion
+#, python-format
+msgid "NUMERO_AUTORIZACION"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_sustento_tributario__name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_tarjeta_credito__name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion_tipo__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_autorizacion__sequence
+msgid ""
+"Next number that will be used. This number can be incremented frequently so "
+"the displayed value might already be obsolete"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.actions.act_window,help:l10n_ec_sri.action_puntos_emision_out
+msgid "Ningún punto de emisión creado."
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__state__nat
+msgid "No Autorizado"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__state__ncont
+msgid "No Contabilizado"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante_import_txt__state__not_exists
+msgid "No Existe"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.actions.act_window,help:l10n_ec_sri.action_sri_comprobante
+#: model_terms:ir.actions.act_window,help:l10n_ec_sri.action_sri_comprobante_type_in
+msgid "No comprobante found."
+msgstr "No se encontró comprobante"
+
+#. module: l10n_ec_sri
+#: model_terms:ir.actions.act_window,help:l10n_ec_sri.action_establecimiento_out
+msgid "No establecimiento created."
+msgstr "No hay establecimiento"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#, python-format
+msgid "No existe número de comprobante"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#, python-format
+msgid "No ha configurado el RUC de la cliente/proveedor seleccionado"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_autorizacion.py:0
+#: code:addons/l10n_ec_sri/models/sri_autorizacion.py:0
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#, python-format
+msgid "No ha configurado el RUC de la compañía"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#, python-format
+msgid "No ha configurado la contraseña de la firma electrónica"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#, python-format
+msgid "No ha determinado si es contribuyente especial."
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#, python-format
+msgid "No ha subido la firma electrónica"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#, python-format
+msgid "No hay información de este documento"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#, python-format
+msgid "No se ha podido generar la clave de acceso"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.actions.act_window,help:l10n_ec_sri.action_sri_sustento_tributario
+msgid "No sustento tributario created."
+msgstr "No hay sustentos tributarios creados"
+
+#. module: l10n_ec_sri
+#: model_terms:ir.actions.act_window,help:l10n_ec_sri.action_sri_tarjeta_credito
+msgid "No tarjeta de credito found."
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.actions.act_window,help:l10n_ec_sri.action_sri_transaccion
+msgid "No transaccion found."
+msgstr "No existe"
+
+#. module: l10n_ec_sri
+#: model_terms:ir.actions.act_window,help:l10n_ec_sri.action_sri_transaccion_tipo
+msgid "No transaccion tipo found."
+msgstr "No existe tipo de transacción"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__res_company__tipo_emision__1
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__tipo_emision__1
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante_import_txt__tipo_emision__1
+msgid "Normal"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:mail.template,subject:l10n_ec_sri.email_template_comprobante
+msgid ""
+"Notificación de comprobante ${ctx.get('tipo_facturacion')} "
+"${ctx.get('tipo_comprobante_name_mail')} No. ${object.numero}"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__numero
+#, python-format
+msgid "Numero"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__numero_autorizacion
+#, python-format
+msgid "Numero Autorizacion"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__numero
+msgid "Número de autorización"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__obligado_contabilidad
+msgid "Obligado a llevar contabilidad"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_establecimiento_form
+msgid "Open Wizard"
+msgstr "Mis documentos"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__start_date
+msgid "Opening date"
+msgstr "Fecha inicial"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_autorizacion__autorizacion_tipo__out
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__type__out
+msgid "Out"
+msgstr "Emitido"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__partner_id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__partner_id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__partner_id
+#, python-format
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__partner_emisor_id
+msgid "Partner Emisor"
+msgstr "Empresa emisora"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__partner_receptor_id
+msgid "Partner Receptor"
+msgstr "Empresa receptora"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__state__new
+msgid "Pendiente"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__punto_emision_ids
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_punto_emision__code
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_punto_emision__documento_ids
+msgid "Pos"
+msgstr "Puntos de emisión"
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_wizard_sri_file_import_txt_form
+msgid "Procesar"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__res_company__ambiente__2
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__ambiente__2
+msgid "Producción"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__res_company__ambiente__1
+#: model:ir.model.fields.selection,name:l10n_ec_sri.selection__sri_comprobante__ambiente__1
+msgid "Pruebas"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__punto_emision_id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__punto_emision
+#, python-format
+msgid "Punto Emision"
+msgstr "Punto de emisión"
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_sri_punto_emision
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__punto_emision
+msgid "Punto de emisión"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_establecimiento_form
+msgid "Puntos emisión"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__razon_social_emisor
+msgid "RAZON_SOCIAL_EMISOR"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__ruc_emisor_identifier
+msgid "RUC_EMISOR"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.search_sri_comprobante
+msgid "Recibidos"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__resolucion_agente_retencion
+msgid "Resolución agente retención"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__resolucion_contribuyente_especial
+msgid "Resolución contribuyente especial"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/sri_comprobante_import_txt.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__serie_comprobante
+#, python-format
+msgid "SERIE_COMPROBANTE"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.search_sri_comprobante
+msgid "SRI Comprobante"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.actions.act_window,name:l10n_ec_sri.action_sri_comprobante_type_in
+msgid "SRI Comprobantes electronicos recibidos"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.actions.act_window,name:l10n_ec_sri.action_sri_comprobante
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_form
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_tree
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_type_in_tree
+msgid "SRI comprobante"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.actions.act_window,name:l10n_ec_sri.action_sri_sustento_tributario
+msgid "SRI sustento tributario"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.actions.act_window,name:l10n_ec_sri.action_sri_tarjeta_credito
+msgid "SRI tarjeta de credito"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.actions.act_window,name:l10n_ec_sri.action_sri_transaccion
+msgid "SRI transaccion"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.actions.act_window,name:l10n_ec_sri.action_sri_transaccion_tipo
+msgid "SRI transaccion tipo"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.ui.menu,name:l10n_ec_sri.menu_action_sri_comprobante_type_in
+msgid "SRI: Comprobantes electronicos recibidos"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__sequence
+msgid "Secuencia"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__secuencial
+#, python-format
+msgid "Secuencial"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_wizard_sri_file_import_txt_form
+msgid "Seleccione un archivo de extensión .txt para importar..."
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__sequence_id
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_autorizacion_form
+msgid "Serie"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion__start_date
+msgid "Start date"
+msgstr "Fecha inicial"
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_sri_comprobante_import
+msgid "Subir comprobantes del SRI"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_l10n_latam_document_type__sustento_tributario_ids
+#: model:ir.ui.menu,name:l10n_ec_sri.menu_action_sri_sustento_tributario
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_sustento_tributario_form
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_sustento_tributario_tree
+msgid "Sustento tributario"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante_import_txt__tipo_emision
+msgid "TIPO_EMISION"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_sri_transaccion
+msgid "Tabla 2 relaccion entre tipo transacción e identificación"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_sri_sustento_tributario
+msgid "Tabla 5 Sustento tributario"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_sri_tarjeta_credito
+msgid "Tabla 8 Tarjetas de crédito"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model,name:l10n_ec_sri.model_sri_transaccion_tipo
+msgid "Tabla A transaction type"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.ui.menu,name:l10n_ec_sri.menu_action_sri_tarjeta_credito
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_tarjeta_credito_form
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_tarjeta_credito_tree
+msgid "Tarjeta de credito"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__l10n_latam_document_type_id
+#, python-format
+msgid "Tipo Comprobante"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__l10n_latam_document_type_code
+#, python-format
+msgid "Tipo comprobante código"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__ambiente
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__ambiente
+msgid "Tipo de Ambiente"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__tipo_emision
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__tipo_emision
+msgid "Tipo de Emisión"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__l10n_latam_document_type_id
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_sustento_tributario__l10n_latam_document_type_ids
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_sustento_tributario_form
+msgid "Tipo de comprobante"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/wizard/wizard_sri_file_import_txt.py:0
+#, python-format
+msgid "Tipo de documento no permitido"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_sustento_tributario_form
+msgid "Tipos de comprobantes"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.ui.menu,name:l10n_ec_sri.menu_action_sri_transaccion_tipo
+msgid "Tipos de transacción"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_comprobante_import_txt_tree
+msgid "Total"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/res_company.py:0
+#: code:addons/l10n_ec_sri/models/sri_autorizacion.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__trade_name
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_establecimiento__trade_name
+#, python-format
+msgid "Trade name"
+msgstr "Nombre comercial"
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_transaccion_form
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_transaccion_tree
+msgid "Transaccion"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.ui.menu,name:l10n_ec_sri.menu_action_sri_transaccion
+msgid "Transacciones"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_l10n_latam_document_type__transaccion_ids
+msgid "Transacción"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_transaccion__transaccion_tipo_id
+msgid "Transacción tipo"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_transaccion_tipo_form
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_transaccion_tipo_tree
+msgid "Transaction type"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__certificate_not_valid_before
+msgid "Válido desde"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_res_company__certificate_not_valid_after
+msgid "Válido hasta"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,help:l10n_ec_sri.field_sri_comprobante__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__pdf_file
+#, python-format
+msgid "archivo PDF"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__xml_file
+#, python-format
+msgid "archivo XML"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_autorizacion_form
+msgid "establecimiento"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__sequence_start
+msgid "from"
+msgstr "Desde"
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__pdf_filename
+#, python-format
+msgid "nombre PDF"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: code:addons/l10n_ec_sri/models/sri_comprobante.py:0
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_comprobante__xml_filename
+#, python-format
+msgid "nombre archivo"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model_terms:ir.ui.view,arch_db:l10n_ec_sri.view_sri_autorizacion_form
+msgid "punto_emision"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_sustento_tributario__start_date
+msgid "start date"
+msgstr ""
+
+#. module: l10n_ec_sri
+#: model:ir.model.fields,field_description:l10n_ec_sri.field_sri_autorizacion__sequence_end
+msgid "to"
+msgstr "hasta"
+
+#. module: l10n_ec_sri
+#: model:ir.model.constraint,message:l10n_ec_sri.constraint_sri_establecimiento_establecimiento_unique
+msgid "The establishment must be unique."
+msgstr "El establecimiento debe ser único."

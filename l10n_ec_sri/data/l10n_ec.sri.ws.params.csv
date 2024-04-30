@@ -1,0 +1,3 @@
+id,name,ambiente,url_recepcion,url_autorizacion,clave_acceso_size
+l10n_ec.sri_param_01,Pruebas,1,https://celcer.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantesOffline?wsdl,https://celcer.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantesOffline?wsdl,49
+l10n_ec.sri_param_02,Producción,2,https://cel.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantesOffline?wsdl,https://cel.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantesOffline?wsdl,49

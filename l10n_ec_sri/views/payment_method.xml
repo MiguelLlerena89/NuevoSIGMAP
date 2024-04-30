@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_metodo_pago_tree" model="ir.ui.view">
+            <field name="name">account.payment.method.tree</field>
+            <field name="model">account.payment.method</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Métodos de pago">
+                    <field name="name"/>
+                    <field name="forma_pago_id"/>
+                    <field name="payment_type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_metodo_pago_form" model="ir.ui.view">
+            <field name="name">account.payment.method.form</field>
+            <field name="model">account.payment.method</field>
+            <field name="arch" type="xml">
+                <form string="Métodos de pago">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="forma_pago_id"/>
+                                <field name="payment_type" readonly='1'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_metodo_pago" model="ir.actions.act_window">
+            <field name="name">Establecimiento</field>
+            <field name="res_model">account.payment.method</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_metodo_pago_tree"/>
+            <field name="help" type="html">
+                <p>
+                    No payment method created.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

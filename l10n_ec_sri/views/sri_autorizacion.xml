@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_punto_emision_tree" model="ir.ui.view">
+            <field name="name">sri.punto.emision.tree</field>
+            <field name="model">l10n_ec.sri.punto.emision</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Mis puntos emisión">
+                    <field name="establecimiento_id"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_punto_emision_form" model="ir.ui.view">
+            <field name="name">sri.punto.emision.form</field>
+            <field name="model">l10n_ec.sri.punto.emision</field>
+            <field name="arch" type="xml">
+                <form string="Mis puntos de emisión">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="establecimiento_id" />
+                                <field name="code" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <notebook colspan="2">
+                                <page string="Tipos de comprobantes">
+                                    <field name="documento_ids" nolabel="1" context="{'autorizacion_tipo': 'out', 'establecimiento': 'code', 'is_electronic': True}">
+                                        <tree string="Documentos" editable="top">
+                                            <field name="is_electronic"/>
+                                            <field name="l10n_latam_document_type_id"/>
+                                            <!--field name="numero" attrs="{'invisible': [('is_electronic','=',True)]}"/-->
+                                            <field name="numero" invisible='1'/>
+                                            <field name="sequence_start" invisible='1'/>
+                                            <field name="sequence_end" invisible='1'/>
+                                            <field name="start_date" invisible='1'/>
+                                            <field name="expiration_date" invisible='1'/>
+                                            <field name="autorizacion_tipo" invisible='1'/>
+                                            <field name="partner_id" invisible='1'/>
+                                            <field name="sequence"/>
+                                            <field name="sequence_id" invisible='1'/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_establecimiento_tree" model="ir.ui.view">
+            <field name="name">sri.establecimiento.tree</field>
+            <field name="model">l10n_ec.sri.establecimiento</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Mis establecimientos">
+                    <field name="company_id" invisible="1"/>
+                    <field name="partner_id"/>
+                    <!--<field name="name"/>
+                    <field name="l10n_ec_business_name"/>-->
+                    <field name="code"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_puntos_emision_out" model="ir.actions.act_window">
+            <field name="name">Mis puntos de emisión</field>
+            <field name="res_model">l10n_ec.sri.punto.emision</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_punto_emision_tree"/>
+            <field name="help" type="html">
+                <p>
+                    Ningún punto de emisión creado.
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.server" id="action_puntos_emision">
+        	<field name="name">Mis puntos de emisión</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="l10n_ec_sri.model_l10n_ec_sri_punto_emision"/>
+            <field name="binding_model_id" ref="l10n_ec_sri.model_l10n_ec_sri_punto_emision"/>
+            <field name="state">code</field>
+            <field name="code">
+                action = model.action_edit_docs_wizard()
+            </field>
+        </record>
+
+        <record id="view_establecimiento_form" model="ir.ui.view">
+            <field name="name">sri.establecimiento.form</field>
+            <field name="model">l10n_ec.sri.establecimiento</field>
+            <field name="arch" type="xml">
+                <form string="Mis establecimientos">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="name"/>
+                                <field name="l10n_ec_business_name"/>
+                                <field name="address"/>
+                                <field name="code" placeholder="001"/>
+                            </group>
+                        </group>
+                        <group>
+                            <notebook colspan="2">
+                                <page string="Mis puntos de emisión">
+                                    <field name="punto_emision_ids" nolabel="1" context="{'establecimiento': 'code'}">
+                                        <tree string="Puntos emisión" editable="bottom">
+                                            <field name="code"/>
+                                            <button name="action_edit_docs_wizard" icon="fa-pencil" class="oe_inline oe_stat_button" string="Mis comprobantes" type="object"></button>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_establecimiento_out" model="ir.actions.act_window">
+            <field name="name">Establecimiento</field>
+            <field name="res_model">l10n_ec.sri.establecimiento</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_establecimiento_tree"/>
+            <field name="help" type="html">
+                <p>
+                    No establecimiento created.
+                </p>
+            </field>
+        </record>
+
+
+        <record id="view_sri_autorizacion_tree" model="ir.ui.view">
+            <field name="name">sri.autorizacion.tree</field>
+            <field name="model">l10n_ec.sri.autorizacion</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Tipos de autorizaciones">
+                    <field name="l10n_latam_document_type_id"/>
+                    <field name="establecimiento"/>
+                    <field name="punto_emision"/>
+                    <field name="partner_id"/>
+                    <field name="expiration_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_sri_autorizacion_form" model="ir.ui.view">
+            <field name="name">sri.autorizacion.form</field>
+            <field name="model">l10n_ec.sri.autorizacion</field>
+            <field name="arch" type="xml">
+                <form string="Autorización">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="l10n_latam_document_type_id"/>
+                                <field name="code" invisible="1"/>
+                                <field name="partner_id" required="1"/>
+                                <field name="is_electronic" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="sequence_id"/>
+                                <field name="autorizacion_tipo" invisible="True" />
+                                <field name="establecimiento_id" attrs="{'required': [('is_electronic','=',True)], 'invisible': [('is_electronic','=',False)]}"/>
+                                <field name="punto_emision_id" attrs="{'required': [('is_electronic','=',True)], 'invisible': [('is_electronic','=',False)]}"/>
+                                <label string="Serie" for="establecimiento"/>
+                                <div>
+                                    <field name="establecimiento" placeholder="establecimiento" class="oe_inline" attrs="{'required': [('is_electronic','=',False)]}"/> -
+                                    <field name="punto_emision" placeholder="punto_emision" attrs="{'required': [('is_electronic','=',False)]}"/>
+                                </div>
+                            </group>
+                        </group>
+                        <notebook attrs="{'invisible': [('is_electronic','=',True)]}" colspan="4">
+                            <page string="Autorizaciones físicas" name="information">
+                                <group attrs="{'invisible': [('is_electronic','=',True)]}">
+                                    <field name="numero" attrs="{'invisible': [('is_electronic','=',True)], 'required': [('is_electronic','=',False)]}"/>
+                                    <field name="expiration_date" attrs="{'invisible': [('is_electronic','=',True)], 'required': [('is_electronic','=',False)]}"/>
+                                    <label for="sequence_start"/>
+                                    <div>
+                                        <field name="sequence_start" class="oe_inline" attrs="{'required': [('is_electronic','=',False)]}"/> -
+                                        <field name="sequence_end" class="oe_inline" attrs="{'required': [('is_electronic','=',False)]}"/>
+                                    </div>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_sri_autorizacion_out" model="ir.actions.act_window">
+            <field name="name">Mis autorizaciones</field>
+            <field name="res_model">l10n_ec.sri.autorizacion</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_sri_autorizacion_tree"/>
+            <field name="context">{'autorizacion_tipo': 'out', 'default_company_id': allowed_company_ids[0], 'default_is_electronic': True}</field>
+            <field name="domain">[('autorizacion_tipo', '=', 'out')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Define mis autorizaciones.
+                </p>
+            </field>
+        </record>
+
+        <record id="view_metodo_pago_tree" model="ir.ui.view">
+            <field name="name">account.payment.method.tree</field>
+            <field name="model">account.payment.method</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Métodos de pago">
+                    <field name="name"/>
+                    <field name="forma_pago_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_metodo_pago_form" model="ir.ui.view">
+            <field name="name">account.payment.method.form</field>
+            <field name="model">account.payment.method</field>
+            <field name="arch" type="xml">
+                <form string="Métodos de pago">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="forma_pago_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_view_metodo_pago" model="ir.actions.act_window">
+            <field name="name">Establecimiento</field>
+            <field name="res_model">account.payment.method</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_metodo_pago_tree"/>
+            <field name="help" type="html">
+                <p>
+                    No payment method created.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

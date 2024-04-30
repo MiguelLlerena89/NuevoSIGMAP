@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="l10n_ec.tax_vat_411_goods" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_411_services" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_412" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_413" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <record id="l10n_ec.tax_vat_414" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <record id="l10n_ec.tax_vat_415_goods" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <record id="l10n_ec.tax_vat_415_services" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <record id="l10n_ec.tax_vat_416" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <record id="l10n_ec.tax_vat_417" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <record id="l10n_ec.tax_vat_418" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <!--record id="l10n_ec.tax_vat_419" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record-->
+    <record id="l10n_ec.tax_vat_444_zero_vat" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_444_not_charged_vat" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_444_not_exempt_vat" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_510_sup_01" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_510_sup_05" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_510_sup_06" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_510_sup_15" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_511_sup_03" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_512_sup_04" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_513_sup_01" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_514_sup_06" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_515_sup_03" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+    <record id="l10n_ec.tax_vat_516_sup_07" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <record id="l10n_ec.tax_vat_517_sup_02" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <record id="l10n_ec.tax_vat_517_sup_04" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <record id="l10n_ec.tax_vat_517_sup_05" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <record id="l10n_ec.tax_vat_517_sup_15" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">0</field>
+    </record>
+    <record id="l10n_ec.tax_vat_518_sup_02" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">6</field>
+    </record>
+    <record id="l10n_ec.tax_vat_541_sup_02" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">6</field>
+    </record>
+    <record id="l10n_ec.tax_vat_542_sup_02" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">7</field>
+    </record>
+    <record id="l10n_ec.tax_vat_545_sup_08" model="account.tax.template">
+        <field name="l10n_ec_xml_fe_code">2</field>
+    </record>
+
+</odoo>

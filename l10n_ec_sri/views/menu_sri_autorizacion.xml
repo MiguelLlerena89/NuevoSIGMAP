@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="menu_sri_entries"
+        name="Configuración SRI"
+        sequence="6"
+        groups="account.group_account_readonly,account.group_account_invoice"
+        parent="account.menu_finance"
+        />
+    <menuitem id="menu_sri_autorizacion_info"
+        parent="menu_sri_entries"
+        name="Mi SRI" sequence="1">
+        <menuitem
+            action="action_establecimiento_out"
+            name="Mis establecimientos"
+            id="menu_action_establecimiento_out"
+            sequence="1"/>
+        <menuitem
+            action="action_puntos_emision_out"
+            name="Mis puntos de emisión"
+            id="menu_action_puntos_emision_out"
+            sequence="2"/>
+        <menuitem
+            action="action_view_metodo_pago"
+            name="Métodos de pago"
+            id="menu_action_view_metodo_pago"
+            sequence="3"/>
+    </menuitem>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sri_res_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.sri.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="groups_id" eval="[(5,)]"/>
+            <field name="arch" type="xml">
+                <field name="parent_id" position="before">
+                    <field name="l10n_ec_business_name"
+                        placeholder="Nombre comercial"
+                        attrs="{'invisible': [('company_type','=', 'person')]}" />
+                    <field name="representante_legal_id"
+                        placeholder="Representante legal"
+                        domain="[('is_company', '=', False)]"
+                        context="{'default_is_company': False, 'show_vat': True, 'default_user_id': user_id}"
+                        attrs="{'invisible': [('company_type','=', 'person')]}"
+                         options="{'no_quick_create':True}"/>
+                </field>
+            </field>
+        </record>
+    </data>
+
+</odoo>

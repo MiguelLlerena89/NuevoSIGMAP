@@ -1,0 +1,5 @@
+id,name,forma_pago_id:id
+l10n_ec_sri_payment_type_01,Transferencia,l10n_ec.P20
+l10n_ec_sri_payment_type_02,Cheque,l10n_ec.P20
+l10n_ec_sri_payment_type_03,Depósito bancario,l10n_ec.P20
+l10n_ec_sri_payment_type_04,App móvil,l10n_ec.P20

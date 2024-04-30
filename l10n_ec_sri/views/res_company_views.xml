@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sri_company_form" model="ir.ui.view">
+        <field name="name">res.company.form.sri</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+              <field name="l10n_ec_business_name"/>
+              <field name="obligado_contabilidad"/>
+            </field>
+            <field name="favicon" position="after">
+              <field name="contribuyente_especial"/>
+              <field name="resolucion_contribuyente_especial"/>
+              <field name="resolucion_agente_retencion"/>
+              <field name="regimen_microempresas"/>
+            </field>
+            <notebook position="inside">
+              <page string="Facturación electrónica">
+                <groups>
+                  <group>
+                    <field name="certificate" filename="certificate_filename" />
+                    <field name="certificate_filename" invisible="1" />
+                    <field name="certificate_password" password="1" />
+                    <field name="certificate_not_valid_before" />
+                    <field name="certificate_not_valid_after" />
+                    <field name="certificate_issuer" />
+                    <field name="certificate_subject" />
+                    <field name="tipo_emision"/>
+                    <field name="ambiente"/>
+                  </group>
+                </groups>
+              </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

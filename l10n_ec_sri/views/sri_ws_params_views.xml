@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sri_ws_params_tree" model="ir.ui.view">
+            <field name="name">sri.ws.params.tree</field>
+            <field name="model">l10n_ec.sri.ws.params</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Parámetros Web Service SRI">
+                    <field name="ambiente"/>
+                    <field name="sri_url_recepcion"/>
+                    <field name="sri_url_autorizacion"/>
+                    <field name="sri_clave_acceso_size"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sri_ws_params_form" model="ir.ui.view">
+            <field name="name">sri.ws.params.form</field>
+            <field name="model">l10n_ec.sri.ws.params</field>
+            <field name="arch" type="xml">
+                <form string="Parámetros Web Service SRI">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="ambiente"/>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="sri_clave_acceso_size"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="sri_url_recepcion" widget ="url"/>
+                            </group>
+                            <group>
+                                <field name="sri_url_autorizacion" widget ="url"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_sri_ws_params" model="ir.actions.act_window">
+            <field name="name">Parámetros WS SRI</field>
+            <field name="res_model">l10n_ec.sri.ws.params</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_sri_ws_params_tree"/>
+            <field name="help" type="html">
+                <p>
+                    Registrar parámetros.
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

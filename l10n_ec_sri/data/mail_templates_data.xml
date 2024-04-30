@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="email_template_comprobante" model="mail.template">
+            <field name="name">Comprobante SRI: Envio por Correo</field>
+            <field name="model_id" ref="l10n_ec_sri.model_l10n_ec_sri_comprobante"/>
+            <field name="subject">Notificación de comprobante {{('electrónico' if object.is_electronic == True else 'físico')}} {{(object.l10n_latam_document_type_id.name)}} No. {{object.numero}}</field>
+            <field name="email_from">comprobantes@duodata.io</field>
+            <field name="email_to">{{object.partner_id.email}}</field>
+            <field name="partner_to">{{object.partner_id.id}}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Estimad@
+                        <t t-if="object.partner_id.name">
+                            <t t-out="object.partner_id.name or ''"></t>,
+                        </t>
+                        <br /><br />
+                        Se le informa que
+                        <t t-if="object.company_id.name">
+                            <span style="font-weight:bold;" t-out="object.company_id.name or ''"></span>
+                        </t>
+                        ha emitido un comprobante
+                        <t t-if="object.is_electronic">
+                            <span style="font-weight:bold;">electrónico</span>
+                        </t>
+                        <t t-else="">
+                            <span style="font-weight:bold;">físico</span>
+                        </t>
+                        <t t-if="object.l10n_latam_document_type_id.name">
+                            de <span style="font-weight:bold;" t-out="object.l10n_latam_document_type_id.name or ''"></span>
+                        </t>
+                        <t t-if="object.numero">
+                            No. <span style="font-weight:bold;" t-out="object.numero or ''"></span>
+                        </t>
+                        <t t-if="object.partner_id.l10n_latam_identification_type_id.name">
+                            a su nombre con: <t t-out="object.partner_id.l10n_latam_identification_type_id.name or ''"></t>
+                        </t>
+                        <t t-if="object.partner_id.vat">
+                            No. <t t-out="object.partner_id.vat or ''"></t>
+                        </t>
+                        por el monto de <t t-out="object.company_id.currency_id.name or ''"></t>
+                        <span style="font-weight:bold;" t-out="format_amount(object.move_id.amount_total, object.company_id.currency_id) or ''"></span>
+                        con fecha <t t-out="format_date(object.fecha_emision) or ''"></t>
+                        <br /><br />
+                        <t t-if="object.is_electronic">
+                            <br/><br/>
+                            Adjunto a este correo encontrará su comprobante electrónico emitido en formato PDF y XML válido
+                            tributariamente para su declaración de impuestos y vigente de acuerdo a las últimas resoluciones emitidas
+                            por el SRI.
+                        </t>
+                        <br /><br />
+                        <t t-out="object.company_id.name or ''">--<br/></t><br/>
+                        <t t-out="object.company_id.street or ''">--<br/></t>
+                    </p>
+                </div>
+
+            </field>
+            <field name="lang">{{object.partner_id.lang}}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+    </data>
+</odoo>
