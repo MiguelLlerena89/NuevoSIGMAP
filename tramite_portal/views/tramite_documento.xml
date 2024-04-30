@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tramite_documento_portal" model="ir.ui.view">
+        <field name="name">tramite.documento.view.form.inherit.portal</field>
+        <field name="model">tramite.documento</field>
+        <field name="inherit_id" ref="tramite.view_tramite_documento_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <field name="emitido_por_dirnea" position="after">
+                <field name="portal"/>
+            </field>
+        </field>
+    </record>
+</odoo>

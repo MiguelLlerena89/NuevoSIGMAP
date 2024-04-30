@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="acta_confidencialidad_report">
+        <t t-foreach="docs" t-as="acta">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <link rel="stylesheet" href="/base_sigmap/static/src/css/styles.css"></link>
+                        <div class="col-xs-12">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" id="cabecera_info">
+                            <tr>
+                                <td colspan="2" align="right" style="font-size: 14px" class="text-right"><b>ACTA Nro. <span t-field="acta.reparto_id.siglas"/>-<span t-field="acta.id"/>-<span t-esc="acta.create_date.year"/></b></td>
+                            </tr>
+                            <tr id="pais_cabecera_info">
+                                <td colspan="4" class="text-center" style="font-size: 18px"><b>República del Ecuador</b></td><br/>
+                            </tr>
+                            <tr >
+                                <td colspan="4" height="10px"/>
+                            </tr>
+                            <tr id="titulos_cabecera_info">
+                                <td height="10" colspan="4" align="center" class="text-center" style="font-size: 18px">
+                                    <b><span>ACTA DE CONFIDENCIALIDAD</span></b><br/>
+                                </td>
+                            </tr>
+                            <tr >
+                                <td colspan="4" height="5px"/>
+                            </tr>
+                        </table>
+                        <br/>
+                        <!-- <h2>ACTA Nro. <span t-field="acta.reparto_id.siglas"/>-<span t-field="acta.id"/>-<span t-esc="acta.create_date.year"/></h2> -->
+                        <p class="encabezado_acta_confidencialidad" align="justify"><span t-field="acta.reparto_id.city_id.name"/>, <span t-esc="acta.create_date.strftime('%d-%B-%Y')"/></p>
+                        <p class="encabezado_acta_confidencialidad">ANTECEDENTES</p>
+                        <p class="texto_acta_confidencialidad" align="justify">
+La presente Declaración de Responsabilidad es un instrumento que lo suscriben los servidores/as militares o civiles de
+la Dirección Nacional de los Espacios Acuáticos (DIRNEA) y otras instituciones públicas y privadas, y tiene como fin
+establecer expresamente la responsabilidad del USUARIO, respecto del uso de los recursos informáticos que dispone la
+DIRNEA, para el cumplimiento de sus funciones; razón por la cual, al suscribirlo aceptan las responsabilidades,
+limitaciones y restricciones de acceso a la información y a la divulgación de la misma, bajo las responsabilidades que
+el mal uso derive.
+                        </p>
+                        <p class="texto_acta_confidencialidad" align="justify">
+El acceso a la información que los usuarios públicos y privados tienen para cumplir con las funciones a ellos
+encomendadas es libre, de acuerdo al nivel de competencia que desempeñen, por tanto, es preciso proteger la información
+constituida en patrimonio institucional. El uso indebido o ilegal de la información acarrearía consecuencias negativas
+en contra de los intereses institucionales y nacionales, por tanto, a partir de la firma de esta Declaratoria de
+Responsabilidad, el USUARIO que haga mal uso de esta o de los medios que la contienen, se someterá a las sanciones que
+las disposiciones legales y reglamentarias que se establecen para el efecto.
+                        </p>
+                        <p class="encabezado_acta_confidencialidad">DATOS PERSONALES</p>
+                        <div>
+                            <span style="font-family: Arial; font-size: 13px;font-weight: bold;"><strong>Grado: </strong></span>
+                            <span class="texto_acta_confidencialidad" t-field="acta.profesion_abreviatura"/>
+                        </div>
+                        <div>
+                            <span style="font-family: Arial; font-size: 13px;font-weight: bold;"><strong>Nombre: </strong></span>
+                            <span class="texto_acta_confidencialidad" t-field="acta.user_id.partner_id.name"/>
+                        </div>
+                        <div>
+                            <span style="font-family: Arial; font-size: 13px;font-weight: bold;"><strong>Cédula de identidad: </strong></span>
+                            <span class="texto_acta_confidencialidad" t-field="acta.user_id.partner_id.vat"/>
+                        </div>
+                        <div>
+                            <span style="font-family: Arial; font-size: 13px;font-weight: bold;"><strong>Institución: </strong></span>
+                            <span class="texto_acta_confidencialidad" t-field="acta.reparto_id.name"/>
+                        </div>
+                        <div>
+                            <span style="font-family: Arial; font-size: 13px;font-weight: bold;"><strong>Cargo: </strong></span>
+                            <span class="texto_acta_confidencialidad" t-field="acta.cargo_id.name"/>
+                        </div>
+                        <div>
+                            <span style="font-family: Arial; font-size: 13px;font-weight: bold;"><strong>Correo electrónico: </strong></span>
+                            <span class="texto_acta_confidencialidad" t-field="acta.user_id.login"/>
+                        </div>
+                        <div>
+                            <span style="font-family: Arial; font-size: 13px;font-weight: bold;"><strong>Domicilio jurídico: </strong></span>
+                            <span class="texto_acta_confidencialidad" t-field="acta.user_id.partner_id.city_id.name"/>
+                        </div>
+                        <div>
+                            <span style="font-family: Arial; font-size: 13px;font-weight: bold;"><strong>Servicio Informático Solicitado: </strong></span>
+                            <span class="texto_acta_confidencialidad">SIGMAP (X)</span>
+                        </div>
+                        <div>
+                            <span style="font-family: Arial; font-size: 13px;font-weight: bold;"><strong>Documento con el que se solicita la activación: </strong></span><br/>
+                            <t t-foreach="acta.oficio_ids" t-as="oficio">
+                                <span class="texto_acta_confidencialidad"><t t-out="oficio.name"/></span><br/>
+                            </t>
+                        </div>
+                        <br/><br/>
+                        <p class="encabezado_acta_confidencialidad">COMPROMISO</p>
+                        <p style="font-family: Arial; font-size: 11px;" align="justify">
+Por lo antes expuesto, yo, <strong><span t-field="acta.profesion_abreviatura"/> <span t-field="acta.user_id.partner_id.name"/></strong>,
+de nacionalidad <strong><span t-esc="acta.user_id.partner_id.country_id.nationality.upper()"/></strong>, mayor de edad,
+portador de cédula de identidad No. <strong><span t-field="acta.user_id.partner_id.vat"/></strong>; de la
+<strong><span t-field="acta.reparto_id.name"/></strong>, a quienes en lo posterior se denominará USUARIO del sistema
+informático, a través del presente documento acepto y me comprometo a guardar la Confidencialidad y Reserva, en el
+tratamiento de la información; así como también, ser responsable de la manipulación de la información, respecto al
+ejercicio de las funciones inherentes a mi cargo y función, conforme las siguientes disposiciones:
+                        </p>
+                        <div class="line-spacing" t-raw="acta._get_texto()"></div>
+                        <p><br/></p>
+                        <p style="page-break-before:always;"></p>
+                        <br/>
+                        <p class="encabezado_acta_confidencialidad" align="justify">Atentamente,</p>
+                        <p><br/><br/><br/></p>
+                        <p class="texto_acta_confidencialidad" align="justify">
+                          <span>____________________________________</span><br/>
+                          <strong><span t-field="acta.profesion_abreviatura"/> <span t-field="acta.user_id.partner_id.name"/></strong>
+                          <br/>
+                          <strong>Servidor de la <span t-field="acta.reparto_id.name"/></strong>
+                          <br/>
+                          <span><strong>Cargo:</strong></span><b><span t-field="acta.user_id.cargo_id.name"/></b>
+                          <br/>
+                          <strong>Cédula y/o pasaporte: <span t-field="acta.user_id.partner_id.vat"/></strong>
+                        </p>
+                        <p><br/><br/></p>
+                        <p class="texto_acta_confidencialidad" align="justify"><strong>Aprobado por:</strong></p>
+                        <p><br/><br/><span style="color: rgba(255, 255, 255, 0.0);">QRAPROBACION</span><br/><br/></p>
+                        <p t-if="acta.supervisa_id">
+                        <span>____________________________________</span><br/>
+                          <span class="texto_acta_confidencialidad" t-field="acta.aprueba_id.profesion_abreviatura"/> <span class="texto_acta_confidencialidad" t-field="acta.aprueba_id.partner_id.name"/>
+                          <br/>
+                          <span class="texto_acta_confidencialidad" t-esc="acta.aprueba_id.cargo_id.name.upper()"/>
+                        </p>
+                        <p><br/><br/></p>
+                        <p class="texto_acta_confidencialidad" align="justify"><strong>Supervisado por:</strong></p>
+                        <p><br/><br/><span style="color: rgba(255, 255, 255, 0.0);">QRSUPERVISION</span><br/><br/></p>
+                        <p t-if="acta.supervisa_id">
+                          <span>____________________________________</span><br/>
+                          <span class="texto_acta_confidencialidad" t-field="acta.supervisa_id.profesion_abreviatura"/> <span class="texto_acta_confidencialidad" t-field="acta.supervisa_id.partner_id.name"/>
+                          <br/>
+                          <span class="texto_acta_confidencialidad" t-esc="acta.supervisa_id.cargo_id.name.upper()"/>
+                        </p>
+                        <!-- <p><br/><br/><br/></p>
+                        <p class="texto_acta_confidencialidad" align="justify">
+                          <b>Elaborado por:</b>
+                          <br/>
+                          <b>Roles asignados por:</b>
+                          <br/>
+                          <span class="texto_acta_confidencialidad" t-field="acta.create_uid.profesion_abreviatura"/> <span t-field="acta.create_uid.sumilla_autor"/>
+                        </p> -->
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

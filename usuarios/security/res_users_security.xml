@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_users_rule_creacion_usuarios" model="ir.rule">
+        <field name="name">Pueden modificar usuarios de un reparto igual o inferior</field>
+        <field name="model_id" ref="model_res_users"/>
+        <field eval="False" name="global"/>
+        <field name="groups" eval="[(6, 0, [ref('usuarios.group_creacion_usuarios')])]"/>
+        <field name="domain_force">[('reparto_id','child_of', user.reparto_id.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+</odoo>

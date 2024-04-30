@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.module.category" id="security_dirnea_groups">
+        <field name="name">Dirnea</field>
+    </record>
+
+    <record model="res.groups" id="group_creacion_usuarios">
+        <field name="name">Crear usuarios</field>
+        <field name="category_id" ref="usuarios.security_dirnea_groups"/>
+    </record>
+
+    <record model="res.groups" id="group_facturador">
+        <field name="name">Facturador</field>
+        <field name="category_id" ref="usuarios.security_dirnea_groups"/>
+        <field name="implied_ids" eval="[(4, ref('account.group_account_invoice'))]"/>
+    </record>
+
+    <record model="res.groups" id="group_inspector">
+        <field name="name">Inspector</field>
+        <field name="category_id" ref="usuarios.security_dirnea_groups"/>
+    </record>
+
+    <record model="ir.module.category" id="security_dirreg_groups">
+        <field name="name">DIR REG</field>
+    </record>
+</odoo>

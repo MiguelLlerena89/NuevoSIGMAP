@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tramite_tarifario_tree" model="ir.ui.view">
+        <field name="name">Tramite tarifario lista</field>
+        <field name="model">tramite.tarifario</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Tarifario">
+                    <field name="company_id"/>
+                    <field name="name"/>
+                    <field name="registro_oficial"/>
+                    <field name="year"/>
+                    <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_tarifario_form" model="ir.ui.view">
+        <field name="name">Tarifario formulario</field>
+        <field name="model">tramite.tarifario</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Tarifario">
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="company_id" invisible="1"/>
+                    </h1>
+                </div>
+                <group>
+                    <group id="header_left_group">
+                        <field name="name"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="year"/>
+                    </group>
+                </group>
+                <group>
+                    <group id="header_left_group">
+                        <field name="detalle"/>
+                        <field name="registro_oficial"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="active"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Rubros">
+                        <field name="rubro_ids" nolabel="1">
+                            <tree string="Rubro" editable="top">
+                                <field name="company_id" invisible="1"/>
+                                <field name="tarifario_id" invisible="1"/>
+                                <field name="name"/>
+                                <field name="active" widget="boolean_toggle"/>
+                            </tree>
+                        </field>
+                        <separator string=""/>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+    <record id="action_tramite_tarifario" model="ir.actions.act_window">
+        <field name="name">Tarifario</field>
+        <field name="res_model">tramite.tarifario</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_tramite_tarifario_tree"/>
+        <field name="help" type="html">
+            <p>
+                No tarifario found.
+            </p>
+        </field>
+    </record>
+
+
+    <record id="view_product_rubro_form" model="ir.ui.view">
+        <field name="name">Rubro</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="barcode" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="purchase_ok" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="sale_ok" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="invoice_policy" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="standard_price" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <!--xpath expr="//page[@name='general_information']" position="inside"-->
+            <field name="detailed_type" position="before">
+                        <field name="servicio_id"/>
+                        <field name="tipo_documento_id"/>
+                        <field name="es_inspeccion" attrs="{'invisible': [('tipo_documento_id','!=',%(base_sigmap.nave)d)]}"/>
+                        <field name="tipo_inspeccion" attrs="{'invisible': ['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),('es_inspeccion', '=', False)]}"/>
+                        <field name="active" widget="boolean_toggle"/>
+                        <field name="tarifario_id"/>
+                        <field name="articulo"/>
+                        <field name="literal"/>
+                        <field name="numeral"/>
+                        <field name="rubro_maestro_id" attrs="{'invisible': [('porcentaje_recargo_nave_int', '!=', 0)]}"/>
+                        <field name="porcentaje_maestro" attrs="{'invisible': [('rubro_maestro_id', '=', False)]}"/>
+                        <field name="porcentaje_recargo_nave_int" attrs="{'invisible': ['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),('rubro_maestro_id', '!=', False)]}"/>
+                        <field name="monto_max_nave_int" attrs="{'invisible': ['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),('rubro_maestro_id', '!=', False)]}"/>
+                        <field name="incremento_anual"/>
+                        <field name="orden"/>
+            </field>
+            <field name="detailed_type" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="product_tooltip" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="product_tooltip" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <!--/xpath-->
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page string="Tarifas" attrs="{'invisible': [('rubro_maestro_id', '!=', False)]}">
+                    <field name="tarifa_ids" nolabel="1">
+                        <tree string="Rubro">
+                            <field name="rubro_id"/>
+                            <field name="name"/>
+                            <field name="literal"/>
+                            <field name="tipo"/>
+                            <field name="variable"/>
+                            <field name="operador"/>
+                            <field name="monto"/>
+                            <field name="monto_base"/>
+                            <field name="valor_minimo"/>
+                            <field name="valor_maximo"/>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_fin"/>
+                        </tree>
+                    </field>
+                    <separator string=""/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_producto_rubro_tree" model="ir.ui.view">
+        <field name="name">Rubro tarifario lista</field>
+        <field name="model">product.template</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Rubros">
+                <field name="company_id"/>
+                <field name="tarifario_id"/>
+                <field name="servicio_id"/>
+                <field name="name"/>
+                <field name="tipo_documento_id"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_producto_rubro" model="ir.actions.act_window">
+        <field name="name">Tarifarios Rubros</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_producto_rubro_tree"/>
+        <field name="help" type="html">
+            <p>
+                No rubro found.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_rubro_tarifa_form" model="ir.ui.view">
+        <field name="name">Tarifas rubros formulario</field>
+        <field name="model">rubro.tarifa</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Tarifas rubros">
+                <group>
+                    <group id="header_left_group">
+                        <field name="name"/>
+                        <field name="rubro_id" attrs="{'invisible':[('rubro_id','=',False)]}"/>
+                        <field name="tarifario_id"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="active" widget="boolean_toggle"/>
+                    </group>
+                </group>
+                <group>
+                    <group id="header_left_group">
+                        <field name="tipo"/>
+                        <field name="literal"/>
+                        <field name="variable" attrs="{'invisible':[('tipo','=','constante')]}"/>
+                        <field name="operador"/>
+                        <field name="monto"/>
+                        <field name="monto_base"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="valor_minimo" attrs="{'invisible':[('tipo','=','constante')]}"/>
+                        <field name="valor_maximo" attrs="{'invisible':[('tipo','=','constante')]}"/>
+                        <field name="fecha_inicio" attrs="{'invisible':[('tipo','=','constante')]}"/>
+                        <field name="fecha_fin" attrs="{'invisible':[('tipo','=','constante')]}"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Reglas">
+                        <field name="regla_ids" nolabel="1">
+                            <tree string="Reglas">
+                                <field name="rubro_tarifa_id" invisible="1"/>
+                                <field name="variable"/>
+                                <field name="tipo"/>
+                                <field name="resource_ref" string="Valor"/>
+                                <field name="valor"/>
+                                <field name="active" widget="boolean_toggle"/>
+                            </tree>
+                        </field>
+                        <separator string=""/>
+                    </page>
+                    <page string="Valores tarifario">
+                        <field name="valor_ids" nolabel="1">
+                            <tree string="Valores tarifario">
+                                <field name="rubro_tarifa_id"/>
+                                <field name="incremento"/>
+                                <field name="active"/>
+                                <field name="valor_anterior"/>
+                                <field name="monto"/>
+                                <field name="valor_maximo"/>
+                                <field name="valor_minimo"/>
+                                <field name="year"/>
+                                <field name="fecha_desde"/>
+                                <field name="fecha_hasta"/>
+                            </tree>
+                        </field>
+                        <separator string=""/>
+                    </page>
+                </notebook>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_rubro_tarifa_tree" model="ir.ui.view">
+        <field name="name">Tarifas rubros lista</field>
+        <field name="model">rubro.tarifa</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Tarifas de Rubro">
+                <field name="tarifario_id"/>
+                <field name="rubro_id"/>
+                <field name="name"/>
+                <field name="tipo"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_fin"/>
+                <field name="variable"/>
+                <field name="monto"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_rubro_tarifa" model="ir.actions.act_window">
+        <field name="name">Tarifas rubros</field>
+        <field name="res_model">rubro.tarifa</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_rubro_tarifa_tree"/>
+        <field name="help" type="html">
+            <p>
+                No tarifas found.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_rubro_regla_form" model="ir.ui.view">
+        <field name="name">Regla rubro formulario</field>
+        <field name="model">rubro.regla</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Regla rubro">
+                <group>
+                    <group id="header_left_group">
+                        <field name="rubro_tarifa_id"/>
+                        <field name="rubro_id"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="active" widget="boolean_toggle"/>
+                    </group>
+                </group>
+                <group>
+                    <group id="header_left_group">
+                        <field name="variable"/>
+                        <field name="tipo"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="valor" attrs="{'invisible': [('variable', 'not in', ['eslora','trb'])]}"/>
+                        <!--field name="model_id" attrs="{'invisible': [('variable', 'not in', ['nave_tipo_id'])]}"/-->
+                        <field name="resource_ref" attrs="{'invisible': [('variable', 'in', ['eslora', 'trb'])]}"/>
+                    </group>
+                </group>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_rubro_regla_tree" model="ir.ui.view">
+        <field name="name">Rubro regla lista</field>
+        <field name="model">rubro.regla</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Reglas">
+                <field name="rubro_id"/>
+                <field name="rubro_tarifa_id"/>
+                <field name="tipo"/>
+                <field name="variable"/>
+                <field name="valor"/>
+                <field name="resource_ref"></field>
+            </tree>
+        </field>
+    </record>
+    <record id="action_rubro_regla" model="ir.actions.act_window">
+        <field name="name">Rubros reglas</field>
+        <field name="res_model">rubro.regla</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_rubro_regla_tree"/>
+        <field name="help" type="html">
+            <p>
+                No rubro found.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_rubro_tarifa_valor_form" model="ir.ui.view">
+        <field name="name">Valores rubros formulario</field>
+        <field name="model">rubro.tarifa.valor</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Valores rubros">
+                <group>
+                    <group id="header_left_group">
+                        <field name="rubro_tarifa_id"/>
+                        <field name="rubro_id"/>
+                        <field name="incremento"/>
+                        <field name="active"/>
+                    </group>
+                </group>
+                <group>
+                    <group id="header_left_group">
+                        <field name="valor_anterior"/>
+                        <field name="monto"/>
+                        <field name="valor_maximo"/>
+                        <field name="valor_minimo"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="year"/>
+                        <field name="fecha_desde"/>
+                        <field name="fecha_hasta"/>
+                    </group>
+                </group>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_rubro_tarifa_valor_search" model="ir.ui.view">
+        <field name="name">rubro.tarifa.valor.search</field>
+        <field name="model">rubro.tarifa.valor</field>
+        <field name="arch" type="xml">
+            <search string="Search Valores rubros">
+                <!--filter string="Este año" name="tramite_toyear"
+                    domain="[('fecha_desde','&gt;',(context_today()-relativedelta(years=1)).strftime('%%Y-01-01')),('fecha_hasta','&lt;',time.strftime('%%Y-01-01'))]"/-->
+                <separator/>
+                <filter string="Activo" name="activo" domain="[('active', '=', True)]"/>
+                <separator/>
+                <filter string="Inactivo" name="activo" domain="[('active', '=', False)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_activo" string="Activo" domain="[]" context="{'group_by': 'active'}"/>
+                    <filter name="group_tarifario" string="Tarifario" domain="[]" context="{'group_by': 'rubro_tarifa_id'}"/>
+                    <filter name="group_fecha_desde" string="Fecha Desde" domain="[]" context="{'group_by': 'fecha_desde'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="view_rubro_tarifa_valor_tree" model="ir.ui.view">
+        <field name="name">Valores rubros lista</field>
+        <field name="model">rubro.tarifa.valor</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Tarifas rubros valor">
+                <field name="rubro_id"/>
+                <field name="rubro_tarifa_id"/>
+                <field name="incremento"/>
+                <field name="monto"/>
+                <field name="valor_minimo"/>
+                <field name="valor_maximo"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_rubro_tarifa_valor" model="ir.actions.act_window">
+        <field name="name">Valores rubros</field>
+        <field name="res_model">rubro.tarifa.valor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_rubro_tarifa_valor_tree"/>
+        <field name="search_view_id" ref="view_rubro_tarifa_valor_search"/>
+        <field name="help" type="html">
+            <p>
+                No rubro found.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="tramite_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia trámite</field>
+      <field name="code">tramite_sequence_code</field>
+      <field name="prefix">TRAM/%(year)s/%(month)s/</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <record id="documento_sequence_id" model="ir.sequence">
+      <field name="name">Secuencia documento</field>
+      <field name="code">documento_sequence_code</field>
+      <field name="prefix">DOC/%(year)s/%(month)s/</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+
+    <record id="documento_emitido_sequence_code_id" model="ir.sequence">
+      <field name="name">Secuencia documento emitido</field>
+      <field name="code">documento_emitido_sequence_code</field>
+      <field name="prefix">DOCEM/%(year)s/%(month)s/</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+  </data>
+</odoo>

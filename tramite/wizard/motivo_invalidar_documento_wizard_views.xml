@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_motivo_invalidar_documento_wizard" model="ir.actions.act_window">
+        <field name="name">Motivo para Invalidar Documento</field>
+        <field name="res_model">tramite.documento.emitido.motivo.invalidar.documento.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_motivo_invalidar_documento_wizard_form" model="ir.ui.view">
+        <field name="name">tramite.documento.emitido.motivo.invalidar.documento.wizard.form</field>
+        <field name="model">tramite.documento.emitido.motivo.invalidar.documento.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group colspan="4">
+                            <field name="motivo"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name='action_motivo_invalidar_documento' string='Grabar' type='object' class='btn-primary'/>
+                    <button string='Cancelar' class='btn-default' special='cancel' />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tramite_documento_emitido_form_motivo_invalidar_documento_inherit" model="ir.ui.view">
+        <field name="name">tramite.documento.emitido.form.motivo_invalidar_documento.inherit</field>
+        <field name="model">tramite.documento.emitido</field>
+        <field name="inherit_id" ref="tramite.view_tramite_documento_emitido_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='action_send_email']" position="after">
+                <button name="action_invalidar_documento" type="object" string="Suspender" states="vigente" data-hotkey="p"
+                        confirm="El documento ya no podrá ser utilizado. ¿Está seguro que desea suspender el documento?"
+                        context="{'default_accion': 'suspender'}"/>
+                <button name="action_invalidar_documento" type="object" string="Anular" states="vigente" data-hotkey="k"
+                        confirm="El documento ya no podrá ser utilizado. ¿Está seguro que desea anular el documento?"
+                        context="{'default_accion': 'anular'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

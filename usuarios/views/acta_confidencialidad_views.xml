@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_acta_confidencialidad_tree" model="ir.ui.view">
+        <field name="name">acta.confidencialidad.tree</field>
+        <field name="model">acta.confidencialidad</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Acta de confidencialidad">
+                <field name="user_id"/>
+                <field name="create_date" string="Creación"/>
+                <field name="elabora_id"/>
+                <field name="supervisa_id"/>
+                <field name="aprueba_id"/>
+                <field name="reparto_id"/>
+                <field name="departamento_id"/>
+                <field name="entidad_externa_id"/>
+                <field name="cargo_id"/>
+                <field name="state"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_acta_confidencialidad_form" model="ir.ui.view">
+        <field name="name">acta.confidencialidad.form</field>
+        <field name="model">acta.confidencialidad</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Supervisar"
+                        name="action_supervisar"
+                        type="object" states="por_supervisar"/>
+                    <button string="Aprobar"
+                        name="action_aprobar"
+                        type="object" states="por_firmar"/>
+                    <button string="Activar usuario"
+                        name="action_activar_usuario"
+                        type="object" attrs="{'invisible': [('es_firma_valida', '==', False)]}"/>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="user_id"/>
+                        <field name="create_date" string="Creación"/>
+                        <field name="elabora_id"/>
+                        <field name="supervisa_id"/>
+                        <field name="aprueba_id"/>
+                    </group>
+                    <group>
+                        <field name="es_externo"/>
+                        <field name="entidad_externa_id" attrs="{'invisible':[('es_externo', '==', False)]}"/>
+                        <field name="reparto_id" attrs="{'invisible':[('es_externo', '==', True)]}"/>
+                        <field name="departamento_id" attrs="{'invisible':[('es_externo', '==', True)]}"/>
+                        <field name="cargo_id" attrs="{'invisible':[('es_externo', '==', True)]}"/>
+                    </group>
+                    <group>
+                        <field name="archivo_firmado" filename="archivo_firmado_filename" />
+                        <field name="archivo_firmado_filename" invisible="1" />
+                        <field name="archivo_firmado_por_usuario" filename="archivo_firmado_por_usuario_filename" attrs="{'readonly': [('state', 'in', ['usuario_activado', 'anulado'])]}"/>
+                        <field name="archivo_firmado_por_usuario_filename" invisible="1"/>
+                        <field name="es_firma_valida"/>
+                    </group>
+                    <group>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                        <page name="certificados" string="Certificados">
+                            <field name="firmas_ids" nolabel="1" readonly="1">
+                                <tree string="Firmas" editable="1">
+                                    <field name="acta_confidencialidad_id" invisible="1"/>
+                                    <field name="cedula"/>
+                                    <field name="apellidos"/>
+                                    <field name="nombres"/>
+                                    <field name="entidad"/>
+                                    <field name="fecha_hora"/>
+                                    <field name="es_valida"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="acta_confidencialidad_model_action" model="ir.actions.act_window">
+        <field name="name">Actas confidencialidad</field>
+        <field name="res_model">acta.confidencialidad</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

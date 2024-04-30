@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sigmap_facturador_tree" model="ir.ui.view">
+        <field name="name">facturador.tree</field>
+        <field name="model">sigmap.facturador</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Facturador">
+                <field name="user_id"/>
+                <field name="reparto_id"/>
+                <field name="company_id"/>
+                <field name="caja"/>
+                <field name="fechahora_inicio"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sigmap_facturador_form" model="ir.ui.view">
+        <field name="name">facturador.form</field>
+        <field name="model">sigmap.facturador</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Facturador">
+                <sheet>
+                    <group name="header_details">
+                        <group name="header_left_group">
+                            <field name="user_id"/>
+                            <field name="reparto_id"/>
+                            <field name="company_id"/>
+                            <field name="sri_establecimiento_id" invisible="1"/>
+                            <field name="establecimiento"/>
+                            <field name="sri_punto_emision_id"/>
+                            <field name="punto_emision"/>
+                            <field name="caja"/>
+                            <field name="active"/>
+                        </group>
+                        <group name="header_right_group">
+                            <field name="fechahora_inicio"/>
+                            <field name="fechahora_fin"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="sigmap_facturador_model_action" model="ir.actions.act_window">
+        <field name="name">Caja facturador</field>
+		<field name="res_model">sigmap.facturador</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

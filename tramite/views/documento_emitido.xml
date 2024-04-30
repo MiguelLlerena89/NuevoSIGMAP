@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_tramite_documento_emitido_search" model="ir.ui.view">
+        <field name="name">tramite.documento.emitido.search</field>
+        <field name="model">tramite.documento.emitido</field>
+        <field name="arch" type="xml">
+            <search string="Documentos emitidos">
+                <field name="personal_maritimo_id" string="Número Cédula" filter_domain="[('personal_maritimo_id.vat', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Hoy" name="documento_emitido_today"
+                    domain="[('fecha_inicio', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_persona" string="Persona" domain="[]" context="{'group_by': 'personal_maritimo_id'}"/>
+                    <filter name="group_estado" string="Estado" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter name="group_fecha_inicio" string="Fecha Inicio" domain="[]" context="{'group_by': 'fecha_inicio'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_tramite_documento_emitido_tree" model="ir.ui.view">
+        <field name="name">Lista de documentos emitidos</field>
+        <field name="model">tramite.documento.emitido</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Documentos emitidos" create="0">
+                    <field name="company_id" invisible="1"/>
+                    <field name="name"/>
+                    <field name="tramite_id"/>
+                    <field name="model_name" string="Documento generado"/>
+                    <field name="tipo_documento_id"/>
+                    <field name="personal_maritimo_id"/>
+                    <field name="resource_ref"/>
+                    <field name="fecha_inicio"/>
+                    <field name="fecha_caducidad"/>
+                    <field name="caducado"/>
+                    <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_tramite_documento_emitido_form" model="ir.ui.view">
+        <field name="name">Documento emitido formulario</field>
+        <field name="model">tramite.documento.emitido</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Documento Persona">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button string="Supervisar" type="object" class="btn-primary"
+                            groups="personal_maritimo.group_dirnea_permar_supervisor"
+                            states="por_supervisar" name="action_supervisar"/>
+                    <button string="Aprobar" type="object" class="btn-primary"
+                            states="por_firmar" name="action_aprobar"/>
+                    <button name="action_previsualizar" type="object" class="btn-primary"
+                            string="Vista Previa" data-hotkey="k"
+                            states="en_tramite,por_supervisar"/>
+                    <button name="action_send_email" type="object" string="Enviar correo" class="oe_highlight" states="vigente"/>
+                </header>
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="company_id" invisible="1"/>
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <group>
+                    <field name="qr_code" widget='image' class="oe_avatar"/>
+                    <field name="reparto_id"/>
+                    <field name="tramite_id" readonly="1"/>
+                    <field name="model_model" invisible="1"/>
+                    <field name="expediente_archivo" states="vigente"/>
+                    <field name="tipo_documento_id"/>
+                    <field name="personal_maritimo_id"
+                        attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.gente_mar)d))]}"/>
+                    <field name="resource_ref"/>
+                    <field name="fecha_inicio"/>
+                    <field name="fecha_caducidad"/>
+                    <field name="caducado"/>
+                    <field name="elabora_id" />
+                    <field name="supervisa_id" />
+                    <field name="aprueba_id" />
+                    <field name="state" invisible="1" />
+                    <field name="data" filename="filename" widget="binary"/>
+                    <field name="filename" invisible="1" />
+                    <field name="archivo_firmado" filename="archivo_firmado_filename" widget="binary"/>
+                    <field name="archivo_firmado_filename" invisible="1" />
+                </group>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tramite_documento_emitido" model="ir.actions.act_window">
+        <field name="name">Documentos emitidos</field>
+        <field name="res_model">tramite.documento.emitido</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_tramite_documento_emitido_tree"/>
+        <field name="search_view_id" ref="view_tramite_documento_emitido_search"/>
+        <field name="context">{'create': 0, 'search_default_group_estado': 1}</field>
+        <field name="help" type="html">
+            <p>
+                No documento found.
+            </p>
+        </field>
+    </record>
+</odoo>

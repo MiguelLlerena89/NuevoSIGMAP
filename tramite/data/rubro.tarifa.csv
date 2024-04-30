@@ -1,0 +1,198 @@
+id,rubro_id:id,name,monto,tipo
+rubro_tarifa_1,tarifario_rubro_81,Certificado de suficiencia curso Modelo OMI ingles/español,3,constante
+rubro_tarifa_2,tarifario_rubro_90,Título de competencia ingles /español,3,constante
+rubro_tarifa_3,tarifario_rubro_91,Título de suficiencia ingles/español,3,constante
+rubro_tarifa_4,tarifario_rubro_88,Refrendo de título ingles/español,3,constante
+rubro_tarifa_5,tarifario_rubro_87,Refrendo de título curso de formación (Nacional),3,constante
+rubro_tarifa_6,tarifario_rubro_89,Refrendo de título otorgado por otra autoridad marítima,10,constante
+rubro_tarifa_7,tarifario_rubro_84,Reconocimiento Titulo de Formación (Extranjero),5.4,constante
+rubro_tarifa_8,tarifario_rubro_85,Reconocimiento Titulo de Formación (Nacional),1.55,constante
+rubro_tarifa_9,tarifario_rubro_80,Autorización de Evaluación de la Competencia 20,20,constante
+rubro_tarifa_10,tarifario_rubro_83,Matrícula Provisional de tráfico nacional,2.56,constante
+rubro_tarifa_11,tarifario_rubro_79,Matrícula Provisional de tráfico internacional,2.56,constante
+rubro_tarifa_12,tarifario_rubro_86,Refrendo de Certificado médico 1,1.79,constante
+rubro_tarifa_13,tarifario_rubro_82,Certificado Tiempo efectivo de embarque,8.12,constante
+rubro_tarifa_14,tramite.tarifario_rubro_2,CAPITÁN DE ALTURA,93,constante
+rubro_tarifa_15,tramite.tarifario_rubro_2,PRIMER OFICIAL DE CUBIERTA,59.41,constante
+rubro_tarifa_16,tramite.tarifario_rubro_2,SEGUNDO OFICIAL DE CUBIERTA,51.65,constante
+rubro_tarifa_17,tramite.tarifario_rubro_2,TERCER OFICIAL DE CUBIERTA,46.49,constante
+rubro_tarifa_18,tramite.tarifario_rubro_2,JEFE DE MÁQUINAS,72.33,constante
+rubro_tarifa_19,tramite.tarifario_rubro_2,PRIMER OFICIAL DE MÁQUINAS,59.41,constante
+rubro_tarifa_20,tramite.tarifario_rubro_2,SEGUNDO OFICIAL DE MÁQUINAS,51.65,constante
+rubro_tarifa_21,tramite.tarifario_rubro_2,TERCER OFICIAL DE MÁQUINAS,46.49,constante
+rubro_tarifa_22,tramite.tarifario_rubro_2,OFICIAL DE RADIOPERACIONES,72.33,constante
+rubro_tarifa_23,tramite.tarifario_rubro_2,OFICIAL ELECTROTÉCNICO,59.41,constante
+rubro_tarifa_24,tramite.tarifario_rubro_2,PATRÓN DE ALTURA,46.49,constante
+rubro_tarifa_25,tramite.tarifario_rubro_2,PATRÓN COSTANERO,23.24,constante
+rubro_tarifa_26,tramite.tarifario_rubro_2,MARINERO DE PRIMERA DE PUENTE,18.08,constante
+rubro_tarifa_27,tramite.tarifario_rubro_2,MARINERO DE CUBIERTA,12.91,constante
+rubro_tarifa_28,tramite.tarifario_rubro_2,MARINERO DE PRIMERA DE MÁQUINAS,23.24,constante
+rubro_tarifa_29,tramite.tarifario_rubro_2,MARINERO ELECTROTÉCNICO,23.24,constante
+rubro_tarifa_30,tramite.tarifario_rubro_2,MARINERO DE MÁQUINAS,12.91,constante
+rubro_tarifa_31,tramite.tarifario_rubro_2,CAPITÁN DE YATE DE ALTURA,93,constante
+rubro_tarifa_32,tramite.tarifario_rubro_2,CAPITÁN DE YATE,93,constante
+rubro_tarifa_33,tramite.tarifario_rubro_2,MARINERO DE YATE,23.24,constante
+rubro_tarifa_34,tramite.tarifario_rubro_2,CAPITÁN DE B/P,93,constante
+rubro_tarifa_35,tramite.tarifario_rubro_2,PATRÓN DE ALTURA DE B/P,46.49,constante
+rubro_tarifa_36,tramite.tarifario_rubro_2,PATRÓN COSTANERO DE B/P,23.24,constante
+rubro_tarifa_37,tramite.tarifario_rubro_2,JEFE DE MÁQUINAS DE B/P,64.58,constante
+rubro_tarifa_38,tramite.tarifario_rubro_2,PRIMER OFICIAL DE MÁQUINAS DE B/P,23.24,constante
+rubro_tarifa_39,tramite.tarifario_rubro_2,MARINERO DE PRIMERA DE PUENTE DE B/P,18.08,constante
+rubro_tarifa_40,tramite.tarifario_rubro_2,MARINERO PESCADOR,12.91,constante
+rubro_tarifa_41,tramite.tarifario_rubro_2,MARINERO DE PRIMERA DE MÁQUINAS DE B/P,18.08,constante
+rubro_tarifa_42,tramite.tarifario_rubro_2,MARINERO DE MÁQUINAS DE B/P,12.91,constante
+rubro_tarifa_43,tramite.tarifario_rubro_2,CAPITÁN DE PESCA,46.49,constante
+rubro_tarifa_44,tramite.tarifario_rubro_2,OBSERVADOR DE PESCA,46.49,constante
+rubro_tarifa_45,tramite.tarifario_rubro_2,PILOTO DE HELICÓPTERO DE B/P,93,constante
+rubro_tarifa_46,tramite.tarifario_rubro_2,MECÁNICO DE HELICÓPTERO DE B/P,23.24,constante
+rubro_tarifa_47,tramite.tarifario_rubro_2,TÉCNICO REFRIGERANTE,23.24,constante
+rubro_tarifa_48,tramite.tarifario_rubro_2,SOLDADOR,23.24,constante
+rubro_tarifa_49,tramite.tarifario_rubro_2,TORNERO,23.24,constante
+rubro_tarifa_50,tramite.tarifario_rubro_2,OPERADOR DE BOMBAS,12.91,constante
+rubro_tarifa_51,tramite.tarifario_rubro_2,ELECTRICISTA,23.24,constante
+rubro_tarifa_52,tramite.tarifario_rubro_2,ELECTRÓNICO,23.24,constante
+rubro_tarifa_53,tramite.tarifario_rubro_2,INFORMÁTICO,23.24,constante
+rubro_tarifa_54,tramite.tarifario_rubro_2,OPERADOR DE GRÚA A BORDO,23.24,constante
+rubro_tarifa_55,tramite.tarifario_rubro_2,COCINERO,36.17,constante
+rubro_tarifa_56,tramite.tarifario_rubro_2,DIRECTOR DE CRUCERO,59.41,constante
+rubro_tarifa_57,tramite.tarifario_rubro_2,GERENTE HOTELERO,59.41,constante
+rubro_tarifa_58,tramite.tarifario_rubro_2,ASISTENTE DE GERENTE HOTELERO,46.49,constante
+rubro_tarifa_59,tramite.tarifario_rubro_2,ADMINISTRADOR,59.41,constante
+rubro_tarifa_60,tramite.tarifario_rubro_2,RELACIONISTA PÚBLICO,23.24,constante
+rubro_tarifa_61,tramite.tarifario_rubro_2,RECEPCIONISTA,12.91,constante
+rubro_tarifa_62,tramite.tarifario_rubro_2,INGENIERO EN MANTENIMIENTO DE EQUIPOS HOTELEROS,59.41,constante
+rubro_tarifa_63,tramite.tarifario_rubro_2,JEFE DE COCINA,46.49,constante
+rubro_tarifa_64,tramite.tarifario_rubro_2,BARMAN,12.91,constante
+rubro_tarifa_65,tramite.tarifario_rubro_2,PANADERO,12.91,constante
+rubro_tarifa_66,tramite.tarifario_rubro_2,MÚSICO,12.91,constante
+rubro_tarifa_67,tramite.tarifario_rubro_2,FOTÓGRAFO,12.91,constante
+rubro_tarifa_68,tramite.tarifario_rubro_2,MASAJISTA,15.54,constante
+rubro_tarifa_69,tramite.tarifario_rubro_2,PROFESOR DE IDIOMAS,15.54,constante
+rubro_tarifa_70,tramite.tarifario_rubro_2,ENFERMERO,12.91,constante
+rubro_tarifa_71,tramite.tarifario_rubro_2,CARPINTERO/EBANISTA,12.91,constante
+rubro_tarifa_72,tramite.tarifario_rubro_2,JEFE DE SALÓN,46.49,constante
+rubro_tarifa_73,tramite.tarifario_rubro_2,BODEGUERO/GUARDALMACÉN,12.91,constante
+rubro_tarifa_74,tramite.tarifario_rubro_2,LAVANDERA,12.91,constante
+rubro_tarifa_75,tramite.tarifario_rubro_2,MAYORDOMO,46.49,constante
+rubro_tarifa_76,tramite.tarifario_rubro_2,POSILLERO,12.91,constante
+rubro_tarifa_77,tramite.tarifario_rubro_2,ENCARGADO DE BOUTIQUE,23.24,constante
+rubro_tarifa_78,tramite.tarifario_rubro_2,AMA DE LLAVES,12.91,constante
+rubro_tarifa_79,tramite.tarifario_rubro_2,GASFITERO,12.91,constante
+rubro_tarifa_80,tramite.tarifario_rubro_2,CAMARERO,12.91,constante
+rubro_tarifa_81,tramite.tarifario_rubro_2,SALONERO,12.91,constante
+rubro_tarifa_82,tramite.tarifario_rubro_2,GUÍA TURÍSTICO (CONTINENTAL),46.49,constante
+rubro_tarifa_83,tramite.tarifario_rubro_2,GUÍA NATURALISTA (INSULAR),46.49,constante
+rubro_tarifa_84,tramite.tarifario_rubro_2,MÉDICO,72.33,constante
+rubro_tarifa_85,tramite.tarifario_rubro_2,PESCADOR ARTESANAL,7.75,constante
+rubro_tarifa_86,tramite.tarifario_rubro_2,MARINERO PESCADOR VIVENCIAL O DEPORTIVA,7.75,constante
+rubro_tarifa_87,tramite.tarifario_rubro_2,PATRÓN FLUVIAL,10,constante
+rubro_tarifa_88,tramite.tarifario_rubro_2,MARINERO DE PRIMERA DE PUENTE FLUVIAL,10.33,constante
+rubro_tarifa_89,tramite.tarifario_rubro_2,MARINERO DE CUBIERTA FLUVIAL,7.7,constante
+rubro_tarifa_90,tramite.tarifario_rubro_2,PATRÓN DE BAHÍA,18.08,constante
+rubro_tarifa_91,tramite.tarifario_rubro_2,MARINERO DE BAHÍA,7.75,constante
+rubro_tarifa_92,tramite.tarifario_rubro_2,MARINERO LACUSTRE,7.75,constante
+rubro_tarifa_93,tramite.tarifario_rubro_2,REPRESENTANTE DE ARMADOR A BORDO,185.99,constante
+rubro_tarifa_94,tramite.tarifario_rubro_2,REPRESENTANTE ARMADOR A BORDO DE B/P,185.99,constante
+rubro_tarifa_95,tramite.tarifario_rubro_2,BUZO COMERCIAL BUZO PRINCIPIANTE O TENDER,50,constante
+rubro_tarifa_96,tramite.tarifario_rubro_2,BUZO COMERCIAL BUZO CON SUMINISTRO DE AIRE,50,constante
+rubro_tarifa_97,tramite.tarifario_rubro_2,BUZO COMERCIAL BUZO CON SUMINISTRO DE MEZCLA DE GAS,50,constante
+rubro_tarifa_98,tramite.tarifario_rubro_2,BUZO COMERCIAL BUZO DE CAMPANA O SATURACIÓN,50,constante
+rubro_tarifa_99,tramite.tarifario_rubro_2,BUZO COMERCIAL SUPERVISOR DE BUCEO CON SUMINISTRO DE AIRE,50,constante
+rubro_tarifa_100,tramite.tarifario_rubro_2,BUZO COMERCIAL SUPERVISOR DE BUCEO CON SUMINISTRO DE MEZCLA DE GAS,50,constante
+rubro_tarifa_101,tramite.tarifario_rubro_2,BUZO COMERCIAL SUPERVISOR DE BUCEO DE CAMPANA O SATURACIÓN,50,constante
+rubro_tarifa_102,tramite.tarifario_rubro_2,BUZO CIENTÍFICO,68.42,constante
+rubro_tarifa_103,tramite.tarifario_rubro_2,GUÍA DE BUCEO,45.61,constante
+rubro_tarifa_104,tramite.tarifario_rubro_2,INSTRUCTOR/GUÍA DE BUCEO DEPORTIVO,68.42,constante
+rubro_tarifa_105,tramite.tarifario_rubro_4,CAPITÁN DE ALTURA,93,constante
+rubro_tarifa_106,tramite.tarifario_rubro_4,PRIMER OFICIAL DE CUBIERTA,59.41,constante
+rubro_tarifa_107,tramite.tarifario_rubro_4,SEGUNDO OFICIAL DE CUBIERTA,51.65,constante
+rubro_tarifa_108,tramite.tarifario_rubro_4,TERCER OFICIAL DE CUBIERTA,46.49,constante
+rubro_tarifa_109,tramite.tarifario_rubro_4,JEFE DE MÁQUINAS,72.33,constante
+rubro_tarifa_110,tramite.tarifario_rubro_4,PRIMER OFICIAL DE MÁQUINAS,59.41,constante
+rubro_tarifa_111,tramite.tarifario_rubro_4,SEGUNDO OFICIAL DE MÁQUINAS,51.65,constante
+rubro_tarifa_112,tramite.tarifario_rubro_4,TERCER OFICIAL DE MÁQUINAS,46.49,constante
+rubro_tarifa_113,tramite.tarifario_rubro_4,OFICIAL DE RADIOPERACIONES,72.33,constante
+rubro_tarifa_114,tramite.tarifario_rubro_4,OFICIAL ELECTROTÉCNICO,59.41,constante
+rubro_tarifa_115,tramite.tarifario_rubro_4,PATRÓN DE ALTURA,46.49,constante
+rubro_tarifa_116,tramite.tarifario_rubro_4,PATRÓN COSTANERO,23.24,constante
+rubro_tarifa_117,tramite.tarifario_rubro_4,MARINERO DE PRIMERA DE PUENTE,18.08,constante
+rubro_tarifa_118,tramite.tarifario_rubro_4,MARINERO DE CUBIERTA,12.91,constante
+rubro_tarifa_119,tramite.tarifario_rubro_4,MARINERO DE PRIMERA DE MÁQUINAS,23.24,constante
+rubro_tarifa_120,tramite.tarifario_rubro_4,MARINERO ELECTROTÉCNICO,23.24,constante
+rubro_tarifa_121,tramite.tarifario_rubro_4,MARINERO DE MÁQUINAS,12.91,constante
+rubro_tarifa_122,tramite.tarifario_rubro_4,CAPITÁN DE YATE DE ALTURA,93,constante
+rubro_tarifa_123,tramite.tarifario_rubro_4,CAPITÁN DE YATE,93,constante
+rubro_tarifa_124,tramite.tarifario_rubro_4,MARINERO DE YATE,23.24,constante
+rubro_tarifa_125,tramite.tarifario_rubro_4,CAPITÁN DE B/P,93,constante
+rubro_tarifa_126,tramite.tarifario_rubro_4,PATRÓN DE ALTURA DE B/P,46.49,constante
+rubro_tarifa_127,tramite.tarifario_rubro_4,PATRÓN COSTANERO DE B/P,23.24,constante
+rubro_tarifa_128,tramite.tarifario_rubro_4,JEFE DE MÁQUINAS DE B/P,64.58,constante
+rubro_tarifa_129,tramite.tarifario_rubro_4,PRIMER OFICIAL DE MÁQUINAS DE B/P,23.24,constante
+rubro_tarifa_130,tramite.tarifario_rubro_4,MARINERO DE PRIMERA DE PUENTE DE B/P,18.08,constante
+rubro_tarifa_131,tramite.tarifario_rubro_4,MARINERO PESCADOR,12.91,constante
+rubro_tarifa_132,tramite.tarifario_rubro_4,MARINERO DE PRIMERA DE MÁQUINAS DE B/P,18.08,constante
+rubro_tarifa_133,tramite.tarifario_rubro_4,MARINERO DE MÁQUINAS DE B/P,12.91,constante
+rubro_tarifa_134,tramite.tarifario_rubro_4,CAPITÁN DE PESCA,46.49,constante
+rubro_tarifa_135,tramite.tarifario_rubro_4,OBSERVADOR DE PESCA,46.49,constante
+rubro_tarifa_136,tramite.tarifario_rubro_4,PILOTO DE HELICÓPTERO DE B/P,93,constante
+rubro_tarifa_137,tramite.tarifario_rubro_4,MECÁNICO DE HELICÓPTERO DE B/P,23.24,constante
+rubro_tarifa_138,tramite.tarifario_rubro_4,TÉCNICO REFRIGERANTE,23.24,constante
+rubro_tarifa_139,tramite.tarifario_rubro_4,SOLDADOR,23.24,constante
+rubro_tarifa_140,tramite.tarifario_rubro_4,TORNERO,23.24,constante
+rubro_tarifa_141,tramite.tarifario_rubro_4,OPERADOR DE BOMBAS,12.91,constante
+rubro_tarifa_142,tramite.tarifario_rubro_4,ELECTRICISTA,23.24,constante
+rubro_tarifa_143,tramite.tarifario_rubro_4,ELECTRÓNICO,23.24,constante
+rubro_tarifa_144,tramite.tarifario_rubro_4,INFORMÁTICO,23.24,constante
+rubro_tarifa_145,tramite.tarifario_rubro_4,OPERADOR DE GRÚA A BORDO,23.24,constante
+rubro_tarifa_146,tramite.tarifario_rubro_4,COCINERO,36.17,constante
+rubro_tarifa_147,tramite.tarifario_rubro_4,DIRECTOR DE CRUCERO,59.41,constante
+rubro_tarifa_148,tramite.tarifario_rubro_4,GERENTE HOTELERO,59.41,constante
+rubro_tarifa_149,tramite.tarifario_rubro_4,ASISTENTE DE GERENTE HOTELERO,46.49,constante
+rubro_tarifa_150,tramite.tarifario_rubro_4,ADMINISTRADOR,59.41,constante
+rubro_tarifa_151,tramite.tarifario_rubro_4,RELACIONISTA PÚBLICO,23.24,constante
+rubro_tarifa_152,tramite.tarifario_rubro_4,RECEPCIONISTA,12.91,constante
+rubro_tarifa_153,tramite.tarifario_rubro_4,INGENIERO EN MANTENIMIENTO DE EQUIPOS HOTELEROS,59.41,constante
+rubro_tarifa_154,tramite.tarifario_rubro_4,JEFE DE COCINA,46.49,constante
+rubro_tarifa_155,tramite.tarifario_rubro_4,BARMAN,12.91,constante
+rubro_tarifa_156,tramite.tarifario_rubro_4,PANADERO,12.91,constante
+rubro_tarifa_157,tramite.tarifario_rubro_4,MÚSICO,12.91,constante
+rubro_tarifa_158,tramite.tarifario_rubro_4,FOTÓGRAFO,12.91,constante
+rubro_tarifa_159,tramite.tarifario_rubro_4,MASAJISTA,15.54,constante
+rubro_tarifa_160,tramite.tarifario_rubro_4,PROFESOR DE IDIOMAS,15.54,constante
+rubro_tarifa_161,tramite.tarifario_rubro_4,ENFERMERO,12.91,constante
+rubro_tarifa_162,tramite.tarifario_rubro_4,CARPINTERO/EBANISTA,12.91,constante
+rubro_tarifa_163,tramite.tarifario_rubro_4,JEFE DE SALÓN,46.49,constante
+rubro_tarifa_164,tramite.tarifario_rubro_4,BODEGUERO/GUARDALMACÉN,12.91,constante
+rubro_tarifa_165,tramite.tarifario_rubro_4,LAVANDERA,12.91,constante
+rubro_tarifa_166,tramite.tarifario_rubro_4,MAYORDOMO,46.49,constante
+rubro_tarifa_167,tramite.tarifario_rubro_4,POSILLERO,12.91,constante
+rubro_tarifa_168,tramite.tarifario_rubro_4,ENCARGADO DE BOUTIQUE,23.24,constante
+rubro_tarifa_169,tramite.tarifario_rubro_4,AMA DE LLAVES,12.91,constante
+rubro_tarifa_170,tramite.tarifario_rubro_4,GASFITERO,12.91,constante
+rubro_tarifa_171,tramite.tarifario_rubro_4,CAMARERO,12.91,constante
+rubro_tarifa_172,tramite.tarifario_rubro_4,SALONERO,12.91,constante
+rubro_tarifa_173,tramite.tarifario_rubro_4,GUÍA TURÍSTICO (CONTINENTAL),46.49,constante
+rubro_tarifa_174,tramite.tarifario_rubro_4,GUÍA NATURALISTA (INSULAR),46.49,constante
+rubro_tarifa_175,tramite.tarifario_rubro_4,MÉDICO,72.33,constante
+rubro_tarifa_176,tramite.tarifario_rubro_4,PESCADOR ARTESANAL,7.75,constante
+rubro_tarifa_177,tramite.tarifario_rubro_4,MARINERO PESCADOR VIVENCIAL O DEPORTIVA,7.75,constante
+rubro_tarifa_178,tramite.tarifario_rubro_4,PATRÓN FLUVIAL,10,constante
+rubro_tarifa_179,tramite.tarifario_rubro_4,MARINERO DE PRIMERA DE PUENTE FLUVIAL,10.33,constante
+rubro_tarifa_180,tramite.tarifario_rubro_4,MARINERO DE CUBIERTA FLUVIAL,7.7,constante
+rubro_tarifa_181,tramite.tarifario_rubro_4,PATRÓN DE BAHÍA,18.08,constante
+rubro_tarifa_182,tramite.tarifario_rubro_4,MARINERO DE BAHÍA,7.75,constante
+rubro_tarifa_183,tramite.tarifario_rubro_4,MARINERO LACUSTRE,7.75,constante
+rubro_tarifa_184,tramite.tarifario_rubro_4,REPRESENTANTE DE ARMADOR A BORDO,185.99,constante
+rubro_tarifa_185,tramite.tarifario_rubro_4,REPRESENTANTE ARMADOR A BORDO DE B/P,185.99,constante
+rubro_tarifa_186,tramite.tarifario_rubro_4,BUZO COMERCIAL BUZO PRINCIPIANTE O TENDER,50,constante
+rubro_tarifa_187,tramite.tarifario_rubro_4,BUZO COMERCIAL BUZO CON SUMINISTRO DE AIRE,50,constante
+rubro_tarifa_188,tramite.tarifario_rubro_4,BUZO COMERCIAL BUZO CON SUMINISTRO DE MEZCLA DE GAS,50,constante
+rubro_tarifa_189,tramite.tarifario_rubro_4,BUZO COMERCIAL BUZO DE CAMPANA O SATURACIÓN,50,constante
+rubro_tarifa_190,tramite.tarifario_rubro_4,BUZO COMERCIAL SUPERVISOR DE BUCEO CON SUMINISTRO DE AIRE,50,constante
+rubro_tarifa_191,tramite.tarifario_rubro_4,BUZO COMERCIAL SUPERVISOR DE BUCEO CON SUMINISTRO DE MEZCLA DE GAS,50,constante
+rubro_tarifa_192,tramite.tarifario_rubro_4,BUZO COMERCIAL SUPERVISOR DE BUCEO DE CAMPANA O SATURACIÓN,50,constante
+rubro_tarifa_193,tramite.tarifario_rubro_4,BUZO CIENTÍFICO,68.42,constante
+rubro_tarifa_194,tramite.tarifario_rubro_4,GUÍA DE BUCEO,45.61,constante
+rubro_tarifa_195,tramite.tarifario_rubro_4,INSTRUCTOR/GUÍA DE BUCEO DEPORTIVO,68.42,constante
+rubro_tarifa_196,tramite.tarifario_rubro_5,Matrícula nacional - Carnet,10,constante
+rubro_tarifa_197,tramite.tarifario_rubro_6,Matrícula internacional - Libretín,10,constante

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.module.category" id="security_tramite_groups">
+        <field name="name">Trámites</field>
+    </record>
+
+    <record id="group_creacion_solicitud" model="res.groups">
+        <field name="name">Creación solicitud</field>
+        <field name="category_id" ref="tramite.security_tramite_groups"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_confirmar_solicitud_en_linea" model="res.groups">
+        <field name="name">Confirmar solicitud en línea</field>
+        <field name="category_id" ref="tramite.security_tramite_groups"/>
+        <field name="implied_ids" eval="[(4, ref('tramite.group_creacion_solicitud'))]"/>
+    </record>
+
+    <record id="group_registrar_pago" model="res.groups">
+        <field name="name">Registrar pagos</field>
+        <field name="category_id" ref="tramite.security_tramite_groups"/>
+        <!--field name="implied_ids" eval="[(4, ref('tramite.group_creacion_solicitud'))]"/-->
+    </record>
+
+    <record id="group_confirmar_pago" model="res.groups">
+        <field name="name">Confirmar pagos</field>
+        <field name="category_id" ref="tramite.security_tramite_groups"/>
+        <field name="implied_ids" eval="[(4, ref('tramite.group_creacion_solicitud'))]"/>
+    </record>
+
+    <record id="group_cierre_caja" model="res.groups">
+        <field name="name">Cierre de caja</field>
+        <field name="category_id" ref="tramite.security_tramite_groups"/>
+        <field name="implied_ids" eval="[(4, ref('tramite.group_confirmar_pago'))]"/>
+    </record>
+
+    <record id="group_consolidacion_caja" model="res.groups">
+        <field name="name">Consolidación de caja</field>
+        <field name="category_id" ref="tramite.security_tramite_groups"/>
+        <field name="implied_ids" eval="[(4, ref('tramite.group_confirmar_pago'))]"/>
+    </record>
+
+    <record id="group_revision_caja" model="res.groups">
+        <field name="name">Revisión de caja</field>
+        <field name="category_id" ref="tramite.security_tramite_groups"/>
+        <field name="implied_ids" eval="[(4, ref('tramite.group_confirmar_pago'))]"/>
+    </record>
+
+    <record id="group_personal_maritimo_biometrico" model="res.groups">
+        <field name="name">Captura de foto y firma</field>
+        <field name="category_id" ref="tramite.security_tramite_groups"/>
+    </record>
+
+    <record model="ir.module.category" id="security_atenus_groups">
+        <field name="name">Atenus</field>
+    </record>
+
+    <record id="group_dirnea_atenus_operador" model="res.groups">
+        <field name="name">DIRNEA ATENUS Operador</field>
+        <field name="category_id" ref="tramite.security_atenus_groups"/>
+        <field name="implied_ids" eval="[
+            (4, ref('personal_maritimo.group_gente_mar_edicion')),
+            (4, ref('tramite.group_creacion_solicitud')),
+            (4, ref('tramite.group_registrar_pago')),
+            (4, ref('tramite.group_confirmar_pago')),
+            (4, ref('tramite.group_cierre_caja')),
+            (4, ref('tramite.group_personal_maritimo_biometrico')),
+            ]"/>
+    </record>
+
+    <record id="group_dirnea_atenus_supervisor" model="res.groups">
+        <field name="name">DIRNEA ATENUS Supervisor</field>
+        <field name="category_id" ref="tramite.security_atenus_groups"/>
+        <field name="implied_ids" eval="[
+            (4, ref('personal_maritimo.group_gente_mar_administracion')),
+            (4, ref('tramite.group_consolidacion_caja'))
+            ]"/>
+        <!-- Revisar implied a operador -->
+    </record>
+
+    <record id="group_dirnea_atenus_biometrico" model="res.groups">
+        <field name="name">Captura datos biométrico</field>
+        <field name="category_id" ref="tramite.security_atenus_groups"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <!-- Revisar implied a operador -->
+        <field name="implied_ids" eval="[(4, ref('tramite.group_dirnea_atenus_operador'))]"/>
+    </record>
+
+    <record id="group_capitania_atenus_operador" model="res.groups">
+        <field name="name">Capitanía ATENUS Operador</field>
+        <field name="category_id" ref="tramite.security_atenus_groups"/>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo.group_gente_mar_edicion'))]"/>
+    </record>
+
+    <record id="group_capitania_atenus_facturador" model="res.groups">
+        <field name="name">Capitanía ATENUS Facturador</field>
+        <field name="category_id" ref="tramite.security_atenus_groups"/>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo.group_gente_mar_edicion'))]"/>
+    </record>
+
+    <record id="group_capitania_atenus_supervisor" model="res.groups">
+        <field name="name">Capitanía ATENUS Supervisor</field>
+        <field name="implied_ids" eval="[(4, ref('personal_maritimo.group_gente_mar_administracion'))]"/>
+    </record>
+
+    <record id="group_capitania_atenus_biometrico" model="res.groups">
+        <field name="name">Capitanía ATENUS Captura datos biométrico</field>
+        <field name="category_id" ref="tramite.security_atenus_groups"/>
+        <field name="implied_ids" eval="[(4, ref('tramite.group_capitania_atenus_operador'))]"/>
+    </record>
+
+    <record id="group_tramite_general_sumilla" model="res.groups">
+        <field name="name">Configuración sumilla</field>
+        <field name="category_id" ref="tramite.security_tramite_groups"/>
+        <!--field name="implied_ids" eval="[(4, ref('tramite.group_creacion_solicitud'))]"/-->
+    </record>
+
+</odoo>

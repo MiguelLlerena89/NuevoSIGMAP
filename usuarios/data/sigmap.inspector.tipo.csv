@@ -1,0 +1,7 @@
+id,orden,name,active
+sigmap_inspector_menores,10,Naves Menores,True
+sigmap_inspector_mayores,20,Naves Mayores,True
+sigmap_inspector_nuevas,30,Nuevas Construcciones,True
+sigmap_inspector_rector,40,Estado Rector del Puerto,True
+sigmap_inspector_10_trb,50,Naves < 10 TRB,True
+sigmap_inspector_smm,60,SMM,True

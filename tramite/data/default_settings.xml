@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+         <record id="config_tramite_tiempo_minimo_validez_docs" model="ir.config_parameter">
+            <field name="key">tramite.tiempo_minimo_validez_documentos</field>
+            <field name="value">3</field>
+        </record>
+         <record id="config_tramite_tiempo_maximo_validez_solicitudes" model="ir.config_parameter">
+            <field name="key">tramite.tiempo_maximo_validez_solicitudes</field>
+            <field name="value">2</field>
+        </record>
+         <record id="config_tramite_libro_numero" model="ir.config_parameter">
+            <field name="key">tramite.libro_numero</field>
+            <field name="value">1</field>
+        </record>
+         <record id="config_tramite_sbu" model="ir.config_parameter">
+            <field name="key">tramite.sbu</field>
+            <field name="value">450</field>
+        </record>
+        <!--record id="config_tramite_nave_estados_que_bloquean" model="ir.config_parameter">
+            <field name="key">nave.estados_bloquean_naves_ids</field>
+            <field name="value" eval="[
+                ref('nave.nave_estado_abandonada'),
+                ref('nave.nave_estado_baja'),
+                ref('nave.nave_estado_investiga'),
+                ref('nave.nave_estado_desaparecida'),
+                ref('nave.nave_estado_impedida'),
+                ref('nave.nave_estado_duplicada'),
+                ref('nave.nave_estado_desguace'),
+                ref('nave.nave_estado_sinactividad'),
+                ref('nave.nave_estado_prohib_zarpe'),
+                ref('nave.nave_estado_susp_mat_arm'),
+                ref('nave.nave_estado_act_ili'),
+                ref('nave.nave_estado_susp_perm_estatutarios'),
+                ref('nave.nave_estado_ord_jud'),
+            ]" />
+        </record-->
+    </data>
+</odoo>

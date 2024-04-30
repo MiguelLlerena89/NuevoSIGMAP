@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="paperformat_no_header_document_usuarios" model="report.paperformat">
+        <field name="name">Management A4 Portrait Acta de Confidencialidad Usuarios</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">35</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">20</field>
+        <field name="margin_right">20</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="action_acta_confidencialidad_print" model="ir.actions.report">
+        <field name="name">Acta de confidencialidad</field>
+        <field name="model">acta.confidencialidad</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">usuarios.acta_confidencialidad_report</field>
+        <field name="report_file">usuarios.acta_confidencialidad_report</field>
+        <field name="print_report_name">'SIGMAP - Acta de confidencialidad - %s' % (object.user_id.name)</field> <field name="binding_model_id" ref="model_acta_confidencialidad"/>
+        <field name="paperformat_id" ref="paperformat_no_header_document_usuarios"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

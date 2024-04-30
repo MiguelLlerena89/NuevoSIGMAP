@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+        <menuitem id="menu_solicitud" name="Trámites" sequence="1"
+            parent="account.menu_finance">
+            <menuitem id="menu_sale_quotations"
+                name="Solicitud de trámite"
+                action="sale.action_quotations"
+                groups="sales_team.group_sale_salesman"
+                sequence="1"/>
+
+            <menuitem id="menu_sale_order"
+                name="Ordenes"
+                action="sale.action_orders"
+                groups="sales_team.group_sale_salesman"
+                sequence="2"/>
+
+            <menuitem id="menu_action_tramite"
+                name="Trámites"
+                action="action_tramite"
+                sequence="3"/>
+            <menuitem id="menu_action_tramite_documento"
+                name="Documentos y servicios disponibles"
+                action="action_tramite_documento" sequence="2"/>
+            <menuitem id="menu_action_tramite_documento_emitido"
+                name="Documentos emitidos"
+                action="action_tramite_documento_emitido" sequence="3"/>
+            <!--menuitem id="menu_action_tramite_documento_emitido"
+                name="Documentos emitidos ABC"
+                action="action_tramite_documento_emitido" sequence="4"/-->
+
+        </menuitem>
+        <menuitem id="menu_tramite_tarifario" name="Tarifario" sequence="3"
+            parent="account.menu_finance">
+            <menuitem id="menu_action_tramite_tarifario" action="action_tramite_tarifario" sequence="1"/>
+            <menuitem id="menu_action_producto_rubro" action="action_producto_rubro" sequence="3"/>
+            <menuitem id="menu_action_rubro_tarifa" action="action_rubro_tarifa" sequence="3"/>
+            <menuitem id="menu_action_rubro_regla" action="action_rubro_regla" sequence="3"/>
+            <menuitem id="menu_action_rubro_tarifa_valor" action="action_rubro_tarifa_valor" sequence="3"/>
+            <menuitem id="menu_action_wizard_tarifario_rubro_update_form" action="action_wizard_tarifario_rubro_update_form" sequence="4"/>
+        </menuitem>
+        <menuitem id="menu_persona_mar_1_config" name="Configuración" sequence="4"
+            parent="personal_maritimo.menu_persona_mar">
+            <menuitem id="configuration"
+                name="Configuration"
+                action="action_tramite_config_settings"
+                sequence="1"/>
+        </menuitem>
+</odoo>

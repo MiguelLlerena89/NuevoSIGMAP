@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- record id="view_sigmap_sumilla_tree" model="ir.ui.view">
+        <field name="name">sigmap.especialidad.tree</field>
+        <field name="model">sigmap.especialidad</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Especialidad">
+                <field name=""/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record !-->
+
+    <record id="view_sigmap_especialidad_form" model="ir.ui.view">
+        <field name="name">sigmap.especialidad.form</field>
+        <field name="model">sigmap.especialidad</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Especialidad">
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="mt0">
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group name="header_details">
+                        <group name="header_left_group">
+                            <field name="abreviatura" />
+                            <field name="active" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sigmap_especialidad_model_action" model="ir.actions.act_window">
+        <field name="name">Especialidad</field>
+		<field name="res_model">sigmap.especialidad</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
+

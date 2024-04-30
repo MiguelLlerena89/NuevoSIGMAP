@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_tramite_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.tramite</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Tramite" data-key="tramite"
+                    string="Tramite">
+                    <h2>Tarifario</h2>
+                    <div class="row mt16 o_settings_container" id="tarifario_management" >
+                        <div class="col-12 " id="tarifario_of_request_setting_container" >
+                            <div>
+                                <div>
+                                    <span >SBU (Salario Básico Unificado): <field name="sbu"/></span>
+                                </div>
+                           </div>
+                       </div>
+                   </div>
+                    <h2>Validaciones de trámite</h2>
+                    <div class="row mt16 o_settings_container" id="tramite_management" >
+                        <div class="col-12 " id="tramite_minimun_days_setting_container" >
+                            <div >
+                                <div >
+                                    <span >Tiempo mínimo validez documentos: <field name="tiempo_minimo_validez_documentos"/> meses</span>
+                                </div>
+                           </div>
+                       </div>
+                    </div>
+                    <h2>Validaciones de solicitudes</h2>
+                    <div class="row mt16 o_settings_container" id="solicitud_management" >
+                        <div class="col-12 " id="maximum_days_of_request_setting_container" >
+                            <div>
+                                <div>
+                                    <span >Duración máximo de días para validez de la solicitud: <field name="tiempo_maximo_validez_solicitudes"/> (días) </span>
+                                </div>
+                           </div>
+                       </div>
+                       <div class="col-12 " id="reparto_estados_bloquean_ids_request_setting_container" >
+                            <div>
+                                <span >Estados de Operación de Naves que impiden la selección de estas embarcaciones en las Solicitudes <field name="estados_bloquean_naves_ids" widget="many2many_tags"/></span>
+                           </div>
+                        </div>
+                    </div>
+                    <h2>Libro de refrendos de títulos</h2>
+                    <div class="row mt16 o_settings_container" id="refrendo_management" >
+                        <div class="col-12 " id="libro_numero_of_request_setting_container" >
+                            <div>
+                                <div>
+                                    <span >Libro refrendo: <field name="libro_numero"/></span>
+                                </div>
+                           </div>
+                       </div>
+                    </div>
+               </div>
+           </xpath>
+        </field>
+    </record>
+
+    <record id="action_tramite_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_tramite_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <!--field name="context">{'module' : 'tramite', 'bin_size': False}</field-->
+        <field name="context">{'module' : 'tramite'}</field>
+    </record>
+
+</odoo>

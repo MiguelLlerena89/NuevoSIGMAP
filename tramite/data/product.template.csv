@@ -1,0 +1,25 @@
+id,servicio_id:id,name,tarifario_id:id,articulo
+tarifario_rubro_1,tramite.tramite_documento_1,Documentos Personal Mercante - Copia Certificada,tramite.tarifario_1,5
+tarifario_rubro_2,tramite.tramite_documento_2,Matrícula Personal Mercante - Internacional,tramite.tarifario_1,77
+tarifario_rubro_3,tramite.tramite_documento_2,Seamans Book,tramite.tarifario_1,77
+tarifario_rubro_4,tramite.tramite_documento_4,Matrícula Personal Mercante - Nacional,tramite.tarifario_1,77
+tarifario_rubro_5,tramite.tramite_documento_4,Carnet Marítimo,tramite.tarifario_1,77
+tarifario_rubro_6,tramite.tramite_documento_2,Libretín,tramite.tarifario_1,77
+tarifario_rubro_80,tramite.tramite_documento_78,Autorización de Evaluación de la Competencia,tramite.tarifario_1,77
+tarifario_rubro_81,tramite.tramite_documento_90,Certificado de suficiencia curso Modelo OMI ingles/español,tramite.tarifario_1,77
+tarifario_rubro_82,tramite.tramite_documento_79,Certificado Tiempo efectivo de embarque,tramite.tarifario_1,77
+tarifario_rubro_83,tramite.tramite_documento_77,Matrícula Provisional de tráfico nacional,tramite.tarifario_1,77
+tarifario_rubro_79,tramite.tramite_documento_80,Matrícula Provisional de tráfico internacional,tramite.tarifario_1,77
+tarifario_rubro_84,tramite.tramite_documento_81,Reconocimiento Titulo de Formación (Extranjero),tramite.tarifario_1,77
+tarifario_rubro_85,tramite.tramite_documento_82,Reconocimiento Titulo de Formación (Nacional),tramite.tarifario_1,77
+tarifario_rubro_86,tramite.tramite_documento_88,Refrendo de Certificado médico,tramite.tarifario_1,77
+tarifario_rubro_87,tramite.tramite_documento_89,Refrendo de título curso de formación (Nacional),tramite.tarifario_1,77
+tarifario_rubro_88,tramite.tramite_documento_83,Refrendo de título ingles/español,tramite.tarifario_1,77
+tarifario_rubro_89,tramite.tramite_documento_84,Refrendo de título otorgado por otra autoridad marítima,tramite.tarifario_1,77
+tarifario_rubro_90,tramite.tramite_documento_85,Título de competencia ingles /español,tramite.tarifario_1,77
+tarifario_rubro_91,tramite.tramite_documento_86,Título de suficiencia ingles/español,tramite.tarifario_1,77
+tarifario_rubro_93,tramite.tramite_documento_71,Dispensas,tramite.tarifario_1,82
+tarifario_rubro_94,tramite.tramite_documento_101,Permiso Provisional De Embarque - Para Actividades Científicas Y De Investigación,tramite.tarifario_1,82
+tarifario_rubro_95,tramite.tramite_documento_102,Permiso provisional de Embarque por entrenamiento-aspirantes a marineros de cubierta/máquina/electrotécnico,tramite.tarifario_1,82
+tarifario_rubro_96,tramite.tramite_documento_103,"Permiso Provisional De Embarque Por Entrenamiento-Pilotines, Cadetes Y Aspirantes A Oficiales Electrónicos",tramite.tarifario_1,82
+tarifario_rubro_97,tramite.tramite_documento_104,Permiso Provisional De Embarque Por Trabajo -Para Trabajo En General,tramite.tarifario_1,82

@@ -1,0 +1,148 @@
+id,name,caducidad,validar_jerarquia,emitido_por_dirnea,validar_cursos_omi,validar_cursos_formacion,tipo_documento_id:id,es_provisional
+tramite_documento_1,Copia Certificada,1,False,True,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_2,Matrícula Personal Mercante Internacional – Seamans Book,5,True,True,True,True,base_sigmap.gente_mar,FALSE
+tramite_documento_4,Matrícula Personal Mercante Nacional – Carnet Marítimo,5,True,True,True,True,base_sigmap.gente_mar,FALSE
+tramite_documento_5,Curso modelo OMI,5,False,False,True,False,base_sigmap.gente_mar,FALSE
+tramite_documento_71,Dispensas,5,True,True,True,True,base_sigmap.gente_mar,FALSE
+tramite_documento_72,Certificado de que no se encuentra planificando el curso de ascenso,0,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_73,Reconocimiento certificado médico,5,False,True,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_78,Autorización de Evaluación de la Competencia,5,False,True,False,True,base_sigmap.gente_mar,FALSE
+tramite_documento_79,Certificado Tiempo efectivo de embarque,5,False,True,False,True,base_sigmap.gente_mar,FALSE
+tramite_documento_80,Matrícula Provisional de tráfico internacional - Seamans Book,5,True,True,True,True,base_sigmap.gente_mar,TRUE
+tramite_documento_77,Matrícula Provisional de tráfico nacional - Carnet Marítimo,5,True,True,True,True,base_sigmap.gente_mar,TRUE
+tramite_documento_81,Reconocimiento Titulo de Formación (Extranjero),5,False,True,True,True,base_sigmap.gente_mar,FALSE
+tramite_documento_82,Reconocimiento Titulo de Formación (Nacional),5,False,True,True,True,base_sigmap.gente_mar,FALSE
+tramite_documento_83,Refrendo de título ingles/español,5,True,True,False,True,base_sigmap.gente_mar,FALSE
+tramite_documento_84,Refrendo de título otorgado por otra autoridad marítima,5,False,True,False,True,base_sigmap.gente_mar,FALSE
+tramite_documento_85,Certificado de competencia de título inglés/español,5,True,True,False,True,base_sigmap.gente_mar,FALSE
+tramite_documento_86,Certificado de suficiencia de título inglés/español,5,True,True,True,True,base_sigmap.gente_mar,FALSE
+tramite_documento_88,Refrendo de Certificado médico,2,False,True,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_89,Refrendo de título curso de formación (Nacional),5,True,True,False,True,base_sigmap.gente_mar,FALSE
+tramite_documento_90,Certificado de suficiencia curso Modelo OMI ingles/español,5,False,True,True,False,base_sigmap.gente_mar,FALSE
+tramite_documento_92,Copia certificado suficiencia cursos modelo OMI,0,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_93,Copia certificado médico refrendado,0,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_94,Copia título de formación ESMENA o centro de formación,0,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_95,Copia certificado médico,0,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_96,Copia título de formación/ascenso,0,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_98,Título de formación/ascenso,0,True,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_99,Resultado laboratorio clínico,0,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_100,Denuncia matrícula,0,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_101,Permiso Provisional De Embarque - Para Actividades Científicas Y De Investigación,2,True,True,True,True,base_sigmap.gente_mar,FALSE
+tramite_documento_102,Permiso provisional de Embarque por entrenamiento - aspirantes a marineros de cubierta/máquina/electrotécnico,2,True,True,True,True,base_sigmap.gente_mar,FALSE
+tramite_documento_103,"Permiso Provisional De Embarque Por Entrenamiento - Pilotines, Cadetes Y Aspirantes A Oficiales Electrónicos",2,True,True,True,True,base_sigmap.gente_mar,FALSE
+tramite_documento_104,Permiso Provisional De Embarque Por Trabajo - Para Trabajo En General,2,True,True,True,True,base_sigmap.gente_mar,FALSE
+tramite_documento_105,"Carta del armador de la nave (especificar nombres y número de cédula del beneficiario, fecha de embarque, nombre de la nave, días de embarque y cargo a desempeñar a bordo)",1,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_106,Copia pasaporte,5,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_107,Copia visa,5,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_108,"Oficio de la ESMENA (especificar nombres y número de cédula del beneficiario, fecha de embarque, nombre de la nave, días de embarque)",1,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_109,Factura y/o certificado que se encuentre inscrito en ESMENA para realizar los cursos OMI ,1,False,False,False,False,base_sigmap.gente_mar,FALSE
+tramite_documento_110,Aprobación de Cuadro de Zafarrancho,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_111,Aprobación de Evaluación PBIP (Instalación Portuaria),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_112,Aprobación de Manual de Gestión de Seguridad,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_113,Aprobación de Manual del Plan de Manejo de Basura,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_114,Libro de Registro de Basuras,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_115,Aprobación de Manual del Plan Manejo Aguas Lastre,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_116,Aprobación de Manual del Plan SOPEP,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_117,Aprobación de Plan PBIP (Buque/Instalación Portuaria),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_118,Aprobación de planos de capacidad de combustible,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_119,Aprobación de Planos de Seguridad y Contraincendio,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_120,Aprobación de planos Definitivos,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_121,Aprobación de planos por Importación,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_122,Aprobación del Libreto de Estabilidad de Naves,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_123,Aprobación Diseño y planos de naves sin licencia construcción,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_124,Asignación de Código MMSI,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_125,Auditoría ISM (Oficina/Buque),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_126,Certificado de Gestión de Seguridad (ISM) (Pasaje navegable > 12 pax),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_127,Documento de Cumplimiento de Compañía por ISM (DOC),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_128,Auditoría PBIP (Buque/Instalación Portuaria),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_129,Autorización cambio de Nombre de Nave,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_130,Autorización de Libre Operación (ALO),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_132,Cambio de Puerto de Registro,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_133,Cambio Propietario de Nave,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_134,Cancelación de Gravamen e Hipotecas,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_136,Cancelación de Patente de Navegación,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_137,Cancelación de Registro de Interdicción,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_138,Canje de Documentos,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_139,"Certificado de arqueo, avalúo y clasificación",1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_140,Certificado Internacional de Arqueo (eslora < 24 mts),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_141,Certificado Internacional de Arqueo (eslora > 24 mts),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_142,Certificado de Declaración de Cumplimiento-CAP,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_143,Certificado de Dotación Mínima de Seguridad,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_144,Certificado de Excención,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_145,"Certificado de Historia Dominio, Gravamen",1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_146,Autorización de Registro de Nave en otra Capitanía,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_149,Certificado Seguro de Garantía por contaminación de aguas por Hidrocarburos,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_150,Plan de Emergencia de Derrame de Hidrocarburos (SOPEP) Aprobado,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_151,Libro de Registro de hidrocarburos,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_152,Consultas,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_154,Ingreso y baja de motores fuera de borda,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_155,Inspección de Conformidad Pruebas LRIT,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_156,Inspección de Seguridad de Buque de Carga (<500TRB),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_158,Inspección de Sistemas Anticrustantes,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_159,Inspección en dique/submarina,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_160,Inspección de dique en astilleros/varaderos nacional,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_161,Inspección de dique en astilleros/varaderos internacional,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_162,Inspección Estado Rector de Puerto,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_163,Inspección IOPP,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_164,Certificado Internacional de Prevención a la Contaminación por Hidrocarburos (IOPP),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_165,Inspección ocasional seguridad previo a zarpe a región Insular,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_166,Inspección por siniestro o accidente,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_167,Inspección Prevención Contaminación Aguas Sucias,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_170,Inspección/Endoso de Línea de Carga y francobordo,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_171,Licencia Construcción / Modificación,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_172,Matrícula de Nave Mayor a 10 TRB,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_173,Matrícula de Nave Menor a 10TRB,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_174,Matrícula y/o Renovación de Armador de Naves < 50TRB,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_175,Matrícula y/o Renovación de Armador de Naves > 50TRB,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_176,Multas - citaciones,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_177,Pasavante de Navegación,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_178,Patente de Navegación,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_179,Permiso de Tráfico Internacional,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_180,Permiso de Tráfico Nacional,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_181,Registro de Gravamen e hipoteca,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_182,Registro de Inscripción de embarcación por primera vez,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_183,Registro de Interdicción,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_184,Registro de Sociedad Clasificadora,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_185,Registro Sinóptico Continuo (RSC),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_186,Registro Sinóptico Continuo del Buque (Pasaje > 35 pax),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_187,Certificado Internacional de Protección del Buque (PBIP) (Pasaje > 35 pax),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_188,Troquelado de motor,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_189,Zarpe y Arribo,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_191,"Original y copia de la escritura pública de compraventa, cesión, posesión o resolución de adjundicación",1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_192,Copia de la planilla actualizada de los servicios básicos: agua/luz/teléfono,1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_193,Foto de la embarcación en donde conste el nombre legible,1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_194,Croquis (lugar donde vive el propietario),,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_195,Carta de autorización notariada (si no es el propietario) con copias legibles de cédula y de certificado de votación del autorizado y de quien autoriza,1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_197,Solicitud de trámite firmada por el representante legal o la persona autorizada,1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_198,Copia del nombramiento del representante legal (debe venir dentro de la protocolización),1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_199,Copia del RUC de la compañía (debe venir dentro de la protocolización),1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_200,Croquis (lugar donde opera la compañía),1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_203,"Original y copia de la escritura pública de entrega de obra con copia de los planos aprobados por la DIRNEA, si es importada los doc. de importación, cesión, posesión o resolución de adjundicación",1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_204,"En caso de que la nave sea de bandera extranjera, los actos o contratos deberán constar en instrumentos escritos, cuyas firmas se encuentren debidamente apostilla. La documentación apostillada y más documentos de la nave deberán estar protocolizados ante un notario público y debidamente traduccidos al idioma castellano en caso de encontrarse en otro idioma",1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_205,Carta de autorización notariada (si no es propietario),1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_206,AUTORIZACIONES (NAVE EXTRANJERA) – ALO DE EXPORTACIÓN,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_207,Original y copia del seguro internacional de la embarcación vigente,1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_208,"Original de oficio de agencia naviera (La cual debe especificar características de la nave, detalle de la carga y detalles de la maniobra)",1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_210,AUTORIZACIONES (NAVE EXTRANJERA) – ALO CARGA (IMPORTACIÓN),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_211,"Original de oficio de agencia naviera (La cual debe especificar características de la nave, detalle de la carga y detalles de la maniobra) Anexo “A” ",1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_212,SOLICITUDES DE AUTORIZACIÓN LIBRE OPERACIÓN – ALO BUNKEREO INTERNACIONAL (B/I),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_213,ALIJE BUQUES TANQUE,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_214,"Oficio de agencia naviera (indicando los datos para la maniobra, nave que recibe, entrega, producto, cantidad, lugar para la maniobra y ventana de operación)",1,False,False,False,False,base_sigmap.nave,FALSE
+tramite_documento_215,BUNKEREO SEGMENTO NAVIERO NACIONAL,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_216,ALO BOC,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_218,Zarpe Nacional,1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_219,Zarpe Internacional,1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_220,Arribo Nacional,1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_221,Arribo Internacional,1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_222,Despacho de Yates Deportivos,1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_223,Recepción Tráfico Fluvial y Esteros,1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_224,Recepción Tráfico Nacional,1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_225,Recepción Tráfico Internacional,1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_226,Recepción Naves de Pesca,1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_227,Recepción de Yates Deportivos,1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_228,Prearribo (Internacional),1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_229,Plan de viaje (Internacional),1,False,True,False,False,base_sigmap.trafico_maritimo,FALSE
+tramite_documento_230,Cambio características técnicas,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_231,Cambio de Nombre de Nave,1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_232,Carta de autorización notariada (si no es el representante legal),1,False,True,False,False,base_sigmap.nave,FALSE
+tramite_documento_233,Copia del registro de propiedad,1,False,True,False,False,base_sigmap.nave,FALSE

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_tramite_search" model="ir.ui.view">
+        <field name="name">tramite.search</field>
+        <field name="model">tramite</field>
+        <field name="arch" type="xml">
+            <search string="Search Tramite">
+                <field name="personal_maritimo_id" string="Número Cédula" filter_domain="[('personal_maritimo_id.vat', 'ilike', self)]"/>
+                <field name="nave_id" string="Matrícula u OMI" filter_domain="['|',('nave_id.matricula', 'ilike', self),('nave_id.omi_number', 'ilike', self)]"/>
+                <field name="servicio_id" string="Nombre" filter_domain="[('servicio_id.name', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Estado Facturado" name="estado_facturado" domain="[('state', '=', 'invoiced')]"/>
+                <filter string="Estado en trámite" name="estado_en_tramite" domain="[('state', '=', 'in_process')]"/>
+                <filter string="Estado Tramitado" name="estado_tramitado" domain="[('state', '=', 'posted')]"/>
+                <filter string="Estado Entregado" name="estado_entregado" domain="[('state', '=', 'sent')]"/>
+                <separator/>
+                <filter string="Hoy" name="tramite_today"
+                    domain="[('fecha_inicio', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_persona" string="Persona" domain="[]" context="{'group_by': 'personal_maritimo_id'}"/>
+                    <filter name="group_nave" string="Nave" domain="[('nave_id','!=',False)]" context="{'group_by': 'nave_id'}" />
+                    <filter name="group_documento_servicio" string="Documento/Servicio" domain="[]" context="{'group_by': 'servicio_id'}"/>
+                    <filter name="group_estado" string="Estado" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter name="group_fecha_inicio" string="Fecha Inicio" domain="[]" context="{'group_by': 'fecha_inicio'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_tramite_tree" model="ir.ui.view">
+        <field name="name">Lista de trámites</field>
+        <field name="model">tramite</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Tramite">
+                    <field name="company_id" invisible="1"/>
+                    <field name="name" attrs="{'invisible': [('name','=',False)]}" />
+                    <field name="servicio_id"/>
+                    <field name="order_id"/>
+                    <field name="personal_maritimo_id" invisible="1"/>
+                    <field name="nave_id" invisible="1"/>
+                    <field name="nave_persona" />
+                    <field name="fecha_caducidad"/>
+                    <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <!-- LISTADO -->
+    <record id="view_tramite_form" model="ir.ui.view">
+        <field name="name">Trámite formulario</field>
+        <field name="model">tramite</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Tramite">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="action_iniciar_tramite" type="object" string="Iniciar Tramite" class="oe_highlight" states="invoiced"/>
+                    <button name="action_terminar_tramite" type="object" string="Terminar Tramite" class="oe_highlight" states="in_process"/>
+                    <button name="action_send_email" type="object" string="Enviar correo" class="oe_highlight" states="posted"/>
+                    <button name="action_pausar_tramite" type="object" string="Pausar Tramite" class="oe_highlight" states="in_process"/>
+                </header>
+                <div
+                    class="alert alert-danger" role="alert" style="margin-bottom:0px;"
+                    attrs="{'invisible': [('completado', '!=', 1)]}">
+                        Tramite no está completo, revisar requisitos.
+                </div>
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="name" attrs="{'invisible': [('name', '=', False)], 'readonly': [('name', '!=', False)]}"/>
+                        <field name="company_id" invisible="1"/>
+                    </h1>
+                </div>
+
+                <group>
+                    <group id="header_left_group">
+                        <field name="reparto_id"/>
+                        <field name="servicio_id"/>
+                        <field name="order_id" attrs="{'invisible': [('name', '=', False)]}" string="Solicitud"/>
+                        <field name="tipo_documento_id" invisible="1"/>
+                        <field name="jerarquia_id" attrs="{'invisible':[('mostrar_jerarquia', '=', False)], 'readonly': [('state','!=','draft')]}"/>
+                        <field name="tipo_permiso_id" string="Tipo permiso" attrs="{'invisible':[('mostrar_jerarquia', '=', False)], 'readonly': [('state','!=','draft')]}"/>
+                        <field name="tipo_trafico_id" attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.nave)d, %(base_sigmap.trafico_maritimo)d))], 'readonly': [('state','!=','draft')]}"/>
+                        <field name="allowed_jerarquia_ids" invisible="1"/>
+                        <field name="personal_maritimo_id" attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.gente_mar)d))]}"/>
+                        <field name="nave_id" readonly="1" attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.nave)d, %(base_sigmap.trafico_maritimo)d))]}"/>
+                        <field name="es_inspeccion" invisible="1"/>
+                        <field name="tipo_inspeccion" attrs="{'invisible':['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),('es_inspeccion','=',False)], 'readonly': [('state','!=','draft')]}"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="fecha_caducidad"/>
+                        <field name="model_model" invisible="1"/>
+                        <!-- REVISAR field name="reimpresion" attrs="{'invisible':[ ('model_model', 'not in', ['permar.documento.refrendo.titulo.formacion'])] }"/-->
+                        <field name="reimpresion" attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.gente_mar)d))]}"/>
+                        <field name="completado" invisible="1"/>
+                        <field name="completado_requisitos" invisible="1"/>
+                        <field name="completado_cursos" invisible="1"/>
+                        <field name="mostrar_jerarquia" invisible="1"/>
+                        <field name="mostrar_curso" invisible="1"/>
+                        <field name="validar_cursos_formacion" invisible="1"/>
+                        <field name="validar_cursos_omi" invisible="1"/>
+                        <field name="allowed_curso_ids" invisible="1"/>
+                        <field name="curso_id" attrs="{'invisible':[('mostrar_curso', '=', False)]}"/>
+                        <field name="cantidad" attrs="{'invisible': [('factor', '=', False)]}"/>
+                        <field name="factor" attrs="{'invisible': [('factor', '=', False)]}"/>
+                        <field name="factor_descripcion" attrs="{'invisible': [('factor', '=', False)]}"/>
+                    </group>
+                </group>
+                <group>
+                        <field name="resource_ref" attrs="{'invisible': [('resource_ref', '=', False)]}"/>
+                </group>
+                <notebook>
+                    <page string="Requisitos" name="tramite_requisitos">
+                        <field name="requisito_ids" nolabel="1" attrs="{'readonly': [('state','not in',['draft', 'invoiced'])]}">
+                            <tree string="Requisitos" editable="1">
+                                <field name="company_id" invisible="1"/>
+                                <field name="tramite_id" invisible="1"/>
+                                <field name="documento_requerido_id" invisible="1"/>
+                                <field name="personal_maritimo_id" invisible="1"/>
+                                <field name="requisito_id"/>
+                                <field name="name"/>
+                                <field name="documento_ref"/>
+                                <field name="upload_file" filename="upload_file_filename"/>
+                                <field name="upload_file_filename" invisible="1"/>
+                                <field name="obligatorio" invisible="1"/>
+                                <field name="fecha_caducidad"/>
+                                <field name="completado"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="tramite_requisitos_cursos" string="Cursos requeridos" attrs="{'invisible':[('validar_cursos_omi', '=', False),('validar_cursos_formacion', '=', False)]}">
+                        <field name="requisito_curso_ids" nolabel="1" attrs="{'readonly':[('state', 'in', ['posted'])]}">
+                            <tree string="Cursos requeridos" editable="bottom">
+                                <field name="tramite_id" invisible="1"/>
+                                <field name="personal_maritimo_id" invisible="1"/>
+                                <field name="curso_id"/>
+                                <field name="personal_maritimo_curso_id"/>
+                                <field name="completado"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Rubros" name="tramite_rubros">
+                        <field name="rubro_ids" nolabel="1">
+                            <tree string="Rubro">
+                                <field name="company_id" invisible="1"/>
+                                <field name="tramite_id" invisible="1"/>
+                                <field name="product_id"/>
+                                <field name="monto" sum="Total"/>
+                            </tree>
+                        </field>
+                        <separator string=""/>
+                    </page>
+                </notebook>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_tramite_rubro_form" model="ir.ui.view">
+        <field name="name">Tramite rubro formulario</field>
+        <field name="model">tramite.rubro</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Rubro">
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="company_id" invisible="1"/>
+                    </h1>
+                </div>
+                <group>
+                    <group id="header_left_group">
+                        <field name="product_id"/>
+                        <field name="monto"/>
+                    </group>
+                </group>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_tramite_requisito_form" model="ir.ui.view">
+        <field name="name">Requisito formulario</field>
+        <field name="model">tramite.requisito</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Requisito">
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="company_id" invisible="1"/>
+                    </h1>
+                </div>
+                <group>
+                    <group id="header_left_group">
+                        <field name="tramite_id" invisible="1"/>
+                        <field name="documento_req_id"/>
+                        <field name="requisito_id"/>
+                        <field name="upload_file"/>
+                    </group>
+                </group>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- MENU EMITIDOS -->
+    <record id="action_tramite" model="ir.actions.act_window">
+        <field name="name">Trámites</field>
+        <field name="res_model">tramite</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_tramite_tree"/>
+        <field name="search_view_id" ref="view_tramite_search"/>
+        <field name="context">{'search_default_group_estado': 1}</field>
+        <field name="help" type="html">
+            <p>
+                No tramite found.
+            </p>
+        </field>
+    </record>
+
+</odoo>

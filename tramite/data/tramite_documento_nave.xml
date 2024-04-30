@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id='nave_servicio_aprob_cuadro_zafarrancho' model='tramite.documento'>
+            <field name='name'>Aprobación de Cuadro de Zafarrancho</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <!--<field name='tipo_reparto_id' ref='base_sigmap.sigmap_reparto_tipo_matriz'/>-->
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_aprob_evaluacion_PBIP' model='tramite.documento'>
+            <field name='name'>Aprobación de Evaluación PBIP (Instalación Portuaria)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_aprob_manual_gestion_seguridad' model='tramite.documento'>
+            <field name='name'>Aprobación de Manual de Gestión de Seguridad</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+     
+        <record id='nave_servicio_aprob_manual_plan_manejo_basura' model='tramite.documento'>
+            <field name='name'>Aprobación de Manual del Plan de Manejo de Basura</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_libro_registro_basura' model='tramite.documento'>
+            <field name='name'>Libro de Registro de Basuras</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_aprob_manual_plan_manejo_aguas' model='tramite.documento'>
+            <field name='name'>Aprobación de Manual del Plan Manejo Aguas Lastre</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_aprob_manual_plan_SOPEP' model='tramite.documento'>
+            <field name='name'>Aprobación de Manual del Plan SOPEP</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_aprob_plan_PBIP_buque' model='tramite.documento'>
+            <field name='name'>Aprobación de Plan PBIP (Buque/Instalación Portuaria)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_aprob_plan_capacidad_combustible' model='tramite.documento'>
+            <field name='name'>Aprobación de planos de capacidad de combustible</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_aprob_planos_seguridad_contraincendio' model='tramite.documento'>
+            <field name='name'>Aprobación de Planos de Seguridad y Contraincendio</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_aprob_planos_definitivo' model='tramite.documento'>
+            <field name='name'>Aprobación de planos Definitivos</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_aprob_planos_importacion' model='tramite.documento'>
+            <field name='name'>Aprobación de planos por Importación</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_aprob_libreto_estabilidad_nave' model='tramite.documento'>
+            <field name='name'>Aprobación del Libreto de Estabilidad de Naves</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_aprob_diseño_planos_nave_sin_licencia' model='tramite.documento'>
+            <field name='name'>Aprobación Diseño y planos de naves sin licencia construcción</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_asignacion_codigo_MMSI' model='tramite.documento'>
+            <field name='name'>Asignación de Código MMSI</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_auditoria_ISM' model='tramite.documento'>
+            <field name='name'>Auditoría ISM (Oficina/Buque)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_gestion_seguridad_ISM' model='tramite.documento'>
+            <field name='name'>Certificado de Gestión de Seguridad (ISM) (Pasaje navegable &gt; 12 pax)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_documento_cumplimiento_ISM' model='tramite.documento'>
+            <field name='name'>Documento de Cumplimiento de Compañía por ISM (DOC)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_auditoria_PBIP' model='tramite.documento'>
+            <field name='name'>Auditoría PBIP (Buque/Instalación Portuaria)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='tipo_reparto_id' ref='base_sigmap.sigmap_reparto_tipo_matriz'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_autorizacion_cambio_nombre_nave' model='tramite.documento'>
+            <field name='name'>Autorización cambio de Nombre de Nave</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_autorizacion_libre_ALO' model='tramite.documento'>
+            <field name='name'>Autorización de Libre Operación (ALO)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_autorizacion_desguace' model='tramite.documento'>
+            <field name='name'>Autorización Desguace Nave Bandera Nacional/Extranjera</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_cambio_puerto' model='tramite.documento'>
+            <field name='name'>Cambio de Puerto de Registro</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_cambio_propetario' model='tramite.documento'>
+            <field name='name'>Cambio Propietario de Nave</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_cancelacion_gravamen_hipoteca' model='tramite.documento'>
+            <field name='name'>Cancelación de Gravamen e Hipotecas</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_cancelacion_matricula' model='tramite.documento'>
+            <field name='name'>Cancelación de Matrícula (Baja de Nave)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_cancelacion_patente_navegacion' model='tramite.documento'>
+            <field name='name'>Cancelación de Patente de Navegación</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_cancelacion_registro_interdiccion' model='tramite.documento'>
+            <field name='name'>Cancelación de Registro de Interdicción</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_canje_documento' model='tramite.documento'>
+            <field name='name'>Canje de Documentos</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_arqueo_menor_24' model='tramite.documento'>
+            <field name='name'>Certificado de Arqueo (eslora &lt; a 24 mts)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_arqueo_mayor_24' model='tramite.documento'>
+            <field name='name'>Certificado de Arqueo (eslora &gt; a 24 mts)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_linea_carga_mayor_24' model='tramite.documento'>
+            <field name='name'>Certificado de Líneas de Carga (eslora &gt; a 24 mts)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_declaracion_cumplimiento' model='tramite.documento'>
+            <field name='name'>Certificado de Declaración de Cumplimiento-CAP</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_dotacion_minima' model='tramite.documento'>
+            <field name='name'>Certificado de Dotación Mínima de Seguridad</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_exencion' model='tramite.documento'>
+            <field name='name'>Certificado de Excención</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_historia' model='tramite.documento'>
+            <field name='name'>Certificado de Historia Dominio, Gravamen, etc.</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_registro_nave' model='tramite.documento'>
+            <field name='name'>Certificado de Registro de Nave en otra Capitanía</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_registro_propiedad_nave' model='tramite.documento'>
+            <field name='name'>Certificado de Registro de Propiedad</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_vare_desvare' model='tramite.documento'>
+            <field name='name'>Certificado de Vare/Desvare</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_seguro_garantia_contaminacion_agua' model='tramite.documento'>
+            <field name='name'>Certificado Seguro de Garantía por contaminación de aguas por Hidrocarburos</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_plan_derrame_SOPEP' model='tramite.documento'>
+            <field name='name'>Plan de Emergencia de Derrame de Hidrocarburos (SOPEP) Aprobado</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_libro_registro_hidrocarburo' model='tramite.documento'>
+            <field name='name'>Libro de Registro de hidrocarburos</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_consulta' model='tramite.documento'>
+            <field name='name'>Consultas</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_informe_tecnico_importacion_nave' model='tramite.documento'>
+            <field name='name'>Informe Técnico Favorable Importación de Nave</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_ingreso_baja_motores_borda' model='tramite.documento'>
+            <field name='name'>Ingreso y baja de motores fuera de borda</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_conformidad_prueba_LRIT' model='tramite.documento'>
+            <field name='name'>Inspección de Conformidad Pruebas LRIT</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_seguridad_buque_carga' model='tramite.documento'>
+            <field name='name'>Inspección de Seguridad de Buque de Carga (&lt;500TRB)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_seguridad_buque_pasaje' model='tramite.documento'>
+            <field name='name'>Inspección de Seguridad de Buque de Pasaje</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_sistema_anticrustante' model='tramite.documento'>
+            <field name='name'>Inspección de Sistemas Anticrustantes</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_dique_submarina' model='tramite.documento'>
+            <field name='name'>Inspección en dique/submarina</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_dique_astillero_nacional' model='tramite.documento'>
+            <field name='name'>Inspección de dique en astilleros/varaderos nacional</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_dique_astillero_internacional' model='tramite.documento'>
+            <field name='name'>Inspección de dique en astilleros/varaderos internacional</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_estado_rector_puerto' model='tramite.documento'>
+            <field name='name'>Inspección Estado Rector de Puerto</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_IOPP' model='tramite.documento'>
+            <field name='name'>Inspección IOPP</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_prevencion_contaminacion_hidrocarburo_IOPP' model='tramite.documento'>
+            <field name='name'>Certificado Internacional de Prevención a la Contaminación por Hidrocarburos (IOPP)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_seguridad_previo_zarpe' model='tramite.documento'>
+            <field name='name'>Inspección ocasional seguridad previo a zarpe a región Insular</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_siniestro_accidente' model='tramite.documento'>
+            <field name='name'>Inspección por siniestro o accidente</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_prevencion_contaminacion' model='tramite.documento'>
+            <field name='name'>Inspección Prevención Contaminación Aguas Sucias</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_seguridad_radioelectrica_buque' model='tramite.documento'>
+            <field name='name'>Inspección Seguridad Radioeléctrica de Buques</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_seguridad_prevencion_contaminacion' model='tramite.documento'>
+            <field name='name'>Inspección Seguridad y Prevención de la Contaminación</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_inspeccion_endoso_linea_carga_francobordo' model='tramite.documento'>
+            <field name='name'>Inspección/Endoso de Línea de Carga y francobordo</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_licencia_construccion_modificacion' model='tramite.documento'>
+            <field name='name'>Licencia Construcción / Modificación</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_matricula_nave_mayor_10' model='tramite.documento'>
+            <field name='name'>Matrícula de Nave Mayor a 10 TRB</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_matricula_nave_menor_10' model='tramite.documento'>
+            <field name='name'>Matrícula de Nave Menor a 10TRB</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_matricula_renovacion_armador_nave_menor_500' model='tramite.documento'>
+            <field name='name'>Matrícula y/o Renovación de Armador de Naves &lt; 50TRB</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_matricula_renovacion_armador_nave_mayor_500' model='tramite.documento'>
+            <field name='name'>Matrícula y/o Renovación de Armador de Naves &gt; 50TRB</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_multas_citaciones' model='tramite.documento'>
+            <field name='name'>Multas - citaciones</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_pasante_navegacion' model='tramite.documento'>
+            <field name='name'>Pasavante de Navegación</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_patente_navegacion' model='tramite.documento'>
+            <field name='name'>Patente de Navegación</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_permiso_trafico_internacional' model='tramite.documento'>
+            <field name='name'>Permiso de Tráfico Internacional</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_permiso_trafico_nacional' model='tramite.documento'>
+            <field name='name'>Permiso de Tráfico Nacional</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_registro_gravamen_hipoteca' model='tramite.documento'>
+            <field name='name'>Registro de Gravamen e hipoteca</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_registro_inscripcion_embarcacion_primera_vez' model='tramite.documento'>
+            <field name='name'>Registro de Inscripción de embarcación por primera vez</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_registro_interdiccion' model='tramite.documento'>
+            <field name='name'>Registro de Interdicción</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_registro_sociedad_clasificadora' model='tramite.documento'>
+            <field name='name'>Registro de Sociedad Clasificadora</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_registro_sinoptico_continuo_RSC' model='tramite.documento'>
+            <field name='name'>Registro Sinóptico Continuo (RSC)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_registro_sinoptico_continuo_pasaje_mayor_35' model='tramite.documento'>
+            <field name='name'>Registro Sinóptico Continuo del Buque (Pasaje &gt; 35 pax)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_certificado_internacional_proteccion_buque_mayor_35' model='tramite.documento'>
+            <field name='name'>Certificado Internacional de Protección del Buque (PBIP) (Pasaje &gt; 35 pax)</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_troquelado_motor' model='tramite.documento'>
+            <field name='name'>Troquelado de motor</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+
+        <record id='nave_servicio_zarpe_arribo' model='tramite.documento'>
+            <field name='name'>Zarpe y Arribo</field>
+            <field name='emitido_por_dirnea' eval='True'/>
+            <field name='tipo_documento_id' ref='base_sigmap.nave'/>
+            <field name='active' eval="True"/>
+        </record>
+    </data>
+</odoo>

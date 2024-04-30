@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sale_order_form" model="ir.ui.view">
+        <field name="name">Sale Order</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div" position="after">
+                <div class="alert alert-danger oe_edit_only" role="alert" attrs="{'invisible': [('fallecido', '=', False)]}">
+                    Fallecido
+                </div>
+                <div class="alert alert-danger oe_edit_only" role="alert" attrs="{'invisible': [('antecedentes_penales', '=', False)]}">
+                    Tiene antecedetes penales
+                </div>
+                <div class="alert alert-danger oe_edit_only" role="alert" attrs="{'invisible': [('aplica_descuento', '=', False)]}">
+                    Se le aplicará un descuento del 50%
+                </div>
+            </xpath>
+            <button name="action_confirm" position="after">
+                <button name="action_pagado" type="object" string="Pagar" class="oe_highlight" attrs="{'invisible': [('state','not in', ['sent'])]}"/>
+            </button>
+            <button name="action_confirm" position="attributes">
+                <attribute name="attrs">{'invisible': 1}</attribute>
+            </button>
+            <button name="%(sale.action_view_sale_advance_payment_inv)d" position="attributes">
+                <attribute name="attrs">{'invisible': 1}</attribute>
+            </button>
+            <field name="partner_id" position="after">
+                <field name="fallecido" invisible="1"/>
+                <field name="aplica_descuento" invisible="1"/>
+                <field name="antecedentes_penales" invisible="1"/>
+            </field>
+            <field name="partner_id" position="before">
+                <field name="reparto_id"/>
+                <field name="tipo_documento_id"
+                    attrs="{
+                        'required': 1,
+                        'readonly': [( 'state', '=', 'sale')]
+                    }"/>
+            </field>
+            <field name="partner_id" position="after">
+                <field name="beneficiario_id"
+                    attrs="{
+                        'invisible': [( 'tipo_documento_id', 'not in', ( %(base_sigmap.gente_mar)d, ) )],
+                        'required': [( 'tipo_documento_id', 'in', ( %(base_sigmap.gente_mar)d, ) )],
+                        'readonly': [( 'state', '=', 'sale')]
+                    }"/>
+                <!--field name="beneficiario_nave_id"
+                    attrs="{
+                        'invisible': [('tipo_documento_id', 'not in', (%(base_sigmap.nave)d), %(base_sigmap.trafico_maritimo)d))],
+                        'required' : [('tipo_documento_id', 'in', (%(base_sigmap.nave)d, %(base_sigmap.trafico_maritimo)d))]
+                    }"/-->
+                <field name="nave_id"
+                    attrs="{
+                        'invisible': [( 'tipo_documento_id', 'not in', ( %(base_sigmap.nave)d, %(base_sigmap.trafico_maritimo)d ) )],
+                        'required' : [( 'tipo_documento_id', 'in', ( %(base_sigmap.nave)d, %(base_sigmap.trafico_maritimo)d ) )],
+                        'readonly': [( 'state', '=', 'sale')]
+                    }"/>
+                <field name="tipo" invisible="1"/>
+                <field name="email" widget="email" context="{'gravatar_image': True}"/>
+            </field>
+            <button name="action_confirm" position="after">
+                <button name="action_entregado" type="object" string="Entregar documentos" class="oe_highlight" attrs="{'invisible': ['|',('state','not in', ['sale']), ('invoice_status', 'not in', ['to invoice'])]}"/>
+            </button>
+            <xpath expr="//field[@name='pricelist_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='order_lines']" position="before">
+                <page string="Trámites" name="order_tramites" attrs="{'invisible': [('tipo_documento_id', '=', %(base_sigmap.citacion)d)]}">
+                    <!--field name="tramite_ids" nolabel="1" attrs="{'readonly':[('state', '=', 'sale')]}"-->
+                    <field name="tramite_ids" nolabel="1" attrs="{'readonly': [( 'state', '=', 'sale')]}">
+                        <tree string="Trámites">
+                            <field name="company_id" invisible="1"/>
+                            <field name="servicio_id"/>
+                            <field name="fecha_caducidad"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//page[@name='optional_products']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='other_information']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='customer_signature']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.menu" id="sale.menu_sale_quotations">
+         <field name="name">Solicitudes</field>
+    </record>
+    <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+        <field name="name">Solicitudes</field>
+    </record>
+    <record id="sale.action_quotations" model="ir.actions.act_window">
+        <field name="name">Solicitudes</field>
+    </record>
+
+    <!-- <record id="action_quotations_with_onboarding" model="ir.actions.act_window">
+        <field name="name">Quotations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+    </record> -->
+
+</odoo>

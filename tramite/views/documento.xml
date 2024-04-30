@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tramite_documento_requisito_tree" model="ir.ui.view">
+        <field name="name">Tramite documento requisito lista</field>
+        <field name="model">tramite.documento.requisito</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Documento">
+                    <field name="company_id" invisible="1"/>
+                    <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_tramite_documento_search" model="ir.ui.view">
+        <field name="name">tramite.search</field>
+        <field name="model">tramite.documento</field>
+        <field name="arch" type="xml">
+            <search string="Search Tramite Documento">
+                <!--filter string="Estado Iniciado" name="estado_iniciado" domain="[('state', '=', 'draft')]"/-->
+                <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Emitido en sistema?" name="emitido_por_dirnea" domain="[('emitido_por_dirnea', '=', True)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_tipo_documento_id" string="Tipo" domain="[]" context="{'group_by': 'tipo_documento_id'}"/>
+                    <filter name="group_tipo_reparto_id" string="Tipo reparto" domain="[]" context="{'group_by': 'tipo_reparto_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_tramite_documento_tree" model="ir.ui.view">
+        <field name="name">Tramite documento lista</field>
+        <field name="model">tramite.documento</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Documento">
+                    <field name="company_id" invisible="1"/>
+                    <field name="name"/>
+                    <field name="tipo_documento_id"/>
+                    <field name="tipo_reparto_id"/>
+                    <field name="periodo_caducidad" widget="radio" options="{'horizontal': true}"/>
+                    <field name="caducidad"/>
+                    <field name="emitido_por_dirnea"/>
+                    <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+    <!-- LISTADO -->
+    <record id="view_tramite_documento_form" model="ir.ui.view">
+        <field name="name">Tramite documento formulario</field>
+        <field name="model">tramite.documento</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Documentos y Servicios">
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="company_id" invisible="1"/>
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <group>
+                    <group id="header_left_group">
+                        <field name="model_id"/>
+                        <field name="tipo_documento_id"/>
+                        <field name="departamento_id" />
+                        <field name="tipo_reparto_id"/>
+                        <field name="attachments_required"/>
+                        <field name="model_model" invisible="1"/>
+                        <field name="action_report_id"/>
+                        <field name="factor"/>
+                        <field name="es_provisional"/>
+                        <field name="factor_descripcion" attrs="{'invisible': [('factor','=', False)]}"/>
+                    </group>
+                    <group id="header_right_group">
+                        <field name="active" widget="boolean_toggle"/>
+                        <field name="emitido_por_dirnea"/>
+                        <field name="es_cert_estatutario_naves" attrs="{'invisible':['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),('emitido_por_dirnea','=',False)]}"/>
+                        <field name="es_derecho_anual_naves" attrs="{'invisible':['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),('emitido_por_dirnea','=',False)]}"/>
+                        <field name="es_inspeccion" attrs="{'invisible':[('tipo_documento_id','!=',%(base_sigmap.nave)d)]}"/>
+                        <field name="tiene_extension" attrs="{'invisible':['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),('es_inspeccion','=',False)]}"/>
+                        <field name="tiene_endoso" attrs="{'invisible':['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),('es_inspeccion','=',False)]}"/>
+                        <field name="tiene_condicional" attrs="{'invisible':['|',('tipo_documento_id','!=',%(base_sigmap.nave)d),('es_inspeccion','=',False)]}"/>
+                        <field name="tipo_permiso_provisional_id"
+                            attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.gente_mar)d))]}"/>
+                        <field name="check_refrendo"
+                            attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.gente_mar)d))]}"/>
+                        <field name="validar_jerarquia"
+                            attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.gente_mar)d))]}"/>
+                        <field name="validar_cursos_formacion"
+                            attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.gente_mar)d))]}"/>
+                        <field name="validar_cursos_omi"
+                            attrs="{'invisible':[('tipo_documento_id','not in',(%(base_sigmap.gente_mar)d))]}"/>
+                        <field name="titulo_reporte" attrs="{'invisible': [('emitido_por_dirnea', '=', False)]}"/>
+                        <field name="titulo_reporte_en" attrs="{'invisible': [('emitido_por_dirnea', '=', False)]}"/>
+                        <field name="caduca" />
+                        <field name="periodo_caducidad" widget="radio" options="{'horizontal': true}" attrs="{'invisible': [('caduca', '=', False)]}"/>
+                        <field name="caducidad" attrs="{'invisible': [('caduca', '=', False)]}"/>
+                        <field name="caducidad_extension" attrs="{'invisible': [('tiene_extension', '=', False)]}"/>
+                        <field name="caducidad_condicional" attrs="{'invisible': [('tiene_condicional', '=', False)]}"/>
+                        <field name="tiene_vigencia_minima" attrs="{'invisible': [('caduca', '=', False)]}"/>
+                        <field name="periodo_vigencia" widget="radio" options="{'horizontal': true}" attrs="{'invisible': [('tiene_vigencia_minima', '=', False)]}"/>
+                        <field name="vigencia_minima" attrs="{'invisible': [('tiene_vigencia_minima', '=', False)]}"/>
+                        <field name="caducidad_limitada_por_documento" attrs="{'invisible': [('caduca', '=', False)]}"/>
+                        <field name="caducidad_documento_ids"
+                            attrs="{'invisible': [('caducidad_limitada_por_documento', '=', False)]}"
+                            widget="many2many_tags"
+                            options="{'no_create':True,
+                                'no_create_edit':True,
+                                'no_quick_create':True,
+                                'no_open':True}"/>
+
+                    </group>
+                </group>
+                <notebook attrs="{'invisible': [('emitido_por_dirnea', '=', False)]}">
+                    <page string="Requisitos">
+                        <field name="requisito_ids" nolabel="1">
+                            <tree string="Requisitos" editable="top">
+                                <field name="company_id" invisible="1"/>
+                                <field name="documento_requerido_id"/>
+                                <field name="company_type"/>
+                                <field name="obligatorio"/>
+                                <field name="servicio_id" invisible="1"/>
+                                <field name="tipo_documento_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Rubros">
+                        <field name="rubro_ids" nolabel="1">
+                            <tree string="Rubro">
+                                <field name="company_id" invisible="1"/>
+                                <field name="servicio_id" invisible="1"/>
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                        <separator string=""/>
+                    </page>
+                    <page name="documento_repartos" string="Repartos">
+                        <field name="reparto_ids" nolabel="1">
+                            <tree string="Reparto" editable="bottom">
+                                <field name="servicio_id" invisible="1"/>
+                                <field name="reparto_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="endosos" string="Endosos"
+                        attrs="{'invisible':[('tiene_endoso','=',False)]}"><!--('tipo_documento_id','not in',(%(base_sigmap.nave)d))-->
+                        <field name="endoso_ids" nolabel="1">
+                            <tree string="Endosos" editable="bottom">
+                                <field name="servicio_id" invisible="1"/>
+                                <field name="meses"/>
+                                <field name="meses_limite"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tramite_documento_requisito_form" model="ir.ui.view">
+        <field name="name">Tramite documento requisito</field>
+        <field name="model">tramite.documento.requisito</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Requisitos del servicio">
+                <div class="oe_title">
+                    <h1 class="mt0">
+                        <field name="company_id" invisible="1"/>
+                    </h1>
+                </div>
+                <group>
+                    <group>
+                        <field name="documento_requerido_id"/>
+                        <field name="company_type"/>
+                        <field name="obligatorio"/>
+                        <field name="servicio_id"/>
+                        <field name="tipo_documento_id"/>
+                    </group>
+                </group>
+                <!--div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div-->
+            </form>
+        </field>
+    </record>
+    <record id="action_tramite_documento_req" model="ir.actions.act_window">
+        <field name="name">Documentos y Servicios</field>
+        <field name="res_model">tramite.documento.requisito</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_tramite_documento_requisito_tree"/>
+        <field name="help" type="html">
+            <p>
+                No documento or servicio found.
+            </p>
+        </field>
+    </record>
+    <record id="action_tramite_documento" model="ir.actions.act_window">
+        <field name="name">Documentos y Servicios</field>
+        <field name="res_model">tramite.documento</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_tramite_documento_search"/>
+        <field name="view_id" ref="view_tramite_documento_tree"/>
+        <field name="help" type="html">
+            <p>
+                No documento or servicio found.
+            </p>
+        </field>
+    </record>
+</odoo>
